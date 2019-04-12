@@ -26,7 +26,6 @@ module.exports = {
         theme_color: '#1e224f',
         display: 'minimal-ui',
         icon: 'src/images/favicon.png',
-        cache_busting_mode: 'nonde',
       },
     },
   ],
