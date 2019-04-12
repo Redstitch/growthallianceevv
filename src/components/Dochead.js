@@ -23,7 +23,6 @@ const Dochead = ({
       }, {
         rel: 'stylesheet', href: 'https://use.typekit.net/oze1zio.css',
       },
-      { rel: 'shortcut icon', type: 'image/png', href: '/images/favicon.png' },
     ]}
   >
     <html lang="en" />
