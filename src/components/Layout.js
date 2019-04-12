@@ -5,7 +5,7 @@ import Dochead from './Dochead';
 
 const Layout = ({ children }) => (
   <div>
-    <Dochead title="Boilerplate" siteName="Redstitch" pageImage={null} />
+    <Dochead siteName="Growth Alliance" pageImage={null} />
     <Header />
     {children}
     <Footer />

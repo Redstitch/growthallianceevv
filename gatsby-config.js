@@ -1,9 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Redstitch Boilerplate',
-    description: 'Redstitch Boilerplate',
+    title: 'Growth Alliance',
+    description: 'Greater Evansville Exonomic Development',
     author: 'Redstitch',
-    cmsURL: 'https://www.redstitchdigital.com',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -20,11 +19,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'redstitch-gatsby-boiler',
-        short_name: 'rsboiler',
+        name: 'gage-evansville',
+        short_name: 'gage',
         start_url: '/',
-        background_color: '#1A77B9',
-        theme_color: '#1A77B9',
+        background_color: '#1e224f',
+        theme_color: '#1e224f',
         display: 'minimal-ui',
         icon: 'src/images/favicon.png',
       },
