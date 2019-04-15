@@ -16,16 +16,5 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: 'gage-evansville',
-        short_name: 'gage',
-        start_url: '/',
-        background_color: '#1e224f',
-        theme_color: '#1e224f',
-        display: 'standalone',
-      },
-    },
   ],
 };

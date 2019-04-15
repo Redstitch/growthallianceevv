@@ -22,6 +22,8 @@ const Dochead = ({
         rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
       }, {
         rel: 'stylesheet', href: 'https://use.typekit.net/oze1zio.css',
+      }, {
+        rel: 'manifest', href: '/manifest.webmanifest',
       },
       { rel: 'shortcut icon', type: 'image/png', href: '/images/favicon.png' },
     ]}
