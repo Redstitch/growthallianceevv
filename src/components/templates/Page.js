@@ -6,7 +6,9 @@ import { breakpoints } from '../../styles/utilities/settings';
 
 const Page = ({ data }) => (
   <Layout>
-    <Image src={data.wordpressPage.acf.featured_image.url} sources={[[320, breakpoints.mobile], [768, breakpoints.ipadPort]]} />
+    {data.wordpressPage.acf.featured_image
+    && <Image src={data.wordpressPage.acf.featured_image.url} sources={[[320, breakpoints.mobile], [768, breakpoints.ipadPort]]} />
+    }
   </Layout>
 );
 
