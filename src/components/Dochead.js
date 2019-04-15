@@ -12,7 +12,7 @@ const Dochead = ({
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: title ? `${title} | ${siteName}` : `${siteName}` },
       { property: 'og:site_name', content: siteName },
-      { property: 'og:url', content: 'https://www.sitename.com' },
+      { property: 'og:url', content: 'https://www.growthallianceevv.com/' },
       { property: 'og:image', content: pageImage },
       { property: 'og:image:secure_url', content: pageImage },
       { name: metaName, content: metaContent },
