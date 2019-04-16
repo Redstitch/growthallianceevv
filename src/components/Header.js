@@ -1,23 +1,30 @@
 import React from 'react';
-import styled from 'styled-components';
-import { StaticQuery, graphql } from 'gatsby';
+import styled, { css } from 'styled-components';
+import { StaticQuery, graphql, Link } from 'gatsby';
 import Image from './atoms/imgix/Image';
-import { breakpoints, misc } from '../styles/utilities/settings';
-import { below } from '../styles/utilities/mediaQueries';
+import Wrapper from '../styles/utilities/Wrapper';
+import Menu from './molecules/Menu';
+import { SMenuLink } from './atoms/MenuLink';
+import { colors } from '../styles/utilities/settings';
 
 const Header = () => (
   <StaticQuery
     query={HEADER_QUERY}
     render={data => (
       <SHeader>
-        <Image
-          className="logo"
-          src={data.wordpressAcfOptions.options.logo.url}
-          maxWidth={400}
-          minWidth={200}
-          breakPoint={breakpoints.ipadPort}
-        />
-          this the header
+        <Wrapper>
+          <Link to="/" className="logo">
+            <Image
+              src={data.wordpressAcfOptions.options.logo.url}
+              maxWidth={160}
+              minWidth={160}
+            />
+          </Link>
+          <div className="navigation">
+            <Menu content={data.allWordpressWpApiMenusMenusItems} styles={topNav} menuTitle="top-nav" />
+            <Menu content={data.allWordpressWpApiMenusMenusItems} menuTitle="main-menu" />
+          </div>
+        </Wrapper>
       </SHeader>
 
     )}
@@ -34,16 +41,49 @@ const HEADER_QUERY = graphql`{
       }
     }
   }
+  allWordpressWpApiMenusMenusItems {
+    edges {
+      node {
+        id
+        slug
+        items {
+          type
+          wordpress_id
+          title
+          url
+          classes
+          target
+          wordpress_children {
+            type
+            wordpress_id
+            title
+            url
+            classes
+            target
+          }
+        }
+      }
+    }
+  }
 }`;
 
 
 const SHeader = styled.header`
+  ${Wrapper} {
+    display: flex;
+    justify-content: space-between;
+  }
   .logo {
-    max-width: 400px;
-    transition-duration: ${misc.animSpeed};
+    display: block;
+    max-width: 160px;
+  }
+`;
 
-    ${below.ipadPort`
-      max-width: 200px;
-    `}
+const topNav = css`
+  ${SMenuLink} {
+    text-transform: uppercase;
+    a {
+      color: ${colors.darkerGray};
+    }
   }
 `;
