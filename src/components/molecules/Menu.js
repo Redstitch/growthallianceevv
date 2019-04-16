@@ -9,13 +9,13 @@ const Menu = ({ content, menuTitle, styles }) => content.edges.map(({ node }) =>
     <ul key={node.id}>
       {node.items.map(item => (
         <li key={item.wordpress_id}>
-          <MenuLink content={item} />
+          <MenuLink content={item} menuTitle={menuTitle} />
           {item.wordpress_children
             && (
             <ul>
               {item.wordpress_children.map(child => (
                 <li key={child.wordpress_id}>
-                  <MenuLink content={child} />
+                  <MenuLink content={child} menuTitle={menuTitle} />
                 </li>
               ))}
             </ul>

@@ -87,6 +87,11 @@ const topNav = css`
       color: ${colors.darkerGray};
       font-size: 11px;
       ${fonts.HelveticaNeueMedium};
+      margin-left: 50px;
+      &:before {
+        ${fonts.FontAwesome};
+        margin-right: 10px;
+      }
     }
   }
 `;
