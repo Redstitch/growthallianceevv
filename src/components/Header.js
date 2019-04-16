@@ -6,6 +6,7 @@ import Wrapper from '../styles/utilities/Wrapper';
 import Menu from './molecules/Menu';
 import { SMenuLink } from './atoms/MenuLink';
 import { colors } from '../styles/utilities/settings';
+import { fonts } from '../styles/utilities/fonts';
 
 const Header = () => (
   <StaticQuery
@@ -84,6 +85,8 @@ const topNav = css`
     text-transform: uppercase;
     a {
       color: ${colors.darkerGray};
+      font-size: 11px;
+      ${fonts.HelveticaNeueMedium};
     }
   }
 `;
