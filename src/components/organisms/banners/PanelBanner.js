@@ -34,14 +34,28 @@ const SPanelBanner = styled.div`
     width: 100%;
     max-width: 1000px;
 
+    ${below.ipadLand`
+      max-width: 400px;
+    `}
+
     &:nth-child(1) {
       top: -680px;
       left: -120px;
+
+      ${below.ipadLand`
+        top: -210px;
+        left: -120px;
+      `}
     }
 
     &:nth-child(2) {
       bottom: -680px;
       right: -120px;
+
+      ${below.ipadLand`
+        bottom: -210px;
+        right: -120px;
+      `}
     }
   }
 
