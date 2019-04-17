@@ -8,8 +8,10 @@ export const colors = {
   green: '#82AD41',
   lightGreen: '#a7c57a',
   orange: '#D57824',
+  lightOrange: '#FDF7F2',
   blue: '#1A77B9',
   darkBlue: '#2F3490',
+  darkerBlue: '#002C54',
   red: '#b80000',
   blueGradientStart: 'rgba(26, 119, 185, .3)',
   blueGradientMiddle: 'rgba(15, 67, 104, .6)',
@@ -23,6 +25,7 @@ export const breakpoints = {
   ipadMid: 960,
   ipadPort: 768,
   pageWidth: 1240,
+  widePageWidth: 1440,
   mapBreak1: 1660,
 };
 

@@ -1,33 +1,71 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import MenuLink from '../atoms/MenuLink';
+import MenuItem from '../atoms/MenuItem';
 import { above } from '../../styles/utilities/mediaQueries';
 
-const Menu = ({ content, menuTitle, styles }) => content.edges.map(({ node }) => node.slug === menuTitle
-  && (
-  <SMenu styles={styles}>
-    <ul key={node.id}>
-      {node.items.map(item => (
-        <li key={item.wordpress_id}>
-          <MenuLink content={item} menuTitle={menuTitle} />
-          {item.wordpress_children
-            && (
-            <ul>
-              {item.wordpress_children.map(child => (
-                <li key={child.wordpress_id}>
-                  <MenuLink content={child} menuTitle={menuTitle} />
-                </li>
-              ))}
-            </ul>
-            )
-          }
-        </li>
-      ))}
-    </ul>
-  </SMenu>
-  ));
+class Menu extends Component {
+  pageColorEval(itemId, pages) {
+    if (pages) {
+      for (let i = 0; i < pages.length; i++) {
+        const page = pages[i].node;
+        if (itemId === page.wordpress_id) {
+          return page.acf.page_color;
+        }
+      }
+    }
+    return '';
+  }
+
+  render() {
+    const {
+      content,
+      pages,
+      menuTitle,
+      styles,
+    } = this.props;
+    return (
+      content.edges.map(({ node }) => node.slug === menuTitle
+      && (
+        <SMenu styles={styles}>
+          <ul key={node.id}>
+            {node.items.map(item => (
+              <MenuItem content={item} pageColor={this.pageColorEval(item.object_id, pages)} />
+            ))}
+          </ul>
+        </SMenu>
+      ))
+    );
+  }
+}
 
 export default Menu;
+
+// const Menu = ({
+//   content, pages, menuTitle, styles,
+// }) => content.edges.map(({ node }) => node.slug === menuTitle
+//   && (
+//   <SMenu styles={styles}>
+//     <ul key={node.id}>
+//       {node.items.map(item => (
+//         <>
+//           {pages
+//           && (
+//             pages.map(page => (
+//               <>
+//                 {page.wordpress_id === item.wordpress_id && (
+//                   pageColor = page.acf.page_color
+//                 )}
+//               </>
+//             ))
+//           )}
+//           <MenuItem content={item} pageColor={pageColor} />
+//         </>
+//       ))}
+//     </ul>
+//   </SMenu>
+//   ));
+
+// export default Menu;
 
 const SMenu = styled.nav`
   ul {
@@ -35,8 +73,8 @@ const SMenu = styled.nav`
     padding: 0;
     margin: none;
 
-    ul {
-      display: none;
+    ul.sub-nav {
+      /* display: none; */
     }
   }
 
