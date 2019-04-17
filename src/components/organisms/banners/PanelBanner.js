@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, misc } from '../../../styles/utilities/settings';
 import Globe, { SGlobe } from '../../atoms/Globe';
 import { above, below } from '../../../styles/utilities/mediaQueries';
 import Column from '../../molecules/Column';
@@ -25,7 +24,7 @@ const SPanelBanner = styled.div`
   ${above.ipadLand`
     display: flex;
     height: 85vh;
-    margin: 0 -10%;
+    margin: 0 -4%;
   `}
 
   ${SGlobe} {
@@ -56,63 +55,6 @@ const SPanelBanner = styled.div`
         bottom: -210px;
         right: -120px;
       `}
-    }
-  }
-
-  .content {
-    color: ${colors.white};
-    position: relative;
-
-    ${above.ipadLand`
-      transform: translateX(-50%) translateY(-50%);
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 70%;
-    `}
-
-    ${below.ipadLand`
-      padding: 60px 50px 70px;
-    `}
-  }
-
-  h2 {
-    font-weight: 500;
-  }
-
-  a {
-    color: ${colors.white};
-    display: inline-block;
-    padding-left: 20px;
-    position: relative;
-    transition-duration: 0s;
-    opacity: 1;
-
-    &:hover {
-      &:before {
-        border: none;
-        width: 100%;
-        background-color: ${colors.green};
-        height: 100%;
-        left: 10px;
-        padding: 15px 0;
-      }
-    }
-
-    &:before {
-      content: '';
-      transition-duration: ${misc.animSpeed};
-      display: inline-block;
-      width: 0;
-      height: 0;
-      position: absolute;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-left: 10px solid ${colors.green};
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: -1;
     }
   }
 `;
