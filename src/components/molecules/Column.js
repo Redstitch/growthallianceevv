@@ -110,7 +110,6 @@ const SColumn = styled.div`
     img {
       display: block;
       width: 200%;
-      height: 85vh;
       object-fit: cover;
       position: absolute;
       left: 50%;
@@ -118,11 +117,12 @@ const SColumn = styled.div`
       margin: -20px 0;
 
       ${above.ipadLand`
+        height: 85vh;
         transform: skew(-4deg) translateX(-50%) translateY(-50%);
       `}
 
       ${below.ipadLand`
-        width: 100%;
+        height: 100vh;
         transform: translateX(-50%) translateY(-50%);
       `}
     }
