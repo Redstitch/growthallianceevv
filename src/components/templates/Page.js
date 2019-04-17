@@ -10,7 +10,7 @@ const Page = ({ data }) => (
     <Dochead
       title={data.wordpressPage.title !== 'Home' ? data.wordpressPage.title : null}
       siteName={data.wordpressSiteMetadata.name}
-      pageImage={data.wordpressPage.acf.featured_image && imageFixer(data.wordpressPage.acf.featured_image.url)}
+      pageImage={data.wordpressPage.acf.main_image && imageFixer(data.wordpressPage.acf.main_image.url)}
       description={data.wordpressPage.acf.description ? data.wordpressPage.acf.description : data.wordpressSiteMetadata.description}
     />
     <PageBanners content={data.wordpressPage.acf.banners_page} />
@@ -27,7 +27,8 @@ query PageQuery($slug: String!) {
     title
     acf {
       description
-      featured_image {
+      page_color
+      main_image {
         url
       }
       banners_page {

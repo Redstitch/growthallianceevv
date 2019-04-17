@@ -25,7 +25,7 @@ const SPanelBanner = styled.div`
   ${above.ipadLand`
     display: flex;
     height: 85vh;
-    margin: 0 -41px;
+    margin: 0 -10%;
   `}
 
   ${SGlobe} {
@@ -64,16 +64,15 @@ const SPanelBanner = styled.div`
     position: relative;
 
     ${above.ipadLand`
-      transform: skew(-4deg) translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 75%;
+      width: 70%;
     `}
 
     ${below.ipadLand`
-      padding: 50px;
-      transform: skewY(-2deg);
+      padding: 60px 50px 70px;
     `}
   }
 
