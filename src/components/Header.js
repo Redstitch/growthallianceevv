@@ -6,7 +6,7 @@ import Wrapper from '../styles/utilities/Wrapper';
 import Menu from './molecules/Menu';
 import { SMenuLink } from './atoms/MenuLink';
 import { colors } from '../styles/utilities/settings';
-import { fonts } from '../styles/utilities/fonts';
+import fonts from '../styles/utilities/fonts';
 
 const Header = () => (
   <StaticQuery

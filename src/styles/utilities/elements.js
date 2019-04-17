@@ -1,7 +1,8 @@
 import { css } from 'styled-components';
-import { colors } from './settings';
+import { colors, misc } from './settings';
+import fonts from './fonts';
 
-export const richTextContent = css`
+export const typography = css`
   line-height: 1.5;
 
   h1, h2, h3, h4, h5, h6, ul, ol, p, blockquote {
@@ -23,37 +24,48 @@ export const richTextContent = css`
   h5 { font-size: 18px; }
   h6 { font-size: 16px; }
 
-  ul, ol {
-    margin-left: 15px;
-  }
-
-  ul {
-    list-style: disc;
-  }
-
-  ol {
-    list-style: decimal;
+  ol, ul {
+    list-style: none;
   }
 
   a {
     color: ${colors.blue};
-    text-decoration: underline;
+    text-decoration: none;
+    transition-duration: ${misc.animSpeed};
+    opacity: 1;
 
     &:hover {
-      color: ${colors.orange};
+      opacity: 0.6;
     }
   }
 
-  blockquote {
+  blockquote, q {
     background-color: ${colors.lightGray};
     padding: 20px;
     border-left: 20px solid ${colors.gray};
+    quotes: none;
+
+    &:before,
+    &:after {
+      content: '';
+      content: none;
+    }
   }
 
   hr {
     margin: 40px 0;
     max-width: 80%;
   }
+
+  strong {
+    ${fonts.HelveticaBold};
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
 `;
 
 export const gatsbyBG = css`

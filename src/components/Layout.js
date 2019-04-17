@@ -1,13 +1,15 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import GlobalStyle from '../styles/Global';
 
 const Layout = ({ children }) => (
-  <div>
+  <main>
+    <GlobalStyle />
     <Header />
     {children}
     <Footer />
-  </div>
+  </main>
 );
 
 export default Layout;

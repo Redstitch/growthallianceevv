@@ -14,7 +14,6 @@ const MenuLink = ({ content }) => (
           __html: content.title,
         }}
       />
-
     ) : (
       <Link
         to={content.type === 'custom' ? content.url : urlFixer(content.url)}
