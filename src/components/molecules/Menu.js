@@ -5,8 +5,8 @@ import { above } from '../../styles/utilities/mediaQueries';
 
 const Menu = ({ content, menuTitle, styles }) => content.edges.map(({ node }) => node.slug === menuTitle
   && (
-  <SMenu styles={styles}>
-    <ul key={node.id}>
+  <SMenu styles={styles} key={node.id}>
+    <ul>
       {node.items.map(item => (
         <li key={item.wordpress_id}>
           <MenuLink content={item} />

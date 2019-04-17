@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 import { colors, misc } from './settings';
 import fonts from './fonts';
+import SPicture from '../atoms/SPicture';
 
 export const typography = css`
   line-height: 1.5;
@@ -68,8 +69,8 @@ export const typography = css`
 
 `;
 
-export const gatsbyBG = css`
-  .gatsby-image-wrapper {
+export const imageBG = css`
+  ${SPicture} {
     position: absolute !important;
     top: 0;
     left: 0;

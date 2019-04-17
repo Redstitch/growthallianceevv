@@ -5,6 +5,7 @@ import { colors } from '../styles/utilities/settings';
 import Wrapper from '../styles/utilities/Wrapper';
 import fonts from '../styles/utilities/fonts';
 import { above, below } from '../styles/utilities/mediaQueries';
+import Globe, { SGlobe } from './atoms/Globe';
 
 const Footer = () => (
   <SFooter>
@@ -40,11 +41,13 @@ const Footer = () => (
                     __html: `${data.wordpressAcfOptions.options.street}<br />${data.wordpressAcfOptions.options.city_state_zip}`,
                   }}
                   />
-                  {data.wordpressAcfOptions.options.hours.map(time => time.closed === false
+                  {data.wordpressAcfOptions.options.hours.map((time, index) => time.closed === false
                     && (
-                      <p dangerouslySetInnerHTML={{
-                        __html: `${time.days}<br />${time.start_time} - ${time.end_time}`,
-                      }}
+                      <p
+                        key={time.days + index}
+                        dangerouslySetInnerHTML={{
+                          __html: `${time.days}<br />${time.start_time} - ${time.end_time}`,
+                        }}
                       />
                     ))}
                 </div>
@@ -55,9 +58,7 @@ const Footer = () => (
                   />
                 </div>
               </div>
-              <div className="globe">
-                <img src={data.imageSharp.fixed.src} alt="..." />
-              </div>
+              <Globe rotation="-155deg" />
             </Wrapper>
           </div>
         </>
@@ -88,15 +89,12 @@ const FOOTER_QUERY = graphql`{
       }
     }
   }
-  imageSharp(fixed: {originalName: {eq: "transparent-logo.png"}}) {
-    fixed {
-      src
-    }
-  }
 }`;
 
 const SFooter = styled.footer`
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 
   .columns {
 
@@ -146,7 +144,7 @@ const SFooter = styled.footer`
     z-index: 1;
   }
 
-  .content{
+  .content {
     position: relative;
     padding: 100px 0;
     color: ${colors.white};
@@ -156,20 +154,14 @@ const SFooter = styled.footer`
       padding: 50px 0;
     `}
 
-    .globe {
-      position: absolute;
+
+    ${SGlobe} {
       bottom: -100px;
       right: 0;
       width: 100%;
       min-width: 600px;
       max-width: 700px;
       transform: translateY(50%) translateX(50%);
-      z-index: 0;
-      opacity: 0.5;
-
-      img {
-        transform: rotate(-155deg);
-      }
     }
   }
 `;
