@@ -118,7 +118,7 @@ const SColumn = styled.div`
 
     img {
       display: block;
-      width: auto;
+      width: 200%;
       height: 85vh;
       object-fit: cover;
       position: absolute;
