@@ -47,11 +47,6 @@ const SColumn = styled.div`
     transform: skew(4deg);
   `}
 
-  ${below.ipadLand`
-    transform: skewY(2deg);
-  `}
-
-
   &:nth-of-type(3) {
 
     .content {
@@ -59,10 +54,6 @@ const SColumn = styled.div`
         padding-left: 40px;
       `}
     }
-
-    ${below.ipadLand`
-      margin-top: -15px;
-    `}
   }
 
   &:nth-of-type(4) {
@@ -72,7 +63,9 @@ const SColumn = styled.div`
         &:hover {
 
           &:before {
-            background-color: ${colors.orange};
+            ${above.ipadLand`
+              background-color: ${colors.orange};
+            `}
           }
         }
 
@@ -90,7 +83,9 @@ const SColumn = styled.div`
         &:hover {
 
           &:before {
-            background-color: ${colors.darkerBlue};
+            ${above.ipadLand`
+              background-color: ${colors.darkerBlue};
+            `}
           }
         }
 
@@ -108,10 +103,6 @@ const SColumn = styled.div`
         padding-right: 40px;
       `}
     }
-
-    ${below.ipadLand`
-      margin-bottom: -15px;
-    `}
   }
 
   ${SPicture} {
@@ -132,7 +123,7 @@ const SColumn = styled.div`
 
       ${below.ipadLand`
         width: 100%;
-        transform: skewY(-2deg) translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
       `}
     }
   }
@@ -150,8 +141,7 @@ const SColumn = styled.div`
     `}
 
     ${below.ipadLand`
-      transform: skewY(-2deg);
-      padding: 60px 50px 70px;
+      padding: 50px;
     `}
 
     h2 {
@@ -168,11 +158,15 @@ const SColumn = styled.div`
 
       &:hover {
         &:before {
-          border: none;
-          width: 100%;
-          height: 100%;
-          left: 10px;
-          padding: 15px 0;
+
+          ${above.ipadLand`
+            border: none;
+            width: 100%;
+            height: 100%;
+            left: 10px;
+            padding: 15px 0;
+            background-color: ${colors.green};
+          `}
         }
       }
 
@@ -190,6 +184,10 @@ const SColumn = styled.div`
         top: 50%;
         transform: translateY(-50%);
         z-index: -1;
+
+        ${below.ipadLand`
+          z-index: 1;
+        `}
       }
     }
   }
