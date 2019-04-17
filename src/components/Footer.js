@@ -88,8 +88,8 @@ const FOOTER_QUERY = graphql`{
       }
     }
   }
-  imageSharp(id: {eq: "4646b179-4a3b-549b-8233-2e6235ea0af9"}) {
-    original {
+  imageSharp(fixed: {originalName: {eq: "transparent-logo.png"}}) {
+    fixed {
       src
     }
   }
