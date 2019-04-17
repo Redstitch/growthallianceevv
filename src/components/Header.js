@@ -95,7 +95,16 @@ const SHeader = styled.header`
 const mainNav = css`
   ul {
     margin: 20px 0 0;
+    ${below.widePageWidth`
+      margin: 10px 0 0;
+    `}
     li {
+      &:last-child {
+        ul.sub-nav {
+          left: auto;
+          right: 0;
+        }
+      }
       position: relative;
       &:hover {
         ul.sub-nav {
@@ -109,22 +118,21 @@ const mainNav = css`
       top: 100%;
       left: 0;
       margin: 0;
+      min-width: 250px;
       padding: 15px 0;
       background-color: ${colors.lightOrange};
+      z-index:2;
       li {
         display: block;
         margin: 0;
         a {
+          display: block;
           color: ${colors.darkerGray};
           ${fonts.HelveticaNeueRegular};
           padding: 15px 30px;
           ${below.widePageWidth`
             padding: 10px;
           `}
-          &:hover {
-            color: ${colors.white};
-            background-color: ${colors.orange};
-          }
         }
       }
     }
@@ -144,13 +152,18 @@ const mainNav = css`
         padding: 10px;
       `}
       &:hover {
-        color: ${colors.white};
         background-color: ${colors.orange};
+        color: ${colors.white};
+        opacity: 1;
       }
     }
   }
 `;
 const topNav = css`
+  margin-top: 30px;
+  ${below.widePageWidth`
+    margin-top: 15px;
+  `}
   ${SMenuLink} {
     text-transform: uppercase;
     a {
