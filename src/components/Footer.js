@@ -56,7 +56,7 @@ const Footer = () => (
                 </div>
               </div>
               <div className="globe">
-                <img src={data.imageSharp.original.src} alt="..." />
+                <img src={data.imageSharp.fixed.src} alt="..." />
               </div>
             </Wrapper>
           </div>
