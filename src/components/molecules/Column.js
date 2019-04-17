@@ -51,7 +51,7 @@ const SColumn = styled.div`
 
     .content {
       ${above.ipadLand`
-        padding-left: 40px;
+        margin-left: 40px;
       `}
     }
   }
@@ -100,7 +100,7 @@ const SColumn = styled.div`
 
     .content {
       ${above.ipadLand`
-        padding-right: 40px;
+        margin-left: -40px;
       `}
     }
   }
@@ -138,6 +138,7 @@ const SColumn = styled.div`
       top: 50%;
       left: 50%;
       width: 80%;
+      padding: 0 20px;
     `}
 
     ${below.ipadLand`
