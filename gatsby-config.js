@@ -37,6 +37,10 @@ module.exports = {
         verboseOutput: false,
         perPage: 100,
         concurrentRequests: 10,
+        searchAndReplaceContentUrls: {
+          sourceUrl: 'https://gage.redstitchdigital.com/cms/wp-content/uploads/',
+          replacementUrl: 'https://rs-gage.imgix.net/',
+        },
         excludedRoutes: ['/*/*/users/me', '/*/*/settings', '/*/*/themes', '**/media'],
         normalizer({ entities }) {
           return entities;

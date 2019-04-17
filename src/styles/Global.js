@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import { below } from './utilities/mediaQueries';
-import { colors } from './utilities/settings';
+import { typography } from './utilities/elements';
+import fonts from './utilities/fonts';
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -29,59 +29,33 @@ const GlobalStyle = createGlobalStyle`
   footer, header, hgroup, menu, nav, section {
     display: block;
   }
+
   body {
-    line-height: 1;
+    margin: 0;
+    padding: 0;
+    line-height: 1.3;
+    ${fonts.Helvetica};
   }
+
   html {
     box-sizing: border-box;
   }
+
   main {
     display: block;
-    padding-top: 137px;
     overflow-x: hidden;
-
-    ${below.headerBreak`
-      padding-top: 163px;
-    `}
-
-    ${below.ipadPort`
-      padding-top: 151px;
-    `}
-
-    section {
-      &:nth-of-type(2n) {
-        background-color: ${colors.lightGray};
-      }
-    }
   }
+
   *, *:before, *:after {
     box-sizing: inherit;
   }
-  strong {
-    font-weight: bold;
-  }
-  ol, ul {
-    list-style: none;
-  }
-  blockquote, q {
-    quotes: none;
-  }
-  blockquote:before, blockquote:after,
-  q:before, q:after {
-    content: '';
-    content: none;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  a {
-    text-decoration: none;
-  }
+
   img {
     height: auto;
     width: 100%;
   }
+
+  ${typography};
 `;
 
 export default GlobalStyle;

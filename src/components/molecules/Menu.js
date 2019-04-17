@@ -40,33 +40,6 @@ class Menu extends Component {
 
 export default Menu;
 
-// const Menu = ({
-//   content, pages, menuTitle, styles,
-// }) => content.edges.map(({ node }) => node.slug === menuTitle
-//   && (
-//   <SMenu styles={styles}>
-//     <ul key={node.id}>
-//       {node.items.map(item => (
-//         <>
-//           {pages
-//           && (
-//             pages.map(page => (
-//               <>
-//                 {page.wordpress_id === item.wordpress_id && (
-//                   pageColor = page.acf.page_color
-//                 )}
-//               </>
-//             ))
-//           )}
-//           <MenuItem content={item} pageColor={pageColor} />
-//         </>
-//       ))}
-//     </ul>
-//   </SMenu>
-//   ));
-
-// export default Menu;
-
 const SMenu = styled.nav`
   ul {
     list-style: none;

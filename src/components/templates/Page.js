@@ -1,9 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../Layout';
-import Banner from '../atoms/imgix/Banner';
 import Dochead from '../Dochead';
 import imageFixer from '../../js/imageFixer';
+import PageBanners from '../organisms/PageBanners';
 
 const Page = ({ data }) => (
   <Layout>
@@ -13,9 +13,7 @@ const Page = ({ data }) => (
       pageImage={data.wordpressPage.acf.featured_image && imageFixer(data.wordpressPage.acf.featured_image.url)}
       description={data.wordpressPage.acf.description ? data.wordpressPage.acf.description : data.wordpressSiteMetadata.description}
     />
-    {data.wordpressPage.acf.featured_image
-    && <Banner src={data.wordpressPage.acf.featured_image.url} />
-    }
+    <PageBanners content={data.wordpressPage.acf.banners_page} />
   </Layout>
 
 );
@@ -31,7 +29,23 @@ query PageQuery($slug: String!) {
       description
       featured_image {
         url
-        name
+      }
+      banners_page {
+        __typename
+        ... on WordPressAcf_pannel_banner {
+          panels {
+            heading
+            copy
+            link
+            image {
+              url
+            }
+          }
+        }
+        ... on WordPressAcf_banner {
+          heading
+          copy
+        }
       }
     }
   }
