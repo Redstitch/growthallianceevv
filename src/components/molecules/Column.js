@@ -1,34 +1,32 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import Image from '../atoms/imgix/Image';
+import { Background } from 'react-imgix';
 import urlFixer from '../../js/urlFixer';
 import autoColor from '../../js/autoColor';
-import { breakpoints, colors } from '../../styles/utilities/settings';
+import { colors, breakpoints } from '../../styles/utilities/settings';
 import { imageBG } from '../../styles/utilities/elements';
 import { above, below } from '../../styles/utilities/mediaQueries';
-import SPicture from '../../styles/atoms/SPicture';
 
 const Column = ({ content, num }) => (
   <SColumn key={content.heading}>
-    <Image
-      imgixProps={{
-        imgixParams: {
-          q: '100',
-          blend: autoColor(num),
-          balph: 70,
-          bm: 'normal',
-        },
-      }}
-      maxWidth={breakpoints.pageWidth}
-      minWidth={breakpoints.ipadPort}
+    <Background
       src={content.image.url}
-    />
-    <div className="content">
-      <h2>{content.heading}</h2>
-      <p>{content.copy}</p>
-      <Link to={urlFixer(content.link)}>Learn More</Link>
-    </div>
+      imgixParams={{
+        q: '100',
+        blend: autoColor(num),
+        balph: 70,
+        bm: 'normal',
+        w: breakpoints.pageWidth,
+        h: 'auto',
+      }}
+    >
+      <div className="content">
+        <h2>{content.heading}</h2>
+        <p>{content.copy}</p>
+        <Link to={urlFixer(content.link)}>Learn More</Link>
+      </div>
+    </Background>
   </SColumn>
 );
 
@@ -51,6 +49,10 @@ const SColumn = styled.div`
 
 
   &:nth-of-type(3) {
+
+    ${above.ipadLand`
+      padding-left: 10%;
+    `}
 
     ${below.ipadLand`
       margin-top: -15px;
@@ -90,28 +92,27 @@ const SColumn = styled.div`
   }
 
   &:last-of-type {
+
+    ${above.ipadLand`
+      padding-right: 10%;
+    `}
+
     ${below.ipadLand`
       margin-bottom: -15px;
     `}
   }
 
-  ${SPicture} {
-    img {
-      display: block;
-      width: auto;
-      height: 85vh;
-      object-fit: cover;
-      position: absolute;
-      left: 50%;
-      top: 50%;
+  > div {
+    height: 100%;
 
-      ${above.ipadLand`
-        transform: skew(-4deg) translateX(-50%) translateY(-50%);
-      `}
+    ${above.ipadLand`
+      margin: 0 -10%;
+      transform: skew(-4deg);
+    `}
 
-      ${below.ipadLand`
-        transform: skewY(-2deg) translateX(-50%) translateY(-50%);
-      `}
-    }
+    ${below.ipadLand`
+      margin: -20px 0;
+      transform: skewY(-2deg);
+    `}
   }
 `;
