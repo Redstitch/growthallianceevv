@@ -4,12 +4,13 @@ import styled from 'styled-components';
 import urlFixer from '../../js/urlFixer';
 
 const MenuLink = ({ content }) => (
-  <SMenuLink className={content.classes ? content.classes : null}>
+  <SMenuLink>
     {content.target === '_blank' ? (
       <a
         href={content.url}
         target="_blank"
         rel="noopener noreferrer"
+        className={content.classes ? content.classes : null}
         dangerouslySetInnerHTML={{
           __html: content.title,
         }}
@@ -17,6 +18,7 @@ const MenuLink = ({ content }) => (
     ) : (
       <Link
         to={content.type === 'custom' ? content.url : urlFixer(content.url)}
+        className={content.classes ? content.classes : null}
         dangerouslySetInnerHTML={{
           __html: content.title,
         }}

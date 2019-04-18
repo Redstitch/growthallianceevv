@@ -8,6 +8,7 @@ const fonts = {
   HelveticaNeueMedium: 'font-family: "Gothic A1", sans-serif; font-weight: 500; font-style: normal;',
   HelveticaNeueRegular: 'font-family: "Gothic A1", sans-serif; font-weight: 400; font-style: normal;',
   HelveticaNeueLight: 'font-family: "Gothic A1", sans-serif; font-weight: 300; font-style: normal;',
+  FontAwesome: 'font-family: FontAwesome;',
 };
 
 export default fonts;

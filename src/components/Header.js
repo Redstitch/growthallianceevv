@@ -7,6 +7,7 @@ import Menu from './molecules/Menu';
 import { SMenuLink } from './atoms/MenuLink';
 import { colors } from '../styles/utilities/settings';
 import fonts from '../styles/utilities/fonts';
+import { above, below } from '../styles/utilities/mediaQueries';
 
 const Header = () => (
   <StaticQuery
@@ -23,7 +24,7 @@ const Header = () => (
           </Link>
           <div className="navigation">
             <Menu content={data.allWordpressWpApiMenusMenusItems} styles={topNav} menuTitle="top-nav" />
-            <Menu content={data.allWordpressWpApiMenusMenusItems} menuTitle="main-menu" />
+            <Menu content={data.allWordpressWpApiMenusMenusItems} pages={data.allWordpressPage.edges} styles={mainNav} menuTitle="main-menu" />
           </div>
         </Wrapper>
       </SHeader>
@@ -42,6 +43,16 @@ const HEADER_QUERY = graphql`{
       }
     }
   }
+  allWordpressPage {
+    edges {
+      node {
+        wordpress_id
+        acf {
+          page_color
+        }
+      }
+    }
+  }
   allWordpressWpApiMenusMenusItems {
     edges {
       node {
@@ -49,14 +60,14 @@ const HEADER_QUERY = graphql`{
         slug
         items {
           type
-          wordpress_id
+          object_id
           title
           url
           classes
           target
           wordpress_children {
             type
-            wordpress_id
+            object_id
             title
             url
             classes
@@ -73,6 +84,7 @@ const SHeader = styled.header`
   ${Wrapper} {
     display: flex;
     justify-content: space-between;
+    max-width: none;
   }
   .logo {
     display: block;
@@ -80,13 +92,89 @@ const SHeader = styled.header`
   }
 `;
 
+const mainNav = css`
+  ul {
+    margin: 20px 0 0;
+    ${below.widePageWidth`
+      margin: 10px 0 0;
+    `}
+    li {
+      &:last-child {
+        ul.sub-nav {
+          left: auto;
+          right: 0;
+        }
+      }
+      position: relative;
+      &:hover {
+        ul.sub-nav {
+          display: block;
+        }
+      }
+    }
+    ul.sub-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin: 0;
+      min-width: 250px;
+      padding: 15px 0;
+      background-color: ${colors.lightOrange};
+      z-index:2;
+      li {
+        display: block;
+        margin: 0;
+        a {
+          display: block;
+          color: ${colors.darkerGray};
+          ${fonts.HelveticaNeueRegular};
+          padding: 15px 30px;
+          ${below.widePageWidth`
+            padding: 10px;
+          `}
+        }
+      }
+    }
+  }
+  ${SMenuLink} {
+    a {
+      color: ${colors.darkBlue};
+      font-size: 16px;
+      ${fonts.HelveticaNeueBold};
+      padding: 20px;
+      ${below.widePageWidth`
+        font-size: 14px;
+        padding: 15px;
+      `}
+      ${below.pageWidth`
+        font-size: 12px;
+        padding: 10px;
+      `}
+      &:hover {
+        background-color: ${colors.orange};
+        color: ${colors.white};
+        opacity: 1;
+      }
+    }
+  }
+`;
 const topNav = css`
+  margin-top: 30px;
+  ${below.widePageWidth`
+    margin-top: 15px;
+  `}
   ${SMenuLink} {
     text-transform: uppercase;
     a {
       color: ${colors.darkerGray};
       font-size: 11px;
       ${fonts.HelveticaNeueMedium};
+      margin-left: 50px;
+      &:before {
+        ${fonts.FontAwesome};
+        margin-right: 10px;
+      }
     }
   }
 `;
