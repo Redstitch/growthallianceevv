@@ -4,7 +4,7 @@ import fonts from './fonts';
 import SPicture from '../atoms/SPicture';
 
 export const typography = css`
-  line-height: 1.5;
+  line-height: 1.4;
 
   h1, h2, h3, h4, h5, h6, ul, ol, p, blockquote {
     margin-bottom: 20px;
@@ -103,4 +103,12 @@ export const absoluteCenter = css`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+`;
+
+export const button = css`
+  display: inline-block;
+  background-color: ${colors.orange};
+  color: ${colors.white};
+  padding: 10px 20px;
+  clip-path: polygon(0 3%, 100% 0, 98% 98%, 2% 95%);
 `;

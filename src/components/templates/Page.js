@@ -70,6 +70,21 @@ query PageQuery($slug: String!) {
             title
           }
         }
+        ... on WordPressAcf_image_feature_large {
+          image {
+            url
+          }
+          content {
+            image_alignment
+            background_color
+            heading
+            content
+            button {
+              copy
+              link
+            }
+          }
+        }
       }
     }
   }
