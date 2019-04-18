@@ -23,7 +23,7 @@ const SPanelBanner = styled.div`
 
   ${above.ipadLand`
     display: flex;
-    height: 85vh;
+    height: 75vh;
     margin: 0 -4%;
   `}
 
