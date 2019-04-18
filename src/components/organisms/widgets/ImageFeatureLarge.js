@@ -67,7 +67,11 @@ const SImageFeatureLarge = styled.div`
     width: 900px;
     top: 50%;
     transform: translateY(-50%);
-    ${({ alignment }) => (alignment === 'right' ? 'left: 90%;' : 'right: 90%;')};
+    ${({ alignment }) => (alignment === 'right' ? 'right: 90%;' : 'left: 90%;')};
+
+    ${below.ipadLand`
+      display: none;
+    `}
   }
 
   .bar {
@@ -87,7 +91,7 @@ const SImageFeatureLarge = styled.div`
       bottom: 100%;
       width: 102%;
       margin: -2px 0;
-      ${({ alignment }) => (alignment === 'right' ? 'transform: rotateY(180deg);' : null)};
+      ${({ alignment }) => (alignment === 'right' ? null : 'transform: rotateY(180deg);')};
 
       ${below.ipadLand`
         display: none;
@@ -96,7 +100,7 @@ const SImageFeatureLarge = styled.div`
       + svg {
         top: 100%;
         bottom: unset;
-        transform: rotateX(180deg);
+        transform: rotateX(180deg) ${({ alignment }) => (alignment === 'right' ? null : 'rotateY(180deg)')};
       }
     }
   }
