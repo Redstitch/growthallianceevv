@@ -5,16 +5,24 @@ import Dochead from '../Dochead';
 import imageFixer from '../../js/imageFixer';
 import PageBanners from '../organisms/PageBanners';
 
+export const PageContext = React.createContext();
+
 const Page = ({ data }) => (
-  <Layout>
-    <Dochead
-      title={data.wordpressPage.title !== 'Home' ? data.wordpressPage.title : null}
-      siteName={data.wordpressSiteMetadata.name}
-      pageImage={data.wordpressPage.acf.main_image && imageFixer(data.wordpressPage.acf.main_image.url)}
-      description={data.wordpressPage.acf.description ? data.wordpressPage.acf.description : data.wordpressSiteMetadata.description}
-    />
-    <PageBanners content={data.wordpressPage.acf.banners_page} />
-  </Layout>
+  <PageContext.Provider value={{
+    mainImage: data.wordpressPage.acf.main_image.url,
+    pageColor: data.wordpressPage.acf.page_color,
+  }}
+  >
+    <Layout>
+      <Dochead
+        title={data.wordpressPage.title !== 'Home' ? data.wordpressPage.title : null}
+        siteName={data.wordpressSiteMetadata.name}
+        pageImage={data.wordpressPage.acf.main_image && imageFixer(data.wordpressPage.acf.main_image.url)}
+        description={data.wordpressPage.acf.description ? data.wordpressPage.acf.description : data.wordpressSiteMetadata.description}
+      />
+      <PageBanners content={data.wordpressPage.acf.banners_page} />
+    </Layout>
+  </PageContext.Provider>
 
 );
 

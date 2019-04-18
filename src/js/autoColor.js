@@ -9,3 +9,19 @@ export default function panelColors(index) {
   }
   return color;
 }
+
+export function pageColor(theme) {
+  let color = '';
+  if (theme === 'green') {
+    color = colors.green;
+  } else if (theme === 'blue') {
+    color = colors.blue;
+  } else if (theme === 'navy') {
+    color = colors.darkerBlue;
+  } else if (theme === 'orange') {
+    color = colors.orange;
+  } else {
+    color = colors.darkerBlue;
+  }
+  return color;
+}
