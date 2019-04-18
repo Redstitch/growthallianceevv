@@ -9,7 +9,7 @@ const PanelBanner = ({ content }) => (
     <Globe rotation="65deg" />
     <Globe rotation="75deg" />
     {content.panels.map((panel, index) => (
-      <Column content={panel} num={index} />
+      <Column key={`pannel${index}`} content={panel} num={index} />
     ))}
   </SPanelBanner>
 );
@@ -28,7 +28,7 @@ const SPanelBanner = styled.div`
   `}
 
   ${SGlobe} {
-    z-index: 1;
+    z-index: 2;
     pointer-events: none;
     width: 100%;
     max-width: 1000px;

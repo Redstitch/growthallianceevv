@@ -81,6 +81,7 @@ export const imageBG = css`
     bottom: 0;
     left: 0;
     overflow: hidden;
+    pointer-events: none;
 
     img {
       position: absolute;
@@ -95,4 +96,11 @@ export const imageBG = css`
       transform: translate(-50%, -50%);
     }
   }
+`;
+
+export const absoluteCenter = css`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;

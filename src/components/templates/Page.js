@@ -4,6 +4,7 @@ import Layout from '../Layout';
 import Dochead from '../Dochead';
 import imageFixer from '../../js/imageFixer';
 import PageBanners from '../organisms/PageBanners';
+import PageWidgets from '../organisms/PageWidgets';
 
 export const PageContext = React.createContext();
 
@@ -21,6 +22,7 @@ const Page = ({ data }) => (
         description={data.wordpressPage.acf.description ? data.wordpressPage.acf.description : data.wordpressSiteMetadata.description}
       />
       <PageBanners content={data.wordpressPage.acf.banners_page} />
+      <PageWidgets content={data.wordpressPage.acf.widgets_page} color={data.wordpressPage.acf.page_color} />
     </Layout>
   </PageContext.Provider>
 
@@ -54,6 +56,19 @@ query PageQuery($slug: String!) {
         ... on WordPressAcf_banner {
           heading
           copy
+        }
+      }
+      widgets_page {
+        __typename
+        ... on WordPressAcf_success_story {
+          image {
+            url
+          }
+          content {
+            quote
+            name
+            title
+          }
         }
       }
     }

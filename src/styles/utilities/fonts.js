@@ -1,5 +1,6 @@
 const fonts = {
   Helvetica: 'font-family: Helvetica, "Gothic A1", sans-serif; font-weight: 400; font-style: normal;',
+  HelveticaLight: 'font-family: Helvetica, "Gothic A1", sans-serif; font-weight: 200; font-style: normal;',
   HelveticaBold: 'font-family: Helvetica, "Gothic A1", sans-serif; font-weight: 700; font-style: normal;',
   HelveticaNeueBlack: 'font-family: "Gothic A1", sans-serif; font-weight: 900; font-style: normal;',
   HelveticaNeueExtrabold: 'font-family: "Gothic A1", sans-serif; font-weight: 800; font-style: normal;',

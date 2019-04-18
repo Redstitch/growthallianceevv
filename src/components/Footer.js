@@ -9,7 +9,6 @@ import Globe, { SGlobe } from './atoms/Globe';
 
 const Footer = () => (
   <SFooter>
-    This is the footer.
     <StaticQuery
       query={FOOTER_QUERY}
       render={data => (
@@ -137,6 +136,7 @@ const SFooter = styled.footer`
 
   svg {
     display: block;
+    width: 100%;
   }
 
   ${Wrapper} {
