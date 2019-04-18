@@ -85,6 +85,22 @@ query PageQuery($slug: String!) {
             }
           }
         }
+        ... on WordPressAcf_image_feature {
+          features {
+            image {
+              url
+            }
+            content {
+              heading
+              copy
+              color
+              button {
+                copy
+                link
+              }
+            }
+          }
+        }
       }
     }
   }

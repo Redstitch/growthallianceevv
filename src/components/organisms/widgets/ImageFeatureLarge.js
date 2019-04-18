@@ -11,6 +11,7 @@ import { absoluteCenter, button } from '../../../styles/utilities/elements';
 import Globe, { SGlobe } from '../../atoms/Globe';
 import { above, below } from '../../../styles/utilities/mediaQueries';
 import SPicture from '../../../styles/atoms/SPicture';
+import fonts from '../../../styles/utilities/fonts';
 
 const ImageFeatureLarge = ({ widget, color }) => (
   <SImageFeatureLarge alignment={widget.content.image_alignment} color={color} backgroundColor={widget.content.background_color}>
@@ -136,6 +137,11 @@ const SImageFeatureLarge = styled.div`
 
   .content {
     color: ${colors.white};
+
+    h4 {
+      font-size: 30px;
+      ${fonts.HelveticaLight};
+    }
 
     ${above.ipadLand`
       width: 480px;
