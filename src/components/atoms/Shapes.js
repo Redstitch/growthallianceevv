@@ -36,6 +36,12 @@ export const Shape6 = () => (
   </svg>
 );
 
+export const Shape7 = () => (
+  <svg viewBox="0 0 1370 52.29">
+    <polygon points="0,52.29 1370,52.29 1370,0 " />
+  </svg>
+);
+
 export const WideAngle = () => (
   <svg viewBox="0 0 1962 29">
     <path d="M0,0l1962,27.2V29H0V0z" />

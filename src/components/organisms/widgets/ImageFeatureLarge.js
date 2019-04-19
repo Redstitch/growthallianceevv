@@ -13,6 +13,8 @@ import { above, below } from '../../../styles/utilities/mediaQueries';
 import SPicture from '../../../styles/atoms/SPicture';
 import fonts from '../../../styles/utilities/fonts';
 
+// TODO: Add angle to mobile version
+
 const ImageFeatureLarge = ({ widget, color }) => (
   <SImageFeatureLarge alignment={widget.content.image_alignment} color={color} backgroundColor={widget.content.background_color}>
     <div className="bar">
@@ -21,6 +23,17 @@ const ImageFeatureLarge = ({ widget, color }) => (
     </div>
     <Globe rotation="100deg" />
     <Wrapper wide>
+      <div className="content">
+        <h4>{widget.content.heading}</h4>
+        <p>{widget.content.content}</p>
+        {widget.content.button.copy
+          && (
+          <Link to={urlFixer(widget.content.button.link)}>
+            {widget.content.button.copy}
+          </Link>
+          )
+        }
+      </div>
       <div className="image">
         <Image
           src={widget.image.url}
@@ -35,17 +48,6 @@ const ImageFeatureLarge = ({ widget, color }) => (
           minWidth={1000}
         />
       </div>
-      <div className="content">
-        <h4>{widget.content.heading}</h4>
-        <p>{widget.content.content}</p>
-        {widget.content.button.copy
-          && (
-          <Link to={urlFixer(widget.content.button.link)}>
-            {widget.content.button.copy}
-          </Link>
-          )
-        }
-      </div>
 
     </Wrapper>
   </SImageFeatureLarge>
@@ -55,23 +57,32 @@ export default ImageFeatureLarge;
 
 const SImageFeatureLarge = styled.div`
   position: relative;
-  padding: 50px 0;
-  margin: 80px 0;
   overflow: hidden;
 
+  ${above.ipadLand`
+    margin: -50px 0 50px;
+    padding: 50px 0;
+  `}
+
   ${below.ipadLand`
-    padding-top: 0;
+    padding: 50px 0 0;
+    margin: 0 0 50px;
   `}
 
   ${SGlobe} {
     position: absolute;
-    width: 900px;
-    top: 50%;
-    transform: translateY(-50%);
-    ${({ alignment }) => (alignment === 'right' ? 'right: 90%;' : 'left: 90%;')};
+
+    ${above.ipadLand`
+      ${({ alignment }) => (alignment === 'right' ? 'right: 90%;' : 'left: 90%;')};
+      width: 900px;
+      top: 50%;
+      transform: translateY(-50%);
+    `}
 
     ${below.ipadLand`
-      display: none;
+      top: 0;
+      width: 400px;
+      right: 70%;
     `}
   }
 
@@ -113,7 +124,7 @@ const SImageFeatureLarge = styled.div`
     ${above.ipadLand`
       display: flex;
       align-items: center;
-      flex-direction: ${({ alignment }) => (alignment === 'right' ? 'row-reverse' : 'row')};
+      flex-direction: ${({ alignment }) => (alignment === 'right' ? 'row' : 'row-reverse')};
     `}
   }
 
@@ -126,17 +137,25 @@ const SImageFeatureLarge = styled.div`
 
     ${SPicture} {
       ${below.ipadLand`
-        margin: 0 -30px 30px;
+        margin: 0 -30px;
       `}
 
       ${below.ipadPort`
-        margin: 0 -15px 30px;
+        margin: 0 -15px;
       `}
     }
   }
 
   .content {
     color: ${colors.white};
+
+    ${below.ipadLand`
+      padding: 0 50px 50px;
+    `}
+
+    ${below.mobile`
+      padding: 0 20px 50px;
+    `}
 
     h4 {
       font-size: 30px;

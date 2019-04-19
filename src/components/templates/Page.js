@@ -101,6 +101,22 @@ query PageQuery($slug: String!) {
             }
           }
         }
+        ... on WordPressAcf_number_ticker {
+          number_alignment
+          numbers {
+            prefix__suffix
+            label
+            number
+          }
+          heading {
+            title
+            copy
+            link {
+              copy
+              page
+            }
+          }
+        }
       }
     }
   }

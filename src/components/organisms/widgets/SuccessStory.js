@@ -45,13 +45,13 @@ const SuccessStory = ({ widget, color }) => (
 export default SuccessStory;
 
 const SSuccessStory = styled.div`
-  padding: 50px 0;
+  padding: 0 0 50px;
 
   ${above.ipadPort`
     max-width: 1000px;
     margin: 0 auto;
     display: flex;
-    padding: 70px 0;
+    padding: 0 0 100px;
     align-items: center;
   `}
 

@@ -157,6 +157,7 @@ const SColumn = styled.div`
       transition-duration: 0s;
       opacity: 1;
 
+      /* // TODO: fix hover state */
       &:hover {
         &:before {
 

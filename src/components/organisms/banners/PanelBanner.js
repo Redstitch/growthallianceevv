@@ -20,11 +20,13 @@ const SPanelBanner = styled.div`
   position: relative;
   overflow: hidden;
   z-index: 1;
+  padding: 0 0 50px;
 
   ${above.ipadLand`
     display: flex;
     height: 75vh;
     margin: 0 -4%;
+    padding: 0 0 100px;
   `}
 
   ${SGlobe} {

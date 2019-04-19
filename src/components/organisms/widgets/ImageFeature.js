@@ -27,6 +27,7 @@ const ImageFeature = ({ widget, color }) => widget.features.map((feature, index)
           }}
           maxWidth={breakpoints.pageWidth / 2}
           minWidth={breakpoints.mobile}
+          minHeight={350}
         />
       </div>
       <div className="content">
@@ -41,10 +42,25 @@ const ImageFeature = ({ widget, color }) => widget.features.map((feature, index)
 export default ImageFeature;
 
 const SFeature = styled.div`
-  overflow: hidden;
+
+  ${below.ipadLand`
+    padding: 0 30px;
+  `}
+
+  ${below.mobile`
+    padding: 0 15px;
+  `}
 
   + div {
     margin-top: 100px;
+  }
+
+  &:last-of-type {
+    padding-bottom: 100px;
+
+    ${below.ipadLand`
+      padding-bottom: 50px;
+    `}
   }
 
   &:nth-of-type(2n) {
@@ -57,6 +73,10 @@ const SFeature = styled.div`
         margin-left: -22px;
         height: 130%;
         width: calc(100% + 10px);
+
+        ${below.ipadLand`
+          margin-left: -15px;
+        `}
       }
     }
   }
