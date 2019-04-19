@@ -49,7 +49,6 @@ const NavStyles = css`
         ${fonts.HelveticaNeueRegular};
         font-size: 13px;
         padding: 10px 30px;
-        background-color: ${colors.white};
       }
     `}
     ${SMenuLink} a {

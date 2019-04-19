@@ -343,4 +343,7 @@ const topNav = css`
       }
     }
   }
+  ul.sub-nav a {
+    background-color: ${colors.white};
+  }
 `;
