@@ -17,8 +17,9 @@ class Header extends Component {
 
   toggleNavigation() {
     const classes = this.navToggle.getAttribute('class');
-    const bodyEl = document.getElementsByTagName('body')[0];
+    const bodyEl = global.document.getElementsByTagName('body')[0];
     let navStatus = 'closed';
+
     if (classes.indexOf('open') === -1) {
       navStatus = 'open';
       bodyEl.classList.add('fixed');
@@ -47,6 +48,7 @@ class Header extends Component {
                   />
                 </Link>
                 <a
+                  href={null}
                   className={nav === 'open' ? `nav-toggle ${nav}` : 'nav-toggle'}
                   onClick={() => { this.toggleNavigation(); }}
                   ref={(ref) => { this.navToggle = ref; }}
@@ -282,6 +284,8 @@ const mainNav = css`
         }
       `}
     }
+  }
+
   ${SMenuLink} {
     a {
       padding: 20px;
@@ -297,6 +301,7 @@ const mainNav = css`
     }
   }
 `;
+
 const topNav = css`
   ${NavStyles};
   margin-top: 30px;

@@ -29,7 +29,7 @@ const MenuLink = ({ content, linkChildren, itemIndex }) => (
         )}
         {linkChildren
         && (
-          <a className="toggle-subnav" onClick={() => { context.updateSubNavIndex(itemIndex); }}>
+          <a href={null} className="toggle-subnav" onClick={() => { context.updateSubNavIndex(itemIndex); }}>
             <span />
             <span />
           </a>

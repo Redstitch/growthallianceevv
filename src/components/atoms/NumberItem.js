@@ -30,7 +30,7 @@ class NumberItem extends Component {
           <span>
             <CountUp
               start={0}
-              end={isVisible ? content.number : 0}
+              end={parseInt(isVisible ? content.number : 0, 0)}
               decimals={(content.number % 1) !== 0 ? 2 : null}
               separator=","
               suffix={content.prefix__suffix === '%' ? content.prefix__suffix : null}
@@ -98,11 +98,11 @@ export const SNumberItem = styled.div`
 
   &:nth-child(4n) {
     span {
-      color: ${({ color }) => (color ? pageColor(color) : colors.darkerBlue)};
+      color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
     }
 
     h5 {
-      background-color: ${({ color }) => (color ? pageColor(color) : colors.darkerBlue)};
+      background-color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
       clip-path: polygon(0 0, 100% 0, 98% 98%, 3% 100%);
     }
   }

@@ -34,6 +34,7 @@ export const typography = css`
     text-decoration: none;
     transition-duration: ${misc.animSpeed};
     opacity: 1;
+    cursor: pointer;
 
     &:hover {
       opacity: 0.6;

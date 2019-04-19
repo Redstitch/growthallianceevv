@@ -66,7 +66,7 @@ const SNumberTicker = styled.div`
 
   h3 {
     font-size: 45px;
-    color: ${({ color }) => (color ? pageColor(color) : colors.darkerBlue)};
+    color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
     font-weight: 400;
 
     ${below.ipadPort`

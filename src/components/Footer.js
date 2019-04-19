@@ -88,16 +88,13 @@ const SFooter = styled.footer`
   position: relative;
   z-index: 1;
 
-  svg {
-    fill: ${colors.darkerBlue};
-  }
 
   .columns {
 
     ${above.ipadPort`
       display: flex;
       max-width: 852px;
-    `}
+      `}
 
     img {
       max-width: 160px;
@@ -112,11 +109,11 @@ const SFooter = styled.footer`
         ${above.ipadPort`
           max-width: 300px;
           padding-left: 100px;
-        `}
+          `}
 
         ${below.ipadPort`
           padding-top: 50px;
-        `}
+          `}
       }
 
       h4 {
@@ -132,6 +129,7 @@ const SFooter = styled.footer`
   }
 
   svg {
+    fill: ${colors.navy};
     display: block;
     width: 100%;
   }
