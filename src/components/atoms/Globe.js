@@ -12,7 +12,8 @@ export default Globe;
 export const SGlobe = styled.div`
   position: absolute;
   z-index: 0;
-  opacity: 0.5;
+  opacity: 0.7;
+  pointer-events: none;
 
   img {
     transform: rotate(${({ angle }) => (angle && angle)});

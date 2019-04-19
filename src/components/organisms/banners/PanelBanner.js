@@ -9,7 +9,7 @@ const PanelBanner = ({ content }) => (
     <Globe rotation="65deg" />
     <Globe rotation="75deg" />
     {content.panels.map((panel, index) => (
-      <Column content={panel} num={index} />
+      <Column key={`pannel${index}`} content={panel} num={index} />
     ))}
   </SPanelBanner>
 );
@@ -20,15 +20,17 @@ const SPanelBanner = styled.div`
   position: relative;
   overflow: hidden;
   z-index: 1;
+  padding: 0 0 50px;
 
   ${above.ipadLand`
     display: flex;
-    height: 85vh;
+    height: 75vh;
     margin: 0 -4%;
+    padding: 0 0 100px;
   `}
 
   ${SGlobe} {
-    z-index: 1;
+    z-index: 2;
     pointer-events: none;
     width: 100%;
     max-width: 1000px;

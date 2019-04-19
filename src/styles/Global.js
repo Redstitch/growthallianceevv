@@ -33,8 +33,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    line-height: 1.3;
     ${fonts.Helvetica};
+    ${typography};
     &.fixed { overflow: hidden; }
   }
 
@@ -56,7 +56,6 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
-  ${typography};
 `;
 
 export default GlobalStyle;

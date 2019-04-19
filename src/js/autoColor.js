@@ -10,8 +10,9 @@ export default function panelColors(index) {
   return color;
 }
 
-export function pageColor(theme) {
-  let color = '';
+export function pageColor(theme, defaultColor) {
+  let color = defaultColor;
+
   if (theme === 'green') {
     color = colors.green;
   } else if (theme === 'blue') {
@@ -21,7 +22,7 @@ export function pageColor(theme) {
   } else if (theme === 'orange') {
     color = colors.orange;
   } else {
-    color = colors.navy;
+    color = defaultColor;
   }
   return color;
 }

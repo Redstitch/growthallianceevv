@@ -1,18 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PageContext } from '../../templates/Page';
-import Image from '../../atoms/imgix/Image';
+import Banner from '../../atoms/imgix/Banner';
 import { imageBG } from '../../../styles/utilities/elements';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { pageColor } from '../../../js/autoColor';
-import { breakpoints, colors } from '../../../styles/utilities/settings';
 import { above, below } from '../../../styles/utilities/mediaQueries';
+import { colors } from '../../../styles/utilities/settings';
 
-const Banner = ({ content }) => (
+const DefaultBanner = ({ content }) => (
   <PageContext.Consumer>
     {value => (
-      <SBanner>
-        <Image
+      <SDefaultBanner>
+        <Banner
           src={value.mainImage}
           imgixProps={{
             imgixParams: {
@@ -22,8 +22,6 @@ const Banner = ({ content }) => (
               bm: 'normal',
             },
           }}
-          maxWidth={breakpoints.pageWidth}
-          minWidth={breakpoints.ipadPort}
         />
         <Wrapper>
           <div className="content">
@@ -31,14 +29,14 @@ const Banner = ({ content }) => (
             <p>{content.copy}</p>
           </div>
         </Wrapper>
-      </SBanner>
+      </SDefaultBanner>
     )}
   </PageContext.Consumer>
 );
 
-export default Banner;
+export default DefaultBanner;
 
-const SBanner = styled.div`
+const SDefaultBanner = styled.div`
   ${imageBG};
 
   h1 {
@@ -58,7 +56,7 @@ const SBanner = styled.div`
 
     ${above.ipadLand`
       max-width: 50%;
-      padding: 100px 0;
+      padding: 70px 0;
     `}
   }
 `;

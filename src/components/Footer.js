@@ -6,23 +6,15 @@ import Wrapper from '../styles/utilities/Wrapper';
 import fonts from '../styles/utilities/fonts';
 import { above, below } from '../styles/utilities/mediaQueries';
 import Globe, { SGlobe } from './atoms/Globe';
+import { Shape7 } from './atoms/Shapes';
 
 const Footer = () => (
   <SFooter>
-    This is the footer.
     <StaticQuery
       query={FOOTER_QUERY}
       render={data => (
         <>
-          <svg
-            fill={colors.navy}
-            xmlns="http://www.w3.org/2000/svg"
-            x="0px"
-            y="0px"
-            viewBox="0 0 1370 52.29"
-          >
-            <polygon className="st0" points="0,52.29 1370,52.29 1370,0 " />
-          </svg>
+          <Shape7 />
           <div className="content">
             <Wrapper>
               <div className="columns">
@@ -96,6 +88,10 @@ const SFooter = styled.footer`
   position: relative;
   z-index: 1;
 
+  svg {
+    fill: ${colors.darkerBlue};
+  }
+
   .columns {
 
     ${above.ipadPort`
@@ -137,6 +133,7 @@ const SFooter = styled.footer`
 
   svg {
     display: block;
+    width: 100%;
   }
 
   ${Wrapper} {

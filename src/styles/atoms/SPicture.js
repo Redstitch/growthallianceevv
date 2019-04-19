@@ -6,6 +6,7 @@ const SPicture = styled.div`
     display: block;
 
     img {
+      display: block;
       width: 100%;
       height: auto;
     }

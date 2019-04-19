@@ -117,7 +117,7 @@ const SColumn = styled.div`
       margin: -20px 0;
 
       ${above.ipadLand`
-        height: 85vh;
+        height: 100vh;
         transform: skew(-4deg) translateX(-50%) translateY(-50%);
       `}
 
@@ -157,6 +157,7 @@ const SColumn = styled.div`
       transition-duration: 0s;
       opacity: 1;
 
+      /* // TODO: fix hover state */
       &:hover {
         &:before {
 
