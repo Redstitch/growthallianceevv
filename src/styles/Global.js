@@ -35,6 +35,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     line-height: 1.3;
     ${fonts.Helvetica};
+    &.fixed { overflow: hidden; }
   }
 
   html {

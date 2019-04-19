@@ -3,10 +3,24 @@ import styled from 'styled-components';
 import MenuItem from '../atoms/MenuItem';
 import { above } from '../../styles/utilities/mediaQueries';
 
+export const NavContext = React.createContext();
+
 class Menu extends Component {
+  state = {
+    subNavIndex: undefined,
+  }
+
+  setSubNavIndex(num, subNavIndex) {
+    let i = num;
+    if (num === subNavIndex) {
+      i = undefined;
+    }
+    return i;
+  }
+
   pageColorEval(itemId, pages) {
     if (pages) {
-      for (let i = 0; i < pages.length; i++) {
+      for (let i = 0; i < pages.length; i += 1) {
         const page = pages[i].node;
         if (itemId === page.wordpress_id) {
           return page.acf.page_color;
@@ -23,17 +37,28 @@ class Menu extends Component {
       menuTitle,
       styles,
     } = this.props;
+    const {
+      subNavIndex,
+    } = this.state;
     return (
-      content.edges.map(({ node }) => node.slug === menuTitle
-      && (
-        <SMenu styles={styles}>
-          <ul key={node.id}>
-            {node.items.map(item => (
-              <MenuItem content={item} pageColor={this.pageColorEval(item.object_id, pages)} />
-            ))}
-          </ul>
-        </SMenu>
-      ))
+      <NavContext.Provider value={{
+        subNavIndex,
+        updateSubNavIndex: num => this.setState({
+          subNavIndex: this.setSubNavIndex(num, subNavIndex),
+        }),
+      }}
+      >
+        {content.edges.map(({ node }) => node.slug === menuTitle
+        && (
+          <SMenu key={node.id} styles={styles}>
+            <ul>
+              {node.items.map((item, index) => (
+                <MenuItem key={index + item.object_id} itemIndex={index} content={item} pageColor={this.pageColorEval(item.object_id, pages)} />
+              ))}
+            </ul>
+          </SMenu>
+        ))}
+      </NavContext.Provider>
     );
   }
 }

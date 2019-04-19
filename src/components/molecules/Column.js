@@ -84,13 +84,13 @@ const SColumn = styled.div`
 
           &:before {
             ${above.ipadLand`
-              background-color: ${colors.darkerBlue};
+              background-color: ${colors.navy};
             `}
           }
         }
 
         &:before {
-          border-left-color: ${colors.darkerBlue};
+          border-left-color: ${colors.navy};
         }
       }
     }

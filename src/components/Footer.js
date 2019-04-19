@@ -15,7 +15,7 @@ const Footer = () => (
       render={data => (
         <>
           <svg
-            fill={colors.darkerBlue}
+            fill={colors.navy}
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
@@ -148,7 +148,7 @@ const SFooter = styled.footer`
     position: relative;
     padding: 100px 0;
     color: ${colors.white};
-    background-color: ${colors.darkerBlue};
+    background-color: ${colors.navy};
 
     ${below.ipadPort`
       padding: 50px 0;

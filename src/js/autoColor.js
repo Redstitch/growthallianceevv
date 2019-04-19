@@ -17,11 +17,11 @@ export function pageColor(theme) {
   } else if (theme === 'blue') {
     color = colors.blue;
   } else if (theme === 'navy') {
-    color = colors.darkerBlue;
+    color = colors.navy;
   } else if (theme === 'orange') {
     color = colors.orange;
   } else {
-    color = colors.darkerBlue;
+    color = colors.navy;
   }
   return color;
 }
