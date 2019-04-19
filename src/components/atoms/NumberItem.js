@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
 import { pageColor } from '../../js/autoColor';
-import { colors } from '../../styles/utilities/settings';
+import { colors, misc } from '../../styles/utilities/settings';
 import { below } from '../../styles/utilities/mediaQueries';
 
 
@@ -13,7 +13,9 @@ class NumberItem extends Component {
   }
 
   render() {
-    const { content, alignment, color } = this.props;
+    const {
+      content, alignment, color, order,
+    } = this.props;
     const { isVisible } = this.state;
     return (
       <VisibilitySensor
@@ -24,15 +26,17 @@ class NumberItem extends Component {
             }));
           }
         }}
-        partialVisibility
+        partialVisibility={order !== 0}
       >
-        <SNumberItem alignment={alignment} color={color}>
+        <SNumberItem alignment={alignment} color={color} isVisible={isVisible}>
           <span>
             <CountUp
               start={0}
               end={parseInt(isVisible ? content.number : 0, 0)}
               decimals={(content.number % 1) !== 0 ? 2 : null}
               separator=","
+              useEasing
+              duration={misc.widgetTransition}
               suffix={content.prefix__suffix === '%' ? content.prefix__suffix : null}
               prefix={content.prefix__suffix === '$' ? content.prefix__suffix : null}
             />
@@ -51,6 +55,9 @@ export default NumberItem;
 export const SNumberItem = styled.div`
   display: flex;
   flex-direction: ${({ alignment }) => (alignment === 'top' ? 'column' : 'column-reverse')};
+  position: relative;
+  transition-duration: ${misc.widgetTransition};
+  ${({ isVisible }) => (isVisible ? 'bottom: 0' : 'bottom: -30px')};
 
   span {
     color: ${({ color }) => (color ? pageColor(color) : colors.green)};

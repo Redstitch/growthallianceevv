@@ -33,4 +33,6 @@ export const breakpoints = {
 
 export const misc = {
   animSpeed: '.3s',
+  widgetTransition: '1s',
+  widgetTransition2: '1.5s',
 };

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import VisibilitySensor from 'react-visibility-sensor';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import Image from '../../atoms/imgix/Image';
 import urlFixer from '../../../js/urlFixer';
 import { pageColor } from '../../../js/autoColor';
 import { WideAngle } from '../../atoms/Shapes';
-import { colors } from '../../../styles/utilities/settings';
+import { colors, misc } from '../../../styles/utilities/settings';
 import { absoluteCenter, button } from '../../../styles/utilities/elements';
 import Globe, { SGlobe } from '../../atoms/Globe';
 import { above, below } from '../../../styles/utilities/mediaQueries';
@@ -15,43 +16,66 @@ import fonts from '../../../styles/utilities/fonts';
 
 // TODO: Add angle to mobile version
 
-const ImageFeatureLarge = ({ widget, color }) => (
-  <SImageFeatureLarge alignment={widget.content.image_alignment} color={color} backgroundColor={widget.content.background_color}>
-    <div className="bar">
-      <WideAngle />
-      <WideAngle />
-    </div>
-    <Globe rotation="100deg" />
-    <Wrapper wide>
-      <div className="content">
-        <h4>{widget.content.heading}</h4>
-        <p>{widget.content.content}</p>
-        {widget.content.button.copy
-          && (
-          <Link to={urlFixer(widget.content.button.link)}>
-            {widget.content.button.copy}
-          </Link>
-          )
-        }
-      </div>
-      <div className="image">
-        <Image
-          src={widget.image.url}
-          imgixProps={{
-            imgixParams: {
-              q: '100',
-              h: 640,
-              w: 1000,
-            },
-          }}
-          maxWidth={1000}
-          minWidth={1000}
-        />
-      </div>
+class ImageFeatureLarge extends Component {
+  state = {
+    isVisible: false,
+  }
 
-    </Wrapper>
-  </SImageFeatureLarge>
-);
+  render() {
+    const { widget, color, order } = this.props;
+    const { isVisible } = this.state;
+    return (
+      <VisibilitySensor
+        onChange={(e) => {
+          if (e === true) {
+            this.setState(() => ({
+              isVisible: true,
+            }));
+          }
+        }}
+        partialVisibility={order !== 0}
+      >
+        <SImageFeatureLarge alignment={widget.content.image_alignment} color={color} backgroundColor={widget.content.background_color} isVisible={isVisible}>
+          <div className="bar">
+            <WideAngle />
+            <WideAngle />
+          </div>
+          <Globe rotation="100deg" />
+          <Wrapper wide>
+            <div className="content">
+              <h4>{widget.content.heading}</h4>
+              <p>{widget.content.content}</p>
+              {widget.content.button.copy
+              && (
+              <Link to={urlFixer(widget.content.button.link)}>
+                {widget.content.button.copy}
+              </Link>
+              )
+            }
+            </div>
+            <div className="image">
+              <Image
+                src={widget.image.url}
+                imgixProps={{
+                  imgixParams: {
+                    q: '100',
+                    h: 640,
+                    w: 1000,
+                  },
+                }}
+                maxWidth={1000}
+                minWidth={1000}
+              />
+            </div>
+
+          </Wrapper>
+        </SImageFeatureLarge>
+      </VisibilitySensor>
+
+    );
+  }
+}
+
 
 export default ImageFeatureLarge;
 
@@ -73,7 +97,10 @@ const SImageFeatureLarge = styled.div`
     position: absolute;
 
     ${above.ipadLand`
-      ${({ alignment }) => (alignment === 'right' ? 'right: 90%;' : 'left: 90%;')};
+      transition-duration: ${misc.widgetTransition};
+      ${({ alignment }) => (alignment === 'right' ? 'right: 95%;' : 'left: 95%;')};
+      ${({ isVisible, alignment }) => ((isVisible && alignment === 'right') ? 'right: 90%' : null)};
+      ${({ isVisible, alignment }) => ((isVisible && alignment === 'left') ? 'left: 90%' : null)};
       width: 900px;
       top: 50%;
       transform: translateY(-50%);
@@ -92,6 +119,11 @@ const SImageFeatureLarge = styled.div`
     width: 102%;
     position: relative;
     ${absoluteCenter};
+
+    ${above.ipadLand`
+      transition-duration: ${misc.widgetTransition};
+      ${({ isVisible }) => (isVisible ? 'margin-top: 0' : 'margin-top: 100px')};
+    `}
 
     ${below.ipadLand`
       height: 100%;
@@ -130,8 +162,14 @@ const SImageFeatureLarge = styled.div`
 
   .image {
     width: 100%;
+    position: relative;
+
 
     ${above.ipadLand`
+      transition-duration: ${misc.widgetTransition};
+      ${({ alignment }) => (alignment === 'right' ? 'right: -30px' : 'left: -30px')};
+      ${({ isVisible, alignment }) => ((isVisible && alignment === 'left') ? 'left: 0' : null)};
+      ${({ isVisible, alignment }) => ((isVisible && alignment === 'right') ? 'right: 0' : null)};
       max-width: calc(100% - 480px);
     `}
 
