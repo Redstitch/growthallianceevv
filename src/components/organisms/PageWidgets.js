@@ -3,6 +3,8 @@ import SuccessStory from './widgets/SuccessStory';
 import ImageFeatureLarge from './widgets/ImageFeatureLarge';
 import ImageFeature from './widgets/ImageFeature';
 import NumberTicker from './widgets/NumberTicker';
+import LatestNews from './widgets/LatestNews';
+import UpcomingEvent from './widgets/UpcomingEvent';
 
 const PageWidgets = ({ content, color }) => content && content.map((widget, index) => (
   <section key={`${index}${widget.__typename}`}>
@@ -10,6 +12,8 @@ const PageWidgets = ({ content, color }) => content && content.map((widget, inde
     {widget.__typename === 'WordPressAcf_image_feature_large' && <ImageFeatureLarge order={index} widget={widget} color={color} /> }
     {widget.__typename === 'WordPressAcf_image_feature' && <ImageFeature order={index} widget={widget} color={color} /> }
     {widget.__typename === 'WordPressAcf_number_ticker' && <NumberTicker order={index} widget={widget} color={color} /> }
+    {widget.__typename === 'WordPressAcf_latest_news' && <LatestNews order={index} widget={widget} color={color} /> }
+    {widget.__typename === 'WordPressAcf_upcoming_event' && <UpcomingEvent order={index} widget={widget} color={color} /> }
   </section>
 ));
 

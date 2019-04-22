@@ -14,11 +14,27 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressPost {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
     }`).then((results) => {
       results.data.allWordpressPage.edges.forEach(({ node }) => {
         createPage({
           path: `/${node.parent_element ? `${node.parent_element.slug}/` : ''}${node.slug !== 'home' ? node.slug : ''}`,
           component: path.resolve('./src/components/templates/Page.js'),
+          context: {
+            slug: node.slug,
+          },
+        });
+      });
+      results.data.allWordpressPost.edges.forEach(({ node }) => {
+        createPage({
+          path: `/blog/${node.slug}`,
+          component: path.resolve('./src/components/templates/Post.js'),
           context: {
             slug: node.slug,
           },

@@ -60,6 +60,17 @@ query PageQuery($slug: String!) {
       }
       widgets_page {
         __typename
+        ... on WordPressAcf_latest_news {
+          heading_copy
+        }
+        ... on WordPressAcf_upcoming_event {
+          heading_copy
+          copy
+          button {
+            copy
+            url
+          }
+        }
         ... on WordPressAcf_success_story {
           image {
             url
