@@ -35,7 +35,6 @@ const Banner = ({ src, imgixProps }) => (
         src={src}
         width={50}
         attributeConfig={{
-          src: 'data-src',
           srcSet: 'data-srcset',
           sizes: 'data-sizes',
         }}
