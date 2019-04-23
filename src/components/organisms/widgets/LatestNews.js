@@ -76,13 +76,13 @@ const SLatestNews = styled.div`
     margin-bottom: 30px;
     color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
 
-    ${below.ipadLand`
+    ${below.ipadPort`
       font-size: 30px;
     `}
   }
 
   .posts {
-    ${above.ipadLand`
+    ${above.ipadPort`
       display: flex;
       justify-content: center;
       margin-right: -50px;
@@ -92,7 +92,7 @@ const SLatestNews = styled.div`
   a {
     width: 100%;
 
-    ${above.ipadLand`
+    ${above.ipadPort`
       max-width: ${breakpoints.mobile}px;
       padding-right: 50px;
     `}
@@ -127,13 +127,13 @@ const SNewsItems = styled.div`
 
   h5 {
     color: ${colors.white};
-    padding: 30px 40px;
+    padding: 20px 30px;
     position: relative;
     top: -20px;
     left: 0;
     width: 102%;
 
-    ${below.ipadLand`
+    ${below.ipadPort`
       padding: 20px 30px;
     `}
 

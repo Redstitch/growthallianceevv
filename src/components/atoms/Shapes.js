@@ -42,6 +42,12 @@ export const Shape7 = () => (
   </svg>
 );
 
+export const Shape8 = () => (
+  <svg viewBox="0 0 766.902 486.658">
+    <path d="M571.1,5192.066l759.156,7.982L1338,5649.573l-766.9,29.151Z" transform="translate(-571.098 -5192.066)" />
+  </svg>
+);
+
 export const WideAngle = () => (
   <svg viewBox="0 0 1962 29">
     <path d="M0,0l1962,27.2V29H0V0z" />

@@ -128,6 +128,11 @@ query PageQuery($slug: String!) {
             }
           }
         }
+        ... on WordPressAcf_full_width_image {
+          image {
+            url
+          }
+        }
       }
     }
   }

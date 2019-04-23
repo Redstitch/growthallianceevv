@@ -4,7 +4,7 @@ import fonts from './fonts';
 import SPicture from '../atoms/SPicture';
 
 export const typography = css`
-  line-height: 1.4;
+  line-height: 1.5;
 
   h1, h2, h3, h4, h5, h6, ul, ol, p, blockquote {
     margin-bottom: 20px;

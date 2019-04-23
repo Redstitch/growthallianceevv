@@ -21,6 +21,13 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpEvent {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
     }`).then((results) => {
       results.data.allWordpressPage.edges.forEach(({ node }) => {
         createPage({
@@ -35,6 +42,15 @@ exports.createPages = ({ graphql, actions }) => {
         createPage({
           path: `/blog/${node.slug}`,
           component: path.resolve('./src/components/templates/Post.js'),
+          context: {
+            slug: node.slug,
+          },
+        });
+      });
+      results.data.allWordpressWpEvent.edges.forEach(({ node }) => {
+        createPage({
+          path: `/events/${node.slug}`,
+          component: path.resolve('./src/components/templates/Event.js'),
           context: {
             slug: node.slug,
           },
