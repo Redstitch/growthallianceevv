@@ -27,7 +27,6 @@ const ImageFeature = ({ widget, color }) => widget.features.map((feature, index)
           }}
           maxWidth={breakpoints.pageWidth / 2}
           minWidth={breakpoints.mobile}
-          minHeight={350}
         />
       </div>
       <div className="content">

@@ -7,7 +7,7 @@ import Image from '../../atoms/imgix/Image';
 import urlFixer from '../../../js/urlFixer';
 import { pageColor } from '../../../js/autoColor';
 import { WideAngle } from '../../atoms/Shapes';
-import { colors, misc } from '../../../styles/utilities/settings';
+import { colors, misc, breakpoints } from '../../../styles/utilities/settings';
 import { absoluteCenter, button } from '../../../styles/utilities/elements';
 import Globe, { SGlobe } from '../../atoms/Globe';
 import { above, below } from '../../../styles/utilities/mediaQueries';
@@ -59,12 +59,12 @@ class ImageFeatureLarge extends Component {
                 imgixProps={{
                   imgixParams: {
                     q: '100',
-                    h: 640,
-                    w: 1000,
+                    w: '900',
                   },
                 }}
-                maxWidth={1000}
-                minWidth={1000}
+                breakPoint={breakpoints.mobile}
+                maxWidth={breakpoints.ipadLand}
+                minWidth={breakpoints.mobile}
               />
             </div>
 

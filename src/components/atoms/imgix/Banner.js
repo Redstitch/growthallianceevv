@@ -32,11 +32,16 @@ const Banner = ({ src, imgixProps }) => (
         htmlAttributes={{ media: `(max-width: ${breakpoints.mobile}px)` }}
       />
       <Imgix
+        className="lazyload"
+        {...imgixProps}
         src={src}
-        width={50}
         attributeConfig={{
+          src: 'data-src',
           srcSet: 'data-srcset',
           sizes: 'data-sizes',
+        }}
+        htmlAttributes={{
+          src: `${src}?w=50`, // low quality image here
         }}
       />
     </Picture>
