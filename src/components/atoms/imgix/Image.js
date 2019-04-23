@@ -25,7 +25,7 @@ const Image = ({
       <Imgix
         {...imgixProps}
         src={src}
-        width={50}
+        width={maxWidth || breakpoints.ipadPort}
         attributeConfig={{
           srcSet: 'data-srcset',
           sizes: 'data-sizes',
