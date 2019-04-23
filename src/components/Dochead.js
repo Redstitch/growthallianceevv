@@ -17,6 +17,9 @@ const Dochead = ({
       { property: 'og:image:secure_url', content: pageImage },
       { name: metaName, content: metaContent },
     ]}
+    script={[
+      { src: 'https://cdn.rawgit.com/scottjehl/picturefill/3.0.2/dist/picturefill.min.js' },
+    ]}
     link={[
       { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' },
       { rel: 'stylesheet', href: 'https://use.typekit.net/oze1zio.css' },
