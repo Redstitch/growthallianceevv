@@ -31,7 +31,10 @@ const ImageFeature = ({ widget, color }) => widget.features.map((feature, index)
       </div>
       <div className="content">
         <h4>{feature.content.heading}</h4>
-        <p>{feature.content.copy}</p>
+        <div dangerouslySetInnerHTML={{
+          __html: feature.content.copy,
+        }}
+        />
         <Link to={urlFixer(feature.content.button.link)}>{feature.content.button.copy}</Link>
       </div>
     </Wrapper>

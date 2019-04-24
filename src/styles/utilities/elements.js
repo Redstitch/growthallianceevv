@@ -8,14 +8,10 @@ export const typography = css`
 
   h1, h2, h3, h4, h5, h6, ul, ol, p, blockquote {
     margin-bottom: 20px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 800;
+    font-weight: 400;
   }
 
   h1 { font-size: 35px; }
@@ -92,8 +88,8 @@ export const imageBG = css`
       height: auto;
       max-height: none;
       max-width: none;
-      min-height: 100%;
-      min-width: 100%;
+      min-height: 101%;
+      min-width: 101%;
       transform: translate(-50%, -50%);
     }
   }

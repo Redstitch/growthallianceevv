@@ -118,6 +118,7 @@ query PageQuery($slug: String!) {
             prefix__suffix
             label
             number
+            sub_copy
           }
           heading {
             title
@@ -132,6 +133,20 @@ query PageQuery($slug: String!) {
           image {
             url
           }
+        }
+        ... on WordPressAcf_content_columns {
+          heading_copy
+          columns {
+            heading
+            copy
+            button {
+              copy
+              url
+            }
+          }
+        }
+        ... on  WordPressAcf_rich_text {
+          copy
         }
       }
     }

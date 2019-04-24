@@ -38,6 +38,7 @@ export default DefaultBanner;
 
 const SDefaultBanner = styled.div`
   ${imageBG};
+  margin-bottom: 100px;
 
   h1 {
     font-size: 50px;

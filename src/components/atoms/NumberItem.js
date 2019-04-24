@@ -5,6 +5,7 @@ import VisibilitySensor from 'react-visibility-sensor';
 import { pageColor } from '../../js/autoColor';
 import { colors, misc } from '../../styles/utilities/settings';
 import { below } from '../../styles/utilities/mediaQueries';
+import fonts from '../../styles/utilities/fonts';
 
 
 class NumberItem extends Component {
@@ -40,6 +41,7 @@ class NumberItem extends Component {
               suffix={content.prefix__suffix === '%' ? content.prefix__suffix : null}
               prefix={content.prefix__suffix === '$' ? content.prefix__suffix : null}
             />
+            {content.sub_copy && <span className="sub-copy">{content.sub_copy}</span>}
           </span>
           <h5>
             {content.label}
@@ -64,12 +66,18 @@ export const SNumberItem = styled.div`
     font-size: 60px;
     font-weight: 200;
     display: block;
-    margin-bottom: 10px;
+    line-height: 1;
+    margin: 10px 0;
 
     ${below.ipadPort`
       font-size: 50px;
       margin-bottom: 5px;
     `}
+  }
+
+  .sub-copy {
+    font-size: 14px;
+    ${fonts.HelveticaBold};
   }
 
   h5 {

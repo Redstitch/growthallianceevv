@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import urlFixer from '../../../js/urlFixer';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import NumberItem, { SNumberItem } from '../../atoms/NumberItem';
-import { colors } from '../../../styles/utilities/settings';
+import { colors, breakpoints } from '../../../styles/utilities/settings';
 import { pageColor } from '../../../js/autoColor';
 import { below, above } from '../../../styles/utilities/mediaQueries';
 
@@ -35,6 +35,12 @@ const SNumberTicker = styled.div`
 
   .heading {
     margin-bottom: 50px;
+
+    > p {
+      max-width: ${breakpoints.mobile}px;
+      margin: 0 auto 20px;
+    }
+
   }
 
   .numbers {
