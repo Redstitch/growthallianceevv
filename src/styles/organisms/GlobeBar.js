@@ -12,13 +12,11 @@ const GlobeBar = styled.div`
   overflow: hidden;
 
   ${above.ipadLand`
-    margin: -50px 0 50px;
-    padding: 50px 0;
+    ${({ backgroundColor }) => (backgroundColor !== 'blank' ? 'margin: -50px 0 50px; padding: 50px 0;' : 'padding-bottom: 25px;')}
   `}
 
   ${below.ipadLand`
-    padding: 50px 0 0;
-    margin: 0 0 50px;
+    ${({ backgroundColor }) => (backgroundColor !== 'blank' ? 'padding: 50px 0 0; margin: 0 0 50px;' : 'padding-bottom: 50px;')}
   `}
 
   ${SGlobe} {
@@ -27,8 +25,8 @@ const GlobeBar = styled.div`
     ${above.ipadLand`
       transition-duration: ${misc.widgetTransition};
       ${({ alignment }) => (alignment === 'right' ? 'right: 95%;' : 'left: 95%;')};
-      ${({ isVisible, alignment }) => ((isVisible && alignment === 'right') ? 'right: 90%' : null)};
-      ${({ isVisible, alignment }) => ((isVisible && alignment === 'left') ? 'left: 90%' : null)};
+      ${({ isVisible, alignment }) => ((isVisible && alignment === 'right') ? 'right: 90%' : '')};
+      ${({ isVisible, alignment }) => ((isVisible && alignment === 'left') ? 'left: 90%' : '')};
       width: 900px;
       top: 50%;
       transform: translateY(-50%);
@@ -63,7 +61,7 @@ const GlobeBar = styled.div`
       bottom: 100%;
       width: 102%;
       margin: -2px 0;
-      ${({ alignment }) => (alignment === 'right' ? null : 'transform: rotateY(180deg);')};
+      ${({ alignment }) => (alignment === 'right' ? '' : 'transform: rotateY(180deg);')};
 
       ${below.ipadLand`
         display: none;
@@ -72,7 +70,7 @@ const GlobeBar = styled.div`
       + svg {
         top: 100%;
         bottom: unset;
-        transform: rotateX(180deg) ${({ alignment }) => (alignment === 'right' ? null : 'rotateY(180deg)')};
+        transform: rotateX(180deg) ${({ alignment }) => (alignment === 'right' ? '' : 'rotateY(180deg)')};
       }
     }
   }
@@ -80,7 +78,7 @@ const GlobeBar = styled.div`
   h2 {
     position: relative;
     z-index: 2;
-    color: ${colors.white};
+    color: ${({ backgroundColor }) => (backgroundColor !== 'blank' && colors.white)};
     text-align: center;
 
     ${above.ipadLand`
@@ -95,17 +93,17 @@ const GlobeBar = styled.div`
     z-index: 2;
 
     > div {
-      width: 100%;
+      ${({ columns }) => (columns ? 'width: 100%;' : '')}
     }
 
     ${above.ipadLand`
       display: flex;
       align-items: center;
-      ${({ columns }) => (columns ? 'margin-right: -50px' : null)};
+      ${({ columns }) => (columns ? 'margin-right: -80px' : '')};
       flex-direction: ${({ alignment }) => (alignment === 'right' ? 'row' : 'row-reverse')};
       transition-duration: ${misc.widgetTransition};
       ${({ isVisible }) => (isVisible ? 'margin-top: 0' : 'margin-top: 100px')};
-      ${({ padTop }) => (padTop === false ? null : 'padding-top: 50px;')};
+      ${({ padTop, backgroundColor }) => (padTop === false ? '' : `${backgroundColor !== 'blank' ? 'padding-top: 50px' : ''}`)};
     `}
   }
 
@@ -116,8 +114,8 @@ const GlobeBar = styled.div`
     ${above.ipadLand`
       transition-duration: ${misc.widgetTransition};
       ${({ alignment }) => (alignment === 'right' ? 'right: -30px' : 'left: -30px')};
-      ${({ isVisible, alignment }) => ((isVisible && alignment === 'left') ? 'left: 0' : null)};
-      ${({ isVisible, alignment }) => ((isVisible && alignment === 'right') ? 'right: 0' : null)};
+      ${({ isVisible, alignment }) => ((isVisible && alignment === 'left') ? 'left: 0' : '')};
+      ${({ isVisible, alignment }) => ((isVisible && alignment === 'right') ? 'right: 0' : '')};
       max-width: calc(100% - 480px);
     `}
 
@@ -134,11 +132,12 @@ const GlobeBar = styled.div`
 
   .column,
   .content {
-    color: ${colors.white};
+    color: ${({ backgroundColor }) => (backgroundColor === 'blank' ? colors.black : colors.white)};
 
     h4 {
       font-size: 30px;
       ${fonts.HelveticaLight};
+      ${({ backgroundColor, color }) => (backgroundColor === 'blank' && `color: ${(color ? pageColor(color) : colors.navy)}`)};
     }
 
     > a {
@@ -151,7 +150,7 @@ const GlobeBar = styled.div`
 
 
     ${above.ipadLand`
-      padding: 0 50px 50px 0;
+      padding: 0 80px 50px 0;
     `}
 
     ${below.ipadLand`
@@ -162,7 +161,7 @@ const GlobeBar = styled.div`
   .content {
 
     ${below.ipadLand`
-      padding: 0 50px 50px;
+      padding: 0 80px 50px;
     `}
 
     ${below.mobile`

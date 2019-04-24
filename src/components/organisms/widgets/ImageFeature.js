@@ -115,7 +115,7 @@ const SFeature = styled.div`
   .content {
 
     ${above.ipadLand`
-      padding: 50px;
+      padding: 0 50px;
     `}
 
     ${below.ipadLand`

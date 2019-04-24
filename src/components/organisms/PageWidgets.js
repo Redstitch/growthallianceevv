@@ -3,7 +3,7 @@ import SuccessStory from './widgets/SuccessStory';
 import ImageFeatureLarge from './widgets/ImageFeatureLarge';
 import ImageFeature from './widgets/ImageFeature';
 import NumberTicker from './widgets/NumberTicker';
-import LatestNews from './widgets/LatestNews';
+import BlogFeed from './widgets/BlogFeed';
 import UpcomingEvent from './widgets/UpcomingEvent';
 import FullWidthImage from './widgets/FullWidthImage';
 import RichText from './widgets/RichText';
@@ -16,7 +16,7 @@ const PageWidgets = ({ content, color }) => content && content.map((widget, inde
     {widget.__typename === 'WordPressAcf_image_feature_large' && <ImageFeatureLarge order={index} widget={widget} color={color} /> }
     {widget.__typename === 'WordPressAcf_image_feature' && <ImageFeature order={index} widget={widget} color={color} /> }
     {widget.__typename === 'WordPressAcf_number_ticker' && <NumberTicker order={index} widget={widget} color={color} /> }
-    {widget.__typename === 'WordPressAcf_latest_news' && <LatestNews order={index} widget={widget} color={color} /> }
+    {widget.__typename === 'WordPressAcf_blog_feed' && <BlogFeed order={index} widget={widget} color={color} /> }
     {widget.__typename === 'WordPressAcf_upcoming_event' && <UpcomingEvent order={index} widget={widget} color={color} /> }
     {widget.__typename === 'WordPressAcf_full_width_image' && <FullWidthImage order={index} widget={widget} color={color} /> }
     {widget.__typename === 'WordPressAcf_content_columns' && <ContentColumns order={index} widget={widget} color={color} /> }

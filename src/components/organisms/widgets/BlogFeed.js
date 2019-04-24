@@ -8,11 +8,11 @@ import fonts from '../../../styles/utilities/fonts';
 import { above, below } from '../../../styles/utilities/mediaQueries';
 import Card from '../../molecules/Card';
 
-const LatestNews = ({ widget, color }) => (
+const BlogFeed = ({ widget, color }) => (
   <StaticQuery
-    query={LATESTNEWS_QUERY}
+    query={BLOGFEED_QUERY}
     render={data => (
-      <SLatestNews count={data.allWordpressPost.edges.length}>
+      <SBlogFeed count={data.allWordpressPost.edges.length}>
         <Wrapper>
           <h3>{widget.heading_copy}</h3>
           <div className="posts">
@@ -21,14 +21,14 @@ const LatestNews = ({ widget, color }) => (
             ))}
           </div>
         </Wrapper>
-      </SLatestNews>
+      </SBlogFeed>
     )}
   />
 );
 
-export default LatestNews;
+export default BlogFeed;
 
-const LATESTNEWS_QUERY = graphql`{
+const BLOGFEED_QUERY = graphql`{
   allWordpressPost(limit: 3, sort: {fields: date}) {
     edges {
       node {
@@ -40,14 +40,13 @@ const LATESTNEWS_QUERY = graphql`{
           main_image {
             url
           }
-          news
         }
       }
     }
   }
 }`;
 
-export const SLatestNews = styled.div`
+export const SBlogFeed = styled.div`
   text-align: center;
   margin-bottom: 100px;
 

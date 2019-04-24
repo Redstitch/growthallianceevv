@@ -3,13 +3,13 @@ import { graphql, StaticQuery } from 'gatsby';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import WidgetHeader from '../../molecules/WidgetHeader';
 import Card from '../../molecules/Card';
-import { SLatestNews } from './LatestNews';
+import { SBlogFeed } from './BlogFeed';
 
 const CardLinks = ({ widget, color }) => (
   <StaticQuery
     query={CARDLINKS_QUERY}
     render={data => (
-      <SLatestNews color={color} count={widget.cards_rel ? widget.cards_rel.length : widget.cards.length}>
+      <SBlogFeed color={color} count={widget.cards_rel ? widget.cards_rel.length : widget.cards.length}>
         <Wrapper>
           <WidgetHeader content={widget} color={color} />
           <div className="posts">
@@ -22,7 +22,7 @@ const CardLinks = ({ widget, color }) => (
             ))}
           </div>
         </Wrapper>
-      </SLatestNews>
+      </SBlogFeed>
     )}
   />
 );

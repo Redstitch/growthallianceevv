@@ -60,7 +60,7 @@ query PageQuery($slug: String!) {
       }
       widgets_page {
         __typename
-        ... on WordPressAcf_latest_news {
+        ... on WordPressAcf_blog_feed {
           heading_copy
         }
         ... on WordPressAcf_upcoming_event {
@@ -136,6 +136,8 @@ query PageQuery($slug: String!) {
         }
         ... on WordPressAcf_content_columns {
           heading_copy
+          no_color
+          background_color
           columns {
             heading
             copy
