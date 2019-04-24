@@ -8,6 +8,7 @@ import UpcomingEvent from './widgets/UpcomingEvent';
 import FullWidthImage from './widgets/FullWidthImage';
 import RichText from './widgets/RichText';
 import ContentColumns from './widgets/ContentColumns';
+import CardLinks from './widgets/CardLinks';
 
 const PageWidgets = ({ content, color }) => content && content.map((widget, index) => (
   <section key={`${index}${widget.__typename}`}>
@@ -20,6 +21,8 @@ const PageWidgets = ({ content, color }) => content && content.map((widget, inde
     {widget.__typename === 'WordPressAcf_full_width_image' && <FullWidthImage order={index} widget={widget} color={color} /> }
     {widget.__typename === 'WordPressAcf_content_columns' && <ContentColumns order={index} widget={widget} color={color} /> }
     {widget.__typename === 'WordPressAcf_rich_text' && <RichText order={index} widget={widget} color={color} /> }
+    {widget.__typename === 'WordPressAcf_card_links' && <CardLinks order={index} widget={widget} color={color} /> }
+    {widget.__typename === 'WordPressAcf_card_links_manual' && <CardLinks order={index} widget={widget} color={color} /> }
   </section>
 ));
 

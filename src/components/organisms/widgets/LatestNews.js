@@ -1,42 +1,23 @@
 import React from 'react';
-import { graphql, StaticQuery, Link } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import Wrapper from '../../../styles/utilities/Wrapper';
-import { breakpoints, colors } from '../../../styles/utilities/settings';
-import Image from '../../atoms/imgix/Image';
+import { colors } from '../../../styles/utilities/settings';
 import { pageColor } from '../../../js/autoColor';
 import fonts from '../../../styles/utilities/fonts';
 import { above, below } from '../../../styles/utilities/mediaQueries';
+import Card from '../../molecules/Card';
 
 const LatestNews = ({ widget, color }) => (
   <StaticQuery
     query={LATESTNEWS_QUERY}
     render={data => (
-      <SLatestNews>
+      <SLatestNews count={data.allWordpressPost.edges.length}>
         <Wrapper>
           <h3>{widget.heading_copy}</h3>
           <div className="posts">
             {data.allWordpressPost.edges.map(({ node }) => (
-              <Link key={node.id} to={`/blog/${node.slug}`}>
-                <SNewsItems color={color}>
-                  <Image
-                    src={node.acf.main_image.url}
-                    imgixProps={{
-                      imgixParams: {
-                        q: '100',
-                        w: breakpoints.mobile,
-                        h: breakpoints.mobile,
-                      },
-                    }}
-                    maxWidth={breakpoints.mobile}
-                    minWidth={breakpoints.mobile}
-                  />
-                  <h5>
-                    {node.title}
-                    <span>Read More</span>
-                  </h5>
-                </SNewsItems>
-              </Link>
+              <Card key={node.id} content={node} color={color} link={`/blog/${node.slug}`} />
             ))}
           </div>
         </Wrapper>
@@ -48,7 +29,7 @@ const LatestNews = ({ widget, color }) => (
 export default LatestNews;
 
 const LATESTNEWS_QUERY = graphql`{
-  allWordpressPost(limit: 3, sort: {fields: date}, filter: {acf: {news: {eq: true}}}) {
+  allWordpressPost(limit: 3, sort: {fields: date}) {
     edges {
       node {
         id
@@ -66,7 +47,7 @@ const LATESTNEWS_QUERY = graphql`{
   }
 }`;
 
-const SLatestNews = styled.div`
+export const SLatestNews = styled.div`
   text-align: center;
   margin-bottom: 100px;
 
@@ -82,9 +63,15 @@ const SLatestNews = styled.div`
   }
 
   .posts {
+
     ${above.ipadPort`
       display: flex;
-      justify-content: center;
+      justify-content: ${({ count }) => (count <= 3 ? 'center' : 'flex-start')};
+      margin-right: -20px;
+      flex-wrap: wrap;
+    `}
+
+    ${above.ipadLand`
       margin-right: -50px;
     `}
   }
@@ -93,7 +80,11 @@ const SLatestNews = styled.div`
     width: 100%;
 
     ${above.ipadPort`
-      max-width: ${breakpoints.mobile}px;
+      max-width: 33.3333%;
+      padding-right: 20px;
+    `}
+
+    ${above.ipadLand`
       padding-right: 50px;
     `}
 
@@ -116,30 +107,6 @@ const SLatestNews = styled.div`
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
         background-color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
       }
-    }
-  }
-`;
-
-const SNewsItems = styled.div`
-  position: relative;
-  overflow-x: hidden;
-  text-align: left;
-
-  h5 {
-    color: ${colors.white};
-    padding: 20px 30px;
-    position: relative;
-    top: -20px;
-    left: 0;
-    width: 102%;
-
-    ${below.ipadPort`
-      padding: 20px 30px;
-    `}
-
-    span {
-      display: block;
-      font-size: 12px;
     }
   }
 `;

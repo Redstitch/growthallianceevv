@@ -148,6 +148,38 @@ query PageQuery($slug: String!) {
         ... on  WordPressAcf_rich_text {
           copy
         }
+        ... on WordPressAcf_card_links {
+          heading {
+            title
+            copy
+            link {
+              copy
+              page
+            }
+          }
+          cards_rel {
+            wordpress_id
+          }
+        }
+        ... on WordPressAcf_card_links_manual {
+          heading {
+            title
+            copy
+            link {
+              copy
+              page
+            }
+          }
+          cards {
+            image {
+              url
+            }
+            copy {
+              title
+              url
+            }
+          }
+        }
       }
     }
   }

@@ -1,23 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
-import urlFixer from '../../../js/urlFixer';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import NumberItem, { SNumberItem } from '../../atoms/NumberItem';
-import { colors, breakpoints } from '../../../styles/utilities/settings';
-import { pageColor } from '../../../js/autoColor';
 import { below, above } from '../../../styles/utilities/mediaQueries';
+import WidgetHeader from '../../molecules/WidgetHeader';
 
 const NumberTicker = ({ widget, color }) => (
   <SNumberTicker color={color}>
     <Wrapper>
-      <div className="heading">
-        <h3>{widget.heading.title}</h3>
-        {widget.heading.copy && <p>{widget.heading.copy}</p>}
-        <Link to={urlFixer(widget.heading.link.page)}>
-          {widget.heading.link.copy}
-        </Link>
-      </div>
+      <WidgetHeader content={widget} color={color} />
       <div className="numbers">
         {widget.numbers.map((number, index) => (
           <NumberItem key={number.number + index} color={color} content={number} alignment={widget.number_alignment} />
@@ -32,16 +23,6 @@ export default NumberTicker;
 const SNumberTicker = styled.div`
   text-align:center;
   padding: 0 0 100px;
-
-  .heading {
-    margin-bottom: 50px;
-
-    > p {
-      max-width: ${breakpoints.mobile}px;
-      margin: 0 auto 20px;
-    }
-
-  }
 
   .numbers {
 
@@ -67,35 +48,6 @@ const SNumberTicker = styled.div`
 
     > div {
       width: 100%;
-    }
-  }
-
-  h3 {
-    font-size: 45px;
-    color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
-    font-weight: 400;
-
-    ${below.ipadPort`
-      font-size: 30px;
-    `}
-  }
-
-  a {
-    color: ${colors.orange};
-    font-weight: 700;
-    position: relative;
-    display: inline-block;
-
-    &:before {
-      content: '';
-      display: inline-block;
-      margin: 2px 5px 0 0;
-      width: 0;
-      height: 0;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
-
-      border-left: 7px solid ${colors.orange};
     }
   }
 `;
