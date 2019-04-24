@@ -30,7 +30,7 @@ class ImageFeatureLarge extends Component {
         }}
         partialVisibility={order !== 0}
       >
-        <GlobeBar alignment={widget.content.image_alignment} color={color} backgroundColor={widget.content.background_color} isVisible={isVisible}>
+        <GlobeBar padTop={false} alignment={widget.content.image_alignment} color={color} backgroundColor={widget.content.background_color} isVisible={isVisible}>
           <div className="bar">
             <WideAngle />
             <WideAngle />

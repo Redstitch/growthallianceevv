@@ -105,7 +105,7 @@ const GlobeBar = styled.div`
       flex-direction: ${({ alignment }) => (alignment === 'right' ? 'row' : 'row-reverse')};
       transition-duration: ${misc.widgetTransition};
       ${({ isVisible }) => (isVisible ? 'margin-top: 0' : 'margin-top: 100px')};
-      ${({ padTop }) => (padTop ? null : 'padding-top: 50px;')};
+      ${({ padTop }) => (padTop === false ? null : 'padding-top: 50px;')};
     `}
   }
 

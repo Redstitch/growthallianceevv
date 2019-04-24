@@ -26,7 +26,7 @@ class ContentColumns extends Component {
         }}
         partialVisibility={order !== 0}
       >
-        <GlobeBar columns color={color} alignment="right" backgroundColor={widget.background_color} isVisible={isVisible} padTop={widget.heading_copy}>
+        <GlobeBar columns color={color} alignment="right" backgroundColor={widget.background_color} isVisible={isVisible} padTop={widget.heading_copy && false}>
           <div className="bar">
             <WideAngle />
             <WideAngle />
