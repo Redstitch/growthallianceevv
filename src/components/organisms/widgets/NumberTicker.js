@@ -26,20 +26,25 @@ const SNumberTicker = styled.div`
 
   .numbers {
 
-    ${above.ipadPort`
+    ${above.mobile`
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       margin-right: -30px;
+      flex-wrap: wrap;
+    `}
+
+    ${above.ipadPort`
+      flex-wrap: nowrap;
     `}
 
     ${SNumberItem} {
 
-      ${above.ipadPort`
-        margin-right: 30px;
+      ${above.mobile`
+        padding-right: 30px;
       `}
 
-      ${below.ipadPort`
+      ${below.mobile`
         + div {
           margin-top: 30px;
         }
@@ -47,7 +52,14 @@ const SNumberTicker = styled.div`
     }
 
     > div {
-      width: 100%;
+
+      ${above.mobile`
+        width: 50%;
+      `}
+
+      ${above.ipadPort`
+        width: 100%;
+      `}
     }
   }
 `;

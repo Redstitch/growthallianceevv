@@ -86,7 +86,7 @@ export const SNumberItem = styled.div`
     clip-path: polygon(3% 0, 98% 4%, 100% 93%, 0% 100%);
     padding: 20px 10px;
     font-size: 14px;
-    display: block;
+    display: inline-block;
   }
 
   &:nth-child(4n - 2) {
