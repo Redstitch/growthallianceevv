@@ -42,8 +42,8 @@ const SCard = styled.div`
     padding: 20px 30px;
     position: relative;
     top: -20px;
-    left: 0;
-    width: 102%;
+    left: -2px;
+    width: 101%;
 
     ${below.ipadPort`
       padding: 20px 30px;
