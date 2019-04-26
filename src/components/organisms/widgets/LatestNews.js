@@ -59,7 +59,6 @@ const LATESTNEWS_QUERY = graphql`{
           main_image {
             url
           }
-          news
         }
       }
     }
