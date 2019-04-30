@@ -2,13 +2,15 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../Layout';
 import Dochead from '../Dochead';
-import Wrapper from '../../styles/utilities/Wrapper';
+import BlogBanner from '../organisms/banners/BlogBanner';
+import PostWidgets from '../organisms/PostWidgets';
 
 export const PostContext = React.createContext();
 
 const Post = ({ data }) => (
   <PostContext.Provider value={{
-    mainImage: data.wordpressPost.acf.main_image.url,
+    mainImage: data.wordpressPost.acf.main_image.localFile.childImageSharp.fixed,
+    title: data.wordpressPost.title,
   }}
   >
     <Layout>
@@ -18,9 +20,8 @@ const Post = ({ data }) => (
         pageImage={data.wordpressPost.acf.main_image && data.wordpressPost.acf.main_image.localFile.childImageSharp.original.src}
         description={data.wordpressPost.acf.description ? data.wordpressPost.acf.description : data.wordpressSiteMetadata.description}
       />
-      <Wrapper>
-        {data.wordpressPost.title}
-      </Wrapper>
+      <BlogBanner />
+      <PostWidgets content={data.wordpressPost.acf.post_content_post} color="navy" />
     </Layout>
   </PostContext.Provider>
 
@@ -33,6 +34,7 @@ query PostQuery($slug: String!) {
   wordpressPost(slug: {eq: $slug}) {
     slug
     title
+    content
     acf {
       main_image {
         localFile {
@@ -40,13 +42,57 @@ query PostQuery($slug: String!) {
             original {
               src
             }
-            fixed(width: 1200, quality: 100) {
+            fixed(width: 1200, height: 700, quality: 100) {
               tracedSVG
               aspectRatio
               width
               height
               srcSet
               src
+            }
+          }
+        }
+      }
+      post_content_post {
+        __typename
+        ... on WordPressAcf_rich_text {
+          copy
+        }
+        ... on WordPressAcf_gallery {
+          images {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100, maxWidth: 500, maxHeight: 500) {
+                  base64
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                }
+                fixed(quality: 100, width: 800) {
+                  base64
+                  aspectRatio
+                  width
+                  height
+                  src
+                  srcSet
+                }
+              }
+            }
+          }
+        }
+        ... on WordPressAcf_image_block {
+          image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100, maxWidth: 708) {
+                  base64
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                }
+              }
             }
           }
         }

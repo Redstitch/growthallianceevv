@@ -17,10 +17,10 @@ const RichText = ({ widget, color }) => (
 
 export default RichText;
 
-const SRichText = styled.div`
+export const SRichText = styled.div`
   margin-bottom: 100px;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, a {
     color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
   }
 `;

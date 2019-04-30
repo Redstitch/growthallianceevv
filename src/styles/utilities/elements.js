@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 import { colors, misc } from './settings';
 import fonts from './fonts';
+import { below, above } from './mediaQueries';
 
 export const typography = css`
   line-height: 1.5;
@@ -107,4 +108,34 @@ export const button = css`
   color: ${colors.white};
   padding: 10px 20px;
   clip-path: polygon(0 3%, 100% 0, 98% 98%, 2% 95%);
+`;
+
+export const bannerContent = css`
+  ${imageBG};
+  margin-bottom: 100px;
+
+  &:after {
+    content: '';
+    display: block;
+    ${absoluteCenter};
+    width: 101%;
+    height: 101%;
+    opacity: .6;
+  }
+
+  h1 {
+    font-size: 50px;
+    font-weight: 200;
+
+    ${below.ipadLand`
+      font-size: 35px;
+    `}
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 50px 0;
+    color: ${colors.white};
+  }
 `;
