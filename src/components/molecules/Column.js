@@ -92,25 +92,11 @@ const SColumn = styled.div`
     }
 
 
-  ${SPicture} {
+  .image-background {
 
     img {
-      display: block;
-      width: 200%;
-      object-fit: cover;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      margin: -20px 0;
-
       ${above.ipadLand`
-        height: 100vh;
-        transform: skew(-4deg) translateX(-50%) translateY(-50%);
-      `}
-
-      ${below.ipadLand`
-        height: 100vh;
-        transform: translateX(-50%) translateY(-50%);
+        transform: skew(-4deg);
       `}
     }
   }
