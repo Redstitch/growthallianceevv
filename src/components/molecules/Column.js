@@ -6,7 +6,6 @@ import urlFixer from '../../js/urlFixer';
 import { colors, misc } from '../../styles/utilities/settings';
 import { imageBG, absoluteCenter } from '../../styles/utilities/elements';
 import { above, below } from '../../styles/utilities/mediaQueries';
-import SPicture from '../../styles/atoms/SPicture';
 
 const Column = ({ content }) => (
   <SColumn key={content.heading}>
@@ -41,6 +40,26 @@ const SColumn = styled.div`
       z-index: 0;
       opacity: .6;
       ${absoluteCenter};
+
+      ${below.ipadLand`
+        opacity: .7;
+      `}
+    }
+
+    &:first-child {
+      .content {
+        ${above.ipadLand`
+          margin-left: 40px;
+        `}
+      }
+    }
+
+    &:last-child {
+      .content {
+        ${above.ipadLand`
+          margin-left: -40px;
+        `}
+      }
     }
 
     &:nth-child(4n - 2) {

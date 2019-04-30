@@ -1,29 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import { PageContext } from '../../templates/Page';
 import { imageBG, absoluteCenter } from '../../../styles/utilities/elements';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { pageColor } from '../../../js/autoColor';
 import { above, below } from '../../../styles/utilities/mediaQueries';
 import { colors } from '../../../styles/utilities/settings';
 
-const DefaultBanner = ({ content }) => (
-  <PageContext.Consumer>
-    {value => (
-      <SDefaultBanner color={value.pageColor}>
-        <div className="image-background">
-          <Img fixed={value.mainImage} />
-        </div>
-        <Wrapper>
-          <div className="content">
-            <h1>{content.heading}</h1>
-            <p>{content.copy}</p>
-          </div>
-        </Wrapper>
-      </SDefaultBanner>
-    )}
-  </PageContext.Consumer>
+const DefaultBanner = ({ content, mainColor, mainImage }) => (
+  <SDefaultBanner color={mainColor}>
+    <div className="image-background">
+      <Img fixed={mainImage} />
+    </div>
+    <Wrapper>
+      <div className="content">
+        <h1>{content.heading}</h1>
+        <p dangerouslySetInnerHTML={{
+          __html: content.copy,
+        }}
+        />
+      </div>
+    </Wrapper>
+  </SDefaultBanner>
 );
 
 export default DefaultBanner;

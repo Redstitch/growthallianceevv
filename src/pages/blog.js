@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import Dochead from '../components/Dochead';
 import Wrapper from '../styles/utilities/Wrapper';
 import { above, below } from '../styles/utilities/mediaQueries';
+import DefaultBanner from '../components/organisms/banners/DefaultBanner';
 
 class BlogRollPage extends Component {
   state = {
@@ -25,35 +26,43 @@ class BlogRollPage extends Component {
     const { countVisible } = this.state;
     return (
       <Layout>
-        <Dochead title="Blog" />
         <StaticQuery
           query={BLOG_QUERY}
           render={data => (
-            <SBlog>
-              <Wrapper>
-                <div className="posts">
-                  {data.allWordpressPost.edges.map(({ node }, index) => (
-                    <React.Fragment key={node.id}>
-                      {(countVisible >= index + 1)
-                      && (
-                      <Link to={`/blog/${node.slug}`}>
-                        <SBlogPost>
-                          <Img fluid={node.acf.main_image.localFile.childImageSharp.fluid} />
-                          <h5>
-                            {node.title}
-                            <span>Read More</span>
-                          </h5>
-                        </SBlogPost>
-                      </Link>
-                      )
-                      }
-                    </React.Fragment>
-                  ))}
-                </div>
-                {(countVisible < data.allWordpressPost.edges.length)
-                && <a href={null} className="load-more" onClick={() => { this.LoadMore(countVisible); }}>Load More</a>}
-              </Wrapper>
-            </SBlog>
+            <>
+              <Dochead
+                title="Blog"
+                siteName={data.wordpressSiteMetadata.name}
+                pageImage={data.wordpressAcfOptions.options.blog_banner_image && data.wordpressAcfOptions.options.blog_banner_image.localFile.childImageSharp.original.src}
+                description={data.wordpressSiteMetadata.description}
+              />
+              <DefaultBanner mainImage={data.wordpressAcfOptions.options.blog_banner_image.localFile.childImageSharp.fixed} mainColor="navy" content={data.wordpressAcfOptions.options.blog_banner_copy} />
+              <SBlog>
+                <Wrapper>
+                  <div className="posts">
+                    {data.allWordpressPost.edges.map(({ node }, index) => (
+                      <React.Fragment key={node.id}>
+                        {(countVisible >= index + 1)
+                        && (
+                        <Link to={`/blog/${node.slug}`}>
+                          <SBlogPost>
+                            <Img fluid={node.acf.main_image.localFile.childImageSharp.fluid} />
+                            <h5>
+                              {node.title}
+                              <span>Read More</span>
+                            </h5>
+                          </SBlogPost>
+                        </Link>
+                        )
+                        }
+                      </React.Fragment>
+                    ))}
+                  </div>
+                  {(countVisible < data.allWordpressPost.edges.length)
+                  && <a href={null} className="load-more" onClick={() => { this.LoadMore(countVisible); }}>Load More</a>}
+                </Wrapper>
+              </SBlog>
+            </>
           )}
         />
       </Layout>
@@ -64,6 +73,31 @@ class BlogRollPage extends Component {
 export default BlogRollPage;
 
 const BLOG_QUERY = graphql`{
+  wordpressAcfOptions {
+    options {
+      blog_banner_copy {
+        heading
+        copy
+      }
+      blog_banner_image {
+        localFile {
+          childImageSharp {
+            original {
+              src
+            }
+            fixed(quality: 100, width: 1200, height: 350) {
+              tracedSVG
+              aspectRatio
+              width
+              height
+              src
+              srcSet
+            }
+          }
+        }
+      }
+    }
+  }
   allWordpressPost(sort: {fields: date}) {
     edges {
       node {
@@ -88,6 +122,10 @@ const BLOG_QUERY = graphql`{
         }
       }
     }
+  }
+  wordpressSiteMetadata {
+    name
+    description
   }
 }`;
 
