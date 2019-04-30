@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 import urlFixer from '../../../js/urlFixer';
-import { breakpoints } from '../../../styles/utilities/settings';
-import Image from '../../atoms/imgix/Image';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { Shape5, Shape6 } from '../../atoms/Shapes';
 import { absoluteCenter, button } from '../../../styles/utilities/elements';
@@ -16,18 +15,7 @@ const ImageFeature = ({ widget, color }) => widget.features.map((feature, index)
     <Wrapper>
       <div className="image">
         {index % 2 === 0 ? <Shape5 /> : <Shape6 />}
-        <Image
-          src={feature.image.url}
-          imgixProps={{
-            imgixParams: {
-              q: '100',
-              h: 450,
-              w: breakpoints.pageWidth / 2,
-            },
-          }}
-          maxWidth={breakpoints.pageWidth / 2}
-          minWidth={breakpoints.mobile}
-        />
+        <Img fluid={feature.image.localFile.childImageSharp.fluid} />
       </div>
       <div className="content">
         <h4>{feature.content.heading}</h4>

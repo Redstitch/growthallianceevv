@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import VisibilitySensor from 'react-visibility-sensor';
+import Img from 'gatsby-image';
 import Wrapper from '../../../styles/utilities/Wrapper';
-import Image from '../../atoms/imgix/Image';
 import { Shape1 } from '../../atoms/Shapes';
-import SPicture from '../../../styles/atoms/SPicture';
 import { colors, misc } from '../../../styles/utilities/settings';
 import { absoluteCenter } from '../../../styles/utilities/elements';
 import fonts from '../../../styles/utilities/fonts';
@@ -34,18 +33,7 @@ class SuccessStory extends Component {
         <Wrapper>
           <SSuccessStory color={color} isVisible={isVisible}>
             <div className="image">
-              <Image
-                src={widget.image.url}
-                imgixProps={{
-                  imgixParams: {
-                    q: '100',
-                    h: 276,
-                    w: 276,
-                  },
-                }}
-                maxWidth={276}
-                minWidth={276}
-              />
+              <Img fluid={widget.image.localFile.childImageSharp.fluid} />
               <Shape1 />
             </div>
             <div className="content">
@@ -94,7 +82,7 @@ const SSuccessStory = styled.div`
       margin: 20px auto 40px;
     `}
 
-    ${SPicture} {
+    .gatsby-image-wrapper {
       position: relative;
       z-index: 2;
 

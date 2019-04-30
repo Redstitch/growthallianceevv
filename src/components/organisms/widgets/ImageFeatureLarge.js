@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
 import VisibilitySensor from 'react-visibility-sensor';
+import Img from 'gatsby-image';
 import Wrapper from '../../../styles/utilities/Wrapper';
-import Image from '../../atoms/imgix/Image';
 import urlFixer from '../../../js/urlFixer';
 import { WideAngle } from '../../atoms/Shapes';
-import { breakpoints } from '../../../styles/utilities/settings';
 import Globe from '../../atoms/Globe';
 import GlobeBar from '../../../styles/organisms/GlobeBar';
 
@@ -50,18 +49,7 @@ class ImageFeatureLarge extends Component {
               }
               </div>
               <div className="image">
-                <Image
-                  src={widget.image.url}
-                  imgixProps={{
-                    imgixParams: {
-                      q: '100',
-                      w: '900',
-                    },
-                  }}
-                  breakPoint={breakpoints.mobile}
-                  maxWidth={breakpoints.ipadLand}
-                  minWidth={breakpoints.mobile}
-                />
+                <Img fluid={widget.image.localFile.childImageSharp.fluid} />
               </div>
             </div>
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import Image from '../atoms/imgix/Image';
-import { breakpoints, colors } from '../../styles/utilities/settings';
+import Img from 'gatsby-image';
+import { colors } from '../../styles/utilities/settings';
 import { below } from '../../styles/utilities/mediaQueries';
 
 const Card = ({
@@ -10,18 +10,7 @@ const Card = ({
 }) => (
   <Link key={content.id} to={link}>
     <SCard color={color}>
-      <Image
-        src={image || content.acf.main_image.url}
-        imgixProps={{
-          imgixParams: {
-            q: '100',
-            w: breakpoints.mobile,
-            h: breakpoints.mobile,
-          },
-        }}
-        maxWidth={breakpoints.mobile}
-        minWidth={breakpoints.mobile}
-      />
+      <Img fluid={image || content.acf.main_image.localFile.childImageSharp.fluid} />
       <h5 dangerouslySetInnerHTML={{
         __html: `${content.title}<span>Read More</span>`,
       }}

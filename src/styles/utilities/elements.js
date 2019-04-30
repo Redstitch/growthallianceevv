@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
 import { colors, misc } from './settings';
 import fonts from './fonts';
-import SPicture from '../atoms/SPicture';
 
 export const typography = css`
   line-height: 1.5;
@@ -71,7 +70,7 @@ export const imageBG = css`
   overflow: hidden;
   z-index: 1;
 
-  ${SPicture} {
+  .image-background {
     position: absolute;
     top: 0;
     right: 0;
@@ -80,7 +79,7 @@ export const imageBG = css`
     overflow: hidden;
     pointer-events: none;
 
-    img {
+    .gatsby-image-wrapper {
       position: absolute;
       top: 50%;
       left: 50%;

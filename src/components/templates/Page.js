@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../Layout';
 import Dochead from '../Dochead';
-import imageFixer from '../../js/imageFixer';
 import PageBanners from '../organisms/PageBanners';
 import PageWidgets from '../organisms/PageWidgets';
 
@@ -10,7 +9,7 @@ export const PageContext = React.createContext();
 
 const Page = ({ data }) => (
   <PageContext.Provider value={{
-    mainImage: data.wordpressPage.acf.main_image.url,
+    mainImage: data.wordpressPage.acf.main_image.localFile.childImageSharp.fixed,
     pageColor: data.wordpressPage.acf.page_color,
   }}
   >
@@ -18,7 +17,7 @@ const Page = ({ data }) => (
       <Dochead
         title={data.wordpressPage.title !== 'Home' ? data.wordpressPage.title : null}
         siteName={data.wordpressSiteMetadata.name}
-        pageImage={data.wordpressPage.acf.main_image && imageFixer(data.wordpressPage.acf.main_image.url)}
+        pageImage={data.wordpressPage.acf.main_image && data.wordpressPage.acf.main_image.localFile.childImageSharp.original.src}
         description={data.wordpressPage.acf.description ? data.wordpressPage.acf.description : data.wordpressSiteMetadata.description}
       />
       <PageBanners content={data.wordpressPage.acf.banners_page} />
@@ -39,7 +38,21 @@ query PageQuery($slug: String!) {
       description
       page_color
       main_image {
-        url
+        localFile {
+          childImageSharp {
+            original {
+              src
+            }
+            fixed(width: 1200, quality: 100) {
+              tracedSVG
+              aspectRatio
+              width
+              height
+              srcSet
+              src
+            }
+          }
+        }
       }
       banners_page {
         __typename
@@ -49,7 +62,21 @@ query PageQuery($slug: String!) {
             copy
             link
             image {
-              url
+              localFile {
+                childImageSharp {
+                  original {
+                    src
+                  }
+                  fixed(width: 1000, quality: 100) {
+                    tracedSVG
+                    aspectRatio
+                    width
+                    height
+                    srcSet
+                    src
+                  }
+                }
+              }
             }
           }
         }
@@ -73,7 +100,20 @@ query PageQuery($slug: String!) {
         }
         ... on WordPressAcf_success_story {
           image {
-            url
+            localFile {
+              childImageSharp {
+                original {
+                  src
+                }
+                fluid(maxWidth: 276, maxHeight: 276, quality: 100) {
+                  base64
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                }
+              }
+            }
           }
           content {
             quote
@@ -83,7 +123,20 @@ query PageQuery($slug: String!) {
         }
         ... on WordPressAcf_image_feature_large {
           image {
-            url
+            localFile {
+              childImageSharp {
+                original {
+                  src
+                }
+                fluid(maxWidth: 888, maxHeight: 600, quality: 100) {
+                  base64
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                }
+              }
+            }
           }
           content {
             image_alignment
@@ -99,7 +152,20 @@ query PageQuery($slug: String!) {
         ... on WordPressAcf_image_feature {
           features {
             image {
-              url
+              localFile {
+                childImageSharp {
+                  original {
+                    src
+                  }
+                  fluid(quality: 100, maxHeight: 550, maxWidth: 768) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    sizes
+                  }
+                }
+              }
             }
             content {
               heading
@@ -131,7 +197,20 @@ query PageQuery($slug: String!) {
         }
         ... on WordPressAcf_full_width_image {
           image {
-            url
+            localFile {
+              childImageSharp {
+                original {
+                  src
+                }
+                fluid(quality: 100, maxWidth: 1200) {
+                  base64
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                }
+              }
+            }
           }
         }
         ... on WordPressAcf_content_columns {
@@ -174,7 +253,20 @@ query PageQuery($slug: String!) {
           }
           cards {
             image {
-              url
+              localFile {
+                childImageSharp {
+                  original {
+                    src
+                  }
+                  fluid(maxWidth: 400, maxHeight: 400, quality: 100) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    sizes
+                  }
+                }
+              }
             }
             copy {
               title

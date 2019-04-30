@@ -1,36 +1,23 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import Image from '../atoms/imgix/Image';
+import Img from 'gatsby-image';
 import urlFixer from '../../js/urlFixer';
-import autoColor from '../../js/autoColor';
-import { breakpoints, colors, misc } from '../../styles/utilities/settings';
-import { imageBG } from '../../styles/utilities/elements';
+import { colors, misc } from '../../styles/utilities/settings';
+import { imageBG, absoluteCenter } from '../../styles/utilities/elements';
 import { above, below } from '../../styles/utilities/mediaQueries';
 import SPicture from '../../styles/atoms/SPicture';
 
-const Column = ({ content, num }) => (
+const Column = ({ content }) => (
   <SColumn key={content.heading}>
-
-    <Image
-      imgixProps={{
-        imgixParams: {
-          q: '100',
-          blend: autoColor(num),
-          balph: 70,
-          bm: 'normal',
-        },
-      }}
-      maxWidth={breakpoints.pageWidth}
-      minWidth={breakpoints.ipadPort}
-      src={content.image.url}
-    />
+    <div className="image-background">
+      <Img fixed={content.image.localFile.childImageSharp.fixed} />
+    </div>
     <div className="content">
       <h2>{content.heading}</h2>
       <p>{content.copy}</p>
       <Link to={urlFixer(content.link)}>Learn More</Link>
     </div>
-
   </SColumn>
 );
 
@@ -38,8 +25,6 @@ export default Column;
 
 const SColumn = styled.div`
   width: 100%;
-  position: relative;
-  overflow: hidden;
   margin-left: -1px;
   ${imageBG};
 
@@ -47,63 +32,65 @@ const SColumn = styled.div`
     transform: skew(4deg);
   `}
 
-  &:nth-of-type(3) {
-
-    .content {
-      ${above.ipadLand`
-        margin-left: 40px;
-      `}
+    &:after {
+      content: '';
+      display: block;
+      width: 101%;
+      height: 101%;
+      background-color: ${colors.orange};
+      z-index: 0;
+      opacity: .6;
+      ${absoluteCenter};
     }
-  }
 
-  &:nth-of-type(4) {
-
-    .content {
-      a {
-        &:hover {
+    &:nth-child(4n - 2) {
+      &:after {
+        background-color: ${colors.blue};
+      }
+      .content {
+        a {
+          &:hover {
+            &:before {
+              ${above.ipadLand`
+                background-color: ${colors.orange};
+              `}
+            }
+          }
 
           &:before {
-            ${above.ipadLand`
-              background-color: ${colors.orange};
-            `}
+            border-left: 10px solid ${colors.orange};
           }
-        }
-
-        &:before {
-          border-left-color: ${colors.orange};
         }
       }
     }
-  }
 
-  &:nth-of-type(5) {
-
-    .content {
-      a {
-        &:hover {
+    &:nth-child(4n - 1) {
+      &:after {
+        background-color: ${colors.green};
+      }
+      .content {
+        a {
+          &:hover {
+            &:before {
+              ${above.ipadLand`
+                background-color: ${colors.navy};
+              `}
+            }
+          }
 
           &:before {
-            ${above.ipadLand`
-              background-color: ${colors.navy};
-            `}
+            border-left: 10px solid ${colors.navy};
           }
-        }
-
-        &:before {
-          border-left-color: ${colors.navy};
         }
       }
     }
-  }
 
-  &:last-of-type {
-
-    .content {
-      ${above.ipadLand`
-        margin-left: -40px;
-      `}
+    &:nth-child(4n) {
+      &:after {
+        background-color: ${colors.navy};
+      }
     }
-  }
+
 
   ${SPicture} {
 
@@ -131,6 +118,7 @@ const SColumn = styled.div`
   .content {
     color: ${colors.white};
     position: relative;
+    z-index: 1;
 
     ${above.ipadLand`
       transform: skew(-4deg) translateX(-50%) translateY(-50%);

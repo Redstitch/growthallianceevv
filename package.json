@@ -42,7 +42,6 @@
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
     "react-image-lightbox": "^5.1.0",
-    "react-imgix": "^8.6.0",
     "react-slick": "^0.23.2",
     "react-visibility-sensor": "^5.0.2",
     "slick-carousel": "^1.8.1",

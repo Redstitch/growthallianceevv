@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 import { StaticQuery, graphql, Link } from 'gatsby';
-import Image from './atoms/imgix/Image';
 import Wrapper from '../styles/utilities/Wrapper';
 import Menu from './molecules/Menu';
 import { SMenuLink } from './atoms/MenuLink';
@@ -41,11 +40,7 @@ class Header extends Component {
             <Wrapper>
               <div className="inner">
                 <Link to="/" className="logo">
-                  <Image
-                    src={data.wordpressAcfOptions.options.logo.url}
-                    maxWidth={160}
-                    minWidth={160}
-                  />
+                  <img src={data.wordpressAcfOptions.options.logo.localFile.childImageSharp.original.src} alt="..." />
                 </Link>
                 <a
                   href={null}
@@ -78,7 +73,13 @@ const HEADER_QUERY = graphql`{
   wordpressAcfOptions {
     options {
       logo {
-        url
+        localFile {
+          childImageSharp {
+            original {
+              src
+            }
+          }
+        }
       }
     }
   }

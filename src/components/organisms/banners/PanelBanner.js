@@ -8,9 +8,11 @@ const PanelBanner = ({ content }) => (
   <SPanelBanner>
     <Globe rotation="65deg" />
     <Globe rotation="75deg" />
-    {content.panels.map((panel, index) => (
-      <Column key={`pannel${index}`} content={panel} num={index} />
-    ))}
+    <div className="panels">
+      {content.panels.map((panel, index) => (
+        <Column key={`pannel${index}`} content={panel} num={index} />
+      ))}
+    </div>
   </SPanelBanner>
 );
 
@@ -22,12 +24,14 @@ const SPanelBanner = styled.div`
   z-index: 1;
   padding: 0 0 50px;
 
-  ${above.ipadLand`
-    display: flex;
-    height: 90vh;
-    margin: 0 -4%;
-    padding: 0 0 100px;
-  `}
+  .panels {
+    ${above.ipadLand`
+      display: flex;
+      height: 90vh;
+      margin: 0 -4%;
+      padding: 0 0 100px;
+    `}
+  }
 
   ${SGlobe} {
     z-index: 2;

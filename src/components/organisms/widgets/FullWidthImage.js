@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Banner from '../../atoms/imgix/Banner';
+import Img from 'gatsby-image';
 
 const FullWidthImage = ({ widget }) => (
   <SFullWidthImage>
-    <Banner src={widget.image.url} />
+    <Img fluid={widget.image.localFile.childImageSharp.fluid} />
   </SFullWidthImage>
 );
 
