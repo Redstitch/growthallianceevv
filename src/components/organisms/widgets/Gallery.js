@@ -16,13 +16,24 @@ class Gallery extends Component {
     global.document.addEventListener('click', (e) => {
       const { modalOpen } = this.state;
       if (modalOpen) {
-        if (e.target.id === 'outter') {
+        if (e.target.id === 'outter' || e.key === 'Escape') {
           this.setState(() => ({
             modalOpen: false,
           }));
         }
       }
     });
+
+    global.document.onkeydown = (e) => {
+      const { modalOpen } = this.state;
+      if (modalOpen) {
+        if (e.keyCode === 27) {
+          this.setState(() => ({
+            modalOpen: false,
+          }));
+        }
+      }
+    };
   }
 
   render() {

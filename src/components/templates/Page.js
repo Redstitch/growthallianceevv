@@ -8,22 +8,25 @@ import PageWidgets from '../organisms/PageWidgets';
 export const PageContext = React.createContext();
 
 const Page = ({ data }) => (
-  <PageContext.Provider value={{
-    mainImage: data.wordpressPage.acf.main_image.localFile.childImageSharp.fixed,
-    pageColor: data.wordpressPage.acf.page_color,
-  }}
-  >
-    <Layout>
-      <Dochead
-        title={data.wordpressPage.title !== 'Home' ? data.wordpressPage.title : null}
-        siteName={data.wordpressSiteMetadata.name}
-        pageImage={data.wordpressPage.acf.main_image && data.wordpressPage.acf.main_image.localFile.childImageSharp.original.src}
-        description={data.wordpressPage.acf.description ? data.wordpressPage.acf.description : data.wordpressSiteMetadata.description}
-      />
-      <PageBanners content={data.wordpressPage.acf.banners_page} />
-      <PageWidgets content={data.wordpressPage.acf.widgets_page} color={data.wordpressPage.acf.page_color} />
-    </Layout>
-  </PageContext.Provider>
+
+  <Layout>
+    <Dochead
+      title={data.wordpressPage.title !== 'Home' ? data.wordpressPage.title : null}
+      siteName={data.wordpressSiteMetadata.name}
+      pageImage={data.wordpressPage.acf.main_image && data.wordpressPage.acf.main_image.localFile.childImageSharp.original.src}
+      description={data.wordpressPage.acf.description ? data.wordpressPage.acf.description : data.wordpressSiteMetadata.description}
+    />
+    <PageBanners
+      content={data.wordpressPage.acf.banners_page}
+      page={{
+        title: data.wordpressPage.title,
+        mainImage: data.wordpressPage.acf.main_image.localFile.childImageSharp.fixed,
+        color: data.wordpressPage.acf.page_color,
+        description: data.wordpressPage.acf.description ? data.wordpressPage.acf.description : null,
+      }}
+    />
+    <PageWidgets content={data.wordpressPage.acf.widgets_page} color={data.wordpressPage.acf.page_color} />
+  </Layout>
 
 );
 
@@ -271,6 +274,25 @@ query PageQuery($slug: String!) {
             copy {
               title
               url
+            }
+          }
+        }
+        ... on WordPressAcf_copy_wimage {
+          heading_copy
+          blocks {
+            copy
+            image {
+              localFile {
+                childImageSharp {
+                  fluid(quality: 100) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    sizes
+                  }
+                }
+              }
             }
           }
         }

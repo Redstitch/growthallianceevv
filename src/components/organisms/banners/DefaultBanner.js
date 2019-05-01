@@ -7,16 +7,16 @@ import { pageColor } from '../../../js/autoColor';
 import { above } from '../../../styles/utilities/mediaQueries';
 import { colors } from '../../../styles/utilities/settings';
 
-const DefaultBanner = ({ content, mainColor, mainImage }) => (
-  <SDefaultBanner color={mainColor}>
+const DefaultBanner = ({ page }) => (
+  <SDefaultBanner color={page.color}>
     <div className="image-background">
-      <Img fixed={mainImage} />
+      <Img fixed={page.mainImage} />
     </div>
     <Wrapper>
       <div className="content">
-        <h1>{content.heading}</h1>
+        <h1>{page.title}</h1>
         <p dangerouslySetInnerHTML={{
-          __html: content.copy,
+          __html: page.description,
         }}
         />
       </div>
