@@ -1,5 +1,6 @@
 export const colors = {
   black: '#000000',
+  blackOverlay: 'rgba(0, 0, 0, .6)',
   white: '#ffffff',
   gray: '#e2e2e2',
   lightGray: '#f8f8f8',

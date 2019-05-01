@@ -8,22 +8,17 @@ import PostWidgets from '../organisms/PostWidgets';
 export const PostContext = React.createContext();
 
 const Post = ({ data }) => (
-  <PostContext.Provider value={{
-    mainImage: data.wordpressPost.acf.main_image.localFile.childImageSharp.fixed,
-    title: data.wordpressPost.title,
-  }}
-  >
-    <Layout>
-      <Dochead
-        title={data.wordpressPost.title}
-        siteName={data.wordpressSiteMetadata.name}
-        pageImage={data.wordpressPost.acf.main_image && data.wordpressPost.acf.main_image.localFile.childImageSharp.original.src}
-        description={data.wordpressPost.acf.description ? data.wordpressPost.acf.description : data.wordpressSiteMetadata.description}
-      />
-      <BlogBanner />
-      <PostWidgets content={data.wordpressPost.acf.post_content_post} color="navy" />
-    </Layout>
-  </PostContext.Provider>
+
+  <Layout>
+    <Dochead
+      title={data.wordpressPost.title}
+      siteName={data.wordpressSiteMetadata.name}
+      pageImage={data.wordpressPost.acf.main_image && data.wordpressPost.acf.main_image.localFile.childImageSharp.original.src}
+      description={data.wordpressPost.acf.description ? data.wordpressPost.acf.description : data.wordpressSiteMetadata.description}
+    />
+    <BlogBanner image={data.wordpressPost.acf.main_image.localFile.childImageSharp.fixed} title={data.wordpressPost.title} />
+    <PostWidgets content={data.wordpressPost.acf.post_content_post} color="navy" />
+  </Layout>
 
 );
 

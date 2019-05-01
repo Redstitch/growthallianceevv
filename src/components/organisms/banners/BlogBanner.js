@@ -1,28 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import { PostContext } from '../../templates/Post';
 import { bannerContent } from '../../../styles/utilities/elements';
 import { colors } from '../../../styles/utilities/settings';
 import Wrapper from '../../../styles/utilities/Wrapper';
 
-const BlogBanner = () => (
-  <PostContext.Consumer>
-    {value => (
-      <section>
-        <SBlogBanner>
-          <div className="image-background">
-            <Img fixed={value.mainImage} />
-          </div>
-          <Wrapper>
-            <div className="content">
-              <h1>{value.title}</h1>
-            </div>
-          </Wrapper>
-        </SBlogBanner>
-      </section>
-    )}
-  </PostContext.Consumer>
+const BlogBanner = ({ image, title }) => (
+  <section>
+    <SBlogBanner>
+      <div className="image-background">
+        <Img fixed={image} />
+      </div>
+      <Wrapper>
+        <div className="content">
+          <h1>{title}</h1>
+        </div>
+      </Wrapper>
+    </SBlogBanner>
+  </section>
 );
 
 export default BlogBanner;

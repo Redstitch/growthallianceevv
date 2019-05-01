@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { colors, misc } from './settings';
 import fonts from './fonts';
-import { below, above } from './mediaQueries';
+import { below } from './mediaQueries';
 
 export const typography = css`
   line-height: 1.5;
