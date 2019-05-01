@@ -19,7 +19,14 @@ const OurTeam = () => (
             pageImage={data.wordpressAcfOptions.options.team_banner_image && data.wordpressAcfOptions.options.team_banner_image.localFile.childImageSharp.original.src}
             description={data.wordpressSiteMetadata.description}
           />
-          <DefaultBanner mainImage={data.wordpressAcfOptions.options.team_banner_image.localFile.childImageSharp.fixed} mainColor="navy" content={data.wordpressAcfOptions.options.team_banner_copy} />
+          <DefaultBanner
+            page={{
+              title: data.wordpressAcfOptions.options.team_banner_copy.heading,
+              mainImage: data.wordpressAcfOptions.options.team_banner_image.localFile.childImageSharp.fixed,
+              color: 'navy',
+              description: data.wordpressAcfOptions.options.team_banner_copy.copy,
+            }}
+          />
           <Wrapper>
             {data.allWordpressWpTeam.edges.map(({ node }, index) => (
               <TeamMember key={node.id} index={index} content={node} />

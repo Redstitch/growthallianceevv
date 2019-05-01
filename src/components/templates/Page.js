@@ -83,10 +83,6 @@ query PageQuery($slug: String!) {
             }
           }
         }
-        ... on WordPressAcf_banner {
-          heading
-          copy
-        }
       }
       widgets_page {
         __typename

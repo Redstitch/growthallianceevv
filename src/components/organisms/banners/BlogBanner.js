@@ -5,15 +5,15 @@ import { bannerContent } from '../../../styles/utilities/elements';
 import { colors } from '../../../styles/utilities/settings';
 import Wrapper from '../../../styles/utilities/Wrapper';
 
-const BlogBanner = ({ image, title }) => (
+const BlogBanner = ({ page }) => (
   <section>
     <SBlogBanner>
       <div className="image-background">
-        <Img fixed={image} />
+        <Img fixed={page.mainImage} />
       </div>
       <Wrapper>
         <div className="content">
-          <h1>{title}</h1>
+          <h1>{page.title}</h1>
         </div>
       </Wrapper>
     </SBlogBanner>
@@ -34,5 +34,6 @@ const SBlogBanner = styled.div`
 
   h1 {
     text-align: center;
+    margin-bottom: 0;
   }
 `;
