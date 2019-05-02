@@ -43,6 +43,7 @@ class NumberItem extends Component {
             />
           </span>
           <h5>
+
             {content.label}
           </h5>
           {content.sub_copy && <span className="sub-copy">{content.sub_copy}</span>}
