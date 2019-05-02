@@ -8,22 +8,25 @@ import PageWidgets from '../organisms/PageWidgets';
 export const PageContext = React.createContext();
 
 const Page = ({ data }) => (
-  <PageContext.Provider value={{
-    mainImage: data.wordpressPage.acf.main_image.localFile.childImageSharp.fixed,
-    pageColor: data.wordpressPage.acf.page_color,
-  }}
-  >
-    <Layout>
-      <Dochead
-        title={data.wordpressPage.title !== 'Home' ? data.wordpressPage.title : null}
-        siteName={data.wordpressSiteMetadata.name}
-        pageImage={data.wordpressPage.acf.main_image && data.wordpressPage.acf.main_image.localFile.childImageSharp.original.src}
-        description={data.wordpressPage.acf.description ? data.wordpressPage.acf.description : data.wordpressSiteMetadata.description}
-      />
-      <PageBanners content={data.wordpressPage.acf.banners_page} />
-      <PageWidgets content={data.wordpressPage.acf.widgets_page} color={data.wordpressPage.acf.page_color} />
-    </Layout>
-  </PageContext.Provider>
+
+  <Layout>
+    <Dochead
+      title={data.wordpressPage.title !== 'Home' ? data.wordpressPage.title : null}
+      siteName={data.wordpressSiteMetadata.name}
+      pageImage={data.wordpressPage.acf.main_image && data.wordpressPage.acf.main_image.localFile.childImageSharp.original.src}
+      description={data.wordpressPage.acf.description ? data.wordpressPage.acf.description : data.wordpressSiteMetadata.description}
+    />
+    <PageBanners
+      content={data.wordpressPage.acf.banners_page}
+      page={{
+        title: data.wordpressPage.title,
+        mainImage: data.wordpressPage.acf.main_image.localFile.childImageSharp.fixed,
+        color: data.wordpressPage.acf.page_color,
+        description: data.wordpressPage.acf.description ? data.wordpressPage.acf.description : null,
+      }}
+    />
+    <PageWidgets content={data.wordpressPage.acf.widgets_page} color={data.wordpressPage.acf.page_color} />
+  </Layout>
 
 );
 
@@ -79,10 +82,6 @@ query PageQuery($slug: String!) {
               }
             }
           }
-        }
-        ... on WordPressAcf_banner {
-          heading
-          copy
         }
       }
       widgets_page {
@@ -180,18 +179,30 @@ query PageQuery($slug: String!) {
         }
         ... on WordPressAcf_number_ticker {
           number_alignment
-          numbers {
-            prefix__suffix
-            label
-            number
-            sub_copy
-          }
           heading {
             title
             copy
             link {
               copy
               page
+            }
+          }
+          rows {
+            row_heading
+            row_color
+            numbers {
+              prefix__suffix
+              label
+              number
+              sub_copy
+            }
+          }
+          footer {
+            copy
+            button {
+              copy
+              link
+              new_tab
             }
           }
         }
@@ -214,9 +225,16 @@ query PageQuery($slug: String!) {
           }
         }
         ... on WordPressAcf_content_columns {
-          heading_copy
-          no_color
           background_color
+          no_color
+          heading_copy
+          alignment
+          footer_button {
+            copy
+            page
+            url
+            new_tab
+          }
           columns {
             heading
             copy
@@ -279,6 +297,25 @@ query PageQuery($slug: String!) {
             button_text
             title
             copy
+          }
+        }
+        ... on WordPressAcf_copy_wimage {
+          heading_copy
+          blocks {
+            copy
+            image {
+              localFile {
+                childImageSharp {
+                  fluid(quality: 100) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    sizes
+                  }
+                }
+              }
+            }
           }
         }
       }

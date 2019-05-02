@@ -26,3 +26,17 @@ export function pageColor(theme, defaultColor) {
   }
   return color;
 }
+
+export function numberColor(color, rowColor, defaultColor) {
+  let newColor = '';
+  if (color || rowColor) {
+    if (rowColor) {
+      newColor = pageColor(rowColor);
+    } else {
+      newColor = pageColor(color);
+    }
+  } else {
+    newColor = defaultColor;
+  }
+  return newColor;
+}

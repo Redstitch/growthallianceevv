@@ -36,7 +36,14 @@ class BlogRollPage extends Component {
                 pageImage={data.wordpressAcfOptions.options.blog_banner_image && data.wordpressAcfOptions.options.blog_banner_image.localFile.childImageSharp.original.src}
                 description={data.wordpressSiteMetadata.description}
               />
-              <DefaultBanner mainImage={data.wordpressAcfOptions.options.blog_banner_image.localFile.childImageSharp.fixed} mainColor="navy" content={data.wordpressAcfOptions.options.blog_banner_copy} />
+              <DefaultBanner
+                page={{
+                  title: data.wordpressAcfOptions.options.blog_banner_copy.heading,
+                  mainImage: data.wordpressAcfOptions.options.blog_banner_image.localFile.childImageSharp.fixed,
+                  color: 'navy',
+                  description: data.wordpressAcfOptions.options.blog_banner_copy.copy,
+                }}
+              />
               <SBlog>
                 <Wrapper>
                   <div className="posts">

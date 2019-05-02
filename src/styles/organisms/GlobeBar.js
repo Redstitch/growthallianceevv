@@ -5,7 +5,7 @@ import { misc, colors } from '../utilities/settings';
 import { absoluteCenter, button } from '../utilities/elements';
 import { pageColor } from '../../js/autoColor';
 import fonts from '../utilities/fonts';
-import SPicture from '../atoms/SPicture';
+import Wrapper from '../utilities/Wrapper';
 
 const GlobeBar = styled.div`
   position: relative;
@@ -119,7 +119,7 @@ const GlobeBar = styled.div`
       max-width: calc(100% - 480px);
     `}
 
-    ${SPicture} {
+    .gatsby-image-wrapper {
       ${below.ipadLand`
         margin: 0 -30px;
       `}
@@ -148,13 +148,14 @@ const GlobeBar = styled.div`
 
   .column{
 
+    ${({ columnAlignment }) => (columnAlignment === 'center' && 'text-align: center;')};
 
     ${above.ipadLand`
-      padding: 0 80px 50px 0;
+      padding: 0 80px ${({ withButton }) => (withButton ? '0' : '50px')} 0;
     `}
 
     ${below.ipadLand`
-      padding-bottom: 50px;
+      padding-bottom: ${({ withButton }) => (withButton ? '0' : '50px')};
     `}
   }
 
@@ -172,6 +173,17 @@ const GlobeBar = styled.div`
       width: 480px;
       padding: ${({ alignment }) => (alignment === 'right' ? '0 50px 0 0' : '0 0 0 50px')};
     `}
+  }
+
+  ${Wrapper} {
+    ${({ columnAlignment }) => (columnAlignment === 'center' && 'text-align: center;')};
+
+    > a {
+      ${button};
+      position: relative;
+      z-index: 1;
+      margin: 20px auto 50px;
+    }
   }
 `;
 

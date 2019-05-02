@@ -16,7 +16,13 @@ const Post = ({ data }) => (
       pageImage={data.wordpressPost.acf.main_image && data.wordpressPost.acf.main_image.localFile.childImageSharp.original.src}
       description={data.wordpressPost.acf.description ? data.wordpressPost.acf.description : data.wordpressSiteMetadata.description}
     />
-    <BlogBanner image={data.wordpressPost.acf.main_image.localFile.childImageSharp.fixed} title={data.wordpressPost.title} />
+    <BlogBanner page={{
+      title: data.wordpressPost.title,
+      mainImage: data.wordpressPost.acf.main_image.localFile.childImageSharp.fixed,
+      color: 'navy',
+      description: null,
+    }}
+    />
     <PostWidgets content={data.wordpressPost.acf.post_content_post} color="navy" />
   </Layout>
 

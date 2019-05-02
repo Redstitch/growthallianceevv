@@ -7,18 +7,22 @@ import { pageColor } from '../../../js/autoColor';
 import { above } from '../../../styles/utilities/mediaQueries';
 import { colors } from '../../../styles/utilities/settings';
 
-const DefaultBanner = ({ content, mainColor, mainImage }) => (
-  <SDefaultBanner color={mainColor}>
+const DefaultBanner = ({ page }) => (
+  <SDefaultBanner color={page.color ? page.color : null}>
     <div className="image-background">
-      <Img fixed={mainImage} />
+      <Img fixed={page.mainImage} />
     </div>
     <Wrapper>
       <div className="content">
-        <h1>{content.heading}</h1>
+        <h1>{page.title}</h1>
+        {page.description
+        && (
         <p dangerouslySetInnerHTML={{
-          __html: content.copy,
+          __html: page.description,
         }}
         />
+        )
+        }
       </div>
     </Wrapper>
   </SDefaultBanner>
@@ -31,6 +35,14 @@ export const SDefaultBanner = styled.div`
 
   &:after {
     background-color: ${({ color }) => (color ? pageColor(color) : colors.orange)};
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  p {
+    margin-top: 20px;
   }
 
   .content {

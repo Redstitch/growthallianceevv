@@ -8,11 +8,15 @@ import { below } from '../../styles/utilities/mediaQueries';
 
 const WidgetHeader = ({ content, color }) => (
   <SWidgetHeader color={color}>
-    <h3>{content.heading.title}</h3>
+    {content.heading.title && <h3>{content.heading.title}</h3>}
     {content.heading.copy && <p>{content.heading.copy}</p>}
-    <Link to={urlFixer(content.heading.link.page)}>
-      {content.heading.link.copy}
-    </Link>
+    {content.heading.link.page
+      && (
+      <Link to={urlFixer(content.heading.link.page)}>
+        {content.heading.link.copy}
+      </Link>
+      )
+    }
   </SWidgetHeader>
 );
 

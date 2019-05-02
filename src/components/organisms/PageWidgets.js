@@ -10,6 +10,7 @@ import RichText from './widgets/RichText';
 import ContentColumns from './widgets/ContentColumns';
 import CardLinks from './widgets/CardLinks';
 import TabbedContent from './widgets/TabbedContent';
+import CopyWImage from './widgets/CopyWImage';
 
 const PageWidgets = ({ content, color }) => content && content.map((widget, index) => (
   <section key={`${index}${widget.__typename}`}>
@@ -25,6 +26,7 @@ const PageWidgets = ({ content, color }) => content && content.map((widget, inde
     {widget.__typename === 'WordPressAcf_card_links' && <CardLinks order={index} widget={widget} color={color} /> }
     {widget.__typename === 'WordPressAcf_card_links_manual' && <CardLinks order={index} widget={widget} color={color} /> }
     {widget.__typename === 'WordPressAcf_tabbed_content' && <TabbedContent order={index} widget={widget} color={color} /> }
+    {widget.__typename === 'WordPressAcf_copy_wimage' && <CopyWImage order={index} widget={widget} color={color} /> }
   </section>
 ));
 

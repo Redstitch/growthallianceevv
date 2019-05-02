@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
-import { pageColor } from '../../js/autoColor';
+import { numberColor } from '../../js/autoColor';
 import { colors, misc } from '../../styles/utilities/settings';
 import { below } from '../../styles/utilities/mediaQueries';
 import fonts from '../../styles/utilities/fonts';
@@ -15,7 +15,7 @@ class NumberItem extends Component {
 
   render() {
     const {
-      content, alignment, color, order,
+      content, alignment, color, order, rowColor,
     } = this.props;
     const { isVisible } = this.state;
     return (
@@ -29,7 +29,7 @@ class NumberItem extends Component {
         }}
         partialVisibility={order !== 0}
       >
-        <SNumberItem alignment={alignment} color={color} isVisible={isVisible}>
+        <SNumberItem alignment={alignment} color={color} isVisible={isVisible} rowColor={rowColor}>
           <span>
             <CountUp
               start={0}
@@ -41,11 +41,11 @@ class NumberItem extends Component {
               suffix={content.prefix__suffix === '%' ? content.prefix__suffix : null}
               prefix={content.prefix__suffix === '$' ? content.prefix__suffix : null}
             />
-            {content.sub_copy && <span className="sub-copy">{content.sub_copy}</span>}
           </span>
           <h5>
             {content.label}
           </h5>
+          {content.sub_copy && <span className="sub-copy">{content.sub_copy}</span>}
         </SNumberItem>
       </VisibilitySensor>
     );
@@ -62,7 +62,7 @@ export const SNumberItem = styled.div`
   ${({ isVisible }) => (isVisible ? 'bottom: 0' : 'bottom: -30px')};
 
   span {
-    color: ${({ color }) => (color ? pageColor(color) : colors.green)};
+    color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.green)};
     font-size: 60px;
     font-weight: 200;
     display: block;
@@ -82,7 +82,7 @@ export const SNumberItem = styled.div`
 
   h5 {
     color: ${colors.white};
-    background-color: ${({ color }) => (color ? pageColor(color) : colors.green)};
+    background-color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.green)};
     clip-path: polygon(3% 0, 98% 4%, 100% 93%, 0% 100%);
     padding: 20px 10px;
     font-size: 14px;
@@ -91,33 +91,33 @@ export const SNumberItem = styled.div`
 
   &:nth-child(4n - 2) {
     span {
-      color: ${({ color }) => (color ? pageColor(color) : colors.orange)};
+      color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.orange)};
     }
 
     h5 {
-      background-color: ${({ color }) => (color ? pageColor(color) : colors.orange)};
+      background-color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.orange)};
       clip-path: polygon(4% 0, 100% 5%, 97% 93%, 0% 100%);
     }
   }
 
   &:nth-child(4n - 1) {
     span {
-      color: ${({ color }) => (color ? pageColor(color) : colors.blue)};
+      color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.blue)};
     }
 
     h5 {
-      background-color: ${({ color }) => (color ? pageColor(color) : colors.blue)};
+      background-color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.blue)};
       clip-path: polygon(2% 3%,98% 6%,100% 94%,0 98%);
     }
   }
 
   &:nth-child(4n) {
     span {
-      color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
+      color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.navy)};
     }
 
     h5 {
-      background-color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
+      background-color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.navy)};
       clip-path: polygon(0 0, 100% 0, 98% 98%, 3% 100%);
     }
   }
