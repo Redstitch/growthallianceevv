@@ -225,9 +225,16 @@ query PageQuery($slug: String!) {
           }
         }
         ... on WordPressAcf_content_columns {
-          heading_copy
-          no_color
           background_color
+          no_color
+          heading_copy
+          alignment
+          footer_button {
+            copy
+            page
+            url
+            new_tab
+          }
           columns {
             heading
             copy

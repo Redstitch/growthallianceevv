@@ -6,6 +6,7 @@ import { WideAngle } from '../../atoms/Shapes';
 import Globe from '../../atoms/Globe';
 import GlobeBar from '../../../styles/organisms/GlobeBar';
 import urlFixer from '../../../js/urlFixer';
+import PageLink from '../../atoms/PageLink';
 
 class ContentColumns extends Component {
   state = {
@@ -26,7 +27,7 @@ class ContentColumns extends Component {
         }}
         partialVisibility={order !== 0}
       >
-        <GlobeBar columns color={color} alignment="right" backgroundColor={widget.no_color ? 'blank' : widget.background_color} isVisible={isVisible} padTop={widget.heading_copy && false}>
+        <GlobeBar withButton={widget.footer_button.copy} columnAlignment={widget.alignment} columns color={color} alignment={widget.footer_button.copy ? 'left' : 'right'} backgroundColor={widget.no_color ? 'blank' : widget.background_color} isVisible={isVisible} padTop={widget.heading_copy && false}>
           {!widget.no_color
           && (
           <div className="bar">
@@ -42,12 +43,16 @@ class ContentColumns extends Component {
                 <div className="column" key={column.heading + index}>
                   {column.heading && <h4>{column.heading}</h4>}
                   <p>{column.copy}</p>
+                  {column.button.copy
+                  && (
                   <Link to={urlFixer(column.button.url)}>
                     {column.button.copy}
                   </Link>
+                  )}
                 </div>
               ))}
             </div>
+            {widget.footer_button.copy && <PageLink content={widget.footer_button} />}
           </Wrapper>
         </GlobeBar>
       </VisibilitySensor>
