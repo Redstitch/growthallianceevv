@@ -27,7 +27,7 @@ class ContentColumns extends Component {
         }}
         partialVisibility={order !== 0}
       >
-        <GlobeBar withButton={widget.footer_button.copy} columnAlignment={widget.alignment} columns color={color} alignment={widget.footer_button.copy ? 'left' : 'right'} backgroundColor={widget.no_color ? 'blank' : widget.background_color} isVisible={isVisible} padTop={widget.heading_copy && false}>
+        <GlobeBar withButton={widget.footer_button.copy} columnAlignment={widget.column_alignment} columns color={color} alignment={widget.footer_button.copy ? 'left' : 'right'} backgroundColor={widget.no_color ? 'blank' : widget.background_color} isVisible={isVisible} padTop={widget.heading_copy && false}>
           {!widget.no_color
           && (
           <div className="bar">

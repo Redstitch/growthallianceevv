@@ -228,7 +228,6 @@ query PageQuery($slug: String!) {
           background_color
           no_color
           heading_copy
-          alignment
           footer_button {
             copy
             page
