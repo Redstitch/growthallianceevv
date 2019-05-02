@@ -1,19 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import Wrapper from '../../../styles/utilities/Wrapper';
+import { above, below } from '../../../styles/utilities/mediaQueries';
 import NumberItem, { SNumberItem } from '../../atoms/NumberItem';
-import { below, above } from '../../../styles/utilities/mediaQueries';
 import WidgetHeader from '../../molecules/WidgetHeader';
+import Wrapper from '../../../styles/utilities/Wrapper';
 
 const NumberTicker = ({ widget, color }) => (
   <SNumberTicker color={color}>
     <Wrapper>
       <WidgetHeader content={widget} color={color} />
-      <div className="numbers">
-        {widget.numbers.map((number, index) => (
-          <NumberItem key={number.number + index} color={color} content={number} alignment={widget.number_alignment} />
-        ))}
-      </div>
+      {widget.rows.map((row, index) => (
+        <div key={`row${index}`} className="numbers">
+          {row.numbers.map(number => (
+            <NumberItem key={number.number + index} rowColor={row.row_color} color={color} content={number} alignment={widget.number_alignment} />
+          ))}
+        </div>
+      ))}
     </Wrapper>
   </SNumberTicker>
 );

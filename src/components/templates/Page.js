@@ -179,18 +179,30 @@ query PageQuery($slug: String!) {
         }
         ... on WordPressAcf_number_ticker {
           number_alignment
-          numbers {
-            prefix__suffix
-            label
-            number
-            sub_copy
-          }
           heading {
             title
             copy
             link {
               copy
               page
+            }
+          }
+          rows {
+            row_heading
+            row_color
+            footer {
+              copy
+              button {
+                copy
+                link
+                new_tab
+              }
+            }
+            numbers {
+              prefix__suffix
+              label
+              number
+              sub_copy
             }
           }
         }
