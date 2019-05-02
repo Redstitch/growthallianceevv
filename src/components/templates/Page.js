@@ -292,6 +292,13 @@ query PageQuery($slug: String!) {
             }
           }
         }
+        ... on WordPressAcf_tabbed_content {
+          tabs {
+            button_text
+            title
+            copy
+          }
+        }
         ... on WordPressAcf_copy_wimage {
           heading_copy
           blocks {
