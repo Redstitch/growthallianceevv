@@ -30,6 +30,8 @@ const CopyWImage = ({ widget, color }) => (
 export default CopyWImage;
 
 const SCopyWImage = styled.div`
+  margin-bottom: 100px;
+
   .block {
 
     ${above.ipadLand`

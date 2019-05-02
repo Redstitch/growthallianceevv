@@ -4,18 +4,25 @@ import { above, below } from '../../../styles/utilities/mediaQueries';
 import NumberItem, { SNumberItem } from '../../atoms/NumberItem';
 import WidgetHeader from '../../molecules/WidgetHeader';
 import Wrapper from '../../../styles/utilities/Wrapper';
+import { numberColor } from '../../../js/autoColor';
+import { colors } from '../../../styles/utilities/settings';
+import WidgetFooter from '../../molecules/WidgetFooter';
 
 const NumberTicker = ({ widget, color }) => (
   <SNumberTicker color={color}>
     <Wrapper>
       <WidgetHeader content={widget} color={color} />
       {widget.rows.map((row, index) => (
-        <div key={`row${index}`} className="numbers">
-          {row.numbers.map(number => (
-            <NumberItem key={number.number + index} rowColor={row.row_color} color={color} content={number} alignment={widget.number_alignment} />
-          ))}
-        </div>
+        <NumberRow key={`row${index}`} color={color} rowColor={row.row_color}>
+          {row.row_heading && <h4>{row.row_heading}</h4>}
+          <div className="numbers">
+            {row.numbers.map(number => (
+              <NumberItem key={number.number + index} rowColor={row.row_color} color={color} content={number} alignment={widget.number_alignment} />
+            ))}
+          </div>
+        </NumberRow>
       ))}
+      <WidgetFooter content={widget} />
     </Wrapper>
   </SNumberTicker>
 );
@@ -23,14 +30,14 @@ const NumberTicker = ({ widget, color }) => (
 export default NumberTicker;
 
 const SNumberTicker = styled.div`
-  text-align:center;
+  text-align: center;
   padding: 0 0 100px;
 
   .numbers {
 
     ${above.mobile`
       display: flex;
-      align-items: flex-start;
+      align-items: flex-end;
       justify-content: space-between;
       margin-right: -30px;
       flex-wrap: wrap;
@@ -63,5 +70,15 @@ const SNumberTicker = styled.div`
         width: 100%;
       `}
     }
+  }
+`;
+
+const NumberRow = styled.div`
+  h4 {
+    color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.black)};
+  }
+
+  + div {
+    margin-top: 50px;
   }
 `;

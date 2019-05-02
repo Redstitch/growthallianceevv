@@ -190,19 +190,19 @@ query PageQuery($slug: String!) {
           rows {
             row_heading
             row_color
-            footer {
-              copy
-              button {
-                copy
-                link
-                new_tab
-              }
-            }
             numbers {
               prefix__suffix
               label
               number
               sub_copy
+            }
+          }
+          footer {
+            copy
+            button {
+              copy
+              link
+              new_tab
             }
           }
         }
