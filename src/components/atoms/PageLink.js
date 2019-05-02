@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import urlFixer from '../../js/urlFixer';
 
 const PageLink = ({ content }) => (
   <>
@@ -8,7 +9,7 @@ const PageLink = ({ content }) => (
         {content.copy}
       </a>
     ) : (
-      <Link to={content.page}>{content.copy}</Link>
+      <Link to={urlFixer(content.page)}>{content.copy}</Link>
     )}
   </>
 );

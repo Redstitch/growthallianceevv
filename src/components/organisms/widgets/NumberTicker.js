@@ -22,7 +22,7 @@ const NumberTicker = ({ widget, color }) => (
           </div>
         </NumberRow>
       ))}
-      <WidgetFooter content={widget} />
+      <WidgetFooter content={widget} color={color} />
     </Wrapper>
   </SNumberTicker>
 );
@@ -38,7 +38,7 @@ const SNumberTicker = styled.div`
     ${above.mobile`
       display: flex;
       align-items: flex-end;
-      justify-content: space-between;
+      justify-content: center;
       margin-right: -30px;
       flex-wrap: wrap;
     `}
@@ -64,10 +64,11 @@ const SNumberTicker = styled.div`
 
       ${above.mobile`
         width: 50%;
-      `}
+        `}
 
       ${above.ipadPort`
         width: 100%;
+        max-width: 25%;
       `}
     }
   }

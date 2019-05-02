@@ -4,6 +4,7 @@ import Layout from '../Layout';
 import Dochead from '../Dochead';
 import BlogBanner from '../organisms/banners/BlogBanner';
 import PostWidgets from '../organisms/PostWidgets';
+import RelatedPosts from '../molecules/RelatedPosts';
 
 export const PostContext = React.createContext();
 
@@ -24,6 +25,7 @@ const Post = ({ data }) => (
     }}
     />
     <PostWidgets content={data.wordpressPost.acf.post_content_post} color="navy" />
+    <RelatedPosts category={data.wordpressPost.categories[0].slug} />
   </Layout>
 
 );
@@ -36,6 +38,9 @@ query PostQuery($slug: String!) {
     slug
     title
     content
+    categories {
+      slug
+    }
     acf {
       main_image {
         localFile {
@@ -43,7 +48,7 @@ query PostQuery($slug: String!) {
             original {
               src
             }
-            fixed(width: 1200, height: 700, quality: 100) {
+            fixed(width: 1200, quality: 100) {
               tracedSVG
               aspectRatio
               width
