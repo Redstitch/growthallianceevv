@@ -27,7 +27,7 @@ const EventItem = ({ content }) => (
       </div>
     </div>
     <div className="content">
-      <h3>{content.title}</h3>
+      <h2>{content.title}</h2>
       <div dangerouslySetInnerHTML={{
         __html: content.excerpt,
       }}
@@ -39,8 +39,7 @@ const EventItem = ({ content }) => (
 
 export default EventItem;
 
-
-const SEventItem = styled.div`
+export const SEventItem = styled.div`
   ${above.ipadPort`
     display: flex;
     align-items: flex-start;
@@ -55,11 +54,15 @@ const SEventItem = styled.div`
   }
 
   .information {
-    width: 270px;
-    padding-right: 30px;
     color: ${colors.white};
 
+    ${above.ipadPort`
+      width: 270px;
+      padding-right: 30px;
+    `}
+
     ${below.ipadPort`
+      background-color: ${colors.blue};
       margin-bottom: 30px;
     `}
 
@@ -67,7 +70,10 @@ const SEventItem = styled.div`
       ${fonts.HelveticaNeueBold};
       position: relative;
       padding: 40px 30px;
-      height: 190px;
+
+      ${above.ipadPort`
+        height: 190px;
+      `}
     }
 
     svg {
@@ -76,6 +82,10 @@ const SEventItem = styled.div`
       top: 0;
       left: 0;
       z-index: -1;
+
+      ${below.ipadPort`
+        display: none;
+      `}
     }
   }
 
@@ -85,12 +95,16 @@ const SEventItem = styled.div`
       width: calc(100% - 240px);
     `}
 
-    h3 {
+    h2 {
       color: ${colors.blue};
       font-size: 35px;
     }
 
-    a {
+    h1, h2, h3, h4, h5, h6, a, strong {
+      color: ${colors.blue};
+    }
+
+    > a {
       ${button};
     }
   }
