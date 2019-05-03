@@ -3,19 +3,22 @@ import fetch from 'isomorphic-fetch';
 
 class ContactForm extends Component {
   state = {
+    _replyTo: '',
+    _subject: 'Message from Contact Form',
     fname: '',
     lname: '',
-    _replyTo: '',
     message: '',
-    _subject: 'Message from Contact Form',
   }
 
   formSubmit(url, data) {
-    return fetch(url, {
+    fetch(url, {
       method: 'POST',
+      mode: 'cors',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
       },
     })
       .then((response) => {
