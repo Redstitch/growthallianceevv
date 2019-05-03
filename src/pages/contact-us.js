@@ -1,10 +1,12 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
+import styled from 'styled-components';
 import Layout from '../components/Layout';
 import Dochead from '../components/Dochead';
 import DefaultBanner from '../components/organisms/banners/DefaultBanner';
-import Wrapper from '../styles/utilities/Wrapper';
 import ContactForm from '../components/molecules/ContactForm';
+import GoogleMap from '../components/molecules/GoogleMap';
+import { above } from '../styles/utilities/mediaQueries';
 
 
 const ContactUs = () => (
@@ -23,15 +25,15 @@ const ContactUs = () => (
             page={{
               title: data.wordpressAcfOptions.options.contact_banner_copy.heading,
               mainImage: data.wordpressAcfOptions.options.contact_banner_image.localFile.childImageSharp.fixed,
-              color: 'navy',
+              color: 'blue',
               description: data.wordpressAcfOptions.options.contact_banner_copy.copy,
+              noMargin: true,
             }}
           />
-          <Wrapper>
-            <div>
-              <ContactForm />
-            </div>
-          </Wrapper>
+          <ContactBlock>
+            <ContactForm />
+            <GoogleMap location={data.wordpressAcfOptions.options.location} />
+          </ContactBlock>
         </>
       )}
     />
@@ -40,6 +42,21 @@ const ContactUs = () => (
 
 export default ContactUs;
 
+const ContactBlock = styled.div`
+  margin-bottom: -50px;
+
+  ${above.ipadLand`
+    display: flex;
+    align-items: stretch;
+    margin-bottom: -100px;
+  `}
+
+  > div {
+    ${above.ipadLand`
+      width: 50%;
+    `}
+  }
+`;
 
 const CONTACTUS_QUERY = graphql`{
   wordpressSiteMetadata {
@@ -48,6 +65,10 @@ const CONTACTUS_QUERY = graphql`{
   }
   wordpressAcfOptions {
     options {
+      location {
+        lat
+        lng
+      }
       contact_banner_copy {
         heading
         copy

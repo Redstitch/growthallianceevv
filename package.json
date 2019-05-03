@@ -33,7 +33,7 @@
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.8",
     "gatsby-transformer-yaml": "^2.1.6",
-    "google-map-react": "^1.1.2",
+    "google-map-react": "^1.1.4",
     "icomoon-react": "^0.1.17",
     "isomorphic-fetch": "^2.2.1",
     "node-sass": "^4.11.0",

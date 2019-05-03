@@ -8,7 +8,7 @@ import { above } from '../../../styles/utilities/mediaQueries';
 import { colors } from '../../../styles/utilities/settings';
 
 const DefaultBanner = ({ page }) => (
-  <SDefaultBanner color={page.color ? page.color : null}>
+  <SDefaultBanner color={page.color ? page.color : null} noMargin={page.noMargin}>
     <div className="image-background">
       <Img fixed={page.mainImage} />
     </div>
@@ -32,6 +32,7 @@ export default DefaultBanner;
 
 export const SDefaultBanner = styled.div`
   ${bannerContent};
+  ${({ noMargin }) => (noMargin ? 'margin-bottom: 0 !important;' : '')};
 
   &:after {
     background-color: ${({ color }) => (color ? pageColor(color) : colors.orange)};
