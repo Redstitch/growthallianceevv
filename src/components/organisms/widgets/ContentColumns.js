@@ -15,6 +15,7 @@ class ContentColumns extends Component {
 
   render() {
     const { widget, color, order } = this.props;
+
     const { isVisible } = this.state;
     return (
       <VisibilitySensor
