@@ -244,6 +244,22 @@ query PageQuery($slug: String!) {
             }
           }
         }
+        ... on WordPressAcf_image_wdescription {
+          description
+          image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 670, quality: 100) {
+                  base64
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                }
+              }
+            }
+          }
+        }
         ... on  WordPressAcf_rich_text {
           copy
         }
