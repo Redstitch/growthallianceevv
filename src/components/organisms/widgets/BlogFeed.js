@@ -65,7 +65,7 @@ export const SBlogFeed = styled.div`
 
   h3 {
     font-size: 45px;
-    ${fonts.Helvetica};
+    ${fonts.HelveticaNeueRegular};
     margin-bottom: 30px;
     color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
 

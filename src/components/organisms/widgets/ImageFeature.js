@@ -112,7 +112,7 @@ const SFeature = styled.div`
 
     h4 {
       font-size: 30px;
-      ${fonts.HelveticaLight};
+      ${fonts.HelveticaNeueLight};
       color: ${({ color, selected }) => (color ? pageColor(color) : pageColor(selected))};
     }
 

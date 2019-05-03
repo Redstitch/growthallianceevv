@@ -77,7 +77,7 @@ export const SNumberItem = styled.div`
 
   .sub-copy {
     font-size: 14px;
-    ${fonts.HelveticaBold};
+    ${fonts.HelveticaNeueBold};
   }
 
   h5 {

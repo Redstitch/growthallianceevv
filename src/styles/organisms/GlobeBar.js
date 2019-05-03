@@ -136,7 +136,7 @@ const GlobeBar = styled.div`
 
     h4 {
       font-size: 30px;
-      ${fonts.HelveticaLight};
+      ${fonts.HelveticaNeueLight};
       ${({ backgroundColor, color }) => (backgroundColor === 'blank' && `color: ${(color ? pageColor(color) : colors.navy)}`)};
     }
 

@@ -1,8 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 import { typography } from './utilities/elements';
 import fonts from './utilities/fonts';
+import FontFaces from './utilities/FontsFaces';
 
 const GlobalStyle = createGlobalStyle`
+  ${FontFaces};
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -33,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    ${fonts.Helvetica};
+    ${fonts.HelveticaNeueRegular};
     ${typography};
     &.fixed { overflow: hidden; }
   }

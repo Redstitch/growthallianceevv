@@ -330,7 +330,7 @@ const topNav = css`
     `}
     a {
       color: ${colors.darkerGray};
-      ${fonts.HelveticaNeueMedium};
+      ${fonts.HelveticaNeueRegular};
       margin-left: 50px;
       ${above.ipadLand`
       font-size: 11px;

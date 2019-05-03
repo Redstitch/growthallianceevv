@@ -118,7 +118,7 @@ const SFooter = styled.footer`
 
       h4 {
         font-size: 14px;
-        ${fonts.HelveticaBold};
+        ${fonts.HelveticaNeueBold};
         margin-bottom: 10px;
       }
 

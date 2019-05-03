@@ -83,7 +83,7 @@ const SUpcomingEvent = styled.div`
 
   h4 {
     font-size: 45px;
-    ${fonts.Helvetica};
+    ${fonts.HelveticaNeueRegular};
 
     ${below.ipadPort`
       font-size: 32px;
@@ -121,7 +121,7 @@ const SUpcomingEvent = styled.div`
     `}
 
     sup {
-      ${fonts.HelveticaBold};
+      ${fonts.HelveticaNeueBold};
     }
 
     a {

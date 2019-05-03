@@ -77,11 +77,11 @@ const ItemWImage = styled.div`
       border: none;
       padding: 0;
       font-size: 20px;
-      ${fonts.HelveticaLight};
+      ${fonts.HelveticaNeueLight};
     }
 
     .title {
-      ${fonts.HelveticaBold};
+      ${fonts.HelveticaNeueBold};
     }
 
 

@@ -56,7 +56,7 @@ export const typography = css`
   }
 
   strong {
-    ${fonts.HelveticaBold};
+    ${fonts.HelveticaNeueBold};
   }
 
   table {
