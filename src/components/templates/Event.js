@@ -3,6 +3,9 @@ import { graphql } from 'gatsby';
 import Layout from '../Layout';
 import Dochead from '../Dochead';
 import Wrapper from '../../styles/utilities/Wrapper';
+import DefaultBanner from '../organisms/banners/DefaultBanner';
+import { SEventItem } from '../molecules/EventItem';
+import { Shape2 } from '../atoms/Shapes';
 
 export const EventContext = React.createContext();
 
@@ -18,8 +21,44 @@ const Event = ({ data }) => (
         pageImage={data.wordpressWpEvent.acf.main_image && data.wordpressWpEvent.acf.main_image.localFile.childImageSharp.original.src}
         description={data.wordpressWpEvent.acf.description ? data.wordpressWpEvent.acf.description : data.wordpressSiteMetadata.description}
       />
-      <Wrapper>
-        {data.wordpressWpEvent.title}
+      <DefaultBanner
+        page={{
+          title: data.wordpressAcfOptions.options.events_banner_copy.heading,
+          mainImage: data.wordpressWpEvent.acf.main_image.localFile.childImageSharp.fixed,
+          color: 'blue',
+          description: data.wordpressAcfOptions.options.events_banner_copy.copy,
+        }}
+      />
+      <Wrapper narrow>
+        <SEventItem>
+          <div className="information">
+            <div className="inner">
+              <Shape2 />
+              {data.wordpressWpEvent.acf.start_date}
+              {data.wordpressWpEvent.acf.end_date
+              && (
+              <>
+                {' -'}
+                <br />
+                {data.wordpressWpEvent.acf.end_date}
+              </>
+              )}
+              <br />
+              {data.wordpressWpEvent.acf.start_time}
+              {data.wordpressWpEvent.acf.end_time && ` - ${data.wordpressWpEvent.acf.end_time}`}
+            </div>
+          </div>
+          <div className="content">
+            <h2>{data.wordpressWpEvent.title}</h2>
+            <div dangerouslySetInnerHTML={{
+              __html: data.wordpressWpEvent.acf.content,
+            }}
+            />
+            <a href={data.wordpressWpEvent.acf.rsvp} target="_blank" rel="noopener noreferrer">RSVP</a>
+          </div>
+
+
+        </SEventItem>
       </Wrapper>
     </Layout>
   </EventContext.Provider>
@@ -34,6 +73,12 @@ query EventQuery($slug: String!) {
     slug
     title
     acf {
+      content
+      start_date
+      end_date
+      start_time
+      end_time
+      rsvp
       main_image {
         localFile {
           childImageSharp {
@@ -50,6 +95,14 @@ query EventQuery($slug: String!) {
             }
           }
         }
+      }
+    }
+  }
+  wordpressAcfOptions {
+    options {
+      events_banner_copy {
+        heading
+        copy
       }
     }
   }
