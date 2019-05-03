@@ -92,7 +92,7 @@ const BLOG_QUERY = graphql`{
             original {
               src
             }
-            fixed(quality: 100, width: 1200, height: 350) {
+            fixed(quality: 100, width: 1200) {
               tracedSVG
               aspectRatio
               width
