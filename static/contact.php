@@ -4,8 +4,8 @@
       $firstName = $_POST['fname'];
       $lastName = $_POST['lname'];
       $email = $_POST['email'];
-      $comments = $_POST['comments'];
-      $formcontent = "Full Name: " . $firstName . " " . $lastName . "<br /><br />Email Address: <a href='mailto:" . $email . "'>" . $email . "</a><br /><br />Message:<br />" . $comments;
+      $message = $_POST['message'];
+      $formcontent = "Full Name: " . $firstName . " " . $lastName . "<br /><br />Email Address: <a href='mailto:" . $email . "'>" . $email . "</a><br /><br />Message:<br />" . $message;
       $recipient = "scott.wambach@redstitchdigital.com";
       $subject = 'Message from the GAGE Contact Form';
       $mailheader = "From: $email \r\n";

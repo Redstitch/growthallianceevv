@@ -12,7 +12,7 @@ const ContactForm = () => (
       <form action="/contact.php">
         <label htmlFor="fname">
           First Name
-          <input id="fname" type="text" />
+          <input name="fname" id="fname" type="text" />
         </label>
         <label htmlFor="osduiegnpiouenv307h09uhvsoihu">
           You Shouldnt See This
@@ -20,17 +20,17 @@ const ContactForm = () => (
         </label>
         <label htmlFor="lname">
           Last Name
-          <input id="fname" type="text" />
+          <input name="fname" id="fname" type="text" />
         </label>
         <label htmlFor="email">
           Email Address
-          <input id="email" type="email" />
+          <input name="email" id="email" type="email" />
         </label>
         <label htmlFor="message">
           Message
           <textarea name="message" id="message" cols="30" rows="10" />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" name="submit" value="Submit" />
       </form>
     </div>
   </SContactForm>
