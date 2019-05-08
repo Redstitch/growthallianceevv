@@ -1,20 +1,17 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
-import urlFixer from '../../js/urlFixer';
 import { breakpoints, colors } from '../../styles/utilities/settings';
 import { pageColor } from '../../js/autoColor';
 import { below } from '../../styles/utilities/mediaQueries';
+import PageLink from '../atoms/PageLink';
 
 const WidgetHeader = ({ content, color }) => (
   <SWidgetHeader color={color}>
     {content.heading.title && <h3>{content.heading.title}</h3>}
     {content.heading.copy && <p>{content.heading.copy}</p>}
-    {content.heading.link.page
+    {content.heading.button.copy
       && (
-      <Link to={urlFixer(content.heading.link.page)}>
-        {content.heading.link.copy}
-      </Link>
+      <PageLink content={content.heading.button} />
       )
     }
   </SWidgetHeader>

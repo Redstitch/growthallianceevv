@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql, StaticQuery, Link } from 'gatsby';
-import urlFixer from '../../../js/urlFixer';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { pageColor } from '../../../js/autoColor';
 import { colors } from '../../../styles/utilities/settings';
 import fonts from '../../../styles/utilities/fonts';
 import { button } from '../../../styles/utilities/elements';
 import { above, below } from '../../../styles/utilities/mediaQueries';
+import PageLink from '../../atoms/PageLink';
 
 const UpcomingEvent = ({ widget, color }) => (
   <StaticQuery
@@ -18,9 +18,7 @@ const UpcomingEvent = ({ widget, color }) => (
           <div className="copy">
             <h4>{widget.heading_copy}</h4>
             <p>{widget.copy}</p>
-            <Link to={urlFixer(widget.button.url)}>
-              {widget.button.copy}
-            </Link>
+            {widget.button.copy && <PageLink content={widget.button} /> }
           </div>
           <div className="event">
             {data.allWordpressWpEvent.edges.map(({ node }) => (

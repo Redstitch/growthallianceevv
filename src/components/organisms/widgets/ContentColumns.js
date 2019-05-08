@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
-import { Link } from 'gatsby';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { WideAngle } from '../../atoms/Shapes';
 import Globe from '../../atoms/Globe';
 import GlobeBar from '../../../styles/organisms/GlobeBar';
-import urlFixer from '../../../js/urlFixer';
 import PageLink from '../../atoms/PageLink';
 
 class ContentColumns extends Component {
@@ -43,12 +41,7 @@ class ContentColumns extends Component {
                 <div className="column" key={column.heading + index}>
                   {column.heading && <h4>{column.heading}</h4>}
                   <p>{column.copy}</p>
-                  {column.button.copy
-                  && (
-                  <Link to={urlFixer(column.button.url)}>
-                    {column.button.copy}
-                  </Link>
-                  )}
+                  {column.button.copy && <PageLink content={column.button} />}
                 </div>
               ))}
             </div>

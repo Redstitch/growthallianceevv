@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import urlFixer from '../../js/urlFixer';
 import { colors, misc } from '../../styles/utilities/settings';
 import { imageBG, absoluteCenter } from '../../styles/utilities/elements';
 import { above, below } from '../../styles/utilities/mediaQueries';
+import PageLink from '../atoms/PageLink';
 
 const Column = ({ content }) => (
   <SColumn key={content.heading}>
@@ -15,7 +14,7 @@ const Column = ({ content }) => (
     <div className="content">
       <h2>{content.heading}</h2>
       <p>{content.copy}</p>
-      <Link to={urlFixer(content.link)}>Learn More</Link>
+      {content.button.copy && <PageLink content={content.button} /> }
     </div>
   </SColumn>
 );

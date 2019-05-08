@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 import Img from 'gatsby-image';
-import urlFixer from '../../../js/urlFixer';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { Shape5, Shape6 } from '../../atoms/Shapes';
 import { absoluteCenter, button } from '../../../styles/utilities/elements';
 import { below, above } from '../../../styles/utilities/mediaQueries';
 import { pageColor } from '../../../js/autoColor';
 import fonts from '../../../styles/utilities/fonts';
+import PageLink from '../../atoms/PageLink';
 
 const ImageFeature = ({ widget, color }) => widget.features.map((feature, index) => (
   <SFeature key={feature.content.heading + index} color={color} selected={feature.content.color}>
@@ -23,7 +22,7 @@ const ImageFeature = ({ widget, color }) => widget.features.map((feature, index)
           __html: feature.content.copy,
         }}
         />
-        <Link to={urlFixer(feature.content.button.link)}>{feature.content.button.copy}</Link>
+        {feature.content.button.copy && <PageLink content={feature.content.button} /> }
       </div>
     </Wrapper>
   </SFeature>

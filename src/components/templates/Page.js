@@ -63,7 +63,12 @@ query PageQuery($slug: String!) {
           panels {
             heading
             copy
-            link
+            button {
+              copy
+              page
+              url
+              new_tab
+            }
             image {
               localFile {
                 childImageSharp {
@@ -94,7 +99,9 @@ query PageQuery($slug: String!) {
           copy
           button {
             copy
+            page
             url
+            new_tab
           }
         }
         ... on WordPressAcf_success_story {
@@ -144,7 +151,9 @@ query PageQuery($slug: String!) {
             content
             button {
               copy
-              link
+              page
+              url
+              new_tab
             }
           }
         }
@@ -172,7 +181,9 @@ query PageQuery($slug: String!) {
               color
               button {
                 copy
-                link
+                page
+                url
+                new_tab
               }
             }
           }
@@ -182,9 +193,11 @@ query PageQuery($slug: String!) {
           heading {
             title
             copy
-            link {
+            button {
               copy
               page
+              url
+              new_tab
             }
           }
           rows {
@@ -201,7 +214,8 @@ query PageQuery($slug: String!) {
             copy
             button {
               copy
-              link
+              page
+              url
               new_tab
             }
           }
@@ -240,7 +254,9 @@ query PageQuery($slug: String!) {
             copy
             button {
               copy
+              page
               url
+              new_tab
             }
           }
         }
@@ -267,9 +283,11 @@ query PageQuery($slug: String!) {
           heading {
             title
             copy
-            link {
+            button {
               copy
               page
+              url
+              new_tab
             }
           }
           cards_rel {
@@ -280,9 +298,11 @@ query PageQuery($slug: String!) {
           heading {
             title
             copy
-            link {
+            button {
               copy
               page
+              url
+              new_tab
             }
           }
           cards {

@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'gatsby';
 import VisibilitySensor from 'react-visibility-sensor';
 import Img from 'gatsby-image';
 import Wrapper from '../../../styles/utilities/Wrapper';
-import urlFixer from '../../../js/urlFixer';
 import { WideAngle } from '../../atoms/Shapes';
 import Globe from '../../atoms/Globe';
 import GlobeBar from '../../../styles/organisms/GlobeBar';
-
-// TODO: Add angle to mobile version
+import PageLink from '../../atoms/PageLink';
 
 class ImageFeatureLarge extends Component {
   state = {
@@ -40,13 +37,7 @@ class ImageFeatureLarge extends Component {
               <div className="content">
                 <h4>{widget.content.heading}</h4>
                 <p>{widget.content.content}</p>
-                {widget.content.button.copy
-                && (
-                <Link to={urlFixer(widget.content.button.link)}>
-                  {widget.content.button.copy}
-                </Link>
-                )
-              }
+                {widget.content.button.copy && <PageLink content={widget.content.button} /> }
               </div>
               <div className="image">
                 <Img fluid={widget.image.localFile.childImageSharp.fluid} />
