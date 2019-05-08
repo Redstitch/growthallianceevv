@@ -15,5 +15,7 @@
     } else {
       header('Location: https://gage.redstitchdigital.com/oops-something-went-wrong');
     }
+  } else {
+    header('Location: https://gage.redstitchdigital.com/oops-something-went-wrong');
   }
 ?>

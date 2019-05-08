@@ -9,7 +9,7 @@ const ContactForm = () => (
   <SContactForm>
     <div className="inner">
       <h2>Send us a message</h2>
-      <form action="/contact.php">
+      <form action="http://localhost:8888/contact.php" method="POST">
         <label htmlFor="fname">
           First Name
           <input name="fname" id="fname" type="text" />
@@ -20,7 +20,7 @@ const ContactForm = () => (
         </label>
         <label htmlFor="lname">
           Last Name
-          <input name="fname" id="fname" type="text" />
+          <input name="lname" id="lname" type="text" />
         </label>
         <label htmlFor="email">
           Email Address
@@ -30,7 +30,7 @@ const ContactForm = () => (
           Message
           <textarea name="message" id="message" cols="30" rows="10" />
         </label>
-        <input type="submit" name="submit" value="Submit" />
+        <input type="submit" id="submit" name="submit" value="Submit" />
       </form>
     </div>
   </SContactForm>
