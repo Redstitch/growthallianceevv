@@ -9,10 +9,14 @@ const ContactForm = () => (
   <SContactForm>
     <div className="inner">
       <h2>Send us a message</h2>
-      <form>
+      <form action="/contact.php">
         <label htmlFor="fname">
           First Name
           <input id="fname" type="text" />
+        </label>
+        <label htmlFor="osduiegnpiouenv307h09uhvsoihu">
+          You Shouldnt See This
+          <input id="osduiegnpiouenv307h09uhvsoihu" name="osduiegnpiouenv307h09uhvsoihu" type="text" />
         </label>
         <label htmlFor="lname">
           Last Name
@@ -66,6 +70,10 @@ const SContactForm = styled.div`
   label {
     font-size: 22px;
     ${fonts.HelveticaBold};
+
+    &[for="osduiegnpiouenv307h09uhvsoihu"] {
+      display: none;
+    }
 
     + label {
       margin-top: 30px;
