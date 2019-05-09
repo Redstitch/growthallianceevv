@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
-import Img from 'gatsby-image';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { WideAngle } from '../../atoms/Shapes';
 import Globe from '../../atoms/Globe';
 import GlobeBar from '../../../styles/organisms/GlobeBar';
 import PageLink from '../../atoms/PageLink';
+import ImageLoader from '../../atoms/ImageLoader';
 
 class ImageFeatureLarge extends Component {
   state = {
@@ -40,7 +40,7 @@ class ImageFeatureLarge extends Component {
                 {widget.content.button.copy && <PageLink content={widget.content.button} /> }
               </div>
               <div className="image">
-                <Img fluid={widget.image.localFile.childImageSharp.fluid} />
+                <ImageLoader content={widget.image} />
               </div>
             </div>
 

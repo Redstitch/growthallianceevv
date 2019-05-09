@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 import { pageColor } from '../../js/autoColor';
 import { colors } from '../../styles/utilities/settings';
 import { below } from '../../styles/utilities/mediaQueries';
+import ImageLoader from '../atoms/ImageLoader';
 
 const Card = ({
   content, color, link, image,
 }) => (
   <Link to={link}>
     <SCard color={color}>
-      <Img fluid={image || content.acf.main_image.localFile.childImageSharp.fluid} />
+      {console.log(content)}
+      <ImageLoader content={image || content.acf.main_image} />
       <h5 dangerouslySetInnerHTML={{
         __html: `${content.title}<span>Read More</span>`,
       }}

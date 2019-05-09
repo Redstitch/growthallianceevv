@@ -35,6 +35,8 @@ const ItemWImage = styled.div`
     .gatsby-image-wrapper {
       position: relative;
       z-index: 2;
+      max-height: 255px;
+      overflow: hidden;
 
       ${above.ipadLand`
         transition-duration: ${misc.widgetTransition};

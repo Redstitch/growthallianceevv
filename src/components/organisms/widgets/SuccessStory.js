@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
-import Img from 'gatsby-image';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { Shape1 } from '../../atoms/Shapes';
 import ItemWImage from '../../../styles/molecules/ItemWImage';
+import ImageLoader from '../../atoms/ImageLoader';
 
 
 class SuccessStory extends Component {
@@ -28,7 +28,7 @@ class SuccessStory extends Component {
         <Wrapper>
           <ItemWImage color={color} isVisible={isVisible}>
             <div className="image">
-              <Img fluid={widget.image.localFile.childImageSharp.fluid} />
+              <ImageLoader content={widget.image} />
               <Shape1 />
             </div>
             <div className="content">

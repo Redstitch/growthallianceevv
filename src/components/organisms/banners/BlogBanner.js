@@ -5,11 +5,11 @@ import { bannerContent } from '../../../styles/utilities/elements';
 import { colors } from '../../../styles/utilities/settings';
 import Wrapper from '../../../styles/utilities/Wrapper';
 
-const BlogBanner = ({ page }) => (
+const BlogBanner = ({ page, preview }) => (
   <section>
     <SBlogBanner>
       <div className="image-background">
-        <Img fixed={page.mainImage} />
+        {preview ? <div className="gatsby-image-wrapper"><img src={page.mainImage} alt="..." /></div> : <Img fixed={page.mainImage} />}
       </div>
       <Wrapper>
         <div className="content">

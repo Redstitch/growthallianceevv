@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import ImageLoader from '../../atoms/ImageLoader';
 
 const FullWidthImage = ({ widget }) => (
   <SFullWidthImage>
-    <Img fluid={widget.image.localFile.childImageSharp.fluid} />
+    <ImageLoader content={widget.image} />
   </SFullWidthImage>
 );
 

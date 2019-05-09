@@ -114,6 +114,16 @@ export const bannerContent = css`
   ${imageBG};
   margin-bottom: 100px;
 
+  img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
   &:after {
     content: '';
     display: block;

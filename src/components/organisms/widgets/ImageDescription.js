@@ -1,15 +1,15 @@
 import React from 'react';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { pageColor } from '../../../js/autoColor';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { colors } from '../../../styles/utilities/settings';
+import ImageLoader from '../../atoms/ImageLoader';
 
 const ImageDescription = ({ widget, color }) => (
   <SImageDescription color={color}>
     <Wrapper narrow>
       <p>{widget.description}</p>
-      <Img fluid={widget.image.localFile.childImageSharp.fluid} />
+      <ImageLoader content={widget.image} />
     </Wrapper>
   </SImageDescription>
 );

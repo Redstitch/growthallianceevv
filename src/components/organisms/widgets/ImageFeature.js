@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { Shape5, Shape6 } from '../../atoms/Shapes';
 import { absoluteCenter, button } from '../../../styles/utilities/elements';
@@ -8,13 +7,14 @@ import { below, above } from '../../../styles/utilities/mediaQueries';
 import { pageColor } from '../../../js/autoColor';
 import fonts from '../../../styles/utilities/fonts';
 import PageLink from '../../atoms/PageLink';
+import ImageLoader from '../../atoms/ImageLoader';
 
 const ImageFeature = ({ widget, color }) => widget.features.map((feature, index) => (
   <SFeature key={feature.content.heading + index} color={color} selected={feature.content.color}>
     <Wrapper>
       <div className="image">
         {index % 2 === 0 ? <Shape5 /> : <Shape6 />}
-        <Img fluid={feature.image.localFile.childImageSharp.fluid} />
+        <ImageLoader content={feature.image} />
       </div>
       <div className="content">
         <h4>{feature.content.heading}</h4>
@@ -58,6 +58,7 @@ const SFeature = styled.div`
     }
 
     .image {
+
       svg {
         margin-left: -22px;
         height: 130%;
@@ -88,7 +89,7 @@ const SFeature = styled.div`
 
     ${above.ipadLand`
       margin: 20px;
-    `}
+      `}
 
     svg {
       fill: ${({ color, selected }) => (color ? pageColor(color) : pageColor(selected))};
@@ -96,6 +97,11 @@ const SFeature = styled.div`
       z-index: -1;
       width: calc(100% + 30px);
       margin-left: 0px;
+    }
+
+    .gatsby-image-wrapper {
+      max-height: 400px;
+      overflow: hidden;
     }
   }
 

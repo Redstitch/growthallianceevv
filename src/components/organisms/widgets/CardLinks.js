@@ -18,7 +18,7 @@ const CardLinks = ({ widget, color }) => (
               <Card key={node.id} content={node} color={color} link={node.parent_element ? `/${node.parent_element.slug}/${node.slug}` : `/${node.slug}`} />
               )))}
             {widget.cards && widget.cards.map((card, index) => (
-              <Card key={card.copy.title + index} image={card.image.localFile.childImageSharp.fluid} content={card} color={color} link={card.copy.url} />
+              <Card key={card.copy.title + index} image={card.image} content={card.copy} color={color} link={card.copy.url} />
             ))}
           </div>
         </Wrapper>

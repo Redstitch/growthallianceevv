@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import SLightBox from '../../../styles/molecules/SLightBox';
 import { above } from '../../../styles/utilities/mediaQueries';
+import ImageLoader from '../../atoms/ImageLoader';
 
 
 class Gallery extends Component {
@@ -53,14 +53,14 @@ class Gallery extends Component {
                 }));
               }}
             >
-              <Img fluid={image.localFile.childImageSharp.fluid} />
+              <ImageLoader content={image} />
             </a>
           ))}
           {modalOpen
           && (
           <SLightBox id="outter">
             <div className="inner">
-              <Img fixed={widget.images[activeIndex].localFile.childImageSharp.fixed} />
+              <ImageLoader content={widget.images[activeIndex]} fixed />
             </div>
           </SLightBox>
           )}

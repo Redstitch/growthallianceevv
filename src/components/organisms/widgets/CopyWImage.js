@@ -1,10 +1,10 @@
 import React from 'react';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { pageColor } from '../../../js/autoColor';
 import { colors } from '../../../styles/utilities/settings';
 import { above } from '../../../styles/utilities/mediaQueries';
+import ImageLoader from '../../atoms/ImageLoader';
 
 const CopyWImage = ({ widget, color }) => (
   <Wrapper narrow>
@@ -13,7 +13,7 @@ const CopyWImage = ({ widget, color }) => (
       {widget.blocks.map((block, index) => (
         <div className="block" key={`block${index}`} color={color}>
           <div className="image">
-            <Img fluid={block.image.localFile.childImageSharp.fluid} />
+            <ImageLoader content={block.image} />
           </div>
           <div
             className="content"

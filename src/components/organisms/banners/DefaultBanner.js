@@ -7,10 +7,10 @@ import { pageColor } from '../../../js/autoColor';
 import { above } from '../../../styles/utilities/mediaQueries';
 import { colors } from '../../../styles/utilities/settings';
 
-const DefaultBanner = ({ page }) => (
+const DefaultBanner = ({ preview, page }) => (
   <SDefaultBanner color={page.color ? page.color : null} noMargin={page.noMargin}>
     <div className="image-background">
-      <Img fixed={page.mainImage} />
+      {preview ? <div className="gatsby-image-wrapper"><img src={page.mainImage} alt="..." /></div> : <Img fixed={page.mainImage} />}
     </div>
     <Wrapper>
       <div className="content">

@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 import { colors, misc } from '../../styles/utilities/settings';
 import { imageBG, absoluteCenter } from '../../styles/utilities/elements';
 import { above, below } from '../../styles/utilities/mediaQueries';
 import PageLink from '../atoms/PageLink';
+import ImageLoader from '../atoms/ImageLoader';
 
 const Column = ({ content }) => (
   <SColumn key={content.heading}>
     <div className="image-background">
-      <Img fixed={content.image.localFile.childImageSharp.fixed} />
+      <ImageLoader content={content.image} fixed />
     </div>
     <div className="content">
       <h2>{content.heading}</h2>
@@ -112,7 +112,24 @@ const SColumn = styled.div`
 
   .image-background {
 
+    .gatsby-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      width: 1000px;
+      height: 667px;
+    }
+
     img {
+
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+
       ${above.ipadLand`
         transform: skew(-4deg);
       `}
