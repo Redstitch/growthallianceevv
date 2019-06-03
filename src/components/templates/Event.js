@@ -30,35 +30,7 @@ const Event = ({ data }) => (
         }}
       />
       <Wrapper narrow>
-        <SEventItem>
-          <div className="information">
-            <div className="inner">
-              <Shape2 />
-              {data.wordpressWpEvent.acf.start_date}
-              {data.wordpressWpEvent.acf.end_date
-              && (
-              <>
-                {' -'}
-                <br />
-                {data.wordpressWpEvent.acf.end_date}
-              </>
-              )}
-              <br />
-              {data.wordpressWpEvent.acf.start_time}
-              {data.wordpressWpEvent.acf.end_time && ` - ${data.wordpressWpEvent.acf.end_time}`}
-            </div>
-          </div>
-          <div className="content">
-            <h2>{data.wordpressWpEvent.title}</h2>
-            <div dangerouslySetInnerHTML={{
-              __html: data.wordpressWpEvent.acf.content,
-            }}
-            />
-            <a href={data.wordpressWpEvent.acf.rsvp} target="_blank" rel="noopener noreferrer">RSVP</a>
-          </div>
-
-
-        </SEventItem>
+        <SEventItem />
       </Wrapper>
     </Layout>
   </EventContext.Provider>

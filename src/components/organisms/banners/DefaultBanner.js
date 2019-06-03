@@ -40,16 +40,17 @@ export const SDefaultBanner = styled.div`
 
   h1 {
     margin: 0;
+    padding-top: 10px;
   }
 
   p {
-    margin-top: 20px;
+    margin-left: 4px;
   }
 
   .content {
     ${above.ipadLand`
       max-width: 50%;
-      padding: 70px 0;
+      padding: 55px 0;
     `}
   }
 `;

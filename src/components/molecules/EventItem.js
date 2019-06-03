@@ -12,8 +12,9 @@ const EventItem = ({ content }) => (
     <div className="information">
       <div className="inner">
         <Shape2 />
-        {content.acf.start_date}
-        {content.acf.end_date
+        <span className="date">
+          {content.acf.start_date}
+          {content.acf.end_date
           && (
           <>
             {' -'}
@@ -21,16 +22,21 @@ const EventItem = ({ content }) => (
             {content.acf.end_date}
           </>
           )}
+        </span>
         <br />
-        {content.acf.start_time}
-        {content.acf.end_time && ` - ${content.acf.end_time}`}
+        <span className="time">
+          {content.acf.start_time}
+          {content.acf.end_time && ` - ${content.acf.end_time}`}
+        </span>
       </div>
     </div>
     <div className="content">
       <h2>{content.title}</h2>
-      <div dangerouslySetInnerHTML={{
-        __html: content.excerpt,
-      }}
+      <div
+        className="bodycopy"
+        dangerouslySetInnerHTML={{
+          __html: content.excerpt,
+        }}
       />
       <Link to={`/events/${content.slug}`}>Learn More</Link>
     </div>
@@ -55,6 +61,17 @@ export const SEventItem = styled.div`
 
   .information {
     color: ${colors.white};
+
+    .date {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .time {
+      font-size: 15px;
+      padding-top: 8px;
+      display: block;
+    }
 
     ${above.ipadPort`
       width: 270px;
@@ -104,8 +121,13 @@ export const SEventItem = styled.div`
       color: ${colors.blue};
     }
 
+    .bodycopy {
+      color: ${colors.darkerGray};
+    }
+
     > a {
       ${button};
+      ${fonts.HelveticaNeueBold};
     }
   }
 `;
