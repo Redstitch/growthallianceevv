@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import MenuItem from '../atoms/MenuItem';
 import { above } from '../../styles/utilities/mediaQueries';
+import { colors } from '../../styles/utilities/settings';
+
 
 export const NavContext = React.createContext();
 
@@ -51,6 +53,7 @@ class Menu extends Component {
         {content.edges.map(({ node }) => node.slug === menuTitle
         && (
           <SMenu key={node.id} styles={styles}>
+
             <ul>
               {node.items.map((item, index) => (
                 <MenuItem key={index + item.object_id} itemIndex={index} content={item} pageColor={this.pageColorEval(item.object_id, pages)} />
@@ -69,7 +72,6 @@ const SMenu = styled.nav`
   ul {
     list-style: none;
     padding: 0;
-    margin: none;
 
     ul.sub-nav {
       /* display: none; */
