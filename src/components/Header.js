@@ -154,7 +154,7 @@ const SHeader = styled.header`
     `}
     ${below.ipadLand`
       max-width: 90px;
-      margin-top: 17px;
+      margin-top: 20px;
       float: left;
     `}
   }
@@ -181,7 +181,7 @@ const SHeader = styled.header`
     width: 25px;
     text-indent: 9999px;
     overflow: hidden;
-    margin-top: 25px;
+    margin-top: 29px;
     height: 20px;
     ${below.ipadLand`
       float: right;
@@ -207,7 +207,7 @@ const SHeader = styled.header`
     span {
       position: absolute;
       width: 25px;
-      height: 4px;
+      height: 2px;
       display: block;
       left: 0;
       background-color: ${colors.blue};
