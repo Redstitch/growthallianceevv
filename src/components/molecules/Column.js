@@ -5,6 +5,8 @@ import { imageBG, absoluteCenter } from '../../styles/utilities/elements';
 import { above, below } from '../../styles/utilities/mediaQueries';
 import PageLink from '../atoms/PageLink';
 import ImageLoader from '../atoms/ImageLoader';
+import fonts from '../../styles/utilities/fonts';
+
 
 const Column = ({ content }) => (
   <SColumn key={content.heading}>
@@ -12,7 +14,7 @@ const Column = ({ content }) => (
       <ImageLoader content={content.image} fixed />
     </div>
     <div className="content">
-      <h2>{content.heading}</h2>
+      <h1>{content.heading}</h1>
       <p>{content.copy}</p>
       {content.button.copy && <PageLink content={content.button} /> }
     </div>
@@ -154,17 +156,25 @@ const SColumn = styled.div`
       padding: 50px;
     `}
 
-    h2 {
+    h1 {
       font-weight: 500;
+      line-height: 1;
+      ${below.pageWidth`
+        max-width: 200px;
+      `}
+      ${below.ipadLand`
+        max-width: none;
+      `}
     }
 
     a {
       color: ${colors.white};
       display: inline-block;
-      padding-left: 20px;
+      padding: 10px 20px 10px 21px;
       position: relative;
       transition-duration: 0s;
       opacity: 1;
+      ${fonts.HelveticaNeueBold};
 
       /* // TODO: fix hover state */
       &:hover {
@@ -174,8 +184,8 @@ const SColumn = styled.div`
             border: none;
             width: 100%;
             height: 100%;
-            left: 10px;
-            padding: 15px 0;
+            left: 0px;
+            padding: 20px 0;
             background-color: ${colors.green};
           `}
         }
