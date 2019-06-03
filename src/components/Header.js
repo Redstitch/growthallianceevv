@@ -112,18 +112,18 @@ const SHeader = styled.header`
   `}
   .logo {
     display: block;
-    max-width: 160px;
-    margin-top: 25px;
+    max-width: 186px;
+    margin-top: 26px;
     ${below.widePageWidth`
-      margin-top: 11px;
+      margin-top: 15px;
     `}
     ${below.pageWidth`
-      max-width: 120px;
-      margin-top: 9px;
+      max-width: 140px;
+      margin-top: 15px;
     `}
     ${below.ipadLand`
-      max-width: 90px;
-      margin-top: 20px;
+      max-width: 115px;
+      margin-top: 15px;
       float: left;
     `}
   }
