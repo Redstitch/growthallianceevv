@@ -118,17 +118,23 @@ const SFeature = styled.div`
     `}
 
     h4 {
-      font-size: 30px;
+      font-size: 48px;
+      line-height: 1.15;
+      margin-bottom: 10px;
       ${fonts.HelveticaNeueLight};
       color: ${({ color, selected }) => (color ? pageColor(color) : pageColor(selected))};
     }
 
     p {
+      font-size: 14px;
+      line-height: 1.75;
       color: ${colors.darkerGray};
     }
 
     > a {
       ${button};
+      ${fonts.HelveticaNeueBold};
+      margin-top: 13px;
     }
   }
 `;
