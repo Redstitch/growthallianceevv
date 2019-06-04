@@ -20,9 +20,8 @@ const Footer = () => (
               <div className="columns">
                 <div>
                   <h4>{data.wordpressAcfOptions.options.subscribe.heading}</h4>
-                  <p>{data.wordpressAcfOptions.options.subscribe.copy}</p>
                   <div dangerouslySetInnerHTML={{
-                    __html: data.wordpressAcfOptions.options.subscribe.form,
+                    __html: `<p>${data.wordpressAcfOptions.options.subscribe.copy}</p>${data.wordpressAcfOptions.options.subscribe.form}`,
                   }}
                   />
                 </div>
@@ -44,18 +43,20 @@ const Footer = () => (
                     ))}
                 </div>
                 <div>
-                  <div dangerouslySetInnerHTML={{
-                    __html: data.wordpressAcfOptions.options.credits,
-                  }}
+                  <div
+                    className="credits"
+                    dangerouslySetInnerHTML={{
+                      __html: data.wordpressAcfOptions.options.credits,
+                    }}
                   />
                 </div>
               </div>
-              <Globe rotation="-155deg" />
             </Wrapper>
           </div>
         </>
       )}
     />
+    <Globe rotation="-155deg" />
   </SFooter>
 );
 
@@ -91,6 +92,10 @@ const SFooter = styled.footer`
 
   .columns {
 
+    form {
+      appearance: none;
+    }
+
     ${above.ipadPort`
       display: flex;
       max-width: 852px;
@@ -122,6 +127,14 @@ const SFooter = styled.footer`
         margin-bottom: 10px;
       }
 
+      .credits {
+        ${fonts.HelveticaNeueBold};
+        p {
+          margin-bottom: 10px;
+          font-size: 12px;
+        }
+      }
+
       a {
         color: ${colors.white};
       }
@@ -150,13 +163,14 @@ const SFooter = styled.footer`
     `}
 
 
-    ${SGlobe} {
-      bottom: -100px;
-      right: 0;
-      width: 100%;
-      min-width: 600px;
-      max-width: 700px;
-      transform: translateY(50%) translateX(50%);
-    }
+
+  }
+  ${SGlobe} {
+    bottom: -330px;
+    right: -250px;
+    width: 100%;
+    min-width: 600px;
+    max-width: 700px;
+    transform: rotate(15deg);
   }
 `;
