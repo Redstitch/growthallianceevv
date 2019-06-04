@@ -7,6 +7,7 @@ import GlobeBar from '../../../styles/organisms/GlobeBar';
 import PageLink from '../../atoms/PageLink';
 import ImageLoader from '../../atoms/ImageLoader';
 
+
 class ImageFeatureLarge extends Component {
   state = {
     isVisible: false,

@@ -4,6 +4,7 @@ import Wrapper from '../../../styles/utilities/Wrapper';
 import { Shape1 } from '../../atoms/Shapes';
 import ItemWImage from '../../../styles/molecules/ItemWImage';
 import ImageLoader from '../../atoms/ImageLoader';
+import PageLink from '../../atoms/PageLink';
 
 
 class SuccessStory extends Component {
@@ -39,6 +40,9 @@ class SuccessStory extends Component {
                 __html: `<strong>${widget.content.name}</strong><br/>${widget.content.title}`,
               }}
               />
+              <div className="button">
+                {widget.button.copy && <PageLink content={widget.button} /> }
+              </div>
             </div>
           </ItemWImage>
         </Wrapper>

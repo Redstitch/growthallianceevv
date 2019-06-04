@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { above, below } from '../utilities/mediaQueries';
 import { misc, colors } from '../utilities/settings';
-import { absoluteCenter } from '../utilities/elements';
+import { absoluteCenter, button } from '../utilities/elements';
 import { pageColor } from '../../js/autoColor';
 import fonts from '../utilities/fonts';
+
 
 const ItemWImage = styled.div`
   padding: 0 0 50px;
@@ -24,7 +25,7 @@ const ItemWImage = styled.div`
 
   .image {
     position: relative;
-    width: 267px;
+    width: 350px;
     margin: 20px;
 
     ${below.ipadPort`
@@ -80,6 +81,7 @@ const ItemWImage = styled.div`
       padding: 0;
       font-size: 20px;
       ${fonts.HelveticaNeueLight};
+      color: ${colors.navy};
     }
 
     .title {
@@ -88,21 +90,23 @@ const ItemWImage = styled.div`
 
 
     h4,
-    p,
-    a {
+    p {
       color: ${({ color }) => (color ? pageColor(color) : colors.orange)};
     }
 
-    .copy {
-      p {
-        color: ${colors.darkerGray};
-      }
+    .button a {
+      ${button};
+      background-color: ${colors.green};
+      color: ${colors.white};
+      ${fonts.HelveticaNeueBold};
+      margin-top: 15px;
+    }
 
       strong {
         color: ${({ color }) => (color ? pageColor(color) : colors.orange)};
       }
     }
-  }
+
 `;
 
 export default ItemWImage;

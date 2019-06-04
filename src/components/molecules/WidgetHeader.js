@@ -4,6 +4,8 @@ import { breakpoints, colors } from '../../styles/utilities/settings';
 import { pageColor } from '../../js/autoColor';
 import { below } from '../../styles/utilities/mediaQueries';
 import PageLink from '../atoms/PageLink';
+import fonts from '../../styles/utilities/fonts';
+
 
 const WidgetHeader = ({ content, color }) => (
   <SWidgetHeader color={color}>
@@ -40,7 +42,7 @@ const SWidgetHeader = styled.div`
 
   a {
     color: ${colors.orange};
-    font-weight: 700;
+    ${fonts.HelveticaNeueBold};
     position: relative;
     display: inline-block;
 

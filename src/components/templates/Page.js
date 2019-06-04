@@ -126,6 +126,12 @@ query PageQuery($slug: String!) {
             name
             title
           }
+          button {
+            copy
+            page
+            url
+            new_tab
+          }
         }
         ... on WordPressAcf_image_feature_large {
           image {
