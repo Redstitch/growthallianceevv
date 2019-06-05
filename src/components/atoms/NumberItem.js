@@ -64,10 +64,9 @@ export const SNumberItem = styled.div`
   span {
     color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.green)};
     font-size: 60px;
-    font-weight: 200;
+    ${fonts.HelveticaNeueLight};
     display: block;
     line-height: 1;
-    margin: 10px 0;
 
     ${below.ipadPort`
       font-size: 50px;
@@ -76,16 +75,22 @@ export const SNumberItem = styled.div`
   }
 
   .sub-copy {
-    font-size: 14px;
+    font-size: 15px;
     ${fonts.HelveticaNeueBold};
+    padding-bottom: 15px;
+    max-width: 200px;
+    margin: auto;
+    line-height: 1.15;
   }
 
   h5 {
     color: ${colors.white};
     background-color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.green)};
     clip-path: polygon(3% 0, 98% 4%, 100% 93%, 0% 100%);
-    padding: 20px 10px 18px;
-    font-size: 14px;
+    padding: 20px 25px 16px;
+    font-size: 15px;
+    font-weight: bold;
+    ${fonts.HelveticaNeueRegular};
     display: inline-block;
   }
 

@@ -9,7 +9,7 @@ import Wrapper from '../../styles/utilities/Wrapper';
 
 
 const WidgetHeader = ({ content, color }) => (
-  <Wrapper narrower>
+  <Wrapper narrow>
     <SWidgetHeader color={color}>
       {content.heading.title && <h3>{content.heading.title}</h3>}
       {content.heading.copy && <p>{content.heading.copy}</p>}
@@ -25,17 +25,22 @@ const WidgetHeader = ({ content, color }) => (
 export default WidgetHeader;
 
 const SWidgetHeader = styled.div`
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   text-align: center;
 
   > p {
     margin: 0 auto 20px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: ${colors.darkerGray};
+    max-width: 700px;
   }
 
   h3 {
     font-size: 45px;
     color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
     font-weight: 400;
+    line-height: 1.15;
 
     ${below.ipadPort`
       font-size: 30px;

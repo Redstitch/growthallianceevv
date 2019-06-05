@@ -7,9 +7,11 @@ import ImageLoader from '../../atoms/ImageLoader';
 
 const ImageDescription = ({ widget, color }) => (
   <SImageDescription color={color}>
-    <Wrapper narrow>
+    <Wrapper narrower>
       <p>{widget.description}</p>
-      <ImageLoader content={widget.image} />
+      <div className="image">
+        <ImageLoader content={widget.image} />
+      </div>
     </Wrapper>
   </SImageDescription>
 );
@@ -17,13 +19,12 @@ const ImageDescription = ({ widget, color }) => (
 export default ImageDescription;
 
 const SImageDescription = styled.div`
-  margin-bottom: 100px;
+  margin: 100px 0;
 
   p {
     color: ${colors.darkerGray};
-    font-size: 14px;
+    font-size: 15px;
     text-align: center;
-    max-width: 600px;
     padding-bottom: 80px;
     margin: auto;
   }

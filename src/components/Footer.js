@@ -146,7 +146,7 @@ const SFooter = styled.footer`
       padding-right: 100px;
 
       width: 100%;
-      font-size: 14px;
+      font-size: 16px;
       :first-of-type {
         min-width: 400px;
       ${below.ipadLand`
@@ -163,7 +163,7 @@ const SFooter = styled.footer`
       `}
 
       h4 {
-        font-size: 14px;
+        font-size: 16px;
         ${fonts.HelveticaNeueBold};
         margin-bottom: 10px;
       }

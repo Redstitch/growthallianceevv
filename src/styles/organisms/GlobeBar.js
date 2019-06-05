@@ -12,7 +12,7 @@ const GlobeBar = styled.div`
   overflow: hidden;
 
   p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.75;
   }
 
@@ -89,7 +89,7 @@ const GlobeBar = styled.div`
     text-align: center;
 
     ${above.ipadLand`
-      padding-top: 55px;
+      padding-top: 60px;
       padding-bottom: 15px;
       transition-duration: ${misc.widgetTransition};
       ${({ isVisible }) => (isVisible ? 'margin-top: 0' : 'margin-top: 100px')};
@@ -114,6 +114,10 @@ const GlobeBar = styled.div`
       ${({ isVisible }) => (isVisible ? 'margin-top: 0' : 'margin-top: 100px')};
       ${({ padTop, backgroundColor }) => (padTop === false ? '' : `${backgroundColor !== 'blank' ? 'padding-top: 50px' : ''}`)};
     `}
+
+    p {
+      margin-bottom: 24px;
+    }
   }
 
   .image {
@@ -152,9 +156,9 @@ const GlobeBar = styled.div`
     }
 
     h4 {
-      font-size: 24px;
+      font-size: 26px;
       line-height: 1.15;
-      margin-bottom: 15px;
+      margin-bottom: 26px;
       ${fonts.HelveticaNeueLight};
       ${({ backgroundColor, color }) => (backgroundColor === 'blank' && `color: ${(color ? pageColor(color) : colors.navy)}`)};
     }
@@ -174,7 +178,7 @@ const GlobeBar = styled.div`
   }
 
   .column{
-  max-width: 33.33333%;
+  max-width: 40%;
     ${({ columnAlignment }) => (columnAlignment === 'center' && 'text-align: center;')};
 
     ${above.ipadLand`

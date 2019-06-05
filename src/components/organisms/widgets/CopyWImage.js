@@ -9,7 +9,7 @@ import ImageLoader from '../../atoms/ImageLoader';
 const CopyWImage = ({ widget, color }) => (
   <Wrapper medium>
     <SCopyWImage>
-      <h2>{widget.heading_copy}</h2>
+      <h3>{widget.heading_copy}</h3>
       {widget.blocks.map((block, index) => (
         <div className="block" key={`block${index}`} color={color}>
           <div className="image">
@@ -30,10 +30,8 @@ const CopyWImage = ({ widget, color }) => (
 export default CopyWImage;
 
 const SCopyWImage = styled.div`
-  padding-bottom: 100px;
-  padding-top: 25px;
-  max-width: 800px;
-  margin: auto;
+  max-width: 850px;
+  margin: 125px auto;
 
   .block {
 
@@ -47,14 +45,15 @@ const SCopyWImage = styled.div`
     }
   }
 
-  h2 {
+  h3 {
     text-align: center;
     color: ${({ color }) => (color ? pageColor(color) : colors.blue)};
     margin-bottom: 35px;
+    font-size: 45px;
   }
 
   p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.75;
     color: ${colors.darkerGray};
   }

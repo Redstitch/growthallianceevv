@@ -20,12 +20,14 @@ const SWidgetFooter = styled.div`
   margin-top: 20px !important;
 
   a {
-    margin-top: 40px;
+    margin-top: 50px;
     ${button};
     ${fonts.HelveticaNeueBold};
   }
 
   p {
     color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
+    font-size: 12px;
+    margin-top: 40px;
   }
 `;

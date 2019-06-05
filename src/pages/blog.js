@@ -9,6 +9,8 @@ import Dochead from '../components/Dochead';
 import Wrapper from '../styles/utilities/Wrapper';
 import { above, below } from '../styles/utilities/mediaQueries';
 import DefaultBanner from '../components/organisms/banners/DefaultBanner';
+import fonts from '../styles/utilities/fonts';
+
 
 class BlogRollPage extends Component {
   state = {
@@ -54,10 +56,16 @@ class BlogRollPage extends Component {
                         <Link to={`/blog/${node.slug}`}>
                           <SBlogPost>
                             <Img fluid={node.acf.main_image.localFile.childImageSharp.fluid} />
-                            <h5>
-                              {node.title}
-                              <span>Read More</span>
-                            </h5>
+                            <div className="content">
+                              <div className="blog-name">
+                                <h5>
+                                  {node.title}
+                                </h5>
+                                <span>Read More</span>
+                              </div>
+
+                            </div>
+
                           </SBlogPost>
                         </Link>
                         )
@@ -140,6 +148,7 @@ const SBlog = styled.div`
 text-align: center;
 margin-bottom: 100px;
 
+
 .posts {
   ${above.ipadPort`
     display: flex;
@@ -155,27 +164,31 @@ a {
   ${above.ipadPort`
     max-width: 33.33%;
     padding-right: 50px;
+    margin-bottom: -25px;
+
   `}
 
   &:nth-child(3n - 2) {
-      h5 {
+      .blog-name {
         clip-path: polygon(0 0, 100% 4%, 100% 95%, 0% 100%);
       }
     }
 
     &:nth-child(3n - 1) {
-      h5 {
+      .blog-name {
         clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
       }
     }
 
     &:nth-child(3n) {
-      h5 {
+      .blog-name {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
       }
     }
   &.load-more {
     ${button};
+    width: auto;
+    ${fonts.HelveticaNeueBold};
   }
 }
 `;
@@ -185,22 +198,35 @@ position: relative;
 overflow-x: hidden;
 text-align: left;
 
-h5 {
-  color: ${colors.white};
-  padding: 20px 30px;
+.blog-name {
+  padding: 20px 40px 22px;
   position: relative;
-  top: -20px;
+  top: -75px;
   left: 0;
   width: 102%;
   background-color: ${colors.navy};
+  margin-bottom: 0;
+
+  span {
+    font-size: 12px;
+    color: ${colors.white};
+    ${fonts.HelveticaNeueBold};
+  }
+
+}
+
+h5 {
+  color: ${colors.white};
+  ${fonts.HelveticaNeueBold};
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 275px;
+
 
   ${below.ipadPort`
     padding: 20px 30px;
   `}
-
-  span {
-    display: block;
-    font-size: 12px;
-  }
 }
 `;

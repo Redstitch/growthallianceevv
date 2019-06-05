@@ -68,7 +68,7 @@ const SContactForm = styled.div`
   }
 
   label {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     ${fonts.HelveticaBold};
 

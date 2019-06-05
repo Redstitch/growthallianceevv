@@ -254,6 +254,11 @@ const mainNav = css`
         &:hover {
           ul.sub-nav {
             display: block;
+            padding: 0;
+          }
+          li span a:hover {
+            ${fonts.HelveticaNeueBold};
+            transition: font-family .2s ease;
           }
         }
       `}

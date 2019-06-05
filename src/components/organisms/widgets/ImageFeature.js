@@ -126,7 +126,7 @@ const SFeature = styled.div`
     }
 
     p {
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.75;
       color: ${colors.darkerGray};
     }
