@@ -7,7 +7,7 @@ import { above } from '../../../styles/utilities/mediaQueries';
 import ImageLoader from '../../atoms/ImageLoader';
 
 const CopyWImage = ({ widget, color }) => (
-  <Wrapper narrow>
+  <Wrapper medium>
     <SCopyWImage>
       <h3>{widget.heading_copy}</h3>
       {widget.blocks.map((block, index) => (
@@ -30,7 +30,8 @@ const CopyWImage = ({ widget, color }) => (
 export default CopyWImage;
 
 const SCopyWImage = styled.div`
-  margin-bottom: 100px;
+  max-width: 850px;
+  margin: 125px auto;
 
   .block {
 
@@ -40,29 +41,38 @@ const SCopyWImage = styled.div`
     `}
 
     + .block {
-      margin-top: 50px;
+      margin-top: 35px;
     }
   }
 
   h3 {
     text-align: center;
-    color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
-    margin-bottom: 30px;
+    color: ${({ color }) => (color ? pageColor(color) : colors.blue)};
+    margin-bottom: 35px;
+    font-size: 45px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: ${colors.darkerGray};
   }
 
 
   .image {
     width: 300px;
+    margin-right: 20px;
   }
 
   .content {
     ${above.ipadLand`
       width: calc(100% - 300px);
       margin-top: 30px;
+      margin-left: 20px;
     `}
 
     h1, h2, h3, h4, h5, h6, a, strong {
-      color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
+      color: ${({ color }) => (color ? pageColor(color) : colors.blue)};
     }
   }
 `;

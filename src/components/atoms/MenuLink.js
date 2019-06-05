@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import urlFixer from '../../js/urlFixer';
 import { NavContext } from '../molecules/Menu';
 
+
 const MenuLink = ({ content, linkChildren, itemIndex }) => (
   <NavContext.Consumer>
     {context => (
@@ -36,12 +37,16 @@ const MenuLink = ({ content, linkChildren, itemIndex }) => (
         )}
       </SMenuLink>
     )}
+
   </NavContext.Consumer>
 );
 
 export default MenuLink;
 
 export const SMenuLink = styled.span`
+
+
+
   display: block;
 
   a {

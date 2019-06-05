@@ -55,8 +55,12 @@ class Header extends Component {
                 </a>
               </div>
               <div className={nav === 'open' ? `navigation ${nav}` : 'navigation'} ref={(ref) => { this.navigation = ref; }}>
+                <div className="e-logo">
+                  <img src="/images/e-logo.png" alt="logo" />
+                </div>
                 <Menu content={data.allWordpressWpApiMenusMenusItems} pages={data.allWordpressPage.edges} styles={mainNav} menuTitle="main-menu" />
                 <Menu content={data.allWordpressWpApiMenusMenusItems} styles={topNav} menuTitle="top-nav" />
+
               </div>
             </Wrapper>
           </SHeader>
@@ -69,58 +73,23 @@ class Header extends Component {
 
 export default Header;
 
-const HEADER_QUERY = graphql`{
-  wordpressAcfOptions {
-    options {
-      logo {
-        localFile {
-          childImageSharp {
-            original {
-              src
-            }
-          }
-        }
-      }
-    }
-  }
-  allWordpressPage {
-    edges {
-      node {
-        wordpress_id
-        acf {
-          page_color
-        }
-      }
-    }
-  }
-  allWordpressWpApiMenusMenusItems {
-    edges {
-      node {
-        id
-        slug
-        items {
-          type
-          object_id
-          title
-          url
-          classes
-          target
-          wordpress_children {
-            type
-            object_id
-            title
-            url
-            classes
-            target
-          }
-        }
-      }
-    }
-  }
-}`;
-
 
 const SHeader = styled.header`
+
+.e-logo {
+  width: 40px;
+  position: absolute;
+  right: 22px;
+  ${below.widePageWidth`
+    width: 35px;
+    right: 15px;
+  `}
+  ${below.pageWidth`
+      width: 30px;
+      right: 15px;
+  `}
+}
+
   ${Wrapper} {
     display: flex;
     justify-content: space-between;
@@ -143,21 +112,23 @@ const SHeader = styled.header`
   `}
   .logo {
     display: block;
-    max-width: 160px;
-    margin-top: 25px;
+    max-width: 186px;
+    margin-top: 26px;
     ${below.widePageWidth`
-      margin-top: 11px;
+      margin-top: 15px;
     `}
     ${below.pageWidth`
-      max-width: 120px;
-      margin-top: 9px;
+      max-width: 140px;
+      margin-top: 15px;
     `}
     ${below.ipadLand`
-      max-width: 90px;
-      margin-top: 20px;
+      max-width: 115px;
+      margin-top: 15px;
       float: left;
     `}
   }
+
+
   .navigation {
     position: relative;
     ${below.ipadLand`
@@ -231,6 +202,7 @@ const SHeader = styled.header`
 const mainNav = css`
   ${NavStyles};
   ul {
+
     margin: 65px 0 0;
     ${below.widePageWidth`
       margin: 45px 0 0;
@@ -243,6 +215,7 @@ const mainNav = css`
         margin: 0;
     `}
     li {
+
       ${below.ipadLand`
           width: 100%;
       `}
@@ -281,6 +254,11 @@ const mainNav = css`
         &:hover {
           ul.sub-nav {
             display: block;
+            padding: 0;
+          }
+          li span a:hover {
+            ${fonts.HelveticaNeueBold};
+            transition: font-family .2s ease;
           }
         }
       `}
@@ -289,6 +267,8 @@ const mainNav = css`
 
   ${SMenuLink} {
     a {
+      color: ${colors.navy};
+
       padding: 20px;
       ${below.widePageWidth`
         padding: 15px;
@@ -304,10 +284,14 @@ const mainNav = css`
 `;
 
 const topNav = css`
+
+
+
+
   ${NavStyles};
   margin-top: 30px;
   position: absolute;
-  right: 0;
+  right: 105px;
   top: 0;
   ${below.widePageWidth`
     margin-top: 15px;
@@ -324,6 +308,7 @@ const topNav = css`
   }
   ${SMenuLink} {
     text-transform: uppercase;
+
     ${below.ipadLand`
       background-color: ${colors.gray};
       margin-bottom: 2px;
@@ -331,9 +316,13 @@ const topNav = css`
     a {
       color: ${colors.darkerGray};
       ${fonts.HelveticaNeueRegular};
+      font-size: 13px;
       margin-left: 50px;
-      ${above.ipadLand`
-      font-size: 11px;
+      ${below.widePageWidth`
+        font-size: 12px;
+        margin-left: 0;
+        margin-top: 9px;
+        padding-left: 32px;
       `}
       ${below.ipadLand`
         padding: 25px;
@@ -342,9 +331,12 @@ const topNav = css`
       &:before {
         ${fonts.FontAwesome};
         margin-right: 10px;
+        ${below.pageWidth`
+          margin-right: 4px;
+        `}
         ${below.ipadLand`
-            display: none;
-            content: '';
+          display: none;
+          content: '';
         `}
       }
     }
@@ -353,3 +345,54 @@ const topNav = css`
     background-color: ${colors.white};
   }
 `;
+
+
+const HEADER_QUERY = graphql`{
+  wordpressAcfOptions {
+    options {
+      logo {
+        localFile {
+          childImageSharp {
+            original {
+              src
+            }
+          }
+        }
+      }
+    }
+  }
+  allWordpressPage {
+    edges {
+      node {
+        wordpress_id
+        acf {
+          page_color
+        }
+      }
+    }
+  }
+  allWordpressWpApiMenusMenusItems {
+    edges {
+      node {
+        id
+        slug
+        items {
+          type
+          object_id
+          title
+          url
+          classes
+          target
+          wordpress_children {
+            type
+            object_id
+            title
+            url
+            classes
+            target
+          }
+        }
+      }
+    }
+  }
+}`;

@@ -16,13 +16,12 @@ const Footer = () => (
         <>
           <Shape7 />
           <div className="content">
-            <Wrapper>
+            <Wrapper wide>
               <div className="columns">
                 <div>
                   <h4>{data.wordpressAcfOptions.options.subscribe.heading}</h4>
-                  <p>{data.wordpressAcfOptions.options.subscribe.copy}</p>
                   <div dangerouslySetInnerHTML={{
-                    __html: data.wordpressAcfOptions.options.subscribe.form,
+                    __html: `<p>${data.wordpressAcfOptions.options.subscribe.copy}</p>${data.wordpressAcfOptions.options.subscribe.form}`,
                   }}
                   />
                 </div>
@@ -44,18 +43,20 @@ const Footer = () => (
                     ))}
                 </div>
                 <div>
-                  <div dangerouslySetInnerHTML={{
-                    __html: data.wordpressAcfOptions.options.credits,
-                  }}
+                  <div
+                    className="credits"
+                    dangerouslySetInnerHTML={{
+                      __html: data.wordpressAcfOptions.options.credits,
+                    }}
                   />
                 </div>
               </div>
-              <Globe rotation="-155deg" />
             </Wrapper>
           </div>
         </>
       )}
     />
+    <Globe rotation="-155deg" />
   </SFooter>
 );
 
@@ -91,35 +92,88 @@ const SFooter = styled.footer`
 
   .columns {
 
+    margin-left: 50px;
+    ${below.ipadMid`
+      margin-left: 25px;
+    `}
+
+
+    .subscribe-form {
+      max-width: 300px;
+
+      form {
+        position: relative;
+        display: flex;
+        width: 100%;
+        padding-top: 10px;
+      }
+
+      input {
+        flex: 1;
+        padding: 12px 10px;
+        font-size: 14px;
+        outline: 0;
+      }
+
+      button {
+        flex: 0 0 100px;
+        padding-top: 3px;
+        border: 0;
+        font-size: 12px;
+        ${fonts.HelveticaNeueBold};
+        text-transform: uppercase;
+        background: ${colors.orange};
+        color: ${colors.white};
+      }
+
+    }
+
+
     ${above.ipadPort`
       display: flex;
-      max-width: 852px;
-      `}
+      max-width: 877px;
+    `}
 
     img {
       max-width: 160px;
     }
 
+    p {
+      margin-bottom: 25px;
+    }
+
     > div {
+      padding-right: 100px;
+
       width: 100%;
-      font-size: 14px;
-
-      + div {
-
-        ${above.ipadPort`
-          max-width: 300px;
-          padding-left: 100px;
-          `}
-
-        ${below.ipadPort`
-          padding-top: 50px;
-          `}
+      font-size: 16px;
+      :first-of-type {
+        min-width: 400px;
+      ${below.ipadLand`
+        min-width: 350px;
+      `}
       }
 
+      ${below.ipadMid`
+        padding-right: 20px;
+      `}
+
+      ${below.ipadPort`
+        padding-top: 50px;
+      `}
+
       h4 {
-        font-size: 14px;
+        font-size: 16px;
         ${fonts.HelveticaNeueBold};
         margin-bottom: 10px;
+      }
+
+      .credits {
+        ${fonts.HelveticaNeueBold};
+        p {
+          margin-bottom: 10px;
+          font-size: 12px;
+        }
       }
 
       a {
@@ -150,13 +204,14 @@ const SFooter = styled.footer`
     `}
 
 
-    ${SGlobe} {
-      bottom: -100px;
-      right: 0;
-      width: 100%;
-      min-width: 600px;
-      max-width: 700px;
-      transform: translateY(50%) translateX(50%);
-    }
+
+  }
+  ${SGlobe} {
+    bottom: -330px;
+    right: -250px;
+    width: 100%;
+    min-width: 600px;
+    max-width: 700px;
+    transform: rotate(15deg);
   }
 `;

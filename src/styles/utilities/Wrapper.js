@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   ${props => (props.wide && `max-width: ${breakpoints.pageWidth + 200}px;`)}
   ${props => (props.narrow && `max-width: ${breakpoints.ipadPort}px;`)}
   ${props => (props.medium && `max-width: ${breakpoints.ipadLand}px;`)}
+  ${props => props.narrower && 'max-width: 700px;'}
 `;
 
 export default Wrapper;

@@ -7,6 +7,8 @@ import Wrapper from '../../../styles/utilities/Wrapper';
 import { numberColor } from '../../../js/autoColor';
 import { colors } from '../../../styles/utilities/settings';
 import WidgetFooter from '../../molecules/WidgetFooter';
+import fonts from '../../../styles/utilities/fonts';
+
 
 const NumberTicker = ({ widget, color }) => (
   <SNumberTicker color={color}>
@@ -31,7 +33,7 @@ export default NumberTicker;
 
 const SNumberTicker = styled.div`
   text-align: center;
-  padding: 0 0 100px;
+  margin: 150px 0;
 
   .numbers {
 
@@ -39,7 +41,7 @@ const SNumberTicker = styled.div`
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      margin-right: -30px;
+      margin-right: -35px;
       flex-wrap: wrap;
     `}
 
@@ -50,7 +52,7 @@ const SNumberTicker = styled.div`
     ${SNumberItem} {
 
       ${above.mobile`
-        padding-right: 30px;
+        padding-right: 35px;
       `}
 
       ${below.mobile`
@@ -77,9 +79,11 @@ const SNumberTicker = styled.div`
 const NumberRow = styled.div`
   h4 {
     color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.black)};
+    font-size: 18px;
+    ${fonts.HelveticaNeueBold};
   }
 
   + div {
-    margin-top: 50px;
+    margin-top: 30px;
   }
 `;

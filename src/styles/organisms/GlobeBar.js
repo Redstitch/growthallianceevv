@@ -11,8 +11,13 @@ const GlobeBar = styled.div`
   position: relative;
   overflow: hidden;
 
+  p {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
   ${above.ipadLand`
-    ${({ backgroundColor }) => (backgroundColor !== 'blank' ? 'margin: -50px 0 50px; padding: 50px 0;' : 'padding-bottom: 25px;')}
+    ${({ backgroundColor }) => (backgroundColor !== 'blank' ? 'margin: -50px 0 50px; padding: 80px 0 90px;' : 'padding-bottom: 25px;')}
   `}
 
   ${below.ipadLand`
@@ -25,11 +30,10 @@ const GlobeBar = styled.div`
     ${above.ipadLand`
       transition-duration: ${misc.widgetTransition};
       ${({ alignment }) => (alignment === 'right' ? 'right: 95%;' : 'left: 95%;')};
-      ${({ isVisible, alignment }) => ((isVisible && alignment === 'right') ? 'right: 90%' : '')};
-      ${({ isVisible, alignment }) => ((isVisible && alignment === 'left') ? 'left: 90%' : '')};
-      width: 900px;
-      top: 50%;
-      transform: translateY(-50%);
+      ${({ isVisible, alignment }) => ((isVisible && alignment === 'right') ? 'right: 80%' : '')};
+      ${({ isVisible, alignment }) => ((isVisible && alignment === 'left') ? 'left: 80%' : '')};
+      width: 700px;
+      top: 15px;
     `}
 
     ${below.ipadLand`
@@ -76,13 +80,17 @@ const GlobeBar = styled.div`
   }
 
   h2 {
+    ${fonts.HelveticaNeueRegular};
+    font-size: 40px;
+    font-weight: normal;
     position: relative;
     z-index: 2;
     color: ${({ backgroundColor }) => (backgroundColor !== 'blank' && colors.white)};
     text-align: center;
 
     ${above.ipadLand`
-      padding-top: 50px;
+      padding-top: 60px;
+      padding-bottom: 15px;
       transition-duration: ${misc.widgetTransition};
       ${({ isVisible }) => (isVisible ? 'margin-top: 0' : 'margin-top: 100px')};
     `}
@@ -98,13 +106,18 @@ const GlobeBar = styled.div`
 
     ${above.ipadLand`
       display: flex;
+      justify-content: center;
       align-items: center;
-      ${({ columns }) => (columns ? 'margin-right: -80px' : '')};
+      ${({ columns }) => (columns ? 'margin-right: -70px' : '')};
       flex-direction: ${({ alignment }) => (alignment === 'right' ? 'row' : 'row-reverse')};
       transition-duration: ${misc.widgetTransition};
       ${({ isVisible }) => (isVisible ? 'margin-top: 0' : 'margin-top: 100px')};
       ${({ padTop, backgroundColor }) => (padTop === false ? '' : `${backgroundColor !== 'blank' ? 'padding-top: 50px' : ''}`)};
     `}
+
+    p {
+      margin-bottom: 24px;
+    }
   }
 
   .image {
@@ -114,7 +127,7 @@ const GlobeBar = styled.div`
     ${above.ipadLand`
       transition-duration: ${misc.widgetTransition};
       ${({ alignment }) => (alignment === 'right' ? 'right: -30px' : 'left: -30px')};
-      ${({ isVisible, alignment }) => ((isVisible && alignment === 'left') ? 'left: 0' : '')};
+      ${({ isVisible, alignment }) => ((isVisible && alignment === 'left') ? 'left: 0; padding-right: 15px' : '')};
       ${({ isVisible, alignment }) => ((isVisible && alignment === 'right') ? 'right: 0' : '')};
       max-width: calc(100% - 480px);
     `}
@@ -132,22 +145,40 @@ const GlobeBar = styled.div`
 
   .column,
   .content {
-    color: ${({ backgroundColor }) => (backgroundColor === 'blank' ? colors.black : colors.white)};
+    color: ${({ backgroundColor }) => (backgroundColor === 'blank' ? colors.darkerGray : colors.white)};
 
-    h4 {
-      font-size: 30px;
+    h3 {
+      font-size: 48px;
+      line-height: 1.1;
+      margin-bottom: 18px;
       ${fonts.HelveticaNeueLight};
       ${({ backgroundColor, color }) => (backgroundColor === 'blank' && `color: ${(color ? pageColor(color) : colors.navy)}`)};
     }
 
+    h4 {
+      font-size: 26px;
+      line-height: 1.15;
+      margin-bottom: 26px;
+      ${fonts.HelveticaNeueLight};
+      ${({ backgroundColor, color }) => (backgroundColor === 'blank' && `color: ${(color ? pageColor(color) : colors.navy)}`)};
+    }
+
+    h5 {
+      font-size: 60px;
+      margin-bottom: -10px;
+      ${fonts.HelveticaNeueLight};
+    }
+
     > a {
+      ${fonts.HelveticaNeueBold};
       ${button};
       ${({ color }) => ((color && color === 'orange') && `background-color: ${colors.blue}`)};
+      margin-top: 8px;
     }
   }
 
   .column{
-
+  max-width: 40%;
     ${({ columnAlignment }) => (columnAlignment === 'center' && 'text-align: center;')};
 
     ${above.ipadLand`
@@ -183,6 +214,7 @@ const GlobeBar = styled.div`
       position: relative;
       z-index: 1;
       margin: 20px auto 50px;
+      ${fonts.HelveticaNeueBold};
     }
   }
 `;

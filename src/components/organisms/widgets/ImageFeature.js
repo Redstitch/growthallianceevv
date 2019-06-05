@@ -8,6 +8,8 @@ import { pageColor } from '../../../js/autoColor';
 import fonts from '../../../styles/utilities/fonts';
 import PageLink from '../../atoms/PageLink';
 import ImageLoader from '../../atoms/ImageLoader';
+import { colors } from '../../../styles/utilities/settings';
+
 
 const ImageFeature = ({ widget, color }) => widget.features.map((feature, index) => (
   <SFeature key={feature.content.heading + index} color={color} selected={feature.content.color}>
@@ -116,13 +118,23 @@ const SFeature = styled.div`
     `}
 
     h4 {
-      font-size: 30px;
+      font-size: 48px;
+      line-height: 1.1;
+      margin-bottom: 10px;
       ${fonts.HelveticaNeueLight};
       color: ${({ color, selected }) => (color ? pageColor(color) : pageColor(selected))};
     }
 
+    p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: ${colors.darkerGray};
+    }
+
     > a {
       ${button};
+      ${fonts.HelveticaNeueBold};
+      margin-top: 13px;
     }
   }
 `;

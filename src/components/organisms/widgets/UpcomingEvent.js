@@ -81,6 +81,7 @@ const SUpcomingEvent = styled.div`
 
   h4 {
     font-size: 45px;
+    margin-left: -2px;
     ${fonts.HelveticaNeueRegular};
 
     ${below.ipadPort`
@@ -102,6 +103,10 @@ const SUpcomingEvent = styled.div`
       color: ${({ color }) => (color ? pageColor(color) : colors.green)};
     }
 
+    p {
+      color: ${colors.darkerGray};
+    }
+
     a {
       ${button};
     }
@@ -120,6 +125,12 @@ const SUpcomingEvent = styled.div`
 
     sup {
       ${fonts.HelveticaNeueBold};
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    p {
+      color: ${colors.white};
     }
 
     a {

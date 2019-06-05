@@ -68,7 +68,8 @@ const SContactForm = styled.div`
   }
 
   label {
-    font-size: 22px;
+    font-size: 14px;
+    font-weight: bold;
     ${fonts.HelveticaBold};
 
     &[for="osduiegnpiouenv307h09uhvsoihu"] {
@@ -81,7 +82,7 @@ const SContactForm = styled.div`
   }
 
   input {
-    line-height: 40px;
+    line-height: 20px;
 
     &[type="submit"] {
       width: auto;

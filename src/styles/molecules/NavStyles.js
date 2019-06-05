@@ -35,7 +35,7 @@ const NavStyles = css`
           ${fonts.HelveticaNeueRegular};
           padding: 15px 30px;
           ${below.widePageWidth`
-            padding: 10px;
+            padding: 10px 20px;
           `}
         }
       }
@@ -65,9 +65,11 @@ const NavStyles = css`
       font-size: 16px;
       ${fonts.HelveticaNeueBold};
       ${below.widePageWidth`
+        margin-top: 10px;
         font-size: 14px;
       `}
       ${below.pageWidth`
+        margin-top: 13px;
         font-size: 12px;
       `}
       ${below.ipadLand`

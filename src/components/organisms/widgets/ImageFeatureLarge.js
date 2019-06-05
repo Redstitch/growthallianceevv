@@ -7,6 +7,7 @@ import GlobeBar from '../../../styles/organisms/GlobeBar';
 import PageLink from '../../atoms/PageLink';
 import ImageLoader from '../../atoms/ImageLoader';
 
+
 class ImageFeatureLarge extends Component {
   state = {
     isVisible: false,
@@ -35,7 +36,7 @@ class ImageFeatureLarge extends Component {
           <Wrapper wide>
             <div className="inner">
               <div className="content">
-                <h4>{widget.content.heading}</h4>
+                <h3>{widget.content.heading}</h3>
                 <p>{widget.content.content}</p>
                 {widget.content.button.copy && <PageLink content={widget.content.button} /> }
               </div>

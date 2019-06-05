@@ -106,7 +106,7 @@ export const button = css`
   display: inline-block;
   background-color: ${colors.orange};
   color: ${colors.white};
-  padding: 10px 20px;
+  padding: 10px 20px 9px;
   clip-path: polygon(0 3%, 100% 0, 98% 98%, 2% 95%);
 `;
 
