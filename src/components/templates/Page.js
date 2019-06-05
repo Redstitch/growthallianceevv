@@ -257,6 +257,7 @@ query PageQuery($slug: String!) {
           }
           columns {
             heading
+            large_subhead
             copy
             button {
               copy

@@ -1,22 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-import { breakpoints, colors } from '../../styles/utilities/settings';
+import { colors } from '../../styles/utilities/settings';
 import { pageColor } from '../../js/autoColor';
 import { below } from '../../styles/utilities/mediaQueries';
 import PageLink from '../atoms/PageLink';
 import fonts from '../../styles/utilities/fonts';
+import Wrapper from '../../styles/utilities/Wrapper';
 
 
 const WidgetHeader = ({ content, color }) => (
-  <SWidgetHeader color={color}>
-    {content.heading.title && <h3>{content.heading.title}</h3>}
-    {content.heading.copy && <p>{content.heading.copy}</p>}
-    {content.heading.button.copy
+  <Wrapper narrower>
+    <SWidgetHeader color={color}>
+      {content.heading.title && <h3>{content.heading.title}</h3>}
+      {content.heading.copy && <p>{content.heading.copy}</p>}
+      {content.heading.button.copy
       && (
       <PageLink content={content.heading.button} />
       )
     }
-  </SWidgetHeader>
+    </SWidgetHeader>
+  </Wrapper>
 );
 
 export default WidgetHeader;
@@ -26,7 +29,6 @@ const SWidgetHeader = styled.div`
   text-align: center;
 
   > p {
-    max-width: ${breakpoints.mobile}px;
     margin: 0 auto 20px;
   }
 
