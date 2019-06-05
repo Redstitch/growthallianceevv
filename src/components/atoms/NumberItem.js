@@ -84,7 +84,7 @@ export const SNumberItem = styled.div`
     color: ${colors.white};
     background-color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.green)};
     clip-path: polygon(3% 0, 98% 4%, 100% 93%, 0% 100%);
-    padding: 20px 10px;
+    padding: 20px 10px 18px;
     font-size: 14px;
     display: inline-block;
   }

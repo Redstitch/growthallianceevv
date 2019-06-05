@@ -20,6 +20,7 @@ const SWidgetFooter = styled.div`
   margin-top: 20px !important;
 
   a {
+    margin-top: 40px;
     ${button};
     ${fonts.HelveticaNeueBold};
   }

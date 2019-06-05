@@ -119,7 +119,7 @@ const SFeature = styled.div`
 
     h4 {
       font-size: 48px;
-      line-height: 1.15;
+      line-height: 1.1;
       margin-bottom: 10px;
       ${fonts.HelveticaNeueLight};
       color: ${({ color, selected }) => (color ? pageColor(color) : pageColor(selected))};

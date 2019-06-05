@@ -20,7 +20,11 @@ const SImageDescription = styled.div`
   margin-bottom: 100px;
 
   p {
-    color: ${({ color }) => (color ? pageColor(color) : colors.black)};
-    margin-bottom: 60px;
+    color: ${colors.darkerGray};
+    font-size: 14px;
+    text-align: center;
+    max-width: 600px;
+    padding-bottom: 80px;
+    margin: auto;
   }
 `;

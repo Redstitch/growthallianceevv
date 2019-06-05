@@ -50,7 +50,7 @@ export const SDefaultBanner = styled.div`
   .content {
     ${above.ipadLand`
       max-width: 50%;
-      padding: 55px 0;
+      padding: 45px 0;
     `}
   }
 `;
