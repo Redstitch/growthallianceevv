@@ -23,10 +23,11 @@ export const colors = {
 
 export const breakpoints = {
   mobile: 480,
+  smallPage: 550,
+  ipadPort: 768,
+  ipadMid: 960,
   ipadLand: 1024,
   headerBreak: 1140,
-  ipadMid: 960,
-  ipadPort: 768,
   pageWidth: 1240,
   widePageWidth: 1440,
   mapBreak1: 1660,
