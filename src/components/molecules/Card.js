@@ -27,16 +27,15 @@ export const SCard = styled.div`
   position: relative;
   overflow-x: hidden;
   text-align: left;
-  ${below.ipadPort`
-      margin: 0 -30px;
-  `}
+
+  
+
 
   h5 {
     color: ${colors.white};
     padding: 20px 30px;
     position: relative;
     top: -20px;
-    left: -2px;
     width: 101%;
     background-color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
 
