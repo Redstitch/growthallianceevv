@@ -5,6 +5,7 @@ import Card from './Card';
 import Wrapper from '../../styles/utilities/Wrapper';
 import { colors } from '../../styles/utilities/settings';
 import { above, below } from '../../styles/utilities/mediaQueries';
+import fonts from '../../styles/utilities/fonts';
 
 
 class RelatedPosts extends Component {
@@ -99,6 +100,21 @@ const SRelatedPosts = styled.div`
     ${below.ipadLand`
       margin-bottom: 20px;
     `}
+
+    h5 {
+      color: ${colors.white};
+      ${fonts.HelveticaNeueBold};
+      margin-bottom: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 20px 45px;
+
+    
+      ${below.ipadPort`
+        padding: 20px 30px;
+      `}
+    }
 
     > a {
       ${above.ipadLand`
