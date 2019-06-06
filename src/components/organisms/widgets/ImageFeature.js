@@ -33,7 +33,10 @@ const ImageFeature = ({ widget, color }) => widget.features.map((feature, index)
 export default ImageFeature;
 
 const SFeature = styled.div`
-  margin: 100px 0;
+  margin: 120px 0 100px;
+  ${below.pageWidth`
+  margin: 110px 0 100px;
+  `}
 
   + div {
     margin-top: 100px;
@@ -58,8 +61,9 @@ const SFeature = styled.div`
   }
 
   ${Wrapper} {
+
     ${below.ipadLand`
-    max-width: 500px;
+    max-width: 600px;
     `}
 
     ${above.ipadLand`
@@ -70,6 +74,9 @@ const SFeature = styled.div`
     > div {
       width: 100%;
       margin: 0 40px;
+      ${below.ipadLand`
+        margin: 0;
+      `}
     }
   }
 
@@ -108,6 +115,9 @@ const SFeature = styled.div`
         font-size: 35px;
         max-width: 300px;
         margin-top: 15px;
+      `}
+      ${below.ipadLand`
+        margin-top: 35px;
       `}
     }
 
