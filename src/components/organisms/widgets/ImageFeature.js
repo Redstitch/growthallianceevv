@@ -33,25 +33,10 @@ const ImageFeature = ({ widget, color }) => widget.features.map((feature, index)
 export default ImageFeature;
 
 const SFeature = styled.div`
-
-  ${below.ipadLand`
-    padding: 0 30px;
-  `}
-
-  ${below.mobile`
-    padding: 0 15px;
-  `}
+  margin: 100px 0;
 
   + div {
     margin-top: 100px;
-  }
-
-  &:last-of-type {
-    padding-bottom: 100px;
-
-    ${below.ipadLand`
-      padding-bottom: 50px;
-    `}
   }
 
   &:nth-of-type(2n) {
@@ -60,7 +45,6 @@ const SFeature = styled.div`
     }
 
     .image {
-
       svg {
         margin-left: -22px;
         height: 130%;
@@ -74,6 +58,9 @@ const SFeature = styled.div`
   }
 
   ${Wrapper} {
+    ${below.ipadLand`
+    max-width: 500px;
+    `}
 
     ${above.ipadLand`
       display: flex;
@@ -82,6 +69,7 @@ const SFeature = styled.div`
 
     > div {
       width: 100%;
+      margin: 0 40px;
     }
   }
 
@@ -109,20 +97,18 @@ const SFeature = styled.div`
 
   .content {
 
-    ${above.ipadLand`
-      padding: 0 50px;
-    `}
-
-    ${below.ipadLand`
-      padding-top: 30px;
-    `}
-
     h4 {
       font-size: 48px;
-      line-height: 1.1;
-      margin-bottom: 10px;
+      line-height: 1;
+      max-width: 400px;
+      margin-bottom: 15px;
       ${fonts.HelveticaNeueLight};
       color: ${({ color, selected }) => (color ? pageColor(color) : pageColor(selected))};
+      ${below.pageWidth`
+        font-size: 35px;
+        max-width: 300px;
+        margin-top: 15px;
+      `}
     }
 
     p {

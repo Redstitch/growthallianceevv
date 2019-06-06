@@ -149,7 +149,7 @@ const GlobeBar = styled.div`
 
     h3 {
       font-size: 48px;
-      line-height: 1.1;
+      line-height: 1;
       margin-bottom: 18px;
       ${fonts.HelveticaNeueLight};
       ${({ backgroundColor, color }) => (backgroundColor === 'blank' && `color: ${(color ? pageColor(color) : colors.navy)}`)};
