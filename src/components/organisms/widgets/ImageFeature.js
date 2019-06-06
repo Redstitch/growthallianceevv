@@ -77,6 +77,10 @@ const SFeature = styled.div`
       ${below.ipadLand`
         margin: 0;
       `}
+      &.image {
+        width: 95%;
+        margin: auto;
+      }
     }
   }
 
