@@ -94,6 +94,14 @@ const GlobeBar = styled.div`
       transition-duration: ${misc.widgetTransition};
       ${({ isVisible }) => (isVisible ? 'margin-top: 0' : 'margin-top: 100px')};
     `}
+    ${below.ipadLand`
+      font-size: 35px;
+      text-align: left;
+      padding: 85px 0 60px;
+      line-height: 1.15;
+      margin: 0 auto;
+      max-width: 500px;
+  `}
 
   }
 
@@ -119,6 +127,10 @@ const GlobeBar = styled.div`
     p {
       margin-top: 20px;
       margin-bottom: 24px;
+    }
+
+    .column {
+      max-width: 500px;
     }
   }
 
@@ -156,7 +168,7 @@ const GlobeBar = styled.div`
     ${below.ipadLand`
       width: 95%;
       max-width: 500px;
-      margin: 50px auto 0;
+      margin: 0 auto 20px;
     `}
     
     h3 {
@@ -203,6 +215,7 @@ const GlobeBar = styled.div`
 
     ${below.ipadLand`
       padding-bottom: ${({ withButton }) => (withButton ? '0' : '50px')};
+      max-width: none;
     `}
   }
 

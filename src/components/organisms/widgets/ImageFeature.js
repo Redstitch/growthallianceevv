@@ -73,7 +73,7 @@ const SFeature = styled.div`
 
     > div {
       width: 100%;
-      margin: 0 40px;
+      margin: 0 60px;
       ${below.ipadLand`
         margin: 0;
       `}
@@ -111,7 +111,6 @@ const SFeature = styled.div`
     h4 {
       font-size: 48px;
       line-height: 1;
-      max-width: 400px;
       margin-bottom: 15px;
       ${fonts.HelveticaNeueLight};
       color: ${({ color, selected }) => (color ? pageColor(color) : pageColor(selected))};
@@ -121,7 +120,7 @@ const SFeature = styled.div`
         margin-top: 15px;
       `}
       ${below.ipadLand`
-        margin-top: 35px;
+        margin-top: 45px;
       `}
     }
 

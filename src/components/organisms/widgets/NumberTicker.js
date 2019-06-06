@@ -33,11 +33,11 @@ export default NumberTicker;
 
 const SNumberTicker = styled.div`
   text-align: center;
-  margin: 150px 0;
+  margin: 100px 0;
 
   .numbers {
 
-    ${above.mobile`
+    ${above.ipadPort`
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -51,26 +51,23 @@ const SNumberTicker = styled.div`
 
     ${SNumberItem} {
 
-      ${above.mobile`
+      margin: 40px auto;
+      max-width: 500px;
+
+      ${above.ipadPort`
         padding-right: 35px;
+        margin-bottom: 0;
       `}
 
-      ${below.mobile`
-        + div {
-          margin-top: 30px;
-        }
-      `}
     }
 
     > div {
 
-      ${above.mobile`
-        width: 50%;
-        `}
+
 
       ${above.ipadPort`
         width: 100%;
-        max-width: 25%;
+        max-width: 50%;
       `}
     }
   }

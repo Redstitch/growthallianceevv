@@ -25,7 +25,7 @@ const WidgetHeader = ({ content, color }) => (
 export default WidgetHeader;
 
 const SWidgetHeader = styled.div`
-  margin-bottom: 60px;
+  margin-bottom: 100px;
   text-align: center;
 
   > p {
