@@ -29,7 +29,6 @@ const SPanelBanner = styled.div`
       display: flex;
       height: 90vh;
       margin: 0 -4%;
-      padding: 0 0 100px;
     `}
   }
 

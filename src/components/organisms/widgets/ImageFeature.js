@@ -111,12 +111,11 @@ const SFeature = styled.div`
     h4 {
       font-size: 48px;
       line-height: 1;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
       ${fonts.HelveticaNeueLight};
       color: ${({ color, selected }) => (color ? pageColor(color) : pageColor(selected))};
       ${below.pageWidth`
         font-size: 35px;
-        max-width: 300px;
         margin-top: 15px;
       `}
       ${below.ipadLand`

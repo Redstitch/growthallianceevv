@@ -64,6 +64,10 @@ const SNumberTicker = styled.div`
         max-width: none;
       `}
 
+      ${below.ipadLand`
+        margin: 25px auto;
+      `}
+
     }
 
     > div {

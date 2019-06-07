@@ -37,9 +37,9 @@ const GlobeBar = styled.div`
     `}
 
     ${below.ipadLand`
-      top: 0;
-      width: 400px;
-      right: 70%;
+      top: -100px;
+      width: 800px;
+      right: 65%;
     `}
   }
 
@@ -180,6 +180,7 @@ const GlobeBar = styled.div`
 
       ${below.pageWidth`
         font-size: 35px;
+        padding-top: 50px;
       `}
     }
 

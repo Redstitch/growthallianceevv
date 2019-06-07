@@ -51,6 +51,8 @@ const SWidgetHeader = styled.div`
     color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
     font-weight: 400;
     line-height: 1.15;
+    max-width: 700px;
+    margin: auto;
 
     ${below.ipadPort`
       font-size: 30px;

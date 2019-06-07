@@ -76,6 +76,10 @@ export const SBlogFeed = styled.div`
 
   .posts {
 
+    ${below.mobile`
+    margin: 0 -60px;
+    `}
+
     ${above.ipadPort`
       display: flex;
       justify-content: ${({ count }) => (count <= 3 ? 'center' : 'flex-start')};
@@ -86,6 +90,10 @@ export const SBlogFeed = styled.div`
     ${above.ipadLand`
       margin-right: -50px;
     `}
+  }
+
+  h5 {
+    ${fonts.HelveticaNeueBold};
   }
 
   a {
