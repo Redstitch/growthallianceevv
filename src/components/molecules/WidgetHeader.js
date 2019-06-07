@@ -23,7 +23,7 @@ const WidgetHeader = ({ content, color }) => (
 export default WidgetHeader;
 
 const SWidgetHeader = styled.div`
-  margin-bottom: 25px;
+  margin: 50px auto;
   text-align: center;
   ${below.ipadLand`
     padding: 0;
@@ -36,7 +36,7 @@ const SWidgetHeader = styled.div`
   > p {
 
     ${above.smallPage`
-      max-width: 700px;
+      max-width: 600px;
     `}
 
     margin: 0 auto 20px;
@@ -51,8 +51,8 @@ const SWidgetHeader = styled.div`
     color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
     font-weight: 400;
     line-height: 1.15;
-    max-width: 700px;
-    margin: auto;
+    max-width: 600px;
+    margin: 0 auto 20px;
 
     ${below.ipadPort`
       font-size: 30px;

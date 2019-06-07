@@ -133,6 +133,8 @@ const SHeader = styled.header`
 
 
   .navigation {
+    z-index: 1987239487;
+
     position: relative;
     ${below.ipadLand`
       transition-duration: ${misc.animSpeed};
