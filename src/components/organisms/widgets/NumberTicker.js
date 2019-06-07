@@ -33,9 +33,10 @@ export default NumberTicker;
 
 const SNumberTicker = styled.div`
   text-align: center;
-  margin: 100px 0 65px;
+  margin: 100px 0;
 
   .numbers {
+
 
     ${above.ipadPort`
       display: flex;
@@ -49,7 +50,6 @@ const SNumberTicker = styled.div`
 
     ${SNumberItem} {
 
-      margin: 40px auto;
       width: 80%;
       max-width: 350px;
 

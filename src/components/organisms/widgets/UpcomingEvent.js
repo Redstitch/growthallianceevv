@@ -13,7 +13,7 @@ const UpcomingEvent = ({ widget, color }) => (
   <StaticQuery
     query={UPCOMINGEVENT_QUERY}
     render={data => (
-      <Wrapper wide>
+      <Wrapper medium>
         <SUpcomingEvent color={color}>
           <div className="copy">
             <h4>{widget.heading_copy}</h4>
@@ -68,7 +68,7 @@ const UPCOMINGEVENT_QUERY = graphql`{
 }`;
 
 const SUpcomingEvent = styled.div`
-  margin-bottom: 100px;
+  margin: 100px auto;
 
 
   ${above.ipadPort`
@@ -81,7 +81,8 @@ const SUpcomingEvent = styled.div`
   }
 
   h4 {
-    font-size: 45px;
+    font-size: 46px;
+    line-height: 1;
     margin-left: -2px;
     ${fonts.HelveticaNeueRegular};
 
@@ -112,6 +113,7 @@ const SUpcomingEvent = styled.div`
 
     a {
       ${button};
+      ${fonts.HelveticaNeueBold};
     }
   }
 
@@ -144,6 +146,7 @@ const SUpcomingEvent = styled.div`
     a {
       margin-top: 15px;
       ${button};
+      ${fonts.HelveticaNeueBold};
     }
   }
 `;

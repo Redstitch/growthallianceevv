@@ -109,10 +109,10 @@ const SFeature = styled.div`
   .content {
 
     h4 {
-      font-size: 48px;
+      font-size: 46px;
       line-height: 1;
       margin-bottom: 25px;
-      ${fonts.HelveticaNeueLight};
+      ${fonts.HelveticaNeueRegular};
       color: ${({ color, selected }) => (color ? pageColor(color) : pageColor(selected))};
       ${below.pageWidth`
         font-size: 35px;

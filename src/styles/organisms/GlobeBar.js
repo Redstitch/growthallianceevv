@@ -172,7 +172,7 @@ const GlobeBar = styled.div`
     `}
     
     h3 {
-      font-size: 48px;
+      font-size: 46px;
       line-height: 1;
       margin-bottom: 18px;
       ${fonts.HelveticaNeueLight};
@@ -218,7 +218,9 @@ const GlobeBar = styled.div`
       padding-bottom: ${({ withButton }) => (withButton ? '0' : '50px')};
       max-width: none;
       &:last-of-type {
-        margin-bottom: 50px;
+      }
+      &:first-of-type {
+        margin-top: 50px;
       }
     `}
   }

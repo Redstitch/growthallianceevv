@@ -17,13 +17,11 @@ const EventItem = ({ content }) => (
           {content.acf.end_date
           && (
           <div>
-            {' -'}
-            <br />
+            {' - '}
             {content.acf.end_date}
           </div>
           )}
         </span>
-        <br />
         <span className="time">
           {content.acf.start_time}
           {content.acf.end_time && ` - ${content.acf.end_time}`}
@@ -46,6 +44,11 @@ const EventItem = ({ content }) => (
 export default EventItem;
 
 export const SEventItem = styled.div`
+
+ 
+
+  padding: 0 50px;
+
   ${above.ipadPort`
     display: flex;
     align-items: flex-start;
@@ -63,8 +66,8 @@ export const SEventItem = styled.div`
     color: ${colors.white};
 
     .date {
-      font-size: 20px;
-      line-height: 1;
+      font-size: 24px;
+      line-height: 1.15;
     }
 
     .time {
@@ -74,7 +77,7 @@ export const SEventItem = styled.div`
     }
 
     ${above.ipadPort`
-      width: 270px;
+      width: 300px;
       padding-right: 30px;
     `}
 
@@ -91,6 +94,11 @@ export const SEventItem = styled.div`
       ${above.ipadPort`
         height: 190px;
       `}
+
+      ${below.ipadPort`
+        padding: 30px;
+      `}
+
     }
 
     svg {
@@ -103,6 +111,13 @@ export const SEventItem = styled.div`
       ${below.ipadPort`
         display: none;
       `}
+    }
+  }
+
+  div .event {
+    a {
+      ${fonts.HelveticaNeueBold};
+      font-weight: bold;
     }
   }
 

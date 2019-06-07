@@ -27,7 +27,7 @@ const events = () => (
               description: data.wordpressAcfOptions.options.events_banner_copy.copy,
             }}
           />
-          <Wrapper narrow>
+          <Wrapper medium>
             {data.allWordpressWpEvent.edges.map(({ node }) => parseInt(getToday(), 0) <= parseInt(getItemDate(node.acf.start_date), 0)
                 && <EventItem key={node.id} content={node} />)}
           </Wrapper>

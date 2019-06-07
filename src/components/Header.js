@@ -88,6 +88,9 @@ const SHeader = styled.header`
       width: 30px;
       right: 15px;
   `}
+  ${below.ipadLand`
+    display: none;
+  `}
 }
 
   ${Wrapper} {
@@ -130,6 +133,8 @@ const SHeader = styled.header`
 
 
   .navigation {
+    z-index: 1987239487;
+
     position: relative;
     ${below.ipadLand`
       transition-duration: ${misc.animSpeed};
@@ -323,7 +328,7 @@ const topNav = css`
         font-size: 12px;
         margin-left: 0;
         margin-top: 9px;
-        padding-left: 32px;
+        padding-left: 30px;
       `}
       ${below.ipadLand`
         padding: 28px 25px 25px;
