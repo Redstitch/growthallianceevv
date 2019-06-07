@@ -28,12 +28,14 @@ export const SCard = styled.div`
   overflow-x: hidden;
   text-align: left;
 
+  
+
+
   h5 {
     color: ${colors.white};
     padding: 20px 30px;
     position: relative;
     top: -20px;
-    left: -2px;
     width: 101%;
     background-color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
 

@@ -108,6 +108,9 @@ export const button = css`
   color: ${colors.white};
   padding: 10px 20px 9px;
   clip-path: polygon(0 3%, 100% 0, 98% 98%, 2% 95%);
+  ${below.ipadLand`
+    clip-path: none;
+  `}
 `;
 
 export const bannerContent = css`

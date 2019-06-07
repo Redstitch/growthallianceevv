@@ -17,11 +17,11 @@ const GlobeBar = styled.div`
   }
 
   ${above.ipadLand`
-    ${({ backgroundColor }) => (backgroundColor !== 'blank' ? 'margin: -50px 0 50px; padding: 80px 0 90px;' : 'padding-bottom: 25px;')}
+    ${({ backgroundColor }) => (backgroundColor !== 'blank' ? 'margin: -50px 0; padding: 80px 0;' : 'padding-bottom: 25px;')}
   `}
 
   ${below.ipadLand`
-    ${({ backgroundColor }) => (backgroundColor !== 'blank' ? 'padding: 50px 0 0; margin: 0 0 50px;' : 'padding-bottom: 50px;')}
+    ${({ backgroundColor }) => (backgroundColor !== 'blank' ? 'padding: 0; margin: 0 0 50px;' : 'padding-bottom: 50px;')}
   `}
 
   ${SGlobe} {
@@ -37,9 +37,9 @@ const GlobeBar = styled.div`
     `}
 
     ${below.ipadLand`
-      top: 0;
-      width: 400px;
-      right: 70%;
+      top: -100px;
+      width: 800px;
+      right: 65%;
     `}
   }
 
@@ -94,6 +94,15 @@ const GlobeBar = styled.div`
       transition-duration: ${misc.widgetTransition};
       ${({ isVisible }) => (isVisible ? 'margin-top: 0' : 'margin-top: 100px')};
     `}
+    ${below.ipadLand`
+      font-size: 35px;
+      text-align: left;
+      padding: 85px 0 60px;
+      line-height: 1.15;
+      margin: 0 auto;
+      max-width: 500px;
+  `}
+
   }
 
   .inner {
@@ -116,7 +125,12 @@ const GlobeBar = styled.div`
     `}
 
     p {
+      margin-top: 20px;
       margin-bottom: 24px;
+    }
+
+    .column {
+      max-width: 500px;
     }
   }
 
@@ -132,34 +146,49 @@ const GlobeBar = styled.div`
       max-width: calc(100% - 480px);
     `}
 
+    ${below.ipadLand`
+      margin: 45px 0 0;
+    `}
+
     .gatsby-image-wrapper {
       ${below.ipadLand`
-        margin: 0 -30px;
+        margin: 0 -50px;
+        max-height: 300px;
       `}
 
-      ${below.ipadPort`
-        margin: 0 -15px;
-      `}
     }
+
+
   }
 
   .column,
   .content {
     color: ${({ backgroundColor }) => (backgroundColor === 'blank' ? colors.darkerGray : colors.white)};
 
+    ${below.ipadLand`
+      width: 95%;
+      max-width: 500px;
+      margin: 0 auto 20px;
+    `}
+    
     h3 {
       font-size: 48px;
-      line-height: 1.1;
+      line-height: 1;
       margin-bottom: 18px;
       ${fonts.HelveticaNeueLight};
       ${({ backgroundColor, color }) => (backgroundColor === 'blank' && `color: ${(color ? pageColor(color) : colors.navy)}`)};
+
+      ${below.pageWidth`
+        font-size: 35px;
+        padding-top: 50px;
+      `}
     }
 
     h4 {
       font-size: 26px;
       line-height: 1.15;
       margin-bottom: 26px;
-      ${fonts.HelveticaNeueLight};
+      ${fonts.HelveticaNeueRegular};
       ${({ backgroundColor, color }) => (backgroundColor === 'blank' && `color: ${(color ? pageColor(color) : colors.navy)}`)};
     }
 
@@ -187,14 +216,14 @@ const GlobeBar = styled.div`
 
     ${below.ipadLand`
       padding-bottom: ${({ withButton }) => (withButton ? '0' : '50px')};
+      max-width: none;
+      &:last-of-type {
+        margin-bottom: 50px;
+      }
     `}
   }
 
   .content {
-
-    ${below.ipadLand`
-      padding: 0 80px 50px;
-    `}
 
     ${below.mobile`
       padding: 0 20px 50px;

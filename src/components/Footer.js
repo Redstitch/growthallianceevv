@@ -13,7 +13,7 @@ const Footer = () => (
     <StaticQuery
       query={FOOTER_QUERY}
       render={data => (
-        <>
+        <div className="footer">
           <Shape7 />
           <div className="content">
             <Wrapper wide>
@@ -53,7 +53,7 @@ const Footer = () => (
               </div>
             </Wrapper>
           </div>
-        </>
+        </div>
       )}
     />
     <Globe rotation="-155deg" />
@@ -91,11 +91,8 @@ const SFooter = styled.footer`
 
 
   .columns {
+    margin-left: 10px;
 
-    margin-left: 50px;
-    ${below.ipadMid`
-      margin-left: 25px;
-    `}
 
 
     .subscribe-form {
@@ -105,7 +102,10 @@ const SFooter = styled.footer`
         position: relative;
         display: flex;
         width: 100%;
-        padding-top: 10px;
+        padding-top: 20px;
+        ${below.ipadMid`
+          margin-bottom: 11px;
+        `}
       }
 
       input {
@@ -129,9 +129,9 @@ const SFooter = styled.footer`
     }
 
 
-    ${above.ipadPort`
+    ${above.ipadMid`
       display: flex;
-      max-width: 877px;
+      max-width: 940px;
     `}
 
     img {
@@ -139,26 +139,29 @@ const SFooter = styled.footer`
     }
 
     p {
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
 
     > div {
-      padding-right: 100px;
+      margin-right: 90px;
+      ${below.ipadLand`
+        margin-right: 60px;
+      `}
+      ${below.ipadMid`
+        margin-right: 35px;
+      `}
 
       width: 100%;
       font-size: 16px;
       :first-of-type {
-        min-width: 400px;
-      ${below.ipadLand`
-        min-width: 350px;
-      `}
+        min-width: 333px;
       }
 
       ${below.ipadMid`
         padding-right: 20px;
       `}
 
-      ${below.ipadPort`
+      ${below.ipadMid`
         padding-top: 50px;
       `}
 
@@ -199,12 +202,9 @@ const SFooter = styled.footer`
     color: ${colors.white};
     background-color: ${colors.navy};
 
-    ${below.ipadPort`
+    ${below.ipadMid`
       padding: 50px 0;
     `}
-
-
-
   }
   ${SGlobe} {
     bottom: -330px;

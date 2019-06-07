@@ -31,7 +31,7 @@ class BlogRollPage extends Component {
         <StaticQuery
           query={BLOG_QUERY}
           render={data => (
-            <>
+            <div className="blog-layout">
               <Dochead
                 title="Blog"
                 siteName={data.wordpressSiteMetadata.name}
@@ -77,7 +77,7 @@ class BlogRollPage extends Component {
                   && <a href={null} className="load-more" onClick={() => { this.LoadMore(countVisible); }}>Load More</a>}
                 </Wrapper>
               </SBlog>
-            </>
+            </div>
           )}
         />
       </Layout>
@@ -150,23 +150,35 @@ margin-bottom: 100px;
 
 
 .posts {
-  ${above.ipadPort`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-right: -50px;
+  ${above.smallPage`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-right: -35px;
+`}
+  ${below.smallPage`
+    margin: 0 -50px;
   `}
 }
 
 a {
   width: 100%;
 
+
+
+  ${below.ipadPort`
+    max-width: 50%;
+    padding-right: 50px;
+    margin-bottom: -25px;
+  `}
+
   ${above.ipadPort`
     max-width: 33.33%;
     padding-right: 50px;
     margin-bottom: -25px;
-
   `}
+
+
 
   &:nth-child(3n - 2) {
       .blog-name {
@@ -198,8 +210,18 @@ position: relative;
 overflow-x: hidden;
 text-align: left;
 
+${below.mobile`
+margin: 0 -60px;
+`}
+
 .blog-name {
   padding: 20px 40px 22px;
+  ${below.ipadPort`
+    padding: 21px 30px 20px;
+  `}
+  ${below.smallPage`
+    padding: 21px 50px 20px;
+  `}
   position: relative;
   top: -75px;
   left: 0;
@@ -223,10 +245,5 @@ h5 {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 275px;
-
-
-  ${below.ipadPort`
-    padding: 20px 30px;
-  `}
 }
 `;

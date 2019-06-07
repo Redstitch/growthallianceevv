@@ -70,6 +70,7 @@ const UPCOMINGEVENT_QUERY = graphql`{
 const SUpcomingEvent = styled.div`
   margin-bottom: 100px;
 
+
   ${above.ipadPort`
     display: flex;
     align-items: center;
@@ -96,21 +97,28 @@ const SUpcomingEvent = styled.div`
     `}
 
     ${below.ipadPort`
-      padding-bottom: 50px;
+      padding: 0 50px 100px;
     `}
 
     h4 {
       color: ${({ color }) => (color ? pageColor(color) : colors.green)};
+      margin-bottom: 18px;
     }
 
     p {
       color: ${colors.darkerGray};
+      margin-bottom: 34px;
     }
 
     a {
       ${button};
     }
   }
+
+    ${below.ipadPort`
+      margin: 0 -50px;
+    `}
+
 
   .event {
     background-color: ${({ color }) => (color ? pageColor(color) : colors.green)};
@@ -120,7 +128,7 @@ const SUpcomingEvent = styled.div`
     padding: 70px 50px;
 
     ${below.ipadPort`
-      padding: 50px 30px;
+      padding: 100px 50px;
     `}
 
     sup {
@@ -134,7 +142,7 @@ const SUpcomingEvent = styled.div`
     }
 
     a {
-      margin-top: 30px;
+      margin-top: 15px;
       ${button};
     }
   }

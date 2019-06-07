@@ -33,11 +33,11 @@ export default NumberTicker;
 
 const SNumberTicker = styled.div`
   text-align: center;
-  margin: 150px 0;
+  margin: 100px 0 65px;
 
   .numbers {
 
-    ${above.mobile`
+    ${above.ipadPort`
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -45,32 +45,38 @@ const SNumberTicker = styled.div`
       flex-wrap: wrap;
     `}
 
-    ${above.ipadPort`
-      flex-wrap: nowrap;
-    `}
+
 
     ${SNumberItem} {
 
-      ${above.mobile`
+      margin: 40px auto;
+      width: 80%;
+      max-width: 350px;
+
+      ${above.ipadPort`
+        width: 50%;
         padding-right: 35px;
+        margin-bottom: 0;
       `}
 
-      ${below.mobile`
-        + div {
-          margin-top: 30px;
-        }
+      ${above.ipadLand`
+        width: 25%;
+        max-width: none;
       `}
+
+      ${below.ipadLand`
+        margin: 25px auto;
+      `}
+
     }
 
     > div {
 
-      ${above.mobile`
-        width: 50%;
-        `}
+
 
       ${above.ipadPort`
         width: 100%;
-        max-width: 25%;
+        max-width: 50%;
       `}
     }
   }

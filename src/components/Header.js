@@ -317,6 +317,7 @@ const topNav = css`
       color: ${colors.darkerGray};
       ${fonts.HelveticaNeueRegular};
       font-size: 13px;
+      letter-spacing: 1px;
       margin-left: 50px;
       ${below.widePageWidth`
         font-size: 12px;
@@ -325,7 +326,7 @@ const topNav = css`
         padding-left: 32px;
       `}
       ${below.ipadLand`
-        padding: 25px;
+        padding: 28px 25px 25px;
         margin: 0;
       `}
       &:before {

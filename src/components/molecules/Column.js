@@ -153,7 +153,7 @@ const SColumn = styled.div`
     `}
 
     ${below.ipadLand`
-      padding: 50px;
+      padding: 53px 50px 40px;
     `}
 
     h1 {
@@ -171,6 +171,9 @@ const SColumn = styled.div`
       color: ${colors.white};
       display: inline-block;
       padding: 10px 20px 10px 21px;
+      ${below.ipadLand`
+        padding: 5px 20px 10px 21px;
+      `}
       position: relative;
       transition-duration: 0s;
       opacity: 1;

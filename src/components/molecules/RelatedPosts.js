@@ -5,6 +5,7 @@ import Card from './Card';
 import Wrapper from '../../styles/utilities/Wrapper';
 import { colors } from '../../styles/utilities/settings';
 import { above, below } from '../../styles/utilities/mediaQueries';
+import fonts from '../../styles/utilities/fonts';
 
 
 class RelatedPosts extends Component {
@@ -81,7 +82,7 @@ const RELATEDPOSTS_QUERY = graphql`{
 }`;
 
 const SRelatedPosts = styled.div`
-  margin-top: 100px;
+  margin: 100px 0 50px;
 
   h2 {
     text-align: center;
@@ -90,26 +91,52 @@ const SRelatedPosts = styled.div`
   }
 
   .posts {
-    ${above.ipadLand`
+    ${above.smallPage`
       display: flex;
       margin-right: -20px;
-      justify-content: center;
+      justify-content: ${({ count }) => (count <= 3 ? 'center' : 'flex-start')};
+      flex-wrap: wrap;
+
     `}
 
-    ${below.ipadLand`
-      margin-bottom: 20px;
+    ${below.smallPage`
+      margin: 0 -50px 20px -50px;
     `}
+
+    h5 {
+      color: ${colors.white};
+      ${fonts.HelveticaNeueBold};
+      margin-bottom: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 20px 45px;
+      
+      ${below.ipadPort`
+        padding: 13px 22px;
+        font-size: 14px;
+      `}
+      ${below.smallPage`
+        font-size: 18px;
+        padding: 20px 50px;
+      `}
+    }
 
     > a {
-      ${above.ipadLand`
+
+      ${above.smallPage`
         width: 33.3333%;
         padding-right: 20px;
         display: block;
       `}
 
+      ${above.ipadPort`
+        padding-right: 30px;
+      `}
+
       + a {
-        ${below.ipadLand`
-          margin-top: 20px;
+        ${below.smallPage`
+          margin-bottom: 20px;
         `}
       }
     }

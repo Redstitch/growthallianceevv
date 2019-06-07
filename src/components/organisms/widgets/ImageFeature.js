@@ -33,25 +33,13 @@ const ImageFeature = ({ widget, color }) => widget.features.map((feature, index)
 export default ImageFeature;
 
 const SFeature = styled.div`
-
-  ${below.ipadLand`
-    padding: 0 30px;
-  `}
-
-  ${below.mobile`
-    padding: 0 15px;
+  margin: 120px 0 100px;
+  ${below.pageWidth`
+  margin: 110px 0 100px;
   `}
 
   + div {
     margin-top: 100px;
-  }
-
-  &:last-of-type {
-    padding-bottom: 100px;
-
-    ${below.ipadLand`
-      padding-bottom: 50px;
-    `}
   }
 
   &:nth-of-type(2n) {
@@ -60,7 +48,6 @@ const SFeature = styled.div`
     }
 
     .image {
-
       svg {
         margin-left: -22px;
         height: 130%;
@@ -75,6 +62,10 @@ const SFeature = styled.div`
 
   ${Wrapper} {
 
+    ${below.ipadLand`
+    max-width: 600px;
+    `}
+
     ${above.ipadLand`
       display: flex;
       align-items: center;
@@ -82,6 +73,14 @@ const SFeature = styled.div`
 
     > div {
       width: 100%;
+      margin: 0 60px;
+      ${below.ipadLand`
+        margin: 0;
+      `}
+      &.image {
+        width: 95%;
+        margin: auto;
+      }
     }
   }
 
@@ -109,20 +108,19 @@ const SFeature = styled.div`
 
   .content {
 
-    ${above.ipadLand`
-      padding: 0 50px;
-    `}
-
-    ${below.ipadLand`
-      padding-top: 30px;
-    `}
-
     h4 {
       font-size: 48px;
-      line-height: 1.1;
-      margin-bottom: 10px;
+      line-height: 1;
+      margin-bottom: 25px;
       ${fonts.HelveticaNeueLight};
       color: ${({ color, selected }) => (color ? pageColor(color) : pageColor(selected))};
+      ${below.pageWidth`
+        font-size: 35px;
+        margin-top: 15px;
+      `}
+      ${below.ipadLand`
+        margin-top: 45px;
+      `}
     }
 
     p {

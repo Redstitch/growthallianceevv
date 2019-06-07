@@ -16,11 +16,11 @@ const EventItem = ({ content }) => (
           {content.acf.start_date}
           {content.acf.end_date
           && (
-          <>
+          <div>
             {' -'}
             <br />
             {content.acf.end_date}
-          </>
+          </div>
           )}
         </span>
         <br />
