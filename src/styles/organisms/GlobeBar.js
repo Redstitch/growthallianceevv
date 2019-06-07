@@ -172,7 +172,7 @@ const GlobeBar = styled.div`
     `}
     
     h3 {
-      font-size: 48px;
+      font-size: 46px;
       line-height: 1;
       margin-bottom: 18px;
       ${fonts.HelveticaNeueLight};

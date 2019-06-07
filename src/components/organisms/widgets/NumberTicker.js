@@ -33,7 +33,7 @@ export default NumberTicker;
 
 const SNumberTicker = styled.div`
   text-align: center;
-  margin: 100px 0 65px;
+  margin: 100px 0;
 
   .numbers {
 

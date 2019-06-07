@@ -92,6 +92,12 @@ const SFooter = styled.footer`
 
   .columns {
     margin-left: 10px;
+    ${below.ipadLand`
+      margin-left: 0;
+      div:first-of-type {
+        max-width: 375px;
+      }
+    `}
 
 
 

@@ -13,7 +13,7 @@ const UpcomingEvent = ({ widget, color }) => (
   <StaticQuery
     query={UPCOMINGEVENT_QUERY}
     render={data => (
-      <Wrapper wide>
+      <Wrapper medium>
         <SUpcomingEvent color={color}>
           <div className="copy">
             <h4>{widget.heading_copy}</h4>
@@ -81,7 +81,8 @@ const SUpcomingEvent = styled.div`
   }
 
   h4 {
-    font-size: 45px;
+    font-size: 46px;
+    line-height: 1;
     margin-left: -2px;
     ${fonts.HelveticaNeueRegular};
 

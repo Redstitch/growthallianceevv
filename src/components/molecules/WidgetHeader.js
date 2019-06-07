@@ -23,7 +23,7 @@ const WidgetHeader = ({ content, color }) => (
 export default WidgetHeader;
 
 const SWidgetHeader = styled.div`
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   text-align: center;
   ${below.ipadLand`
     padding: 0;

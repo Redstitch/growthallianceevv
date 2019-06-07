@@ -63,8 +63,6 @@ export const SBlogFeed = styled.div`
   text-align: center;
   margin-bottom: 100px;
 
-  
-
   h3 {
     font-size: 45px;
     ${fonts.HelveticaNeueRegular};
@@ -103,7 +101,6 @@ export const SBlogFeed = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 275px;
     ${below.smallPage`
       max-width: none;
       padding: 20px 50px;
