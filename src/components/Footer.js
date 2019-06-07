@@ -103,6 +103,9 @@ const SFooter = styled.footer`
         display: flex;
         width: 100%;
         padding-top: 20px;
+        ${below.ipadMid`
+          margin-bottom: 11px;
+        `}
       }
 
       input {
@@ -158,7 +161,7 @@ const SFooter = styled.footer`
         padding-right: 20px;
       `}
 
-      ${below.ipadPort`
+      ${below.ipadMid`
         padding-top: 50px;
       `}
 
@@ -199,7 +202,7 @@ const SFooter = styled.footer`
     color: ${colors.white};
     background-color: ${colors.navy};
 
-    ${below.ipadPort`
+    ${below.ipadMid`
       padding: 50px 0;
     `}
   }

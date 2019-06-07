@@ -187,7 +187,7 @@ const GlobeBar = styled.div`
       font-size: 26px;
       line-height: 1.15;
       margin-bottom: 26px;
-      ${fonts.HelveticaNeueLight};
+      ${fonts.HelveticaNeueRegular};
       ${({ backgroundColor, color }) => (backgroundColor === 'blank' && `color: ${(color ? pageColor(color) : colors.navy)}`)};
     }
 
@@ -216,6 +216,9 @@ const GlobeBar = styled.div`
     ${below.ipadLand`
       padding-bottom: ${({ withButton }) => (withButton ? '0' : '50px')};
       max-width: none;
+      &:last-of-type {
+        margin-bottom: 50px;
+      }
     `}
   }
 

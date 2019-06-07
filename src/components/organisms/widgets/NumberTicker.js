@@ -33,7 +33,7 @@ export default NumberTicker;
 
 const SNumberTicker = styled.div`
   text-align: center;
-  margin: 100px 0;
+  margin: 100px 0 65px;
 
   .numbers {
 
@@ -45,18 +45,23 @@ const SNumberTicker = styled.div`
       flex-wrap: wrap;
     `}
 
-    ${above.ipadPort`
-      flex-wrap: nowrap;
-    `}
+
 
     ${SNumberItem} {
 
       margin: 40px auto;
-      max-width: 500px;
+      width: 80%;
+      max-width: 350px;
 
       ${above.ipadPort`
+        width: 50%;
         padding-right: 35px;
         margin-bottom: 0;
+      `}
+
+      ${above.ipadLand`
+        width: 25%;
+        max-width: none;
       `}
 
     }

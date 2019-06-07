@@ -12,6 +12,8 @@ export const wrap = css`
   ${below.ipadLand`
     padding: 0 50px;
   `}
+
+  
 `;
 
 export const wrapNarrow = css`
