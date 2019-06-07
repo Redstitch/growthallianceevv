@@ -112,6 +112,7 @@ const SUpcomingEvent = styled.div`
 
     a {
       ${button};
+      ${fonts.HelveticaNeueBold};
     }
   }
 

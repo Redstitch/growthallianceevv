@@ -63,6 +63,8 @@ export const SBlogFeed = styled.div`
   text-align: center;
   margin-bottom: 100px;
 
+  
+
   h3 {
     font-size: 45px;
     ${fonts.HelveticaNeueRegular};
@@ -76,11 +78,15 @@ export const SBlogFeed = styled.div`
 
   .posts {
 
+    ${below.smallPage`
+    margin: 0 -50px;
+  `}
+
     ${below.mobile`
     margin: 0 -60px;
     `}
 
-    ${above.ipadPort`
+    ${above.smallPage`
       display: flex;
       justify-content: ${({ count }) => (count <= 3 ? 'center' : 'flex-start')};
       margin-right: -20px;
@@ -94,12 +100,20 @@ export const SBlogFeed = styled.div`
 
   h5 {
     ${fonts.HelveticaNeueBold};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 275px;
+    ${below.smallPage`
+      max-width: none;
+      padding: 20px 50px;
+    `}
   }
 
   a {
     width: 100%;
 
-    ${above.ipadPort`
+    ${above.smallPage`
       max-width: 33.3333%;
       padding-right: 20px;
     `}
