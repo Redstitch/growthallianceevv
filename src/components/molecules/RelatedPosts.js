@@ -94,7 +94,7 @@ const SRelatedPosts = styled.div`
     ${above.smallPage`
       display: flex;
       margin-right: -20px;
-      justify-content: ${({ count }) => (count <= 3 ? 'center' : 'flex-start')};
+      justify-content: center;
       flex-wrap: wrap;
 
     `}

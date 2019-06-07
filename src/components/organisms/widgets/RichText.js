@@ -24,6 +24,10 @@ export const SRichText = styled.div`
     color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
   }
 
+  p, dl, mark, pre, ol, ul {
+    color: ${colors.darkerGray};
+  }
+
   h2 {
     line-height: 1.35;
   }

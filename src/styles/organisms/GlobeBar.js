@@ -218,7 +218,9 @@ const GlobeBar = styled.div`
       padding-bottom: ${({ withButton }) => (withButton ? '0' : '50px')};
       max-width: none;
       &:last-of-type {
-        margin-bottom: 50px;
+      }
+      &:first-of-type {
+        margin-top: 50px;
       }
     `}
   }

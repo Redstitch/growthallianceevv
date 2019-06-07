@@ -88,6 +88,7 @@ const SContactForm = styled.div`
       width: auto;
       margin-top: 30px;
       ${button};
+      ${fonts.HelveticaNeueBold};
     }
   }
 `;

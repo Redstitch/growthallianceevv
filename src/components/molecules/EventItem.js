@@ -45,6 +45,8 @@ export default EventItem;
 
 export const SEventItem = styled.div`
 
+ 
+
   padding: 0 50px;
 
   ${above.ipadPort`
@@ -109,6 +111,13 @@ export const SEventItem = styled.div`
       ${below.ipadPort`
         display: none;
       `}
+    }
+  }
+
+  div .event {
+    a {
+      ${fonts.HelveticaNeueBold};
+      font-weight: bold;
     }
   }
 
