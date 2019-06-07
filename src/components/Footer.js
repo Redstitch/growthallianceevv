@@ -149,7 +149,11 @@ const SFooter = styled.footer`
     }
 
     > div {
-      margin-right: 90px;
+      margin-right: 45px;
+      :first-of-type {
+        margin-right: 70px;
+      }
+      
       ${below.ipadLand`
         margin-right: 60px;
       `}
