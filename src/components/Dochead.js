@@ -22,6 +22,7 @@ const Dochead = ({
     ]}
     link={[
       { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' },
+      { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0//css/all.css' },
       { rel: 'stylesheet', href: 'https://use.typekit.net/oze1zio.css' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Gothic+A1:200,400,700' },
       { rel: 'manifest', href: '/manifest.webmanifest' },
