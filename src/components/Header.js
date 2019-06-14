@@ -55,9 +55,9 @@ class Header extends Component {
                 </a>
               </div>
               <div className={nav === 'open' ? `navigation ${nav}` : 'navigation'} ref={(ref) => { this.navigation = ref; }}>
-                <div className="e-logo">
+                <a href="https://eisforeveryone.com" target="_blank" rel="noopener noreferrer" className="e-logo">
                   <img src="/images/e-logo.png" alt="logo" />
-                </div>
+                </a>
                 <Menu content={data.allWordpressWpApiMenusMenusItems} pages={data.allWordpressPage.edges} styles={mainNav} menuTitle="main-menu" />
                 <Menu content={data.allWordpressWpApiMenusMenusItems} styles={topNav} menuTitle="top-nav" />
 

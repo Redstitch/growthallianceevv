@@ -30,7 +30,7 @@ ${above.ipadPort`
   .gatsby-image-wrapper {
     position: relative;
     z-index: 2;
-    max-height: 255px;
+    max-height: 306px;
     overflow: hidden;
     ${above.ipadLand`
       transition-duration: ${misc.widgetTransition};
