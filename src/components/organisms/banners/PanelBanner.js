@@ -19,6 +19,16 @@ const PanelBanner = ({ content }) => (
 export default PanelBanner;
 
 const SPanelBanner = styled.div`
+
+  @keyframes rotating {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -37,6 +47,7 @@ const SPanelBanner = styled.div`
     pointer-events: none;
     width: 100%;
     max-width: 1000px;
+    animation: rotating 180s linear infinite;
 
     ${below.ipadLand`
       max-width: 400px;

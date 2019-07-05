@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import { typography } from './utilities/elements';
 import fonts from './utilities/fonts';
 import FontFaces from './utilities/FontsFaces';
+import { below } from './utilities/mediaQueries';
 
 const GlobalStyle = createGlobalStyle`
   ${FontFaces};
@@ -47,6 +48,17 @@ const GlobalStyle = createGlobalStyle`
   main {
     display: block;
     overflow-x: hidden;
+    margin-top: 129px;
+
+    ${below.widePageWidth`
+      margin-top: 106px;
+    `}
+    ${below.pageWidth`
+      margin-top: 86px;
+    `}
+    ${below.ipadLand`
+      margin-top: 75px;
+    `}
   }
 
   *, *:before, *:after {

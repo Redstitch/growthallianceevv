@@ -9,24 +9,29 @@ import fonts from '../utilities/fonts';
 const ItemWImage = styled.div`
 margin: 100px auto;
 position: relative;
+
 ${above.ipadLand`
   transition-duration: ${misc.widgetTransition};
   ${({ isVisible }) => (isVisible ? 'bottom: 0' : 'bottom: -20px')};
 `}
+
 ${above.ipadPort`
   max-width: 1000px;
   margin: 100px auto;
   display: flex;
   align-items: ${({ team }) => (team ? 'flex-start' : 'center')};
 `}
+
 .image {
   position: relative;
   width: 350px;
   margin: 20px;
+
   ${below.ipadPort`
     max-width: 250px;
     margin: 20px auto 40px;
   `}
+
   .gatsby-image-wrapper {
     position: relative;
     z-index: 2;

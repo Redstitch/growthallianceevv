@@ -75,23 +75,29 @@ export default Header;
 
 
 const SHeader = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: ${colors.white};
+  width: 100%;
 
-.e-logo {
-  width: 40px;
-  position: absolute;
-  right: 22px;
-  ${below.widePageWidth`
-    width: 35px;
-    right: 15px;
-  `}
-  ${below.pageWidth`
-      width: 30px;
+  .e-logo {
+    width: 40px;
+    position: absolute;
+    right: 22px;
+    ${below.widePageWidth`
+      width: 35px;
       right: 15px;
-  `}
-  ${below.ipadLand`
-    display: none;
-  `}
-}
+    `}
+    ${below.pageWidth`
+        width: 30px;
+        right: 15px;
+    `}
+    ${below.ipadLand`
+      display: none;
+    `}
+  }
 
   ${Wrapper} {
     display: flex;
