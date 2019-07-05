@@ -12,7 +12,30 @@ import { above, below } from '../styles/utilities/mediaQueries';
 class Header extends Component {
   state = {
     nav: 'closed',
+    atTop: true,
   }
+
+
+  componentDidMount() {
+    global.window.addEventListener('scroll', this.topCheck);
+  }
+
+  componentWillUnmount() {
+    global.window.removeEventListener('scroll', this.topCheck);
+  }
+
+  topCheck = () => {
+    if (global.window.pageYOffset >= 50) {
+      this.setState({
+        atTop: false,
+      });
+    } else {
+      this.setState({
+        atTop: true,
+      });
+    }
+  }
+
 
   toggleNavigation() {
     const classes = this.navToggle.getAttribute('class');
@@ -31,12 +54,12 @@ class Header extends Component {
   }
 
   render() {
-    const { nav } = this.state;
+    const { nav, atTop } = this.state;
     return (
       <StaticQuery
         query={HEADER_QUERY}
         render={data => (
-          <SHeader>
+          <SHeader top={atTop}>
             <Wrapper>
               <div className="inner">
                 <Link to="/" className="logo">
@@ -81,6 +104,8 @@ const SHeader = styled.header`
   z-index: 10;
   background-color: ${colors.white};
   width: 100%;
+  transition-duration: ${misc.animSpeed};
+  box-shadow: ${({ top }) => (top ? '0 0 0 0' : `0 0 20px -10px ${colors.black}`)};
 
   .e-logo {
     width: 40px;
