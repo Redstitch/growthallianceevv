@@ -19,7 +19,7 @@ class RelatedPosts extends Component {
   }
 
   render() {
-    const { category } = this.props;
+    const { category, currentPost } = this.props;
     const { cards } = this.state;
     return (
       <StaticQuery
@@ -29,7 +29,7 @@ class RelatedPosts extends Component {
             <SRelatedPosts>
               <h2>Related Posts</h2>
               <div className="posts">
-                {data.allWordpressPost.edges.map(({ node }) => (node.categories[0].slug === category ? this.arrPush(node) : ''))}
+                {data.allWordpressPost.edges.map(({ node }) => ((node.categories[0].slug === category && node.slug !== currentPost) ? this.arrPush(node) : ''))}
                 {Array.from(new Set(cards)).map((object, index) => (
                   <React.Fragment key={object.id}>
                     {index < 3 && <Card content={object} link={`/blog/${object.slug}`} color="navy" />}
@@ -111,7 +111,7 @@ const SRelatedPosts = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
       padding: 20px 45px;
-      
+
       ${below.ipadPort`
         padding: 13px 22px;
         font-size: 14px;

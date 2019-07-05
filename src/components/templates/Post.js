@@ -25,7 +25,7 @@ const Post = ({ data }) => (
     }}
     />
     <PostWidgets content={data.wordpressPost.acf.post_content_post} color="navy" />
-    <RelatedPosts category={data.wordpressPost.categories[0].slug} />
+    <RelatedPosts currentPost={data.wordpressPost.slug} category={data.wordpressPost.acf.primary_category.slug} />
   </Layout>
 
 );
@@ -58,6 +58,9 @@ query PostQuery($slug: String!) {
             }
           }
         }
+      }
+      primary_category {
+        slug
       }
       post_content_post {
         __typename
