@@ -61,6 +61,7 @@ const BLOGFEED_QUERY = graphql`{
 
 export const SBlogFeed = styled.div`
   text-align: center;
+  margin-bottom: 100px;
 
   h3 {
     font-size: 45px;

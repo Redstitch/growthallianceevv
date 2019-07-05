@@ -68,7 +68,7 @@ const UPCOMINGEVENT_QUERY = graphql`{
 }`;
 
 const SUpcomingEvent = styled.div`
-  margin: 100px auto;
+  margin: 0 auto 100px;
 
 
   ${above.ipadPort`
@@ -98,7 +98,7 @@ const SUpcomingEvent = styled.div`
     `}
 
     ${below.ipadPort`
-      padding: 0 50px 100px;
+      padding: 0 0 100px;
     `}
 
     h4 {
@@ -116,10 +116,6 @@ const SUpcomingEvent = styled.div`
       ${fonts.HelveticaNeueBold};
     }
   }
-
-    ${below.ipadPort`
-      margin: 0 -50px;
-    `}
 
 
   .event {

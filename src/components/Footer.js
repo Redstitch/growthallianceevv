@@ -52,7 +52,7 @@ const Footer = () => (
                   <div className="social">
                     {data.wordpressAcfOptions.options.soc_links.map(link => (
 
-                      <a target="_blank" rel="noopener noreferrer" href={link.url}>
+                      <a key={Math.random()} target="_blank" rel="noopener noreferrer" href={link.url}>
                         <i className={`fa fa-${link.icon}`} />
                       </a>
                     ))}
@@ -99,6 +99,15 @@ const FOOTER_QUERY = graphql`{
 }`;
 
 const SFooter = styled.footer`
+  @keyframes rotating {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   overflow: hidden;
   position: relative;
   z-index: 1;
@@ -255,6 +264,7 @@ const SFooter = styled.footer`
     `}
   }
   ${SGlobe} {
+    animation: rotating 180s linear infinite;
     bottom: -330px;
     right: -250px;
     width: 100%;

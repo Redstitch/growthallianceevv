@@ -8,6 +8,16 @@ import fonts from '../utilities/fonts';
 import Wrapper from '../utilities/Wrapper';
 
 const GlobeBar = styled.div`
+
+  @keyframes rotating {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   position: relative;
   overflow: hidden;
 
@@ -26,6 +36,7 @@ const GlobeBar = styled.div`
 
   ${SGlobe} {
     position: absolute;
+    animation: rotating 89s linear infinite;
 
     ${above.ipadLand`
       transition-duration: ${misc.widgetTransition};
@@ -138,6 +149,8 @@ const GlobeBar = styled.div`
   .image {
     width: 100%;
     position: relative;
+    max-height: 600px;
+    overflow: hidden;
 
     ${above.ipadLand`
       transition-duration: ${misc.widgetTransition};
@@ -151,15 +164,6 @@ const GlobeBar = styled.div`
       margin: 45px 0 0;
     `}
 
-    .gatsby-image-wrapper {
-      ${below.ipadLand`
-        margin: 0 -50px;
-        // max-height: 300px;
-      `}
-
-    }
-
-
   }
 
   .column,
@@ -168,7 +172,6 @@ const GlobeBar = styled.div`
 
     ${below.ipadLand`
       width: 95%;
-      max-width: 500px;
       margin: 0 auto 20px;
     `}
 
@@ -240,6 +243,10 @@ const GlobeBar = styled.div`
 
   ${Wrapper} {
     ${({ columnAlignment }) => (columnAlignment === 'center' && 'text-align: center;')};
+
+    ${below.ipadLand`
+      ${({ columns }) => (columns ? '' : 'padding: 0')};
+    `}
 
     > a {
       ${button};

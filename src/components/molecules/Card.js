@@ -11,7 +11,6 @@ const Card = ({
 }) => (
   <Link to={link}>
     <SCard color={color}>
-      {console.log(content)}
       <ImageLoader content={image || content.acf.main_image} />
       <h5 dangerouslySetInnerHTML={{
         __html: `${content.title}<span>Read More</span>`,
@@ -28,7 +27,7 @@ export const SCard = styled.div`
   overflow-x: hidden;
   text-align: left;
 
-  
+
 
 
   h5 {

@@ -12,6 +12,7 @@ import CardLinks from './widgets/CardLinks';
 import TabbedContent from './widgets/TabbedContent';
 import CopyWImage from './widgets/CopyWImage';
 import ImageDescription from './widgets/ImageDescription';
+import ImageWText from './widgets/ImageWText';
 
 const PageWidgets = ({ preview, content, color }) => content && content.map((widget, index) => (
   <section key={`${index}pagewidget`}>
@@ -31,6 +32,7 @@ const PageWidgets = ({ preview, content, color }) => content && content.map((wid
         {widget.acf_fc_layout === 'tabbed_content' && <TabbedContent order={index} widget={widget} color={color} /> }
         {widget.acf_fc_layout === 'copy_wimage' && <CopyWImage order={index} widget={widget} color={color} /> }
         {widget.acf_fc_layout === 'image_wdescription' && <ImageDescription order={index} widget={widget} color={color} /> }
+        {widget.acf_fc_layout === 'image_wtext' && <ImageWText order={index} widget={widget} color={color} /> }
       </>
     ) : (
       <>
@@ -48,6 +50,7 @@ const PageWidgets = ({ preview, content, color }) => content && content.map((wid
         {widget.__typename === 'WordPressAcf_tabbed_content' && <TabbedContent order={index} widget={widget} color={color} /> }
         {widget.__typename === 'WordPressAcf_copy_wimage' && <CopyWImage order={index} widget={widget} color={color} /> }
         {widget.__typename === 'WordPressAcf_image_wdescription' && <ImageDescription order={index} widget={widget} color={color} /> }
+        {widget.__typename === 'WordPressAcf_image_wtext' && <ImageWText order={index} widget={widget} color={color} /> }
       </>
     )}
   </section>
