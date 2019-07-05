@@ -39,7 +39,7 @@ class NumberItem extends Component {
               useEasing
               duration={misc.widgetTransition}
               suffix={content.prefix__suffix === '%' ? content.prefix__suffix : null}
-              prefix={content.prefix__suffix === '$' ? content.prefix__suffix : null}
+              prefix={(content.prefix__suffix === '$' || content.prefix__suffix === '#') ? content.prefix__suffix : null}
             />
           </span>
           <h5>
