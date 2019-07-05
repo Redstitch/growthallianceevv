@@ -62,6 +62,30 @@ export const typography = css`
   table {
     border-collapse: collapse;
     border-spacing: 0;
+
+    tr {
+      &:nth-child(2) {
+        background-color: ${colors.gray};
+
+        th, td {
+          border: 1px solid ${colors.white};
+        }
+      }
+    }
+
+    th, td {
+      border: 1px solid ${colors.gray};
+      text-align: center;
+      padding: 5px 15px;
+
+      &:first-child{
+        text-align: left;
+      }
+
+      &:last-child{
+        text-align: right;
+      }
+    }
   }
 
 `;
