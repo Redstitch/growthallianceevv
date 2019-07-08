@@ -7,12 +7,12 @@ const PageBanners = ({ preview, content, page }) => content && content.map((bann
     {preview ? (
       <>
         {banner.acf_fc_layout === 'pannel_banner' && <PanelBanner preview content={banner} /> }
-        {banner.acf_fc_layout === 'banner' && <DefaultBanner preview page={page} /> }
+        {banner.acf_fc_layout === 'banner' && <DefaultBanner preview content={banner} page={page} /> }
       </>
     ) : (
       <>
         {banner.__typename === 'WordPressAcf_pannel_banner' && <PanelBanner content={banner} /> }
-        {banner.__typename === 'WordPressAcf_banner' && <DefaultBanner page={page} /> }
+        {banner.__typename === 'WordPressAcf_banner' && <DefaultBanner content={banner} page={page} /> }
       </>
     )}
   </section>

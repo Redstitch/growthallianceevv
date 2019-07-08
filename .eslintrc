@@ -16,6 +16,7 @@
     "max-len": "off",
     "import/no-cycle": "off",
     "no-underscore-dangle": "off",
+    "no-nested-ternary" : "off",
     "jsx-a11y/anchor-is-valid": ["warn",
     {
       "aspects": ["invalidHref"]

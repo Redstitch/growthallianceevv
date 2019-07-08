@@ -59,6 +59,9 @@ query PageQuery($slug: String!) {
       }
       banners_page {
         __typename
+        ... on WordPressAcf_banner {
+          overlay_color
+        }
         ... on WordPressAcf_pannel_banner {
           panels {
             heading

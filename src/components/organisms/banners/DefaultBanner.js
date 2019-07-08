@@ -7,8 +7,9 @@ import { pageColor } from '../../../js/autoColor';
 import { above } from '../../../styles/utilities/mediaQueries';
 import { colors } from '../../../styles/utilities/settings';
 
-const DefaultBanner = ({ preview, page }) => (
-  <SDefaultBanner color={page.color ? page.color : null} noMargin={page.noMargin}>
+const DefaultBanner = ({ content, preview, page }) => (
+  <SDefaultBanner color={page.color ? page.color : null} backgroundColor={content.overlay_color} noMargin={page.noMargin}>
+    {console.log(content)}
     <div className="image-background">
       {preview ? <div className="gatsby-image-wrapper"><img src={page.mainImage} alt="..." /></div> : <Img fixed={page.mainImage} />}
     </div>
@@ -35,7 +36,7 @@ export const SDefaultBanner = styled.div`
   ${({ noMargin }) => (noMargin ? 'margin-bottom: 0 !important;' : '')};
 
   &:after {
-    background-color: ${({ color }) => (color ? pageColor(color) : colors.orange)};
+    background-color: ${({ color, backgroundColor }) => (color ? pageColor(color) : pageColor(backgroundColor))};
   }
 
   h1 {
