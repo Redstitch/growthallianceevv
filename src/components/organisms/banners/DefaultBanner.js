@@ -5,7 +5,6 @@ import { bannerContent } from '../../../styles/utilities/elements';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { pageColor } from '../../../js/autoColor';
 import { above } from '../../../styles/utilities/mediaQueries';
-import { colors } from '../../../styles/utilities/settings';
 
 const DefaultBanner = ({ content, preview, page }) => (
   <SDefaultBanner color={page.color ? page.color : null} backgroundColor={content.overlay_color} noMargin={page.noMargin}>
