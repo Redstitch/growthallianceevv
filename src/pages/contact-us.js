@@ -29,6 +29,9 @@ const ContactUs = () => (
               description: data.wordpressAcfOptions.options.contact_banner_copy.copy,
               noMargin: true,
             }}
+            content={{
+              overlay_color: 'blue',
+            }}
           />
           <ContactBlock>
             <ContactForm />

@@ -26,6 +26,9 @@ const OurTeam = () => (
               color: 'navy',
               description: data.wordpressAcfOptions.options.team_banner_copy.copy,
             }}
+            content={{
+              overlay_color: 'navy',
+            }}
           />
           <Wrapper>
             {data.allWordpressWpTeam.edges.map(({ node }, index) => (

@@ -45,6 +45,9 @@ class BlogRollPage extends Component {
                   color: 'navy',
                   description: data.wordpressAcfOptions.options.blog_banner_copy.copy,
                 }}
+                content={{
+                  overlay_color: 'navy',
+                }}
               />
               <SBlog>
                 <Wrapper>

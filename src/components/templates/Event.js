@@ -5,7 +5,6 @@ import Dochead from '../Dochead';
 import Wrapper from '../../styles/utilities/Wrapper';
 import DefaultBanner from '../organisms/banners/DefaultBanner';
 import { SEventItem } from '../molecules/EventItem';
-import { Shape2 } from '../atoms/Shapes';
 
 export const EventContext = React.createContext();
 
@@ -27,6 +26,9 @@ const Event = ({ data }) => (
           mainImage: data.wordpressWpEvent.acf.main_image.localFile.childImageSharp.fixed,
           color: 'blue',
           description: data.wordpressAcfOptions.options.events_banner_copy.copy,
+        }}
+        content={{
+          overlay_color: 'blue',
         }}
       />
       <Wrapper narrow>

@@ -26,6 +26,9 @@ const events = () => (
               color: 'blue',
               description: data.wordpressAcfOptions.options.events_banner_copy.copy,
             }}
+            content={{
+              overlay_color: 'blue',
+            }}
           />
           <Wrapper medium>
             {data.allWordpressWpEvent.edges.map(({ node }) => parseInt(getToday(), 0) <= parseInt(getItemDate(node.acf.start_date), 0)

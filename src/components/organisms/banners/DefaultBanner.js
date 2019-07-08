@@ -8,7 +8,6 @@ import { above } from '../../../styles/utilities/mediaQueries';
 
 const DefaultBanner = ({ content, preview, page }) => (
   <SDefaultBanner color={page.color ? page.color : null} backgroundColor={content.overlay_color} noMargin={page.noMargin}>
-    {console.log(content)}
     <div className="image-background">
       {preview ? <div className="gatsby-image-wrapper"><img src={page.mainImage} alt="..." /></div> : <Img fixed={page.mainImage} />}
     </div>
