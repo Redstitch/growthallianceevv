@@ -41,7 +41,10 @@ class ContentColumns extends Component {
                 <div className="column" key={column.heading + index}>
                   {column.heading && <h4>{column.heading}</h4>}
                   <h5>{column.large_subhead}</h5>
-                  <p>{column.copy}</p>
+                  <div dangerouslySetInnerHTML={{
+                    __html: column.copy,
+                  }}
+                  />
                   {column.button.copy && <PageLink content={column.button} />}
                 </div>
               ))}

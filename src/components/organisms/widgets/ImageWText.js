@@ -18,7 +18,10 @@ const ImageWText = ({ widget, color }) => (
         </div>
         <div className="copy">
           <h3>{widget.content.heading}</h3>
-          <p>{widget.content.copy}</p>
+          <div dangerouslySetInnerHTML={{
+            __html: widget.content.copy,
+          }}
+          />
           {widget.content.button.copy && <PageLink content={widget.content.button} /> }
         </div>
       </div>

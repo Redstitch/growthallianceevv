@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { pageColor } from '../../../js/autoColor';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { colors } from '../../../styles/utilities/settings';
 import ImageLoader from '../../atoms/ImageLoader';
@@ -8,7 +7,10 @@ import ImageLoader from '../../atoms/ImageLoader';
 const ImageDescription = ({ widget, color }) => (
   <SImageDescription color={color}>
     <Wrapper narrower>
-      <p>{widget.description}</p>
+      <div dangerouslySetInnerHTML={{
+        __html: widget.description,
+      }}
+      />
       <div className="image">
         <ImageLoader content={widget.image} />
       </div>

@@ -17,7 +17,10 @@ const UpcomingEvent = ({ widget, color }) => (
         <SUpcomingEvent color={color}>
           <div className="copy">
             <h4>{widget.heading_copy}</h4>
-            <p>{widget.copy}</p>
+            <div dangerouslySetInnerHTML={{
+              __html: widget.copy,
+            }}
+            />
             {widget.button.copy && <PageLink content={widget.button} /> }
           </div>
           <div className="event">

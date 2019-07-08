@@ -37,7 +37,10 @@ class ImageFeatureLarge extends Component {
             <div className="inner">
               <div className="content">
                 <h3>{widget.content.heading}</h3>
-                <p>{widget.content.content}</p>
+                <div dangerouslySetInnerHTML={{
+                  __html: widget.content.content,
+                }}
+                />
                 {widget.content.button.copy && <PageLink content={widget.content.button} /> }
               </div>
               <div className="image">
