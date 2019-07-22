@@ -17,6 +17,7 @@
     "import/no-cycle": "off",
     "no-underscore-dangle": "off",
     "no-nested-ternary" : "off",
+    "camelcase": "off",
     "jsx-a11y/anchor-is-valid": ["warn",
     {
       "aspects": ["invalidHref"]

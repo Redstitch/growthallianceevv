@@ -96,6 +96,7 @@ query PageQuery($slug: String!) {
         __typename
         ... on WordPressAcf_blog_feed {
           heading_copy
+          category
         }
         ... on WordPressAcf_upcoming_event {
           heading_copy

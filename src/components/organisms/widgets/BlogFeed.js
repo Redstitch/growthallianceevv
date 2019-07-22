@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import styled from 'styled-components';
+import fetch from 'isomorphic-fetch';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { colors } from '../../../styles/utilities/settings';
 import { pageColor } from '../../../js/autoColor';
@@ -8,34 +9,63 @@ import fonts from '../../../styles/utilities/fonts';
 import { above, below } from '../../../styles/utilities/mediaQueries';
 import Card from '../../molecules/Card';
 
-const BlogFeed = ({ widget, color }) => (
-  <StaticQuery
-    query={BLOGFEED_QUERY}
-    render={data => (
-      <SBlogFeed count={data.allWordpressPost.edges.length}>
-        <Wrapper>
-          <h3>{widget.heading_copy}</h3>
-          <div className="posts">
-            {data.allWordpressPost.edges.map(({ node }) => (
-              <Card key={node.id} content={node} color={color} link={`/blog/${node.slug}`} />
-            ))}
-          </div>
-        </Wrapper>
-      </SBlogFeed>
-    )}
-  />
-);
+const { GATSBY_CMS } = process.env;
+
+class BlogFeed extends Component {
+  state = {
+    postList: null,
+  }
+
+  componentDidMount() {
+    const { widget } = this.props;
+
+    fetch(`${GATSBY_CMS}/wp-json/wp/v2/posts/?per_page=3&categories=${widget.category}`, {
+      method: 'get',
+    })
+      .then(response => response.json())
+      .then((data) => {
+        this.setState({
+          postList: data,
+        });
+      });
+  }
+
+  render() {
+    const { widget, color } = this.props;
+    const { postList } = this.state;
+    return (
+      <StaticQuery
+        query={BLOGFEED_QUERY}
+        render={({ posts }) => (
+          <SBlogFeed count={posts.edges.length}>
+            <Wrapper>
+              <h3>{widget.heading_copy}</h3>
+              <div className="posts">
+                {postList && postList.map(listItem => posts.edges.map(({ node }) => node.wordpress_id === listItem.id
+                  && <Card key={node.id} content={node} color={color} link={`/blog/${node.slug}`} />))}
+              </div>
+            </Wrapper>
+          </SBlogFeed>
+        )}
+      />
+    );
+  }
+}
 
 export default BlogFeed;
 
 const BLOGFEED_QUERY = graphql`{
-  allWordpressPost(limit: 3, sort: {fields: date}) {
+  posts: allWordpressPost(sort: {fields: date}) {
     edges {
       node {
         id
         title
         slug
         content
+        wordpress_id
+        categories {
+          wordpress_id
+        }
         acf {
           main_image {
             localFile {
