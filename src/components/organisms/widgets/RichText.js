@@ -31,4 +31,8 @@ export const SRichText = styled.div`
   h2 {
     line-height: 1.35;
   }
+
+  ul, ol {
+    margin-left: 10px;
+  }
 `;
