@@ -33,7 +33,7 @@ class NumberItem extends Component {
           <span>
             <CountUp
               start={0}
-              end={parseInt(isVisible ? content.number : 0, 0)}
+              end={parseFloat(isVisible ? content.number : 0)}
               decimals={(content.number % 1) !== 0 ? 2 : null}
               separator=","
               useEasing
