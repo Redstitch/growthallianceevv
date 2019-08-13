@@ -9,6 +9,7 @@ import Globe, { SGlobe } from './atoms/Globe';
 import { Shape7 } from './atoms/Shapes';
 import Iframe from './molecules/Iframe';
 
+const { NODE_ENV } = process.env;
 
 const Footer = () => (
   <SFooter>
@@ -23,7 +24,16 @@ const Footer = () => (
                 <div>
                   <h4>{data.wordpressAcfOptions.options.subscribe.heading}</h4>
                   <p>{data.wordpressAcfOptions.options.subscribe.copy}</p>
-                  <Iframe title="subscribe" src="/subscribe.html" />
+                  {NODE_ENV === 'development' ? (
+                    <div className="subscribe-form">
+                      <form>
+                        <input type="text" />
+                        <button type="button">Submit</button>
+                      </form>
+                    </div>
+                  ) : (
+                    <Iframe title="subscribe" src="/subscribe.html" />
+                  )}
                 </div>
                 <div>
                   <h4>Contact Us</h4>
@@ -166,6 +176,7 @@ const SFooter = styled.footer`
         padding: 12px 10px;
         font-size: 14px;
         outline: 0;
+        border: 0;
       }
 
       button {
