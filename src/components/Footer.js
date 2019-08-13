@@ -102,7 +102,6 @@ const FOOTER_QUERY = graphql`{
       subscribe {
         heading
         copy
-        form
       }
     }
   }
