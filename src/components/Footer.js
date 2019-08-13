@@ -7,6 +7,8 @@ import fonts from '../styles/utilities/fonts';
 import { above, below } from '../styles/utilities/mediaQueries';
 import Globe, { SGlobe } from './atoms/Globe';
 import { Shape7 } from './atoms/Shapes';
+import Iframe from './molecules/Iframe';
+
 
 const Footer = () => (
   <SFooter>
@@ -20,10 +22,7 @@ const Footer = () => (
               <div className="columns">
                 <div>
                   <h4>{data.wordpressAcfOptions.options.subscribe.heading}</h4>
-                  <div dangerouslySetInnerHTML={{
-                    __html: `<p>${data.wordpressAcfOptions.options.subscribe.copy}</p>${data.wordpressAcfOptions.options.subscribe.form}`,
-                  }}
-                  />
+                  <Iframe title="subscribe" src="/subscribe.html" />
                 </div>
                 <div>
                   <h4>Contact Us</h4>
@@ -33,14 +32,14 @@ const Footer = () => (
                   }}
                   />
                   {data.wordpressAcfOptions.options.hours.map((time, index) => time.closed === false
-                    && (
-                      <p
-                        key={time.days + index}
-                        dangerouslySetInnerHTML={{
-                          __html: `${time.days}<br />${time.start_time} - ${time.end_time}`,
-                        }}
-                      />
-                    ))}
+                  && (
+                    <p
+                      key={time.days + index}
+                      dangerouslySetInnerHTML={{
+                        __html: `${time.days}<br />${time.start_time} - ${time.end_time}`,
+                      }}
+                    />
+                  ))}
                 </div>
                 <div>
                   <div
