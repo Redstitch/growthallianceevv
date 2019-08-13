@@ -22,6 +22,7 @@ const Footer = () => (
               <div className="columns">
                 <div>
                   <h4>{data.wordpressAcfOptions.options.subscribe.heading}</h4>
+                  <p>{data.wordpressAcfOptions.options.subscribe.copy}</p>
                   <Iframe title="subscribe" src="/subscribe.html" />
                 </div>
                 <div>
