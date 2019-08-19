@@ -7,7 +7,7 @@ import { below, above } from '../../../styles/utilities/mediaQueries';
 import { pageColor } from '../../../js/autoColor';
 import fonts from '../../../styles/utilities/fonts';
 import PageLink from '../../atoms/PageLink';
-import ImageLoader from '../../atoms/ImageLoader';
+import Image from '../../atoms/Image';
 import { colors } from '../../../styles/utilities/settings';
 
 
@@ -16,7 +16,7 @@ const ImageFeature = ({ widget, color }) => widget.features.map((feature, index)
     <Wrapper>
       <div className="image">
         {index % 2 === 0 ? <Shape5 /> : <Shape6 />}
-        <ImageLoader content={feature.image} />
+        <Image src={feature.image} />
       </div>
       <div className="content">
         <h4>{feature.content.heading}</h4>

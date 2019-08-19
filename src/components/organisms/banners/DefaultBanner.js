@@ -1,29 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 import { bannerContent } from '../../../styles/utilities/elements';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { pageColor } from '../../../js/autoColor';
 import { above } from '../../../styles/utilities/mediaQueries';
+import BackgroundImage from '../../atoms/BackgroundImage';
 
-const DefaultBanner = ({ content, preview, page }) => (
+const DefaultBanner = ({ content, page }) => (
   <SDefaultBanner color={page.color ? page.color : null} backgroundColor={content.overlay_color} noMargin={page.noMargin}>
-    <div className="image-background">
-      {preview ? <div className="gatsby-image-wrapper"><img src={page.mainImage} alt="..." /></div> : <Img fixed={page.mainImage} />}
-    </div>
-    <Wrapper>
-      <div className="content">
-        <h1>{page.title}</h1>
-        {page.description
-        && (
-        <p dangerouslySetInnerHTML={{
-          __html: page.description,
-        }}
-        />
-        )
-        }
-      </div>
-    </Wrapper>
+    <BackgroundImage src={page.mainImage}>
+      <Wrapper>
+        <div className="content">
+          <h1>{page.title}</h1>
+          {page.description
+          && (
+          <p dangerouslySetInnerHTML={{
+            __html: page.description,
+          }}
+          />
+          )
+          }
+        </div>
+      </Wrapper>
+    </BackgroundImage>
   </SDefaultBanner>
 );
 

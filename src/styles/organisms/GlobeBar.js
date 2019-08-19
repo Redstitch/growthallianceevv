@@ -6,6 +6,7 @@ import { absoluteCenter, button } from '../utilities/elements';
 import { pageColor } from '../../js/autoColor';
 import fonts from '../utilities/fonts';
 import Wrapper from '../utilities/Wrapper';
+import { SBackgroundImage } from '../../components/atoms/BackgroundImage';
 
 const GlobeBar = styled.div`
 
@@ -146,11 +147,13 @@ const GlobeBar = styled.div`
     }
   }
 
+  ${SBackgroundImage} {
+    height: 600px
+  }
+
   .image {
     width: 100%;
     position: relative;
-    max-height: 600px;
-    overflow: hidden;
 
     ${above.ipadLand`
       transition-duration: ${misc.widgetTransition};

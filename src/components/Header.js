@@ -63,7 +63,7 @@ class Header extends Component {
             <Wrapper>
               <div className="inner">
                 <Link to="/" className="logo">
-                  <img src={data.wordpressAcfOptions.options.logo.localFile.childImageSharp.original.src} alt="..." />
+                  <img src={data.wordpressAcfOptions.options.logo.sizes.xx_small_size} alt="..." />
                 </Link>
                 <a
                   href={null}
@@ -388,12 +388,18 @@ const HEADER_QUERY = graphql`{
   wordpressAcfOptions {
     options {
       logo {
-        localFile {
-          childImageSharp {
-            original {
-              src
-            }
-          }
+        width
+        height
+        url
+        sizes {
+          large_size
+          lqph_size
+          middle_size
+          small_size
+          x_large_size
+          x_small_size
+          xx_large_size
+          xx_small_size
         }
       }
     }

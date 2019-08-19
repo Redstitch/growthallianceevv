@@ -37,7 +37,7 @@ module.exports = {
         verboseOutput: false,
         perPage: 100,
         concurrentRequests: 10,
-        excludedRoutes: ['/*/*/users/me', '/*/*/settings', '/*/*/themes'],
+        excludedRoutes: ['/*/*/users/me', '/*/*/settings', '/*/*/themes', '/*/*/media'],
         normalizer({ entities }) {
           return entities;
         },

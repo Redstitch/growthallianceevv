@@ -4,14 +4,14 @@ import styled from 'styled-components';
 import { pageColor } from '../../js/autoColor';
 import { colors } from '../../styles/utilities/settings';
 import { below } from '../../styles/utilities/mediaQueries';
-import ImageLoader from '../atoms/ImageLoader';
+import BackgroundImage, { SBackgroundImage } from '../atoms/BackgroundImage';
 
 const Card = ({
   content, color, link, image,
 }) => (
   <Link to={link}>
     <SCard color={color}>
-      <ImageLoader content={image || content.acf.main_image} />
+      <BackgroundImage src={image || content.acf.main_image} />
       <h5 dangerouslySetInnerHTML={{
         __html: `${content.title}<span>Read More</span>`,
       }}
@@ -27,7 +27,9 @@ export const SCard = styled.div`
   overflow-x: hidden;
   text-align: left;
 
-
+  ${SBackgroundImage} {
+    height: 300px;
+  }
 
 
   h5 {

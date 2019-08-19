@@ -4,6 +4,7 @@ import { misc, colors } from '../utilities/settings';
 import { absoluteCenter, button } from '../utilities/elements';
 import { pageColor } from '../../js/autoColor';
 import fonts from '../utilities/fonts';
+import { SBackgroundImage } from '../../components/atoms/BackgroundImage';
 
 
 const ItemWImage = styled.div`
@@ -21,6 +22,18 @@ ${above.ipadPort`
   display: flex;
   align-items: ${({ team }) => (team ? 'flex-start' : 'center')};
 `}
+
+${SBackgroundImage} {
+  position: relative;
+  z-index: 1;
+  width: 306px;
+  height: 306px;
+
+  ${below.ipadPort`
+    width: 250px;
+    height: 250px;
+  `}
+}
 
 .image {
   position: relative;

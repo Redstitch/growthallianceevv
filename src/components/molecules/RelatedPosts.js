@@ -60,16 +60,18 @@ const RELATEDPOSTS_QUERY = graphql`{
         }
         acf {
           main_image {
-            localFile {
-              childImageSharp {
-                fluid(quality: 100, maxWidth: 400, maxHeight: 400) {
-                  base64
-                  aspectRatio
-                  src
-                  srcSet
-                  sizes
-                }
-              }
+            width
+            height
+            url
+            sizes {
+              large_size
+              lqph_size
+              middle_size
+              small_size
+              x_large_size
+              x_small_size
+              xx_large_size
+              xx_small_size
             }
           }
         }

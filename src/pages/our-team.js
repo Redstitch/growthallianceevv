@@ -16,13 +16,13 @@ const OurTeam = () => (
           <Dochead
             title="Our Team"
             siteName={data.wordpressSiteMetadata.name}
-            pageImage={data.wordpressAcfOptions.options.team_banner_image && data.wordpressAcfOptions.options.team_banner_image.localFile.childImageSharp.original.src}
+            pageImage={data.wordpressAcfOptions.options.team_banner_image && data.wordpressAcfOptions.options.team_banner_image.url}
             description={data.wordpressSiteMetadata.description}
           />
           <DefaultBanner
             page={{
               title: data.wordpressAcfOptions.options.team_banner_copy.heading,
-              mainImage: data.wordpressAcfOptions.options.team_banner_image.localFile.childImageSharp.fixed,
+              mainImage: data.wordpressAcfOptions.options.team_banner_image,
               color: 'navy',
               description: data.wordpressAcfOptions.options.team_banner_copy.copy,
             }}
@@ -52,20 +52,18 @@ const OURTEAM_QUERY = graphql`{
         copy
       }
       team_banner_image {
-        localFile {
-          childImageSharp {
-            original {
-              src
-            }
-            fixed(quality: 100, width: 1200) {
-              tracedSVG
-              aspectRatio
-              width
-              height
-              src
-              srcSet
-            }
-          }
+        width
+        height
+        url
+        sizes {
+          large_size
+          lqph_size
+          middle_size
+          small_size
+          x_large_size
+          x_small_size
+          xx_large_size
+          xx_small_size
         }
       }
     }
@@ -81,16 +79,18 @@ const OURTEAM_QUERY = graphql`{
           email
           description
           main_image {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 276, maxHeight: 276, quality: 100) {
-                  base64
-                  aspectRatio
-                  src
-                  srcSet
-                  sizes
-                }
-              }
+            width
+            height
+            url
+            sizes {
+              large_size
+              lqph_size
+              middle_size
+              small_size
+              x_large_size
+              x_small_size
+              xx_large_size
+              xx_small_size
             }
           }
         }

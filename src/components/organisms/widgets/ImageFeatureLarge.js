@@ -5,7 +5,7 @@ import { WideAngle } from '../../atoms/Shapes';
 import Globe from '../../atoms/Globe';
 import GlobeBar from '../../../styles/organisms/GlobeBar';
 import PageLink from '../../atoms/PageLink';
-import ImageLoader from '../../atoms/ImageLoader';
+import Image from '../../atoms/Image';
 
 
 class ImageFeatureLarge extends Component {
@@ -44,7 +44,7 @@ class ImageFeatureLarge extends Component {
                 {widget.content.button.copy && <PageLink content={widget.content.button} /> }
               </div>
               <div className="image">
-                <ImageLoader content={widget.image} />
+                <Image src={widget.image} />
               </div>
             </div>
 

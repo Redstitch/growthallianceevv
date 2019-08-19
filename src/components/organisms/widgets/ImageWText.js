@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ImageLoader from '../../atoms/ImageLoader';
+import Image from '../../atoms/Image';
 import PageLink from '../../atoms/PageLink';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { pageColor } from '../../../js/autoColor';
@@ -14,7 +14,7 @@ const ImageWText = ({ widget, color }) => (
     <Wrapper medium>
       <div className="inner">
         <div className="image">
-          <ImageLoader content={widget.image} />
+          <Image src={widget.image} />
         </div>
         <div className="copy">
           <h3>{widget.content.heading}</h3>

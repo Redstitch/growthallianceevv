@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { graphql, StaticQuery, Link } from 'gatsby';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 import { colors } from '../styles/utilities/settings';
 import { button } from '../styles/utilities/elements';
 import Layout from '../components/Layout';
@@ -10,6 +9,7 @@ import Wrapper from '../styles/utilities/Wrapper';
 import { above, below } from '../styles/utilities/mediaQueries';
 import DefaultBanner from '../components/organisms/banners/DefaultBanner';
 import fonts from '../styles/utilities/fonts';
+import BackgroundImage, { SBackgroundImage } from '../components/atoms/BackgroundImage';
 
 
 class BlogRollPage extends Component {
@@ -35,13 +35,13 @@ class BlogRollPage extends Component {
               <Dochead
                 title="Blog"
                 siteName={data.wordpressSiteMetadata.name}
-                pageImage={data.wordpressAcfOptions.options.blog_banner_image && data.wordpressAcfOptions.options.blog_banner_image.localFile.childImageSharp.original.src}
+                pageImage={data.wordpressAcfOptions.options.blog_banner_image && data.wordpressAcfOptions.options.blog_banner_image.url}
                 description={data.wordpressSiteMetadata.description}
               />
               <DefaultBanner
                 page={{
                   title: data.wordpressAcfOptions.options.blog_banner_copy.heading,
-                  mainImage: data.wordpressAcfOptions.options.blog_banner_image.localFile.childImageSharp.fixed,
+                  mainImage: data.wordpressAcfOptions.options.blog_banner_image,
                   color: 'navy',
                   description: data.wordpressAcfOptions.options.blog_banner_copy.copy,
                 }}
@@ -58,7 +58,7 @@ class BlogRollPage extends Component {
                         && (
                         <Link to={`/blog/${node.slug}`}>
                           <SBlogPost>
-                            <Img fluid={node.acf.main_image.localFile.childImageSharp.fluid} />
+                            <BackgroundImage src={node.acf.main_image} />
                             <div className="content">
                               <div className="blog-name">
                                 <h5>
@@ -98,20 +98,18 @@ const BLOG_QUERY = graphql`{
         copy
       }
       blog_banner_image {
-        localFile {
-          childImageSharp {
-            original {
-              src
-            }
-            fixed(quality: 100, width: 1200) {
-              tracedSVG
-              aspectRatio
-              width
-              height
-              src
-              srcSet
-            }
-          }
+        width
+        height
+        url
+        sizes {
+          large_size
+          lqph_size
+          middle_size
+          small_size
+          x_large_size
+          x_small_size
+          xx_large_size
+          xx_small_size
         }
       }
     }
@@ -125,16 +123,18 @@ const BLOG_QUERY = graphql`{
         content
         acf {
           main_image {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 400, maxHeight: 400, quality: 100) {
-                  base64
-                  aspectRatio
-                  src
-                  srcSet
-                  sizes
-                }
-              }
+            width
+            height
+            url
+            sizes {
+              large_size
+              lqph_size
+              middle_size
+              small_size
+              x_large_size
+              x_small_size
+              xx_large_size
+              xx_small_size
             }
           }
         }
@@ -204,6 +204,11 @@ a {
     ${button};
     width: auto;
     ${fonts.HelveticaNeueBold};
+  }
+
+  ${SBackgroundImage} {
+    width: 100%;
+    height: 300px;
   }
 }
 `;

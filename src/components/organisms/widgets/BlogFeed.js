@@ -68,19 +68,18 @@ const BLOGFEED_QUERY = graphql`{
         }
         acf {
           main_image {
-            localFile {
-              childImageSharp {
-                original {
-                  src
-                }
-                fluid(maxWidth: 400, maxHeight: 400, quality: 100) {
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  sizes
-                }
-              }
+            width
+            height
+            url
+            sizes {
+              large_size
+              lqph_size
+              middle_size
+              small_size
+              x_large_size
+              x_small_size
+              xx_large_size
+              xx_small_size
             }
           }
         }

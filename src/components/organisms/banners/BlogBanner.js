@@ -1,22 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 import { bannerContent } from '../../../styles/utilities/elements';
 import { colors } from '../../../styles/utilities/settings';
 import Wrapper from '../../../styles/utilities/Wrapper';
+import BackgroundImage from '../../atoms/BackgroundImage';
 
-const BlogBanner = ({ page, preview }) => (
+const BlogBanner = ({ page }) => (
   <section>
-    <SBlogBanner>
-      <div className="image-background">
-        {preview ? <div className="gatsby-image-wrapper"><img src={page.mainImage} alt="..." /></div> : <Img fixed={page.mainImage} />}
-      </div>
-      <Wrapper>
-        <div className="content">
-          <h1>{page.title}</h1>
-        </div>
-      </Wrapper>
-    </SBlogBanner>
+    <BackgroundImage src={page.mainImage}>
+      <SBlogBanner>
+        <Wrapper>
+          <div className="content">
+            <h1>{page.title}</h1>
+          </div>
+        </Wrapper>
+      </SBlogBanner>
+    </BackgroundImage>
   </section>
 );
 

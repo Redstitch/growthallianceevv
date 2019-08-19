@@ -4,15 +4,13 @@ import { colors, misc } from '../../styles/utilities/settings';
 import { imageBG, absoluteCenter } from '../../styles/utilities/elements';
 import { above, below } from '../../styles/utilities/mediaQueries';
 import PageLink from '../atoms/PageLink';
-import ImageLoader from '../atoms/ImageLoader';
 import fonts from '../../styles/utilities/fonts';
+import BackgroundImage, { SBackgroundImage } from '../atoms/BackgroundImage';
 
 
 const Column = ({ content }) => (
   <SColumn key={content.heading}>
-    <div className="image-background">
-      <ImageLoader content={content.image} fixed />
-    </div>
+    <BackgroundImage src={content.image} />
     <div className="content">
       <h1>{content.heading}</h1>
       <p>{content.copy}</p>
@@ -111,31 +109,21 @@ const SColumn = styled.div`
       }
     }
 
+  ${SBackgroundImage} {
+    height: 100%;
 
-  .image-background {
+    ${above.ipadLand`
+      width: 120%;
+      margin-left: -10%;
+      transform: skew(-4deg);
+    `}
 
-    .gatsby-image-wrapper {
-      position: relative;
-      overflow: hidden;
-      display: inline-block;
-      width: 1000px;
-      height: 667px;
-    }
-
-    img {
-
+    ${below.ipadLand`
       position: absolute;
-      top: 0px;
-      left: 0px;
+      left: 0;
+      top: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-
-      ${above.ipadLand`
-        transform: skew(-4deg);
-      `}
-    }
+    `}
   }
 
   .content {

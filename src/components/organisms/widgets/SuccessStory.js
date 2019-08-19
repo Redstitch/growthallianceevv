@@ -3,8 +3,8 @@ import VisibilitySensor from 'react-visibility-sensor';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { Shape1 } from '../../atoms/Shapes';
 import ItemWImage from '../../../styles/molecules/ItemWImage';
-import ImageLoader from '../../atoms/ImageLoader';
 import PageLink from '../../atoms/PageLink';
+import BackgroundImage from '../../atoms/BackgroundImage';
 
 
 class SuccessStory extends Component {
@@ -29,7 +29,7 @@ class SuccessStory extends Component {
         <Wrapper>
           <ItemWImage color={color} isVisible={isVisible}>
             <div className="image">
-              <ImageLoader content={widget.image} />
+              <BackgroundImage src={widget.image} />
               <Shape1 />
             </div>
             <div className="content">

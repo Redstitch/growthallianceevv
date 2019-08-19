@@ -14,12 +14,12 @@ const Post = ({ data }) => (
     <Dochead
       title={data.wordpressPost.title}
       siteName={data.wordpressSiteMetadata.name}
-      pageImage={data.wordpressPost.acf.main_image && data.wordpressPost.acf.main_image.localFile.childImageSharp.original.src}
+      pageImage={data.wordpressPost.acf.main_image && data.wordpressPost.acf.main_image.url}
       description={data.wordpressPost.acf.description ? data.wordpressPost.acf.description : data.wordpressSiteMetadata.description}
     />
     <BlogBanner page={{
       title: data.wordpressPost.title,
-      mainImage: data.wordpressPost.acf.main_image.localFile.childImageSharp.fixed,
+      mainImage: data.wordpressPost.acf.main_image,
       color: 'navy',
       description: null,
     }}
@@ -43,20 +43,18 @@ query PostQuery($slug: String!) {
     }
     acf {
       main_image {
-        localFile {
-          childImageSharp {
-            original {
-              src
-            }
-            fixed(width: 1200, quality: 100) {
-              tracedSVG
-              aspectRatio
-              width
-              height
-              srcSet
-              src
-            }
-          }
+        width
+        height
+        url
+        sizes {
+          large_size
+          lqph_size
+          middle_size
+          small_size
+          x_large_size
+          x_small_size
+          xx_large_size
+          xx_small_size
         }
       }
       primary_category {
@@ -67,41 +65,37 @@ query PostQuery($slug: String!) {
         ... on WordPressAcf_rich_text {
           copy
         }
-        ... on WordPressAcf_gallery {
-          images {
-            localFile {
-              childImageSharp {
-                fluid(quality: 100, maxWidth: 500, maxHeight: 500) {
-                  base64
-                  aspectRatio
-                  src
-                  srcSet
-                  sizes
-                }
-                fixed(quality: 100, width: 800) {
-                  base64
-                  aspectRatio
-                  width
-                  height
-                  src
-                  srcSet
-                }
-              }
-            }
-          }
-        }
+        # ... on WordPressAcf_gallery {
+        #   images {
+        #     width
+        #     height
+        #     url
+        #     sizes {
+        #       large_size
+        #       lqph_size
+        #       middle_size
+        #       small_size
+        #       x_large_size
+        #       x_small_size
+        #       xx_large_size
+        #       xx_small_size
+        #     }
+        #   }
+        # }
         ... on WordPressAcf_image_block {
           image {
-            localFile {
-              childImageSharp {
-                fluid(quality: 100, maxWidth: 708) {
-                  base64
-                  aspectRatio
-                  src
-                  srcSet
-                  sizes
-                }
-              }
+            width
+            height
+            url
+            sizes {
+              large_size
+              lqph_size
+              middle_size
+              small_size
+              x_large_size
+              x_small_size
+              xx_large_size
+              xx_small_size
             }
           }
         }

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { colors } from '../../../styles/utilities/settings';
-import ImageLoader from '../../atoms/ImageLoader';
+import Image from '../../atoms/Image';
 
 const ImageDescription = ({ widget, color }) => (
   <SImageDescription color={color}>
@@ -12,7 +12,7 @@ const ImageDescription = ({ widget, color }) => (
       }}
       />
       <div className="image">
-        <ImageLoader content={widget.image} />
+        <Image src={widget.image} />
       </div>
     </Wrapper>
   </SImageDescription>

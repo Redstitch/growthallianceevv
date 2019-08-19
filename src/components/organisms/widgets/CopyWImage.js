@@ -4,7 +4,7 @@ import Wrapper from '../../../styles/utilities/Wrapper';
 import { pageColor } from '../../../js/autoColor';
 import { colors } from '../../../styles/utilities/settings';
 import { above } from '../../../styles/utilities/mediaQueries';
-import ImageLoader from '../../atoms/ImageLoader';
+import Image from '../../atoms/Image';
 
 const CopyWImage = ({ widget, color }) => (
   <Wrapper medium>
@@ -13,7 +13,7 @@ const CopyWImage = ({ widget, color }) => (
       {widget.blocks.map((block, index) => (
         <div className="block" key={`block${index}`} color={color}>
           <div className="image">
-            <ImageLoader content={block.image} />
+            <Image src={block.image} />
           </div>
           <div
             className="content"

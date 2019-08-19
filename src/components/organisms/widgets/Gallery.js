@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import SLightBox from '../../../styles/molecules/SLightBox';
 import { above } from '../../../styles/utilities/mediaQueries';
-import ImageLoader from '../../atoms/ImageLoader';
+import Image from '../../atoms/Image';
 
 
 class Gallery extends Component {
@@ -53,14 +53,14 @@ class Gallery extends Component {
                 }));
               }}
             >
-              <ImageLoader content={image} />
+              <Image src={image} />
             </a>
           ))}
           {modalOpen
           && (
           <SLightBox id="outter">
             <div className="inner">
-              <ImageLoader content={widget.images[activeIndex]} fixed />
+              <Image src={widget.images[activeIndex]} fixed />
             </div>
           </SLightBox>
           )}

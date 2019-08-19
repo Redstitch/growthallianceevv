@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import ImageLoader from '../../atoms/ImageLoader';
+import Image from '../../atoms/Image';
 
 const FullWidthImage = ({ widget }) => (
   <SFullWidthImage>
-    <ImageLoader content={widget.image} />
+    <Image src={widget.image} />
   </SFullWidthImage>
 );
 
