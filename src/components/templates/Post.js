@@ -46,6 +46,7 @@ query PostQuery($slug: String!) {
         width
         height
         url
+        name
         sizes {
           large_size
           lqph_size
@@ -70,6 +71,7 @@ query PostQuery($slug: String!) {
         #     width
         #     height
         #     url
+        #     name
         #     sizes {
         #       large_size
         #       lqph_size
@@ -87,6 +89,7 @@ query PostQuery($slug: String!) {
             width
             height
             url
+            name
             sizes {
               large_size
               lqph_size

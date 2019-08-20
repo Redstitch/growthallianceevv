@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { document } from 'browser-monads';
 import styled from 'styled-components';
 
+import { graphql, StaticQuery } from 'gatsby';
 import { misc } from '../../styles/utilities/settings';
 
 class BackgroundImage extends Component {
@@ -52,12 +53,19 @@ class BackgroundImage extends Component {
     const { children, className, src } = this.props;
     const { objectLoaded, fullQuality } = this.state;
     return (
-      <SBackgroundImage
-        className={className}
-        bgImg={objectLoaded ? fullQuality : src.sizes.lqph_size}
-      >
-        {children}
-      </SBackgroundImage>
+      <StaticQuery
+        query={BACKGROUNDIMAGE_QUERY}
+        render={({ allFile }) => allFile.edges.map(({ node }) => node.name === src.name
+          && (
+          <SBackgroundImage
+            key={node.id}
+            className={className}
+            bgImg={objectLoaded ? fullQuality : node.publicURL}
+          >
+            {children}
+          </SBackgroundImage>
+          ))}
+      />
     );
   }
 }
@@ -70,3 +78,15 @@ export const SBackgroundImage = styled.div`
   background-size: cover;
   transition-duration: ${misc.animSpeed};
 `;
+
+const BACKGROUNDIMAGE_QUERY = graphql`{
+  allFile {
+    edges {
+      node {
+        id
+        publicURL
+        name
+      }
+    }
+  }
+}`;

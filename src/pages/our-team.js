@@ -55,6 +55,7 @@ const OURTEAM_QUERY = graphql`{
         width
         height
         url
+        name
         sizes {
           large_size
           lqph_size
@@ -82,6 +83,7 @@ const OURTEAM_QUERY = graphql`{
             width
             height
             url
+            name
             sizes {
               large_size
               lqph_size

@@ -80,6 +80,7 @@ const CONTACTUS_QUERY = graphql`{
         width
         height
         url
+        name
         sizes {
           large_size
           lqph_size
