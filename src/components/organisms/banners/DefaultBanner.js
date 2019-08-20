@@ -18,8 +18,7 @@ const DefaultBanner = ({ content, page }) => (
             __html: page.description,
           }}
           />
-          )
-          }
+          )}
         </div>
       </Wrapper>
     </BackgroundImage>

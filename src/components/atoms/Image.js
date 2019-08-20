@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 import styled from 'styled-components';
 import { document } from 'browser-monads';
-import { graphql, StaticQuery } from 'gatsby';
 import { breakpoints, misc } from '../../styles/utilities/settings';
 import { absoluteCenter } from '../../styles/utilities/elements';
 
@@ -57,44 +56,38 @@ class Image extends Component {
       objectLoading, small, medium, large, full,
     } = this.state;
     return (
-      <StaticQuery
-        query={IMAGE_QUERY}
-        render={({ allFile }) => (
-          <VisibilitySensor
-            onChange={(e) => {
-              if (e === true) {
-                this.imageLoad();
-              }
+      <VisibilitySensor
+        onChange={(e) => {
+          if (e === true) {
+            this.imageLoad();
+          }
+        }}
+        partialVisibility
+      >
+        <SImage objectLoading={objectLoading}>
+          <div
+            className="imageContainer"
+            style={{
+              height: '0',
+              paddingBottom: `${(src.height / src.width) * 100}%`,
             }}
-            partialVisibility
           >
-            <SImage objectLoading={objectLoading}>
-              <div
-                className="imageContainer"
-                style={{
-                  height: '0',
-                  paddingBottom: `${(src.height / src.width) * 100}%`,
-                }}
-              >
-                {allFile.edges.map(({ node }) => node.name === src.name
-                    && <img key={node.id} className="placeholder" src={node.publicURL} alt="..." />)}
-                <picture>
-                  <source
-                    sizes={`(max-width: ${breakpoints.pageWidth}px) 100vw, ${breakpoints.pageWidth}px`}
-                    srcSet={`${small ? `${small} ${breakpoints.mobile}w, ` : ''}${medium ? `${medium} ${breakpoints.ipadPort}w, ` : ''}${large ? `${large} ${breakpoints.ipadLand}w, ` : ''}${full ? `${full} ${breakpoints.pageWidth}w` : ''}`}
-                  />
-                  <img
-                    sizes={`(max-width: ${breakpoints.pageWidth}px) 100vw, ${breakpoints.pageWidth}px`}
-                    srcSet={`${small ? `${small} ${breakpoints.mobile}w, ` : ''}${medium ? `${medium} ${breakpoints.ipadPort}w, ` : ''}${large ? `${large} ${breakpoints.ipadLand}w, ` : ''}${full ? `${full} ${breakpoints.pageWidth}w` : ''}`}
-                    src={full}
-                    alt="img"
-                  />
-                </picture>
-              </div>
-            </SImage>
-          </VisibilitySensor>
-        )}
-      />
+            <img className="placeholder" src={src.sizes.lqph_size} alt="..." />
+            <picture>
+              <source
+                sizes={`(max-width: ${breakpoints.pageWidth}px) 100vw, ${breakpoints.pageWidth}px`}
+                srcSet={`${small ? `${small} ${breakpoints.mobile}w, ` : ''}${medium ? `${medium} ${breakpoints.ipadPort}w, ` : ''}${large ? `${large} ${breakpoints.ipadLand}w, ` : ''}${full ? `${full} ${breakpoints.pageWidth}w` : ''}`}
+              />
+              <img
+                sizes={`(max-width: ${breakpoints.pageWidth}px) 100vw, ${breakpoints.pageWidth}px`}
+                srcSet={`${small ? `${small} ${breakpoints.mobile}w, ` : ''}${medium ? `${medium} ${breakpoints.ipadPort}w, ` : ''}${large ? `${large} ${breakpoints.ipadLand}w, ` : ''}${full ? `${full} ${breakpoints.pageWidth}w` : ''}`}
+                src={full}
+                alt="img"
+              />
+            </picture>
+          </div>
+        </SImage>
+      </VisibilitySensor>
     );
   }
 }
@@ -123,15 +116,3 @@ export const SImage = styled.div`
     }
   }
 `;
-
-const IMAGE_QUERY = graphql`{
-  allFile {
-    edges {
-      node {
-        id
-        publicURL
-        name
-      }
-    }
-  }
-}`;

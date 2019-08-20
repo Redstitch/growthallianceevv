@@ -1,6 +1,3 @@
-const axios = require('axios');
-const rimraf = require('rimraf');
-const download = require('image-downloader');
 require('dotenv').config({
   path: '.env',
 });
@@ -8,31 +5,6 @@ require('dotenv').config({
 const { NODE_ENV } = process.env;
 const { GATSBY_CMS } = process.env;
 const { GATSBY_PREFIX } = process.env;
-
-rimraf('./src/images/*', () => { console.log('done'); });
-
-
-// Make a request for a user with a given ID
-axios.get(`${GATSBY_CMS}/wp-json/wp/v2/media?per_page=100`)
-  .then(({ data }) => {
-    data.forEach(({
-      slug, mime_type, media_type, media_details,
-    }) => {
-      const suffix = mime_type.split('/')[1];
-
-      if (media_type === 'image') {
-        download.image({
-          url: media_details.sizes.lqph_size.source_url,
-          dest: `./src/images/${slug}.${suffix}`,
-        })
-          .catch(err => console.error(err));
-      }
-    });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-
 
 module.exports = {
   siteMetadata: {
