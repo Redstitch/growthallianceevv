@@ -289,6 +289,7 @@ query PageQuery($slug: String!) {
           }
         }
         ... on  WordPressAcf_rich_text {
+          wide
           copy
         }
         ... on WordPressAcf_card_links {

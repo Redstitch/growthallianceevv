@@ -37,8 +37,14 @@ const SPanelBanner = styled.div`
   .panels {
     ${above.ipadLand`
       display: flex;
-      height: 90vh;
+      height: calc(100vh - 86px);
       margin: 0 -4%;
+    `}
+    ${above.pageWidth`
+      height: calc(100vh - 106px);
+    `}
+    ${above.widePageWidth`
+      height: calc(100vh - 129px);
     `}
   }
 

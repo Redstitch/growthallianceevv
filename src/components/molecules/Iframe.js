@@ -8,10 +8,13 @@ export function iframeLoaded() {
   }
 }
 
-const Iframe = ({ src, title }) => (
+const Iframe = ({
+  width, height, src, title,
+}) => (
   <iframe
     title={title}
-    height="160px"
+    width={width || '100%'}
+    height={height || '160px'}
     src={src}
     id="dynamicIframe"
   />

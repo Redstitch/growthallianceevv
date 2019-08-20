@@ -5,7 +5,7 @@ import { pageColor } from '../../../js/autoColor';
 import { colors } from '../../../styles/utilities/settings';
 
 const RichText = ({ widget, color }) => (
-  <Wrapper narrow>
+  <Wrapper narrow={!widget.wide}>
     <SRichText
       color={color}
       dangerouslySetInnerHTML={{
