@@ -19,6 +19,7 @@ export default RichText;
 
 export const SRichText = styled.div`
   margin-bottom: 100px;
+  overflow-x: auto;
 
   h1, h2, h3, h4, h5, h6, a, strong {
     color: ${({ color }) => (color ? pageColor(color) : colors.navy)};

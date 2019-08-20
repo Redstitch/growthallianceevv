@@ -64,7 +64,7 @@ export const typography = css`
     border-spacing: 0;
 
     tr {
-      &:nth-child(2) {
+      &:nth-child(2n) {
         background-color: ${colors.gray};
 
         th, td {
@@ -132,6 +132,8 @@ export const button = css`
   color: ${colors.white};
   padding: 10px 20px 9px;
   clip-path: polygon(0 3%, 100% 0, 98% 98%, 2% 95%);
+  font-family: ${fonts.HelveticaNeueBold};
+
   ${below.ipadLand`
     clip-path: none;
   `}
