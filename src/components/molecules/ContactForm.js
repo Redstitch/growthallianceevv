@@ -5,11 +5,13 @@ import fonts from '../../styles/utilities/fonts';
 import { button } from '../../styles/utilities/elements';
 import { above } from '../../styles/utilities/mediaQueries';
 
+const { GATSBY_SITE_URL } = process.env;
+
 const ContactForm = () => (
   <SContactForm>
     <div className="inner">
       <h2>Send us a message</h2>
-      <form action="http://localhost:8888/contact.php" method="POST">
+      <form action={`${GATSBY_SITE_URL}/contact.php`} method="POST">
         <label htmlFor="fname">
           First Name
           <input name="fname" id="fname" type="text" />
