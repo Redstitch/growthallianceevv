@@ -23,7 +23,10 @@ const Footer = () => (
               <div className="columns">
                 <div>
                   <h4>{data.wordpressAcfOptions.options.subscribe.heading}</h4>
-                  <p>{data.wordpressAcfOptions.options.subscribe.copy}</p>
+                  <p dangerouslySetInnerHTML={{
+                    __html: data.wordpressAcfOptions.options.subscribe.copy,
+                  }}
+                  />
                   {NODE_ENV === 'development' ? (
                     <div className="subscribe-form">
                       <form>
