@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { pageColor } from '../../js/autoColor';
 import { colors } from '../../styles/utilities/settings';
-import { below } from '../../styles/utilities/mediaQueries';
+import { below, above } from '../../styles/utilities/mediaQueries';
 import BackgroundImage, { SBackgroundImage } from '../atoms/BackgroundImage';
 
 const Card = ({
@@ -37,8 +37,13 @@ export const SCard = styled.div`
     padding: 20px 30px;
     position: relative;
     top: -20px;
-    width: 101%;
     background-color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
+
+    ${above.ipadPort`
+      width: 101%;
+      left: 50%;
+      transform: translateX(-50%);
+    `}
 
     ${below.ipadPort`
       padding: 20px 30px;

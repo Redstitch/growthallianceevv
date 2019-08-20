@@ -67,7 +67,6 @@ const SCopyWImage = styled.div`
   .content {
     ${above.ipadLand`
       width: calc(100% - 300px);
-      margin-top: 30px;
       margin-left: 20px;
     `}
 

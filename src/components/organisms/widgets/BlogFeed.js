@@ -107,11 +107,7 @@ export const SBlogFeed = styled.div`
   .posts {
 
     ${below.smallPage`
-    margin: 0 -50px;
-  `}
-
-    ${below.mobile`
-    margin: 0 -60px;
+      margin: 0 -15px;
     `}
 
     ${above.smallPage`
@@ -131,6 +127,7 @@ export const SBlogFeed = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
     ${below.smallPage`
       max-width: none;
       padding: 20px 50px;
@@ -150,24 +147,30 @@ export const SBlogFeed = styled.div`
     `}
 
     &:nth-child(3n - 2) {
-      h5 {
-        clip-path: polygon(0 0, 100% 4%, 100% 95%, 0% 100%);
-        background-color: ${({ color }) => (color ? pageColor(color) : colors.orange)};
-      }
+        h5 {
+          background-color: ${({ color }) => (color ? pageColor(color) : colors.orange)};
+          ${above.ipadPort`
+            clip-path: polygon(0 0, 100% 4%, 100% 95%, 0% 100%);
+          `}
+        }
     }
 
     &:nth-child(3n - 1) {
-      h5 {
-        clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
-        background-color: ${({ color }) => (color ? pageColor(color) : colors.green)};
-      }
+        h5 {
+          background-color: ${({ color }) => (color ? pageColor(color) : colors.green)};
+          ${above.ipadPort`
+            clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
+          `}
+        }
     }
 
     &:nth-child(3n) {
-      h5 {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
-        background-color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
-      }
+        h5 {
+          background-color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
+          ${above.ipadPort`
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
+          `}
+        }
     }
   }
 `;
