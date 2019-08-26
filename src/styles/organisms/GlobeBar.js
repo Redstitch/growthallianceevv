@@ -205,10 +205,18 @@ const GlobeBar = styled.div`
       ${fonts.HelveticaNeueLight};
     }
 
+    p {
+      a {
+        text-decoration: underline;
+        font-weight: 700;
+        color: ${({ backgroundColor }) => (backgroundColor === 'blank' ? colors.darkerGray : colors.white)};
+      }
+    }
+
     > a {
       ${fonts.HelveticaNeueBold};
       ${button};
-      ${({ color }) => ((color && color === 'orange') && `background-color: ${colors.blue}`)};
+      ${({ color }) => ((color && color === 'orange') && `background-color: ${colors.white}`)};
       margin-top: 8px;
     }
   }
