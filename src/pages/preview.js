@@ -57,7 +57,7 @@ class Preview extends Component {
                 preview
                 page={{
                   title: previewData.title.rendered,
-                  mainImage: previewData.acf.main_image.url,
+                  mainImage: previewData.acf.main_image,
                   color: previewData.acf.page_color,
                   description: previewData.acf.description ? previewData.acf.description : null,
                 }}
@@ -72,7 +72,7 @@ class Preview extends Component {
                   preview
                   page={{
                     title: previewData.title.rendered,
-                    mainImage: previewData.acf.main_image.url,
+                    mainImage: previewData.acf.main_image,
                     color: 'navy',
                     description: null,
                   }}
