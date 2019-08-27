@@ -56,23 +56,24 @@ class BlogRollPage extends Component {
                       <React.Fragment key={node.id}>
                         {(countVisible >= index + 1)
                         && (
-                        <Link to={`/blog/${node.slug}`}>
-                          <SBlogPost>
-                            <BackgroundImage src={node.acf.main_image} />
-                            <div className="content">
-                              <div className="blog-name">
-                                <h5>
-                                  {node.title}
-                                </h5>
-                                <span>Read More</span>
-                              </div>
+                          <div className="single-post">
+                            <Link to={`/blog/${node.slug}`}>
+                              <SBlogPost>
+                                <BackgroundImage src={node.acf.main_image} />
+                                <div className="content">
+                                  <div className="blog-name">
+                                    <h5>
+                                      {node.title}
+                                    </h5>
+                                    <span>Read More</span>
+                                  </div>
 
-                            </div>
+                                </div>
 
-                          </SBlogPost>
-                        </Link>
-                        )
-                        }
+                              </SBlogPost>
+                            </Link>
+                          </div>
+                        )}
                       </React.Fragment>
                     ))}
                   </div>
@@ -115,7 +116,7 @@ const BLOG_QUERY = graphql`{
       }
     }
   }
-  allWordpressPost(sort: {fields: date}) {
+  allWordpressPost(sort: {fields: date, order: DESC}) {
     edges {
       node {
         id
@@ -150,110 +151,118 @@ const BLOG_QUERY = graphql`{
 }`;
 
 const SBlog = styled.div`
-text-align: center;
-margin-bottom: 100px;
+  text-align: center;
+  margin-bottom: 100px;
 
+  .posts {
 
-.posts {
-  ${above.smallPage`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-right: -35px;
-`}
-  ${below.smallPage`
-    margin: 0 -50px;
-  `}
-}
+    ${above.smallPage`
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-right: -50px;
+    `}
 
-a {
-  width: 100%;
+    ${below.smallPage`
+      margin: 0 -15px;
+    `}
+  }
 
+  .load-more {
+    ${button};
+    width: auto;
+    ${fonts.HelveticaNeueBold};
+  }
 
+  .single-post {
+    width: 100%;
 
-  ${below.ipadPort`
-    max-width: 50%;
-    padding-right: 50px;
-    margin-bottom: -25px;
-  `}
+    ${below.ipadPort`
+      max-width: 50%;
+      padding: 0 50px 75px 0;
+      margin-bottom: -25px;
+    `}
 
-  ${above.ipadPort`
-    max-width: 33.33%;
-    padding-right: 50px;
-    margin-bottom: -25px;
-  `}
+    ${below.smallPage`
+      max-width: 100%;
+      padding: 0;
+      margin-bottom: 50px;
+    `}
 
+    ${above.ipadPort`
+      max-width: 33.33%;
+      padding: 0 50px 75px 0;
+      margin-bottom: -25px;
+    `}
 
+    &:nth-child(3n - 2) {
 
-  &:nth-child(3n - 2) {
       .blog-name {
         clip-path: polygon(0 0, 100% 4%, 100% 95%, 0% 100%);
       }
     }
 
     &:nth-child(3n - 1) {
+
       .blog-name {
         clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
       }
     }
 
     &:nth-child(3n) {
+
       .blog-name {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
       }
     }
-  &.load-more {
-    ${button};
-    width: auto;
-    ${fonts.HelveticaNeueBold};
-  }
 
-  ${SBackgroundImage} {
-    width: 100%;
-    height: 300px;
+    ${SBackgroundImage} {
+      width: 100%;
+      height: 300px;
+    }
+
+    a {
+      display: block;
+    }
   }
-}
 `;
 
 const SBlogPost = styled.div`
-position: relative;
-overflow-x: hidden;
-text-align: left;
-
-${below.mobile`
-margin: 0 -60px;
-`}
-
-.blog-name {
-  padding: 20px 40px 22px;
-  ${below.ipadPort`
-    padding: 21px 30px 20px;
-  `}
-  ${below.smallPage`
-    padding: 21px 50px 20px;
-  `}
   position: relative;
-  top: -75px;
-  left: 0;
-  width: 102%;
-  background-color: ${colors.navy};
-  margin-bottom: 0;
+  overflow-x: hidden;
+  text-align: left;
 
-  span {
-    font-size: 12px;
-    color: ${colors.white};
-    ${fonts.HelveticaNeueBold};
+  .blog-name {
+    padding: 20px 40px 22px;
+    position: relative;
+    margin-top: -75px;
+    left: 0;
+    width: 102%;
+    background-color: ${colors.navy};
+    margin-bottom: 0;
+
+    ${below.ipadPort`
+      padding: 21px 30px 20px;
+    `}
+
+    ${below.smallPage`
+      padding: 21px 50px 20px;
+    `}
+
+    span {
+      font-size: 12px;
+      color: ${colors.white};
+      ${fonts.HelveticaNeueBold};
+    }
   }
 
-}
-
-h5 {
-  color: ${colors.white};
-  ${fonts.HelveticaNeueBold};
-  margin-bottom: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 275px;
-}
+  h5 {
+    color: ${colors.white};
+    ${fonts.HelveticaNeueBold};
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 275px;
+  }
 `;
