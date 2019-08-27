@@ -13,6 +13,7 @@ import TabbedContent from './widgets/TabbedContent';
 import CopyWImage from './widgets/CopyWImage';
 import ImageDescription from './widgets/ImageDescription';
 import ImageWText from './widgets/ImageWText';
+import RawCode from './widgets/RawCode';
 
 const PageWidgets = ({ preview, content, color }) => content && content.map((widget, index) => (
   <section key={`${index}pagewidget`}>
@@ -51,6 +52,7 @@ const PageWidgets = ({ preview, content, color }) => content && content.map((wid
         {widget.__typename === 'WordPressAcf_copy_wimage' && <CopyWImage order={index} widget={widget} color={color} /> }
         {widget.__typename === 'WordPressAcf_image_wdescription' && <ImageDescription order={index} widget={widget} color={color} /> }
         {widget.__typename === 'WordPressAcf_image_wtext' && <ImageWText order={index} widget={widget} color={color} /> }
+        {widget.__typename === 'WordPressAcf_raw_code' && <RawCode order={index} widget={widget} color={color} /> }
       </>
     )}
   </section>
