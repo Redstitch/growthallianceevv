@@ -28,7 +28,6 @@ class Image extends Component {
         medium: src.sizes.middle_size,
         large: src.sizes.large_size,
         full: src.url,
-        objectLoading: false,
       };
     }
   }
@@ -41,7 +40,6 @@ class Image extends Component {
 
     fullImage.onload = () => {
       this.setState({
-        objectLoading: false,
         small: src.sizes.small_size,
         medium: src.sizes.middle_size,
         large: src.sizes.large_size,
@@ -79,6 +77,11 @@ class Image extends Component {
                 srcSet={`${small ? `${small} ${breakpoints.mobile}w, ` : ''}${medium ? `${medium} ${breakpoints.ipadPort}w, ` : ''}${large ? `${large} ${breakpoints.ipadLand}w, ` : ''}${full ? `${full} ${breakpoints.pageWidth}w` : ''}`}
               />
               <img
+                onLoad={() => {
+                  this.setState({
+                    objectLoading: false,
+                  });
+                }}
                 sizes={`(max-width: ${breakpoints.pageWidth}px) 100vw, ${breakpoints.pageWidth}px`}
                 srcSet={`${small ? `${small} ${breakpoints.mobile}w, ` : ''}${medium ? `${medium} ${breakpoints.ipadPort}w, ` : ''}${large ? `${large} ${breakpoints.ipadLand}w, ` : ''}${full ? `${full} ${breakpoints.pageWidth}w` : ''}`}
                 src={full}
@@ -112,6 +115,7 @@ export const SImage = styled.div`
 
   picture {
     img {
+      transition-duration: ${misc.animSpeed};
       opacity: ${({ objectLoading }) => (objectLoading ? '0' : '1')};
     }
   }
