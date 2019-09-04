@@ -59,11 +59,22 @@ export const typography = css`
     ${fonts.HelveticaNeueBold};
   }
 
-  table {
+  table, tbody {
     border-collapse: collapse;
     border-spacing: 0;
 
+    ${below.ipadPort`
+      display: block;
+      width: 100%;
+    `}
+
     tr {
+
+      ${below.ipadPort`
+        display: block;
+        width: 100%;
+      `}
+
       &:nth-child(2n) {
         background-color: ${colors.gray};
 
@@ -78,6 +89,12 @@ export const typography = css`
       text-align: center;
       padding: 5px 15px;
 
+      ${below.ipadPort`
+        display: block;
+        width: 100%;
+        text-align: left !important;
+      `}
+
       &:first-child{
         text-align: left;
       }
@@ -85,6 +102,7 @@ export const typography = css`
       &:last-child{
         text-align: right;
       }
+
     }
   }
 
