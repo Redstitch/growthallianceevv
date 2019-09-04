@@ -13,7 +13,6 @@ import TabbedContent from './widgets/TabbedContent';
 import CopyWImage from './widgets/CopyWImage';
 import ImageDescription from './widgets/ImageDescription';
 import ImageWText from './widgets/ImageWText';
-import RawCode from './widgets/JavascriptLink';
 import JavascriptLink from './widgets/JavascriptLink';
 
 const PageWidgets = ({ preview, content, color }) => content && content.map((widget, index) => (
@@ -35,6 +34,7 @@ const PageWidgets = ({ preview, content, color }) => content && content.map((wid
         {widget.acf_fc_layout === 'copy_wimage' && <CopyWImage order={index} widget={widget} color={color} /> }
         {widget.acf_fc_layout === 'image_wdescription' && <ImageDescription order={index} widget={widget} color={color} /> }
         {widget.acf_fc_layout === 'image_wtext' && <ImageWText order={index} widget={widget} color={color} /> }
+        {widget.acf_fc_layout === 'javascript_link' && <JavascriptLink order={index} widget={widget} color={color} /> }
       </>
     ) : (
       <>
