@@ -292,8 +292,8 @@ query PageQuery($slug: String!) {
           wide
           copy
         }
-        ... on  WordPressAcf_raw_code {
-          code
+        ... on  WordPressAcf_javascript_link {
+          source
         }
         ... on WordPressAcf_card_links {
           heading {
