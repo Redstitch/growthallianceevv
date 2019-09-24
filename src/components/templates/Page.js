@@ -11,7 +11,7 @@ const Page = ({ data }) => (
 
   <Layout>
     <Dochead
-      title={data.wordpressPage.title !== 'Home' ? data.wordpressPage.title : null}
+      title={data.wordpressPage.title !== 'Home' ? data.wordpressPage.title.replace('&#038;', '&') : null}
       siteName={data.wordpressSiteMetadata.name}
       pageImage={data.wordpressPage.acf.main_image && data.wordpressPage.acf.main_image.url}
       description={data.wordpressPage.acf.description ? data.wordpressPage.acf.description : data.wordpressSiteMetadata.description}

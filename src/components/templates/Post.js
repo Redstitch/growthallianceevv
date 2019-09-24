@@ -12,7 +12,7 @@ const Post = ({ data }) => (
 
   <Layout>
     <Dochead
-      title={data.wordpressPost.title}
+      title={data.wordpressPost.title.replace('&#038;', '&')}
       siteName={data.wordpressSiteMetadata.name}
       pageImage={data.wordpressPost.acf.main_image && data.wordpressPost.acf.main_image.url}
       description={data.wordpressPost.acf.description ? data.wordpressPost.acf.description : data.wordpressSiteMetadata.description}
