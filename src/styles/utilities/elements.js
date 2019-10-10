@@ -69,12 +69,6 @@ export const typography = css`
     `}
 
     tr {
-
-      ${below.ipadPort`
-        display: block;
-        width: 100%;
-      `}
-
       &:nth-child(2n) {
         background-color: ${colors.gray};
 
@@ -88,12 +82,6 @@ export const typography = css`
       border: 1px solid ${colors.gray};
       text-align: center;
       padding: 5px 15px;
-
-      ${below.ipadPort`
-        display: block;
-        width: 100%;
-        text-align: left !important;
-      `}
 
       &:first-child{
         text-align: left;

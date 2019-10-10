@@ -148,13 +148,16 @@ const SHeader = styled.header`
     display: block;
     max-width: 186px;
     margin-top: 26px;
+
     ${below.widePageWidth`
       margin-top: 15px;
     `}
+
     ${below.pageWidth`
       max-width: 140px;
       margin-top: 15px;
     `}
+
     ${below.ipadLand`
       max-width: 115px;
       margin-top: 15px;
@@ -165,8 +168,9 @@ const SHeader = styled.header`
 
   .navigation {
     z-index: 1987239487;
-
     position: relative;
+    width: 75%;
+
     ${below.ipadLand`
       transition-duration: ${misc.animSpeed};
       position: fixed;

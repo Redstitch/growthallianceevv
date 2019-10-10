@@ -9,6 +9,7 @@ import fonts from '../../../styles/utilities/fonts';
 import PageLink from '../../atoms/PageLink';
 import Image from '../../atoms/Image';
 import { colors } from '../../../styles/utilities/settings';
+import { SRichText } from './RichText';
 
 
 const ImageFeature = ({ widget, color }) => widget.features.map((feature, index) => (
@@ -127,6 +128,18 @@ const SFeature = styled.div`
       font-size: 15px;
       line-height: 1.75;
       color: ${colors.darkerGray};
+    }
+
+    ul {
+      list-style: disc;
+    }
+
+    ol {
+      list-style: decimal;
+    }
+
+    ul, ol {
+      margin-left: 15px;
     }
 
     > a {

@@ -216,7 +216,7 @@ const GlobeBar = styled.div`
     > a {
       ${fonts.HelveticaNeueBold};
       ${button};
-      ${({ color }) => ((color && color === 'orange') && `background-color: ${colors.white}`)};
+      ${({ color }) => ((color && color === 'orange') && `background-color: ${colors.blue}`)};
       margin-top: 8px;
     }
   }
