@@ -56,7 +56,7 @@ class Menu extends Component {
 
             <ul>
               {node.items.map((item, index) => (
-                <MenuItem key={index + item.object_id} itemIndex={index} content={item} pageColor={this.pageColorEval(item.object_id, pages)} />
+                <MenuItem key={`menuItem${index}${item.object_id}`} itemIndex={index} content={item} pageColor={this.pageColorEval(item.object_id, pages)} />
               ))}
             </ul>
           </SMenu>

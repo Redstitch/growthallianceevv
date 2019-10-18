@@ -1,5 +1,20 @@
 const path = require('path');
 
+function slugify(string) {
+  const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;';
+  const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnooooooooprrsssssttuuuuuuuuuwxyyzzz------';
+  const p = new RegExp(a.split('').join('|'), 'g');
+
+  return string.toString().toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/[^\w\-]+/g, '') // Remove all non-word characters
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, ''); // Trim - from end of text
+}
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   return new Promise((resolve) => {
@@ -25,6 +40,12 @@ exports.createPages = ({ graphql, actions }) => {
         edges {
           node {
             slug
+            acf {
+              start_date
+              reoccurring_dates {
+                date
+              }
+            }
           }
         }
       }
@@ -53,8 +74,21 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve('./src/components/templates/Event.js'),
           context: {
             slug: node.slug,
+            date: node.acf.start_date,
           },
         });
+        if (node.acf.reoccurring_dates) {
+          node.acf.reoccurring_dates.forEach(({ date }) => {
+            createPage({
+              path: `/events/${node.slug}-${slugify(date)}`,
+              component: path.resolve('./src/components/templates/Event.js'),
+              context: {
+                slug: node.slug,
+                date,
+              },
+            });
+          });
+        }
       });
       resolve();
     });

@@ -5,7 +5,40 @@ import Dochead from '../components/Dochead';
 import DefaultBanner from '../components/organisms/banners/DefaultBanner';
 import Wrapper from '../styles/utilities/Wrapper';
 import EventItem from '../components/molecules/EventItem';
+import slugify from '../js/slugify';
 import { getToday, getItemDate } from '../js/dateCompare';
+
+function compiledEvents(events) {
+  const compiledGroup = [];
+
+  events.forEach(({ node }) => {
+    const eventObj = {};
+    eventObj.title = node.title;
+    eventObj.eId = node.id;
+    eventObj.excerpt = node.excerpt;
+    eventObj.slug = node.slug;
+    eventObj.start = node.acf.start_date;
+    eventObj.start_time = node.acf.start_time;
+    eventObj.end_time = node.acf.end_time;
+    compiledGroup.push(eventObj);
+    if (node.acf.reoccurring_dates) {
+      node.acf.reoccurring_dates.forEach(({ date }, index) => {
+        const reEventObj = {};
+        reEventObj.title = node.title;
+        reEventObj.eId = `re${node.id}${index}`;
+        reEventObj.excerpt = node.excerpt;
+        reEventObj.start_time = node.acf.start_time;
+        reEventObj.end_time = node.acf.end_time;
+        reEventObj.slug = slugify(`${node.slug}-${date}`);
+        reEventObj.start = date;
+        compiledGroup.push(reEventObj);
+      });
+    }
+  });
+
+  const sorted = compiledGroup.sort((a, b) => new Date(a.start) - new Date(b.start));
+  return sorted;
+}
 
 const events = () => (
   <Layout>
@@ -31,8 +64,8 @@ const events = () => (
             }}
           />
           <Wrapper medium>
-            {data.allWordpressWpEvent.edges.map(({ node }) => parseInt(getToday(), 0) <= parseInt(getItemDate(node.acf.start_date), 0)
-                && <EventItem key={node.id} content={node} />)}
+            {compiledEvents(data.allWordpressWpEvent.edges).map(evnt => parseInt(getToday(), 0) <= parseInt(getItemDate(evnt.start), 0)
+                  && <EventItem key={evnt.eId} content={evnt} />)}
           </Wrapper>
         </>
       )}
@@ -79,6 +112,9 @@ const EVENTS_QUERY = graphql`{
         slug
         id
         acf {
+          reoccurring_dates {
+            date
+          }
           start_date
           end_date
           start_time

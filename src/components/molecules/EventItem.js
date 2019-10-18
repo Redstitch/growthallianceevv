@@ -13,18 +13,11 @@ const EventItem = ({ content }) => (
       <div className="inner">
         <Shape2 />
         <span className="date">
-          {content.acf.start_date}
-          {content.acf.end_date
-          && (
-          <div>
-            {' - '}
-            {content.acf.end_date}
-          </div>
-          )}
+          {content.start}
         </span>
         <span className="time">
-          {content.acf.start_time}
-          {content.acf.end_time && ` - ${content.acf.end_time}`}
+          {content.start_time}
+          {content.end_time && ` - ${content.end_time}`}
         </span>
       </div>
     </div>
@@ -45,7 +38,7 @@ export default EventItem;
 
 export const SEventItem = styled.div`
 
- 
+
 
   padding: 0 50px;
 
