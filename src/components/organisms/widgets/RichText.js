@@ -36,4 +36,23 @@ export const SRichText = styled.div`
   ul, ol {
     margin-left: 10px;
   }
+
+  img {
+    width: auto;
+
+    &.aligncenter {
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    &.alignleft {
+      float: left;
+      margin: 0 20px 20px 0;
+    }
+
+    &.alignright {
+      float: right;
+      margin: 0 0 20px 20px;
+    }
+  }
 `;

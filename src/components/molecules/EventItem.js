@@ -6,6 +6,7 @@ import { colors } from '../../styles/utilities/settings';
 import fonts from '../../styles/utilities/fonts';
 import { button } from '../../styles/utilities/elements';
 import { above, below } from '../../styles/utilities/mediaQueries';
+import { SRichText } from '../organisms/widgets/RichText';
 
 const EventItem = ({ content }) => (
   <SEventItem>
@@ -37,9 +38,6 @@ const EventItem = ({ content }) => (
 export default EventItem;
 
 export const SEventItem = styled.div`
-
-
-
   padding: 0 50px;
 
   ${above.ipadPort`
@@ -53,6 +51,10 @@ export const SEventItem = styled.div`
 
   &:last-of-type {
     margin-bottom: 100px;
+  }
+
+  ${SRichText} {
+    margin-bottom: 0;
   }
 
   .information {
