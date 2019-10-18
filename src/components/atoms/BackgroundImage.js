@@ -6,6 +6,7 @@ import { misc } from '../../styles/utilities/settings';
 
 class BackgroundImage extends Component {
   state = {
+    placeholderLoading: true,
     objectLoaded: false,
     fullQuality: null,
   }
@@ -50,12 +51,38 @@ class BackgroundImage extends Component {
 
   render() {
     const { children, className, src } = this.props;
-    const { objectLoaded, fullQuality } = this.state;
+    const { placeholderLoading, objectLoaded, fullQuality } = this.state;
     return (
       <SBackgroundImage
         className={className}
-        bgImg={objectLoaded ? fullQuality : src.sizes.lqph_size}
+        bgImg={(objectLoaded && !placeholderLoading) ? fullQuality : src.sizes.lqph_size}
       >
+        {placeholderLoading
+        && (
+        <>
+          <img
+            onLoad={() => {
+              this.setState({
+                placeholderLoading: false,
+              });
+            }}
+            style={{ display: 'none' }}
+            src={src.sizes.lqph_size}
+            alt="..."
+          />
+          <img
+            onLoad={() => {
+              this.setState({
+                objectLoaded: true,
+              });
+            }}
+            style={{ display: 'none' }}
+            src={fullQuality}
+            alt="..."
+          />
+        </>
+        )
+        }
         {children}
       </SBackgroundImage>
     );

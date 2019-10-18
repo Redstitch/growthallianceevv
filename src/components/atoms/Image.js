@@ -8,6 +8,7 @@ import { absoluteCenter } from '../../styles/utilities/elements';
 
 class Image extends Component {
   state = {
+    placeholderLoading: true,
     objectLoading: true,
     small: null,
     medium: null,
@@ -51,7 +52,7 @@ class Image extends Component {
   render() {
     const { src } = this.props;
     const {
-      objectLoading, small, medium, large, full,
+      placeholderLoading, objectLoading, small, medium, large, full,
     } = this.state;
     return (
       <VisibilitySensor
@@ -70,7 +71,16 @@ class Image extends Component {
               paddingBottom: `${(src.height / src.width) * 100}%`,
             }}
           >
-            <img className="placeholder" src={src.sizes.lqph_size} alt="..." />
+            <img
+              onLoad={() => {
+                this.setState({
+                  placeholderLoading: false,
+                });
+              }}
+              className="placeholder"
+              src={src.sizes.lqph_size}
+              alt="..."
+            />
             <picture>
               <source
                 sizes={`(max-width: ${breakpoints.pageWidth}px) 100vw, ${breakpoints.pageWidth}px`}
@@ -78,9 +88,11 @@ class Image extends Component {
               />
               <img
                 onLoad={() => {
-                  this.setState({
-                    objectLoading: false,
-                  });
+                  if(!placeholderLoading) {
+                    this.setState({
+                      objectLoading: false,
+                    });
+                  }
                 }}
                 sizes={`(max-width: ${breakpoints.pageWidth}px) 100vw, ${breakpoints.pageWidth}px`}
                 srcSet={`${small ? `${small} ${breakpoints.mobile}w, ` : ''}${medium ? `${medium} ${breakpoints.ipadPort}w, ` : ''}${large ? `${large} ${breakpoints.ipadLand}w, ` : ''}${full ? `${full} ${breakpoints.pageWidth}w` : ''}`}
