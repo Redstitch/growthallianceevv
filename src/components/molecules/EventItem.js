@@ -15,6 +15,7 @@ const EventItem = ({ content }) => (
         <Shape2 />
         <span className="date">
           {content.start}
+          {content.end && ` - ${content.end}`}
         </span>
         <span className="time">
           {content.start_time}
@@ -61,7 +62,7 @@ export const SEventItem = styled.div`
     color: ${colors.white};
 
     .date {
-      font-size: 24px;
+      font-size: 20px;
       line-height: 1.15;
     }
 

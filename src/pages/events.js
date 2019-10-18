@@ -8,29 +8,49 @@ import EventItem from '../components/molecules/EventItem';
 import slugify from '../js/slugify';
 import { getToday, getItemDate } from '../js/dateCompare';
 
+function endDateFinder(start, difference) {
+  const date1 = new Date(start);
+  const diffDays = Math.ceil(difference / (1000 * 60 * 60 * 24));
+  const endDate = date1.setDate(date1.getDate() + diffDays);
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  return new Date(endDate).toLocaleDateString('en-US', options);
+}
+
 function compiledEvents(events) {
   const compiledGroup = [];
 
   events.forEach(({ node }) => {
     const eventObj = {};
+    const date1 = new Date(node.acf.start_date);
+    const date2 = new Date(node.acf.end_date);
+    const diffTime = Math.abs(date2 - date1);
+
     eventObj.title = node.title;
     eventObj.eId = node.id;
     eventObj.excerpt = node.excerpt;
     eventObj.slug = node.slug;
     eventObj.start = node.acf.start_date;
+    eventObj.end = endDateFinder(date1, diffTime);
     eventObj.start_time = node.acf.start_time;
     eventObj.end_time = node.acf.end_time;
     compiledGroup.push(eventObj);
+
     if (node.acf.reoccurring_dates) {
       node.acf.reoccurring_dates.forEach(({ date }, index) => {
+        const date3 = new Date(date);
         const reEventObj = {};
         reEventObj.title = node.title;
+        reEventObj.slug = slugify(`${node.slug}-${date}`);
+        reEventObj.start = date;
+        reEventObj.end = endDateFinder(date3, diffTime);
         reEventObj.eId = `re${node.id}${index}`;
         reEventObj.excerpt = node.excerpt;
         reEventObj.start_time = node.acf.start_time;
         reEventObj.end_time = node.acf.end_time;
-        reEventObj.slug = slugify(`${node.slug}-${date}`);
-        reEventObj.start = date;
         compiledGroup.push(reEventObj);
       });
     }
