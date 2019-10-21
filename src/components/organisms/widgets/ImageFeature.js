@@ -9,7 +9,6 @@ import fonts from '../../../styles/utilities/fonts';
 import PageLink from '../../atoms/PageLink';
 import Image from '../../atoms/Image';
 import { colors } from '../../../styles/utilities/settings';
-import { SRichText } from './RichText';
 
 
 const ImageFeature = ({ widget, color }) => widget.features.map((feature, index) => (
@@ -17,7 +16,7 @@ const ImageFeature = ({ widget, color }) => widget.features.map((feature, index)
     <Wrapper>
       <div className="image">
         {index % 2 === 0 ? <Shape5 /> : <Shape6 />}
-        <Image src={feature.image} />
+        <Image src={feature.image} size="middle_size" alt={feature.content.heading} />
       </div>
       <div className="content">
         <h4>{feature.content.heading}</h4>

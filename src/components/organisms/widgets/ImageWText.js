@@ -14,7 +14,7 @@ const ImageWText = ({ widget, color }) => (
     <Wrapper medium>
       <div className="inner">
         <div className="image">
-          <Image src={widget.image} />
+          <Image src={widget.image} size="middle_size" alt={widget.content.heading} />
         </div>
         <div className="copy">
           <h3>{widget.content.heading}</h3>

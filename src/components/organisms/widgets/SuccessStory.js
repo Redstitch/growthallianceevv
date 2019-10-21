@@ -29,7 +29,7 @@ class SuccessStory extends Component {
         <Wrapper>
           <ItemWImage color={color} isVisible={isVisible}>
             <div className="image">
-              <BackgroundImage src={widget.image} />
+              <BackgroundImage src={widget.image} size="small_size" />
               <Shape1 />
             </div>
             <div className="content">

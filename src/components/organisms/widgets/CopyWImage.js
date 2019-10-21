@@ -13,7 +13,7 @@ const CopyWImage = ({ widget, color }) => (
       {widget.blocks.map((block, index) => (
         <div className="block" key={`block${index}`} color={color}>
           <div className="image">
-            <Image src={block.image} />
+            <Image src={block.image} alt={widget.heading_copy} />
           </div>
           <div
             className="content"

@@ -7,11 +7,14 @@ import BackgroundImage from '../../atoms/BackgroundImage';
 
 const BlogBanner = ({ page }) => (
   <section>
-    <BackgroundImage src={page.mainImage}>
+    <BackgroundImage src={page.mainImage} size="xx_large_size">
       <SBlogBanner>
         <Wrapper>
           <div className="content">
-            <h1>{page.title}</h1>
+            <h1 dangerouslySetInnerHTML={{
+              __html: page.title,
+            }}
+            />
           </div>
         </Wrapper>
       </SBlogBanner>

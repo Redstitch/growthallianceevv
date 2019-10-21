@@ -8,7 +8,7 @@ import BackgroundImage from '../atoms/BackgroundImage';
 const TeamMember = ({ content, index }) => (
   <ItemWImage isVisible color={content.acf.color} team>
     <div className="image">
-      <BackgroundImage src={content.acf.main_image} />
+      <BackgroundImage src={content.acf.main_image} size="x_small_size" />
       {index && ((index + 1) % 2 === 0) ? (
         <>
           {(index + 1) % 4 === 0 ? <Shape4 /> : <Shape1 />}

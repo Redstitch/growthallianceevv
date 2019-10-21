@@ -63,11 +63,11 @@ class Header extends Component {
             <Wrapper>
               <div className="inner">
                 <Link to="/" className="logo">
-                  <img src={data.wordpressAcfOptions.options.logo.sizes.xx_small_size} alt="..." />
+                  <img src={data.wordpressAcfOptions.options.logo.sizes.xx_small_size} alt="Greater Evansville Economic Development" title="Greater Evansville Economic Development" />
                 </Link>
                 <a
                   href={null}
-                  className={nav === 'open' ? `nav-toggle ${nav}` : 'nav-toggle'}
+                  className={`nav-toggle ${nav === 'open' ? ` ${nav}` : ''}`}
                   onClick={() => { this.toggleNavigation(); }}
                   ref={(ref) => { this.navToggle = ref; }}
                 >

@@ -70,6 +70,12 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
+  .bgimage {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
 `;
 
 export default GlobalStyle;

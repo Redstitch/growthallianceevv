@@ -11,7 +11,7 @@ const Card = ({
 }) => (
   <Link to={link}>
     <SCard color={color}>
-      <BackgroundImage src={image || content.acf.main_image} />
+      <BackgroundImage src={image || content.acf.main_image} size='small_size' />
       <h5 dangerouslySetInnerHTML={{
         __html: `${content.title}<span>Read More</span>`,
       }}

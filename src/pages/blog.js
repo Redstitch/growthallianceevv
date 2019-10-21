@@ -59,7 +59,7 @@ class BlogRollPage extends Component {
                           <div className="single-post">
                             <Link to={`/blog/${node.slug}`}>
                               <SBlogPost>
-                                <BackgroundImage src={node.acf.main_image} />
+                                <div className="bgimage" style={{ backgroundImage: `url(${node.acf.main_image.sizes.middle_size})`}}></div>
                                 <div className="content">
                                   <div className="blog-name">
                                     <h5>
@@ -216,7 +216,7 @@ const SBlog = styled.div`
       }
     }
 
-    ${SBackgroundImage} {
+    .bgimage {
       width: 100%;
       height: 300px;
     }

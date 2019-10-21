@@ -44,7 +44,7 @@ class ImageFeatureLarge extends Component {
                 {widget.content.button.copy && <PageLink content={widget.content.button} /> }
               </div>
               <div className="image">
-                <Image src={widget.image} />
+                <Image src={widget.image} size="large_size" alt={widget.content.heading} />
               </div>
             </div>
 

@@ -8,10 +8,13 @@ import BackgroundImage from '../../atoms/BackgroundImage';
 
 const DefaultBanner = ({ content, page }) => (
   <SDefaultBanner color={page.color ? page.color : null} backgroundColor={content.overlay_color} noMargin={page.noMargin}>
-    <BackgroundImage src={page.mainImage}>
+    <BackgroundImage src={page.mainImage} size="xx_large_size">
       <Wrapper>
         <div className="content">
-          <h1>{page.title}</h1>
+          <h1 dangerouslySetInnerHTML={{
+            __html: page.title,
+          }}
+          />
           {page.description
           && (
           <p dangerouslySetInnerHTML={{

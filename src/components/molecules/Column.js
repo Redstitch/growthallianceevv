@@ -10,9 +10,12 @@ import BackgroundImage, { SBackgroundImage } from '../atoms/BackgroundImage';
 
 const Column = ({ content }) => (
   <SColumn key={content.heading}>
-    <BackgroundImage src={content.image} />
+    <BackgroundImage src={content.image} size="large_size" />
     <div className="content">
-      <h1>{content.heading}</h1>
+      <h1 dangerouslySetInnerHTML={{
+        __html: content.heading,
+      }}
+      />
       <p>{content.copy}</p>
       {content.button.copy && <PageLink content={content.button} /> }
     </div>
