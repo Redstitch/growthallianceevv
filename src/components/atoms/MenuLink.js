@@ -7,7 +7,7 @@ import { NavContext } from '../molecules/Menu';
 const MenuLink = ({ content, linkChildren, itemIndex }) => (
   <StaticQuery
     query={SITEURL_QUERY}
-    render={({ site: { siteMetadata: { siteUrl } } }) => (
+    render={({ site: { siteMetadata: { siteUrl, siteCms } } }) => (
       <NavContext.Consumer>
         {context => (
           <SMenuLink>
@@ -23,7 +23,7 @@ const MenuLink = ({ content, linkChildren, itemIndex }) => (
               />
             ) : (
               <Link
-                to={content.type === 'custom' ? content.url : content.url.split(siteUrl)[1]}
+                to={content.type === 'custom' ? content.url : content.url.split(siteUrl || siteCms)[1]}
                 className={content.classes ? content.classes : null}
                 dangerouslySetInnerHTML={{
                   __html: content.title,
@@ -59,6 +59,7 @@ const SITEURL_QUERY = graphql`{
   site {
     siteMetadata {
       siteUrl
+      siteCms
     }
   }
 }`;

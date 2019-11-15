@@ -14,6 +14,7 @@ module.exports = {
     author: 'Redstitch',
     environment: NODE_ENV,
     siteUrl: GATSBY_SITE_URL,
+    siteCms: GATSBY_CMS,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
