@@ -1,52 +1,52 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql, StaticQuery } from 'gatsby';
 import styled from 'styled-components';
-import urlFixer from '../../js/urlFixer';
 import { NavContext } from '../molecules/Menu';
 
 
 const MenuLink = ({ content, linkChildren, itemIndex }) => (
-  <NavContext.Consumer>
-    {context => (
-      <SMenuLink>
-        {content.target === '_blank' ? (
-          <a
-            href={content.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={content.classes ? content.classes : null}
-            dangerouslySetInnerHTML={{
-              __html: content.title,
-            }}
-          />
-        ) : (
-          <Link
-            to={content.type === 'custom' ? content.url : urlFixer(content.url)}
-            className={content.classes ? content.classes : null}
-            dangerouslySetInnerHTML={{
-              __html: content.title,
-            }}
-          />
+  <StaticQuery
+    query={SITEURL_QUERY}
+    render={({ site: { siteMetadata: { siteUrl } } }) => (
+      <NavContext.Consumer>
+        {context => (
+          <SMenuLink>
+            {content.target === '_blank' ? (
+              <a
+                href={content.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={content.classes ? content.classes : null}
+                dangerouslySetInnerHTML={{
+                  __html: content.title,
+                }}
+              />
+            ) : (
+              <Link
+                to={content.type === 'custom' ? content.url : content.url.split(siteUrl)[1]}
+                className={content.classes ? content.classes : null}
+                dangerouslySetInnerHTML={{
+                  __html: content.title,
+                }}
+              />
+            )}
+            {linkChildren
+            && (
+              <a href={null} className="toggle-subnav" onClick={() => { context.updateSubNavIndex(itemIndex); }}>
+                <span />
+                <span />
+              </a>
+            )}
+          </SMenuLink>
         )}
-        {linkChildren
-        && (
-          <a href={null} className="toggle-subnav" onClick={() => { context.updateSubNavIndex(itemIndex); }}>
-            <span />
-            <span />
-          </a>
-        )}
-      </SMenuLink>
+      </NavContext.Consumer>
     )}
-
-  </NavContext.Consumer>
+  />
 );
 
 export default MenuLink;
 
 export const SMenuLink = styled.span`
-
-
-
   display: block;
 
   a {
@@ -54,3 +54,11 @@ export const SMenuLink = styled.span`
     text-decoration: none;
   }
 `;
+
+const SITEURL_QUERY = graphql`{
+  site {
+    siteMetadata {
+      siteUrl
+    }
+  }
+}`;

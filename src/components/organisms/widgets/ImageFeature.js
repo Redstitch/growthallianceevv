@@ -98,11 +98,22 @@ const SFeature = styled.div`
       z-index: -1;
       width: calc(100% + 30px);
       margin-left: 0px;
+      max-height: 340px;
+      max-width: 500px;
     }
 
     .gatsby-image-wrapper {
       max-height: 400px;
       overflow: hidden;
+    }
+
+    img {
+      max-height: 340px;
+      width: auto;
+      margin: 0 auto;
+      display: block;
+      max-width: 480px;
+      height: auto;
     }
   }
 

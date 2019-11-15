@@ -5,6 +5,7 @@ require('dotenv').config({
 const { NODE_ENV } = process.env;
 const { GATSBY_CMS } = process.env;
 const { GATSBY_PREFIX } = process.env;
+const { GATSBY_SITE_URL } = process.env;
 
 module.exports = {
   siteMetadata: {
@@ -12,6 +13,7 @@ module.exports = {
     description: 'Greater Evansville Exonomic Development',
     author: 'Redstitch',
     environment: NODE_ENV,
+    siteUrl: GATSBY_SITE_URL,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
