@@ -9,6 +9,7 @@ import slugify from '../js/slugify';
 import { getToday, getItemDate } from '../js/dateCompare';
 
 function endDateFinder(start, difference) {
+  let retDate = null;
   const date1 = new Date(start);
   const diffDays = Math.ceil(difference / (1000 * 60 * 60 * 24));
   const endDate = date1.setDate(date1.getDate() + diffDays);
@@ -17,7 +18,10 @@ function endDateFinder(start, difference) {
     month: 'short',
     day: 'numeric',
   };
-  return new Date(endDate).toLocaleDateString('en-US', options);
+  if (endDate) {
+    retDate = new Date(endDate).toLocaleDateString('en-US', options);
+  }
+  return retDate;
 }
 
 function compiledEvents(events) {
