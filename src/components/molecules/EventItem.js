@@ -15,7 +15,7 @@ const EventItem = ({ content }) => (
         <Shape2 />
         <span className="date">
           {content.start}
-          {content.end && ` - ${content.end}`}
+          {content.end !== content.start && ` - ${content.end}`}
         </span>
         <span className="time">
           {content.start_time}

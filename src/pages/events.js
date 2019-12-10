@@ -13,10 +13,12 @@ function endDateFinder(start, difference) {
   const diffDays = Math.ceil(difference / (1000 * 60 * 60 * 24));
   const endDate = date1.setDate(date1.getDate() + diffDays);
   const options = {
-    year: 'numeric',
-    month: 'long',
+    year: '2-digit',
+    month: 'short',
     day: 'numeric',
   };
+
+  console.log(endDate);
   return new Date(endDate).toLocaleDateString('en-US', options);
 }
 
