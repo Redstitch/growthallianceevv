@@ -17,8 +17,6 @@ function endDateFinder(start, difference) {
     month: 'short',
     day: 'numeric',
   };
-
-  console.log(endDate);
   return new Date(endDate).toLocaleDateString('en-US', options);
 }
 
