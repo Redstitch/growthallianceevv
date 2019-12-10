@@ -7,6 +7,7 @@
   "dependencies": {
     "autoprefixer": "^9.6.5",
     "axios": "^0.18.0",
+    "babel-eslint": "^10.0.3",
     "babel-plugin-styled-components": "^1.10.0",
     "browser-monads": "^1.0.0",
     "dotenv": "^7.0.0",
@@ -59,7 +60,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop --open",
-    "start": "npm run develop",
+    "start": "yarn format && yarn develop",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },

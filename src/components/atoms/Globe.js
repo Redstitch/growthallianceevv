@@ -16,6 +16,6 @@ export const SGlobe = styled.div`
   pointer-events: none;
 
   img {
-    transform: rotate(${({ angle }) => (angle && angle)});
+    transform: rotate(${({ angle }) => angle && angle});
   }
 `;

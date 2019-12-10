@@ -9,7 +9,6 @@ import { colors } from '../../../styles/utilities/settings';
 import WidgetFooter from '../../molecules/WidgetFooter';
 import fonts from '../../../styles/utilities/fonts';
 
-
 const NumberTicker = ({ widget, color }) => (
   <SNumberTicker color={color}>
     <Wrapper>
@@ -19,7 +18,13 @@ const NumberTicker = ({ widget, color }) => (
           {row.row_heading && <h4>{row.row_heading}</h4>}
           <div className="numbers">
             {row.numbers.map(number => (
-              <NumberItem key={number.number + index} rowColor={row.row_color} color={color} content={number} alignment={widget.number_alignment} />
+              <NumberItem
+                key={number.number + index}
+                rowColor={row.row_color}
+                color={color}
+                content={number}
+                alignment={widget.number_alignment}
+              />
             ))}
           </div>
         </NumberRow>
@@ -84,7 +89,8 @@ const SNumberTicker = styled.div`
 
 const NumberRow = styled.div`
   h4 {
-    color: ${({ color, rowColor }) => numberColor(color, rowColor, colors.black)};
+    color: ${({ color, rowColor }) =>
+      numberColor(color, rowColor, colors.black)};
     font-size: 18px;
     ${fonts.HelveticaNeueBold};
   }

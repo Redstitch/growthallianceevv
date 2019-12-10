@@ -28,7 +28,6 @@ export const wrapWide = css`
   `}
 `;
 
-
 export const flex = css`
   ${above.ipadPort`
     display: flex;

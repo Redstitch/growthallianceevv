@@ -16,7 +16,11 @@ const ContactForm = () => (
         </label>
         <label htmlFor="osduiegnpiouenv307h09uhvsoihu">
           You Shouldnt See This
-          <input id="osduiegnpiouenv307h09uhvsoihu" name="osduiegnpiouenv307h09uhvsoihu" type="text" />
+          <input
+            id="osduiegnpiouenv307h09uhvsoihu"
+            name="osduiegnpiouenv307h09uhvsoihu"
+            type="text"
+          />
         </label>
         <label htmlFor="lname">
           Last Name
@@ -53,7 +57,9 @@ const SContactForm = styled.div`
     color: ${colors.blue};
   }
 
-  label, input, textarea {
+  label,
+  input,
+  textarea {
     display: block;
     color: ${colors.blue};
   }
@@ -72,7 +78,7 @@ const SContactForm = styled.div`
     font-weight: bold;
     ${fonts.HelveticaBold};
 
-    &[for="osduiegnpiouenv307h09uhvsoihu"] {
+    &[for='osduiegnpiouenv307h09uhvsoihu'] {
       display: none;
     }
 
@@ -84,7 +90,7 @@ const SContactForm = styled.div`
   input {
     line-height: 20px;
 
-    &[type="submit"] {
+    &[type='submit'] {
       width: auto;
       margin-top: 30px;
       ${button};

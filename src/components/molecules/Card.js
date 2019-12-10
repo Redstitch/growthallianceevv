@@ -6,15 +6,17 @@ import { colors } from '../../styles/utilities/settings';
 import { below, above } from '../../styles/utilities/mediaQueries';
 import BackgroundImage, { SBackgroundImage } from '../atoms/BackgroundImage';
 
-const Card = ({
-  content, color, link, image,
-}) => (
+const Card = ({ content, color, link, image }) => (
   <Link to={link}>
     <SCard color={color}>
-      <BackgroundImage src={image || content.acf.main_image} size='small_size' />
-      <h5 dangerouslySetInnerHTML={{
-        __html: `${content.title}<span>Read More</span>`,
-      }}
+      <BackgroundImage
+        src={image || content.acf.main_image}
+        size="small_size"
+      />
+      <h5
+        dangerouslySetInnerHTML={{
+          __html: `${content.title}<span>Read More</span>`,
+        }}
       />
     </SCard>
   </Link>
@@ -31,13 +33,13 @@ export const SCard = styled.div`
     height: 300px;
   }
 
-
   h5 {
     color: ${colors.white};
     padding: 20px 30px;
     position: relative;
     top: -20px;
-    background-color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
+    background-color: ${({ color }) =>
+      color ? pageColor(color) : colors.navy};
 
     ${above.ipadPort`
       width: 101%;

@@ -8,7 +8,6 @@ import ContactForm from '../components/molecules/ContactForm';
 import GoogleMap from '../components/molecules/GoogleMap';
 import { above } from '../styles/utilities/mediaQueries';
 
-
 const ContactUs = () => (
   <Layout>
     <StaticQuery
@@ -18,15 +17,20 @@ const ContactUs = () => (
           <Dochead
             title="Contact Us"
             siteName={data.wordpressSiteMetadata.name}
-            pageImage={data.wordpressAcfOptions.options.contact_banner_image && data.wordpressAcfOptions.options.contact_banner_image.url}
+            pageImage={
+              data.wordpressAcfOptions.options.contact_banner_image &&
+              data.wordpressAcfOptions.options.contact_banner_image.url
+            }
             description={data.wordpressSiteMetadata.description}
           />
           <DefaultBanner
             page={{
-              title: data.wordpressAcfOptions.options.contact_banner_copy.heading,
+              title:
+                data.wordpressAcfOptions.options.contact_banner_copy.heading,
               mainImage: data.wordpressAcfOptions.options.contact_banner_image,
               color: 'blue',
-              description: data.wordpressAcfOptions.options.contact_banner_copy.copy,
+              description:
+                data.wordpressAcfOptions.options.contact_banner_copy.copy,
               noMargin: true,
             }}
             content={{
@@ -61,37 +65,39 @@ const ContactBlock = styled.div`
   }
 `;
 
-const CONTACTUS_QUERY = graphql`{
-  wordpressSiteMetadata {
-    name
-    description
-  }
-  wordpressAcfOptions {
-    options {
-      location {
-        lat
-        lng
-      }
-      contact_banner_copy {
-        heading
-        copy
-      }
-      contact_banner_image {
-        width
-        height
-        url
-        name
-        sizes {
-          large_size
-          lqph_size
-          middle_size
-          small_size
-          x_large_size
-          x_small_size
-          xx_large_size
-          xx_small_size
+const CONTACTUS_QUERY = graphql`
+  {
+    wordpressSiteMetadata {
+      name
+      description
+    }
+    wordpressAcfOptions {
+      options {
+        location {
+          lat
+          lng
+        }
+        contact_banner_copy {
+          heading
+          copy
+        }
+        contact_banner_image {
+          width
+          height
+          url
+          name
+          sizes {
+            large_size
+            lqph_size
+            middle_size
+            small_size
+            x_large_size
+            x_small_size
+            xx_large_size
+            xx_small_size
+          }
         }
       }
     }
   }
-}`;
+`;

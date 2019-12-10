@@ -6,7 +6,6 @@ import { pageColor } from '../../js/autoColor';
 import fonts from '../utilities/fonts';
 import { SBackgroundImage } from '../../components/atoms/BackgroundImage';
 
-
 const ItemWImage = styled.div`
 margin: 100px auto;
 position: relative;
@@ -61,7 +60,10 @@ ${SBackgroundImage} {
     ${absoluteCenter};
     ${above.ipadLand`
       transition-duration: ${misc.widgetTransition};
-      ${({ isVisible }) => (isVisible ? 'transform: translate(-50%,-50%) scale(1) rotate(0)' : 'transform: translate(-50%,-50%) scale(.90) rotate(2deg)')};
+      ${({ isVisible }) =>
+        isVisible
+          ? 'transform: translate(-50%,-50%) scale(1) rotate(0)'
+          : 'transform: translate(-50%,-50%) scale(.90) rotate(2deg)'};
     `}
     ${below.ipadPort`
       width: calc(100% + 50px);

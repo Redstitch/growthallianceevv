@@ -94,7 +94,6 @@ export const SEventItem = styled.div`
       ${below.ipadPort`
         padding: 30px;
       `}
-
     }
 
     svg {
@@ -118,7 +117,6 @@ export const SEventItem = styled.div`
   }
 
   .content {
-
     ${above.ipadPort`
       width: calc(100% - 240px);
     `}
@@ -128,7 +126,14 @@ export const SEventItem = styled.div`
       font-size: 35px;
     }
 
-    h1, h2, h3, h4, h5, h6, a, strong {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a,
+    strong {
       color: ${colors.blue};
     }
 

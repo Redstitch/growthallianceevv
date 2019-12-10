@@ -5,15 +5,14 @@ import SLightBox from '../../../styles/molecules/SLightBox';
 import { above } from '../../../styles/utilities/mediaQueries';
 import Image from '../../atoms/Image';
 
-
 class Gallery extends Component {
   state = {
     modalOpen: false,
     activeIndex: 0,
-  }
+  };
 
   componentDidMount() {
-    global.document.addEventListener('click', (e) => {
+    global.document.addEventListener('click', e => {
       const { modalOpen } = this.state;
       if (modalOpen) {
         if (e.target.id === 'outter' || e.key === 'Escape') {
@@ -24,7 +23,7 @@ class Gallery extends Component {
       }
     });
 
-    global.document.onkeydown = (e) => {
+    global.document.onkeydown = e => {
       const { modalOpen } = this.state;
       if (modalOpen) {
         if (e.keyCode === 27) {
@@ -56,13 +55,12 @@ class Gallery extends Component {
               <Image src={image} />
             </a>
           ))}
-          {modalOpen
-          && (
-          <SLightBox id="outter">
-            <div className="inner">
-              <Image src={widget.images[activeIndex]} fixed />
-            </div>
-          </SLightBox>
+          {modalOpen && (
+            <SLightBox id="outter">
+              <div className="inner">
+                <Image src={widget.images[activeIndex]} fixed />
+              </div>
+            </SLightBox>
           )}
         </SGallery>
       </Wrapper>
@@ -76,7 +74,6 @@ const SGallery = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 0 -20px 80px 0;
-
 
   > a {
     padding: 0 20px 20px 0;

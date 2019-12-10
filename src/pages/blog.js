@@ -9,13 +9,14 @@ import Wrapper from '../styles/utilities/Wrapper';
 import { above, below } from '../styles/utilities/mediaQueries';
 import DefaultBanner from '../components/organisms/banners/DefaultBanner';
 import fonts from '../styles/utilities/fonts';
-import BackgroundImage, { SBackgroundImage } from '../components/atoms/BackgroundImage';
-
+import BackgroundImage, {
+  SBackgroundImage,
+} from '../components/atoms/BackgroundImage';
 
 class BlogRollPage extends Component {
   state = {
     countVisible: 6,
-  }
+  };
 
   LoadMore(crntCount) {
     const updatedCountVis = crntCount + 6;
@@ -35,15 +36,20 @@ class BlogRollPage extends Component {
               <Dochead
                 title="Blog"
                 siteName={data.wordpressSiteMetadata.name}
-                pageImage={data.wordpressAcfOptions.options.blog_banner_image && data.wordpressAcfOptions.options.blog_banner_image.url}
+                pageImage={
+                  data.wordpressAcfOptions.options.blog_banner_image &&
+                  data.wordpressAcfOptions.options.blog_banner_image.url
+                }
                 description={data.wordpressSiteMetadata.description}
               />
               <DefaultBanner
                 page={{
-                  title: data.wordpressAcfOptions.options.blog_banner_copy.heading,
+                  title:
+                    data.wordpressAcfOptions.options.blog_banner_copy.heading,
                   mainImage: data.wordpressAcfOptions.options.blog_banner_image,
                   color: 'navy',
-                  description: data.wordpressAcfOptions.options.blog_banner_copy.copy,
+                  description:
+                    data.wordpressAcfOptions.options.blog_banner_copy.copy,
                 }}
                 content={{
                   overlay_color: 'navy',
@@ -54,22 +60,22 @@ class BlogRollPage extends Component {
                   <div className="posts">
                     {data.allWordpressPost.edges.map(({ node }, index) => (
                       <React.Fragment key={node.id}>
-                        {(countVisible >= index + 1)
-                        && (
+                        {countVisible >= index + 1 && (
                           <div className="single-post">
                             <Link to={`/blog/${node.slug}`}>
                               <SBlogPost>
-                                <div className="bgimage" style={{ backgroundImage: `url(${node.acf.main_image.sizes.middle_size})`}}></div>
+                                <div
+                                  className="bgimage"
+                                  style={{
+                                    backgroundImage: `url(${node.acf.main_image.sizes.middle_size})`,
+                                  }}
+                                ></div>
                                 <div className="content">
                                   <div className="blog-name">
-                                    <h5>
-                                      {node.title}
-                                    </h5>
+                                    <h5>{node.title}</h5>
                                     <span>Read More</span>
                                   </div>
-
                                 </div>
-
                               </SBlogPost>
                             </Link>
                           </div>
@@ -77,8 +83,17 @@ class BlogRollPage extends Component {
                       </React.Fragment>
                     ))}
                   </div>
-                  {(countVisible < data.allWordpressPost.edges.length)
-                  && <a href={null} className="load-more" onClick={() => { this.LoadMore(countVisible); }}>Load More</a>}
+                  {countVisible < data.allWordpressPost.edges.length && (
+                    <a
+                      href={null}
+                      className="load-more"
+                      onClick={() => {
+                        this.LoadMore(countVisible);
+                      }}
+                    >
+                      Load More
+                    </a>
+                  )}
                 </Wrapper>
               </SBlog>
             </div>
@@ -91,64 +106,66 @@ class BlogRollPage extends Component {
 
 export default BlogRollPage;
 
-const BLOG_QUERY = graphql`{
-  wordpressAcfOptions {
-    options {
-      blog_banner_copy {
-        heading
-        copy
-      }
-      blog_banner_image {
-        width
-        height
-        url
-        name
-        sizes {
-          large_size
-          lqph_size
-          middle_size
-          small_size
-          x_large_size
-          x_small_size
-          xx_large_size
-          xx_small_size
+const BLOG_QUERY = graphql`
+  {
+    wordpressAcfOptions {
+      options {
+        blog_banner_copy {
+          heading
+          copy
+        }
+        blog_banner_image {
+          width
+          height
+          url
+          name
+          sizes {
+            large_size
+            lqph_size
+            middle_size
+            small_size
+            x_large_size
+            x_small_size
+            xx_large_size
+            xx_small_size
+          }
         }
       }
     }
-  }
-  allWordpressPost(sort: {fields: date, order: DESC}) {
-    edges {
-      node {
-        id
-        title
-        slug
-        content
-        acf {
-          main_image {
-            width
-            height
-            url
-            name
-            sizes {
-              large_size
-              lqph_size
-              middle_size
-              small_size
-              x_large_size
-              x_small_size
-              xx_large_size
-              xx_small_size
+    allWordpressPost(sort: { fields: date, order: DESC }) {
+      edges {
+        node {
+          id
+          title
+          slug
+          content
+          acf {
+            main_image {
+              width
+              height
+              url
+              name
+              sizes {
+                large_size
+                lqph_size
+                middle_size
+                small_size
+                x_large_size
+                x_small_size
+                xx_large_size
+                xx_small_size
+              }
             }
           }
         }
       }
     }
+    wordpressSiteMetadata {
+      name
+      description
+    }
   }
-  wordpressSiteMetadata {
-    name
-    description
-  }
-}`;
+`;
 
 const SBlog = styled.div`
   text-align: center;

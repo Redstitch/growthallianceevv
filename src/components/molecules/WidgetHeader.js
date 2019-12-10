@@ -7,16 +7,13 @@ import PageLink from '../atoms/PageLink';
 import fonts from '../../styles/utilities/fonts';
 import Wrapper from '../../styles/utilities/Wrapper';
 
-
 const WidgetHeader = ({ content, color }) => (
   <SWidgetHeader color={color}>
     {content.heading.title && <h3>{content.heading.title}</h3>}
     {content.heading.copy && <p>{content.heading.copy}</p>}
-    {content.heading.button.copy
-      && (
+    {content.heading.button.copy && (
       <PageLink content={content.heading.button} />
-      )
-    }
+    )}
   </SWidgetHeader>
 );
 
@@ -31,10 +28,7 @@ const SWidgetHeader = styled.div`
     margin: 0 auto 70px;
   `}
 
-
-
   > p {
-
     ${above.smallPage`
       max-width: 600px;
     `}

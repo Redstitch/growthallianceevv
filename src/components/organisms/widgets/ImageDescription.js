@@ -7,9 +7,10 @@ import Image from '../../atoms/Image';
 const ImageDescription = ({ widget, color }) => (
   <SImageDescription color={color}>
     <Wrapper narrower>
-      <div dangerouslySetInnerHTML={{
-        __html: widget.description,
-      }}
+      <div
+        dangerouslySetInnerHTML={{
+          __html: widget.description,
+        }}
       />
       <div className="image">
         <Image src={widget.image} />

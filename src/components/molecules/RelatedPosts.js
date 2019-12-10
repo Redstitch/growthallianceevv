@@ -7,11 +7,10 @@ import { colors } from '../../styles/utilities/settings';
 import { above, below } from '../../styles/utilities/mediaQueries';
 import fonts from '../../styles/utilities/fonts';
 
-
 class RelatedPosts extends Component {
   state = {
     cards: [],
-  }
+  };
 
   arrPush(obj) {
     const { cards } = this.state;
@@ -29,10 +28,21 @@ class RelatedPosts extends Component {
             <SRelatedPosts>
               <h2>Related Posts</h2>
               <div className="posts">
-                {data.allWordpressPost.edges.map(({ node }) => ((node.categories[0].slug === category && node.slug !== currentPost) ? this.arrPush(node) : ''))}
+                {data.allWordpressPost.edges.map(({ node }) =>
+                  node.categories[0].slug === category &&
+                  node.slug !== currentPost
+                    ? this.arrPush(node)
+                    : ''
+                )}
                 {Array.from(new Set(cards)).map((object, index) => (
                   <React.Fragment key={object.id}>
-                    {index < 3 && <Card content={object} link={`/blog/${object.slug}`} color="navy" />}
+                    {index < 3 && (
+                      <Card
+                        content={object}
+                        link={`/blog/${object.slug}`}
+                        color="navy"
+                      />
+                    )}
                   </React.Fragment>
                 ))}
               </div>
@@ -44,45 +54,46 @@ class RelatedPosts extends Component {
   }
 }
 
-
 export default RelatedPosts;
 
-const RELATEDPOSTS_QUERY = graphql`{
-  allWordpressPost(sort: {fields: date, order: DESC}) {
-    edges {
-      node {
-        id
-        title
-        slug
-        path
-        categories {
+const RELATEDPOSTS_QUERY = graphql`
+  {
+    allWordpressPost(sort: { fields: date, order: DESC }) {
+      edges {
+        node {
+          id
+          title
           slug
-        }
-        acf {
-          main_image {
-            width
-            height
-            url
-            name
-            sizes {
-              large_size
-              lqph_size
-              middle_size
-              small_size
-              x_large_size
-              x_small_size
-              xx_large_size
-              xx_small_size
+          path
+          categories {
+            slug
+          }
+          acf {
+            main_image {
+              width
+              height
+              url
+              name
+              sizes {
+                large_size
+                lqph_size
+                middle_size
+                small_size
+                x_large_size
+                x_small_size
+                xx_large_size
+                xx_small_size
+              }
             }
           }
-        }
-        categories {
-          slug
+          categories {
+            slug
+          }
         }
       }
     }
   }
-}`;
+`;
 
 const SRelatedPosts = styled.div`
   margin: 100px 0 50px;
@@ -126,7 +137,6 @@ const SRelatedPosts = styled.div`
     }
 
     > a {
-
       ${above.smallPage`
         width: 33.3333%;
         padding-right: 20px;

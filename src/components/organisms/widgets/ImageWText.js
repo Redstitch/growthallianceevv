@@ -8,21 +8,27 @@ import { colors } from '../../../styles/utilities/settings';
 import { button } from '../../../styles/utilities/elements';
 import { above, below } from '../../../styles/utilities/mediaQueries';
 
-
 const ImageWText = ({ widget, color }) => (
   <SImageWText color={color}>
     <Wrapper medium>
       <div className="inner">
         <div className="image">
-          <Image src={widget.image} size="middle_size" alt={widget.content.heading} />
+          <Image
+            src={widget.image}
+            size="middle_size"
+            alt={widget.content.heading}
+          />
         </div>
         <div className="copy">
           <h3>{widget.content.heading}</h3>
-          <div dangerouslySetInnerHTML={{
-            __html: widget.content.copy,
-          }}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: widget.content.copy,
+            }}
           />
-          {widget.content.button.copy && <PageLink content={widget.content.button} /> }
+          {widget.content.button.copy && (
+            <PageLink content={widget.content.button} />
+          )}
         </div>
       </div>
     </Wrapper>
@@ -67,7 +73,6 @@ const SImageWText = styled.div`
     }
 
     .image {
-
       ${above.ipadPort`
         max-width: 390px;
       `}

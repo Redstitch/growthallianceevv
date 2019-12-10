@@ -13,8 +13,7 @@ class Header extends Component {
   state = {
     nav: 'closed',
     atTop: true,
-  }
-
+  };
 
   componentDidMount() {
     global.window.addEventListener('scroll', this.topCheck);
@@ -34,8 +33,7 @@ class Header extends Component {
         atTop: true,
       });
     }
-  }
-
+  };
 
   toggleNavigation() {
     const classes = this.navToggle.getAttribute('class');
@@ -63,13 +61,23 @@ class Header extends Component {
             <Wrapper>
               <div className="inner">
                 <Link to="/" className="logo">
-                  <img src={data.wordpressAcfOptions.options.logo.sizes.xx_small_size} alt="Greater Evansville Economic Development" title="Greater Evansville Economic Development" />
+                  <img
+                    src={
+                      data.wordpressAcfOptions.options.logo.sizes.xx_small_size
+                    }
+                    alt="Greater Evansville Economic Development"
+                    title="Greater Evansville Economic Development"
+                  />
                 </Link>
                 <a
                   href={null}
                   className={`nav-toggle ${nav === 'open' ? ` ${nav}` : ''}`}
-                  onClick={() => { this.toggleNavigation(); }}
-                  ref={(ref) => { this.navToggle = ref; }}
+                  onClick={() => {
+                    this.toggleNavigation();
+                  }}
+                  ref={ref => {
+                    this.navToggle = ref;
+                  }}
                 >
                   MENU
                   <span />
@@ -77,17 +85,34 @@ class Header extends Component {
                   <span />
                 </a>
               </div>
-              <div className={nav === 'open' ? `navigation ${nav}` : 'navigation'} ref={(ref) => { this.navigation = ref; }}>
-                <a href="https://eisforeveryone.com" target="_blank" rel="noopener noreferrer" className="e-logo">
+              <div
+                className={nav === 'open' ? `navigation ${nav}` : 'navigation'}
+                ref={ref => {
+                  this.navigation = ref;
+                }}
+              >
+                <a
+                  href="https://eisforeveryone.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="e-logo"
+                >
                   <img src="/images/e-logo.png" alt="logo" />
                 </a>
-                <Menu content={data.allWordpressWpApiMenusMenusItems} pages={data.allWordpressPage.edges} styles={mainNav} menuTitle="main-menu" />
-                <Menu content={data.allWordpressWpApiMenusMenusItems} styles={topNav} menuTitle="top-nav" />
-
+                <Menu
+                  content={data.allWordpressWpApiMenusMenusItems}
+                  pages={data.allWordpressPage.edges}
+                  styles={mainNav}
+                  menuTitle="main-menu"
+                />
+                <Menu
+                  content={data.allWordpressWpApiMenusMenusItems}
+                  styles={topNav}
+                  menuTitle="top-nav"
+                />
               </div>
             </Wrapper>
           </SHeader>
-
         )}
       />
     );
@@ -95,7 +120,6 @@ class Header extends Component {
 }
 
 export default Header;
-
 
 const SHeader = styled.header`
   position: fixed;
@@ -105,7 +129,8 @@ const SHeader = styled.header`
   background-color: ${colors.white};
   width: 100%;
   transition-duration: ${misc.animSpeed};
-  box-shadow: ${({ top }) => (top ? '0 0 0 0' : `0 0 20px -10px ${colors.black}`)};
+  box-shadow: ${({ top }) =>
+    top ? '0 0 0 0' : `0 0 20px -10px ${colors.black}`};
 
   .e-logo {
     width: 40px;
@@ -324,10 +349,6 @@ const mainNav = css`
 `;
 
 const topNav = css`
-
-
-
-
   ${NavStyles};
   margin-top: 30px;
   position: absolute;
@@ -387,60 +408,61 @@ const topNav = css`
   }
 `;
 
-
-const HEADER_QUERY = graphql`{
-  wordpressAcfOptions {
-    options {
-      logo {
-        width
-        height
-        url
-        name
-        sizes {
-          large_size
-          lqph_size
-          middle_size
-          small_size
-          x_large_size
-          x_small_size
-          xx_large_size
-          xx_small_size
-        }
-      }
-    }
-  }
-  allWordpressPage {
-    edges {
-      node {
-        wordpress_id
-        acf {
-          page_color
-        }
-      }
-    }
-  }
-  allWordpressWpApiMenusMenusItems {
-    edges {
-      node {
-        id
-        slug
-        items {
-          type
-          object_id
-          title
+const HEADER_QUERY = graphql`
+  {
+    wordpressAcfOptions {
+      options {
+        logo {
+          width
+          height
           url
-          classes
-          target
-          wordpress_children {
+          name
+          sizes {
+            large_size
+            lqph_size
+            middle_size
+            small_size
+            x_large_size
+            x_small_size
+            xx_large_size
+            xx_small_size
+          }
+        }
+      }
+    }
+    allWordpressPage {
+      edges {
+        node {
+          wordpress_id
+          acf {
+            page_color
+          }
+        }
+      }
+    }
+    allWordpressWpApiMenusMenusItems {
+      edges {
+        node {
+          id
+          slug
+          items {
             type
             object_id
             title
             url
             classes
             target
+            wordpress_children {
+              type
+              object_id
+              title
+              url
+              classes
+              target
+            }
           }
         }
       }
     }
   }
-}`;
+`;

@@ -17,28 +17,32 @@ const UpcomingEvent = ({ widget, color }) => (
         <SUpcomingEvent color={color}>
           <div className="copy">
             <h4>{widget.heading_copy}</h4>
-            <div dangerouslySetInnerHTML={{
-              __html: widget.copy,
-            }}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: widget.copy,
+              }}
             />
-            {widget.button.copy && <PageLink content={widget.button} /> }
+            {widget.button.copy && <PageLink content={widget.button} />}
           </div>
           <div className="event">
             {data.allWordpressWpEvent.edges.map(({ node }) => (
               <React.Fragment key={node.id}>
                 <sup>Featured Upcoming Event</sup>
                 <h4>{node.title}</h4>
-                <p dangerouslySetInnerHTML={{
-                  __html: `<strong>${node.acf.start_date}${node.acf.end_date && ` - ${node.acf.end_date}`}${node.acf.start_time && `<br/>${node.acf.start_time}`}${node.acf.end_time && ` - ${node.acf.end_time}`}</strong>`,
-                }}
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: `<strong>${node.acf.start_date}${node.acf
+                      .end_date && ` - ${node.acf.end_date}`}${node.acf
+                      .start_time && `<br/>${node.acf.start_time}`}${node.acf
+                      .end_time && ` - ${node.acf.end_time}`}</strong>`,
+                  }}
                 />
-                <div dangerouslySetInnerHTML={{
-                  __html: node.excerpt,
-                }}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: node.excerpt,
+                  }}
                 />
-                <Link to={`/events/${node.slug}`}>
-                  Learn more
-                </Link>
+                <Link to={`/events/${node.slug}`}>Learn more</Link>
               </React.Fragment>
             ))}
           </div>
@@ -50,29 +54,33 @@ const UpcomingEvent = ({ widget, color }) => (
 
 export default UpcomingEvent;
 
-const UPCOMINGEVENT_QUERY = graphql`{
-  allWordpressWpEvent(limit: 1, sort: {order: DESC, fields: acf___start_date}) {
-    edges {
-      node {
-        id
-        title
-        slug
-        excerpt
-        acf {
-          start_date
-          end_date
-          start_time
-          end_time
-          content
+const UPCOMINGEVENT_QUERY = graphql`
+  {
+    allWordpressWpEvent(
+      limit: 1
+      sort: { order: DESC, fields: acf___start_date }
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug
+          excerpt
+          acf {
+            start_date
+            end_date
+            start_time
+            end_time
+            content
+          }
         }
       }
     }
   }
-}`;
+`;
 
 const SUpcomingEvent = styled.div`
   margin: 0 auto 100px;
-
 
   ${above.ipadPort`
     display: flex;
@@ -95,7 +103,6 @@ const SUpcomingEvent = styled.div`
   }
 
   .copy {
-
     ${above.ipadPort`
       padding-right: 50px;
     `}
@@ -120,9 +127,9 @@ const SUpcomingEvent = styled.div`
     }
   }
 
-
   .event {
-    background-color: ${({ color }) => (color ? pageColor(color) : colors.green)};
+    background-color: ${({ color }) =>
+      color ? pageColor(color) : colors.green};
     clip-path: polygon(0 0, 98% 2%, 100% 94%, 0% 100%);
     color: ${colors.white};
     position: relative;

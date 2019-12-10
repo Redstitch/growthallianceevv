@@ -23,9 +23,10 @@ const Footer = () => (
               <div className="columns">
                 <div>
                   <h4>{data.wordpressAcfOptions.options.subscribe.heading}</h4>
-                  <p dangerouslySetInnerHTML={{
-                    __html: data.wordpressAcfOptions.options.subscribe.copy,
-                  }}
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: data.wordpressAcfOptions.options.subscribe.copy,
+                    }}
                   />
                   {NODE_ENV === 'development' ? (
                     <div className="subscribe-form">
@@ -40,20 +41,27 @@ const Footer = () => (
                 </div>
                 <div>
                   <h4>Contact Us</h4>
-                  <p><a href={`tel:${data.wordpressAcfOptions.options.phone}`}>{data.wordpressAcfOptions.options.phone}</a></p>
-                  <p dangerouslySetInnerHTML={{
-                    __html: `${data.wordpressAcfOptions.options.street}<br />${data.wordpressAcfOptions.options.city_state_zip}`,
-                  }}
+                  <p>
+                    <a href={`tel:${data.wordpressAcfOptions.options.phone}`}>
+                      {data.wordpressAcfOptions.options.phone}
+                    </a>
+                  </p>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: `${data.wordpressAcfOptions.options.street}<br />${data.wordpressAcfOptions.options.city_state_zip}`,
+                    }}
                   />
-                  {data.wordpressAcfOptions.options.hours.map((time, index) => time.closed === false
-                  && (
-                    <p
-                      key={time.days + index}
-                      dangerouslySetInnerHTML={{
-                        __html: `${time.days}<br />${time.start_time} - ${time.end_time}`,
-                      }}
-                    />
-                  ))}
+                  {data.wordpressAcfOptions.options.hours.map(
+                    (time, index) =>
+                      time.closed === false && (
+                        <p
+                          key={time.days + index}
+                          dangerouslySetInnerHTML={{
+                            __html: `${time.days}<br />${time.start_time} - ${time.end_time}`,
+                          }}
+                        />
+                      )
+                  )}
                 </div>
                 <div>
                   <div
@@ -64,13 +72,15 @@ const Footer = () => (
                   />
                   <div className="social">
                     {data.wordpressAcfOptions.options.soc_links.map(link => (
-
-                      <a key={Math.random()} target="_blank" rel="noopener noreferrer" href={link.url}>
+                      <a
+                        key={Math.random()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={link.url}
+                      >
                         <i className={`fa fa-${link.icon}`} />
                       </a>
                     ))}
-
-
                   </div>
                 </div>
               </div>
@@ -85,30 +95,32 @@ const Footer = () => (
 
 export default Footer;
 
-const FOOTER_QUERY = graphql`{
-  wordpressAcfOptions {
-    options {
-      phone
-      street
-      city_state_zip
-      soc_links {
-        icon
-        url
-      }
-      hours {
-        closed
-        days
-        start_time
-        end_time
-      }
-      credits
-      subscribe {
-        heading
-        copy
+const FOOTER_QUERY = graphql`
+  {
+    wordpressAcfOptions {
+      options {
+        phone
+        street
+        city_state_zip
+        soc_links {
+          icon
+          url
+        }
+        hours {
+          closed
+          days
+          start_time
+          end_time
+        }
+        credits
+        subscribe {
+          heading
+          copy
+        }
       }
     }
   }
-}`;
+`;
 
 const SFooter = styled.footer`
   @keyframes rotating {
@@ -158,8 +170,6 @@ const SFooter = styled.footer`
       }
     `}
 
-
-
     .subscribe-form {
       max-width: 300px;
 
@@ -191,9 +201,7 @@ const SFooter = styled.footer`
         background: ${colors.orange};
         color: ${colors.white};
       }
-
     }
-
 
     ${above.ipadMid`
       display: flex;

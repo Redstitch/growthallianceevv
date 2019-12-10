@@ -10,25 +10,36 @@ import PageLink from '../../atoms/PageLink';
 import Image from '../../atoms/Image';
 import { colors } from '../../../styles/utilities/settings';
 
-
-const ImageFeature = ({ widget, color }) => widget.features.map((feature, index) => (
-  <SFeature key={feature.content.heading + index} color={color} selected={feature.content.color}>
-    <Wrapper>
-      <div className="image">
-        {index % 2 === 0 ? <Shape5 /> : <Shape6 />}
-        <Image src={feature.image} size="middle_size" alt={feature.content.heading} />
-      </div>
-      <div className="content">
-        <h4>{feature.content.heading}</h4>
-        <div dangerouslySetInnerHTML={{
-          __html: feature.content.copy,
-        }}
-        />
-        {feature.content.button.copy && <PageLink content={feature.content.button} /> }
-      </div>
-    </Wrapper>
-  </SFeature>
-));
+const ImageFeature = ({ widget, color }) =>
+  widget.features.map((feature, index) => (
+    <SFeature
+      key={feature.content.heading + index}
+      color={color}
+      selected={feature.content.color}
+    >
+      <Wrapper>
+        <div className="image">
+          {index % 2 === 0 ? <Shape5 /> : <Shape6 />}
+          <Image
+            src={feature.image}
+            size="middle_size"
+            alt={feature.content.heading}
+          />
+        </div>
+        <div className="content">
+          <h4>{feature.content.heading}</h4>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: feature.content.copy,
+            }}
+          />
+          {feature.content.button.copy && (
+            <PageLink content={feature.content.button} />
+          )}
+        </div>
+      </Wrapper>
+    </SFeature>
+  ));
 
 export default ImageFeature;
 
@@ -61,7 +72,6 @@ const SFeature = styled.div`
   }
 
   ${Wrapper} {
-
     ${below.ipadLand`
     max-width: 600px;
     `}
@@ -93,7 +103,8 @@ const SFeature = styled.div`
       `}
 
     svg {
-      fill: ${({ color, selected }) => (color ? pageColor(color) : pageColor(selected))};
+      fill: ${({ color, selected }) =>
+        color ? pageColor(color) : pageColor(selected)};
       ${absoluteCenter};
       z-index: -1;
       width: calc(100% + 30px);
@@ -118,13 +129,13 @@ const SFeature = styled.div`
   }
 
   .content {
-
     h4 {
       font-size: 46px;
       line-height: 1;
       margin-bottom: 25px;
       ${fonts.HelveticaNeueRegular};
-      color: ${({ color, selected }) => (color ? pageColor(color) : pageColor(selected))};
+      color: ${({ color, selected }) =>
+        color ? pageColor(color) : pageColor(selected)};
       ${below.pageWidth`
         font-size: 35px;
         margin-top: 15px;
@@ -148,7 +159,8 @@ const SFeature = styled.div`
       list-style: decimal;
     }
 
-    ul, ol {
+    ul,
+    ol {
       margin-left: 15px;
     }
 

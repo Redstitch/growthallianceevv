@@ -14,16 +14,19 @@ const { GATSBY_CMS } = process.env;
 class BlogFeed extends Component {
   state = {
     postList: null,
-  }
+  };
 
   componentDidMount() {
     const { widget } = this.props;
 
-    fetch(`${GATSBY_CMS}/wp-json/wp/v2/posts/?per_page=3&categories=${widget.category}`, {
-      method: 'get',
-    })
+    fetch(
+      `${GATSBY_CMS}/wp-json/wp/v2/posts/?per_page=3&categories=${widget.category}`,
+      {
+        method: 'get',
+      }
+    )
       .then(response => response.json())
-      .then((data) => {
+      .then(data => {
         this.setState({
           postList: data,
         });
@@ -41,8 +44,20 @@ class BlogFeed extends Component {
             <Wrapper>
               <h3>{widget.heading_copy}</h3>
               <div className="posts">
-                {postList && postList.map(listItem => posts.edges.map(({ node }) => node.wordpress_id === listItem.id
-                  && <Card key={node.id} content={node} color={color} link={`/blog/${node.slug}`} />))}
+                {postList &&
+                  postList.map(listItem =>
+                    posts.edges.map(
+                      ({ node }) =>
+                        node.wordpress_id === listItem.id && (
+                          <Card
+                            key={node.id}
+                            content={node}
+                            color={color}
+                            link={`/blog/${node.slug}`}
+                          />
+                        )
+                    )
+                  )}
               </div>
             </Wrapper>
           </SBlogFeed>
@@ -54,40 +69,42 @@ class BlogFeed extends Component {
 
 export default BlogFeed;
 
-const BLOGFEED_QUERY = graphql`{
-  posts: allWordpressPost(sort: {fields: date}) {
-    edges {
-      node {
-        id
-        title
-        slug
-        content
-        wordpress_id
-        categories {
+const BLOGFEED_QUERY = graphql`
+  {
+    posts: allWordpressPost(sort: { fields: date }) {
+      edges {
+        node {
+          id
+          title
+          slug
+          content
           wordpress_id
-        }
-        acf {
-          main_image {
-            width
-            height
-            url
-            name
-            sizes {
-              large_size
-              lqph_size
-              middle_size
-              small_size
-              x_large_size
-              x_small_size
-              xx_large_size
-              xx_small_size
+          categories {
+            wordpress_id
+          }
+          acf {
+            main_image {
+              width
+              height
+              url
+              name
+              sizes {
+                large_size
+                lqph_size
+                middle_size
+                small_size
+                x_large_size
+                x_small_size
+                xx_large_size
+                xx_small_size
+              }
             }
           }
         }
       }
     }
   }
-}`;
+`;
 
 export const SBlogFeed = styled.div`
   text-align: center;
@@ -148,7 +165,8 @@ export const SBlogFeed = styled.div`
 
     &:nth-child(3n - 2) {
         h5 {
-          background-color: ${({ color }) => (color ? pageColor(color) : colors.orange)};
+          background-color: ${({ color }) =>
+            color ? pageColor(color) : colors.orange};
           ${above.ipadPort`
             clip-path: polygon(0 0, 100% 4%, 100% 95%, 0% 100%);
           `}
@@ -157,7 +175,8 @@ export const SBlogFeed = styled.div`
 
     &:nth-child(3n - 1) {
         h5 {
-          background-color: ${({ color }) => (color ? pageColor(color) : colors.green)};
+          background-color: ${({ color }) =>
+            color ? pageColor(color) : colors.green};
           ${above.ipadPort`
             clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
           `}
@@ -166,7 +185,8 @@ export const SBlogFeed = styled.div`
 
     &:nth-child(3n) {
         h5 {
-          background-color: ${({ color }) => (color ? pageColor(color) : colors.navy)};
+          background-color: ${({ color }) =>
+            color ? pageColor(color) : colors.navy};
           ${above.ipadPort`
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
           `}

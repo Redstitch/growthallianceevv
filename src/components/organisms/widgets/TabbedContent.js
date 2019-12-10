@@ -6,12 +6,11 @@ import { colors } from '../../../styles/utilities/settings';
 import { above, below } from '../../../styles/utilities/mediaQueries';
 import fonts from '../../../styles/utilities/fonts';
 
-
 class TabbedContent extends Component {
   state = {
     activeIndex: 0,
     mobileSelectBox: 'closed',
-  }
+  };
 
   render() {
     const { widget } = this.props;
@@ -20,7 +19,11 @@ class TabbedContent extends Component {
       <Wrapper>
         <STabbedContent>
           <a
-            className={mobileSelectBox === 'open' ? 'selectbox-toggle open' : 'selectbox-toggle'}
+            className={
+              mobileSelectBox === 'open'
+                ? 'selectbox-toggle open'
+                : 'selectbox-toggle'
+            }
             href={null}
             onClick={() => {
               if (mobileSelectBox === 'closed') {
@@ -55,7 +58,11 @@ class TabbedContent extends Component {
           </ul>
           <div className="tab-content">
             <h3>{widget.tabs[activeIndex].title}</h3>
-            <div dangerouslySetInnerHTML={{ __html: widget.tabs[activeIndex].copy }} />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: widget.tabs[activeIndex].copy,
+              }}
+            />
           </div>
         </STabbedContent>
       </Wrapper>

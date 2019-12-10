@@ -6,22 +6,49 @@ import { below } from './mediaQueries';
 export const typography = css`
   line-height: 1.5;
 
-  h1, h2, h3, h4, h5, h6, ul, ol, p, blockquote {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ul,
+  ol,
+  p,
+  blockquote {
     margin-bottom: 20px;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: 400;
   }
 
-  h1 { font-size: 35px; }
-  h2 { font-size: 30px; }
-  h3 { font-size: 26px; }
-  h4 { font-size: 22px; }
-  h5 { font-size: 18px; }
-  h6 { font-size: 16px; }
+  h1 {
+    font-size: 35px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 26px;
+  }
+  h4 {
+    font-size: 22px;
+  }
+  h5 {
+    font-size: 18px;
+  }
+  h6 {
+    font-size: 16px;
+  }
 
-  ol, ul {
+  ol,
+  ul {
     list-style: none;
   }
 
@@ -37,7 +64,8 @@ export const typography = css`
     }
   }
 
-  blockquote, q {
+  blockquote,
+  q {
     background-color: ${colors.lightGray};
     padding: 20px;
     border-left: 20px solid ${colors.gray};
@@ -59,7 +87,8 @@ export const typography = css`
     ${fonts.HelveticaNeueBold};
   }
 
-  table, tbody {
+  table,
+  tbody {
     border-collapse: collapse;
     border-spacing: 0;
 
@@ -72,28 +101,28 @@ export const typography = css`
       &:nth-child(2n) {
         background-color: ${colors.gray};
 
-        th, td {
+        th,
+        td {
           border: 1px solid ${colors.white};
         }
       }
     }
 
-    th, td {
+    th,
+    td {
       border: 1px solid ${colors.gray};
       text-align: center;
       padding: 5px 15px;
 
-      &:first-child{
+      &:first-child {
         text-align: left;
       }
 
-      &:last-child{
+      &:last-child {
         text-align: right;
       }
-
     }
   }
-
 `;
 
 export const imageBG = css`
@@ -165,7 +194,7 @@ export const bannerContent = css`
     ${absoluteCenter};
     width: 101%;
     height: 101%;
-    opacity: .6;
+    opacity: 0.6;
   }
 
   h1 {

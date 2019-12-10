@@ -14,7 +14,7 @@ class Preview extends Component {
   state = {
     previewData: null,
     postType: null,
-  }
+  };
 
   componentDidMount() {
     const splitIDs = global.window.location.search.replace('?', '').split('&');
@@ -25,7 +25,7 @@ class Preview extends Component {
         method: 'get',
       })
         .then(response => response.json())
-        .then((data) => {
+        .then(data => {
           this.setState({ previewData: data });
         });
     }
@@ -35,7 +35,7 @@ class Preview extends Component {
         method: 'get',
       })
         .then(response => response.json())
-        .then((data) => {
+        .then(data => {
           this.setState({ previewData: data });
         });
     }
@@ -49,24 +49,28 @@ class Preview extends Component {
         {previewData && (
           <>
             {console.log(previewData)}
-            {postType === 'page'
-            && (
-            <>
-              <PageBanners
-                content={previewData.acf.banners}
-                preview
-                page={{
-                  title: previewData.title.rendered,
-                  mainImage: previewData.acf.main_image,
-                  color: previewData.acf.page_color,
-                  description: previewData.acf.description ? previewData.acf.description : null,
-                }}
-              />
-              <PageWidgets preview content={previewData.acf.widgets} color={previewData.acf.page_color} />
-            </>
+            {postType === 'page' && (
+              <>
+                <PageBanners
+                  content={previewData.acf.banners}
+                  preview
+                  page={{
+                    title: previewData.title.rendered,
+                    mainImage: previewData.acf.main_image,
+                    color: previewData.acf.page_color,
+                    description: previewData.acf.description
+                      ? previewData.acf.description
+                      : null,
+                  }}
+                />
+                <PageWidgets
+                  preview
+                  content={previewData.acf.widgets}
+                  color={previewData.acf.page_color}
+                />
+              </>
             )}
-            {postType === 'post'
-            && (
+            {postType === 'post' && (
               <>
                 <BlogBanner
                   preview
@@ -77,11 +81,14 @@ class Preview extends Component {
                     description: null,
                   }}
                 />
-                <PostWidgets preview content={previewData.acf.post_content} color="navy" />
+                <PostWidgets
+                  preview
+                  content={previewData.acf.post_content}
+                  color="navy"
+                />
                 <RelatedPosts category={previewData.categories[0].slug} />
               </>
-            )
-          }
+            )}
           </>
         )}
       </Layout>

@@ -11,9 +11,10 @@ const BlogBanner = ({ page }) => (
       <SBlogBanner>
         <Wrapper>
           <div className="content">
-            <h1 dangerouslySetInnerHTML={{
-              __html: page.title,
-            }}
+            <h1
+              dangerouslySetInnerHTML={{
+                __html: page.title,
+              }}
             />
           </div>
         </Wrapper>

@@ -3,11 +3,14 @@ import { Link, graphql, StaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { NavContext } from '../molecules/Menu';
 
-
 const MenuLink = ({ content, linkChildren, itemIndex }) => (
   <StaticQuery
     query={SITEURL_QUERY}
-    render={({ site: { siteMetadata: { siteCms } } }) => (
+    render={({
+      site: {
+        siteMetadata: { siteCms },
+      },
+    }) => (
       <NavContext.Consumer>
         {context => (
           <SMenuLink>
@@ -23,16 +26,25 @@ const MenuLink = ({ content, linkChildren, itemIndex }) => (
               />
             ) : (
               <Link
-                to={content.type === 'custom' ? content.url : content.url.split(siteCms)[1]}
+                to={
+                  content.type === 'custom'
+                    ? content.url
+                    : content.url.split(siteCms)[1]
+                }
                 className={content.classes ? content.classes : null}
                 dangerouslySetInnerHTML={{
                   __html: content.title,
                 }}
               />
             )}
-            {linkChildren
-            && (
-              <a href={null} className="toggle-subnav" onClick={() => { context.updateSubNavIndex(itemIndex); }}>
+            {linkChildren && (
+              <a
+                href={null}
+                className="toggle-subnav"
+                onClick={() => {
+                  context.updateSubNavIndex(itemIndex);
+                }}
+              >
                 <span />
                 <span />
               </a>
@@ -55,10 +67,12 @@ export const SMenuLink = styled.span`
   }
 `;
 
-const SITEURL_QUERY = graphql`{
-  site {
-    siteMetadata {
-      siteCms
+const SITEURL_QUERY = graphql`
+  {
+    site {
+      siteMetadata {
+        siteCms
+      }
     }
   }
-}`;
+`;

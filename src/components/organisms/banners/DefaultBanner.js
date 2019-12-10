@@ -7,20 +7,25 @@ import { above } from '../../../styles/utilities/mediaQueries';
 import BackgroundImage from '../../atoms/BackgroundImage';
 
 const DefaultBanner = ({ content, page }) => (
-  <SDefaultBanner color={page.color ? page.color : null} backgroundColor={content.overlay_color} noMargin={page.noMargin}>
+  <SDefaultBanner
+    color={page.color ? page.color : null}
+    backgroundColor={content.overlay_color}
+    noMargin={page.noMargin}
+  >
     <BackgroundImage src={page.mainImage} size="xx_large_size">
       <Wrapper>
         <div className="content">
-          <h1 dangerouslySetInnerHTML={{
-            __html: page.title,
-          }}
+          <h1
+            dangerouslySetInnerHTML={{
+              __html: page.title,
+            }}
           />
-          {page.description
-          && (
-          <p dangerouslySetInnerHTML={{
-            __html: page.description,
-          }}
-          />
+          {page.description && (
+            <p
+              dangerouslySetInnerHTML={{
+                __html: page.description,
+              }}
+            />
           )}
         </div>
       </Wrapper>
@@ -35,7 +40,8 @@ export const SDefaultBanner = styled.div`
   ${({ noMargin }) => (noMargin ? 'margin-bottom: 0 !important;' : '')};
 
   &:after {
-    background-color: ${({ color, backgroundColor }) => (color ? pageColor(color) : pageColor(backgroundColor))};
+    background-color: ${({ color, backgroundColor }) =>
+      color ? pageColor(color) : pageColor(backgroundColor)};
   }
 
   h1 {

@@ -3,9 +3,7 @@ import styled from 'styled-components';
 
 class BackgroundImage extends Component {
   render() {
-    const {
-      children, className, src, size,
-    } = this.props;
+    const { children, className, src, size } = this.props;
     return (
       <SBackgroundImage
         className={className}
@@ -20,7 +18,7 @@ class BackgroundImage extends Component {
 export default BackgroundImage;
 
 export const SBackgroundImage = styled.div`
-  background-image: ${({ bgImg }) => (`url(${bgImg})` || '')};
+  background-image: ${({ bgImg }) => `url(${bgImg})` || ''};
   background-position: center;
   background-size: cover;
 `;

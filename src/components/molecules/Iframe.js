@@ -8,9 +8,7 @@ export function iframeLoaded() {
   }
 }
 
-const Iframe = ({
-  width, height, src, title,
-}) => (
+const Iframe = ({ width, height, src, title }) => (
   <iframe
     title={title}
     width={width || '100%'}

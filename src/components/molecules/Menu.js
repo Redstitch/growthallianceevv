@@ -4,13 +4,12 @@ import MenuItem from '../atoms/MenuItem';
 import { above } from '../../styles/utilities/mediaQueries';
 import { colors } from '../../styles/utilities/settings';
 
-
 export const NavContext = React.createContext();
 
 class Menu extends Component {
   state = {
     subNavIndex: undefined,
-  }
+  };
 
   setSubNavIndex(num, subNavIndex) {
     let i = num;
@@ -33,34 +32,35 @@ class Menu extends Component {
   }
 
   render() {
-    const {
-      content,
-      pages,
-      menuTitle,
-      styles,
-    } = this.props;
-    const {
-      subNavIndex,
-    } = this.state;
+    const { content, pages, menuTitle, styles } = this.props;
+    const { subNavIndex } = this.state;
     return (
-      <NavContext.Provider value={{
-        subNavIndex,
-        updateSubNavIndex: num => this.setState({
-          subNavIndex: this.setSubNavIndex(num, subNavIndex),
-        }),
-      }}
+      <NavContext.Provider
+        value={{
+          subNavIndex,
+          updateSubNavIndex: num =>
+            this.setState({
+              subNavIndex: this.setSubNavIndex(num, subNavIndex),
+            }),
+        }}
       >
-        {content.edges.map(({ node }) => node.slug === menuTitle
-        && (
-          <SMenu key={node.id} styles={styles}>
-
-            <ul>
-              {node.items.map((item, index) => (
-                <MenuItem key={`menuItem${index}${item.object_id}`} itemIndex={index} content={item} pageColor={this.pageColorEval(item.object_id, pages)} />
-              ))}
-            </ul>
-          </SMenu>
-        ))}
+        {content.edges.map(
+          ({ node }) =>
+            node.slug === menuTitle && (
+              <SMenu key={node.id} styles={styles}>
+                <ul>
+                  {node.items.map((item, index) => (
+                    <MenuItem
+                      key={`menuItem${index}${item.object_id}`}
+                      itemIndex={index}
+                      content={item}
+                      pageColor={this.pageColorEval(item.object_id, pages)}
+                    />
+                  ))}
+                </ul>
+              </SMenu>
+            )
+        )}
       </NavContext.Provider>
     );
   }
@@ -85,5 +85,5 @@ const SMenu = styled.nav`
     `}
   }
 
-  ${({ styles }) => (styles && styles)};
+  ${({ styles }) => styles && styles};
 `;

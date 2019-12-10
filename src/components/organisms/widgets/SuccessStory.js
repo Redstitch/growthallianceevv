@@ -6,18 +6,17 @@ import ItemWImage from '../../../styles/molecules/ItemWImage';
 import PageLink from '../../atoms/PageLink';
 import BackgroundImage from '../../atoms/BackgroundImage';
 
-
 class SuccessStory extends Component {
   state = {
     isVisible: false,
-  }
+  };
 
   render() {
     const { widget, color, order } = this.props;
     const { isVisible } = this.state;
     return (
       <VisibilitySensor
-        onChange={(e) => {
+        onChange={e => {
           if (e === true) {
             this.setState(() => ({
               isVisible: true,
@@ -33,15 +32,14 @@ class SuccessStory extends Component {
               <Shape1 />
             </div>
             <div className="content">
-              <blockquote>
-                {widget.content.quote}
-              </blockquote>
-              <p dangerouslySetInnerHTML={{
-                __html: `<strong>${widget.content.name}</strong><br/>${widget.content.title}`,
-              }}
+              <blockquote>{widget.content.quote}</blockquote>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: `<strong>${widget.content.name}</strong><br/>${widget.content.title}`,
+                }}
               />
               <div className="button">
-                {widget.button.copy && <PageLink content={widget.button} /> }
+                {widget.button.copy && <PageLink content={widget.button} />}
               </div>
             </div>
           </ItemWImage>

@@ -3,7 +3,9 @@ import { document } from 'browser-monads';
 
 class JavascriptLink extends Component {
   componentDidMount() {
-    const { widget: { source } } = this.props;
+    const {
+      widget: { source },
+    } = this.props;
 
     const script = document.createElement('script');
     script.src = `${source}`;
@@ -13,7 +15,12 @@ class JavascriptLink extends Component {
 
   render() {
     return (
-      <div ref={(el) => { this.instance = el; }} className="iframe" />
+      <div
+        ref={el => {
+          this.instance = el;
+        }}
+        className="iframe"
+      />
     );
   }
 }

@@ -4,7 +4,11 @@ import { Link, graphql, StaticQuery } from 'gatsby';
 const PageLink = ({ content }) => (
   <StaticQuery
     query={PAGELINK_QUERY}
-    render={({ site: { siteMetadata: { siteCms } } }) => (
+    render={({
+      site: {
+        siteMetadata: { siteCms },
+      },
+    }) => (
       <>
         {content.new_tab ? (
           <a href={content.url} rel="noopener noreferrer" target="_blank">
@@ -22,10 +26,12 @@ const PageLink = ({ content }) => (
 
 export default PageLink;
 
-const PAGELINK_QUERY = graphql`{
-  site {
-    siteMetadata {
-      siteCms
+const PAGELINK_QUERY = graphql`
+  {
+    site {
+      siteMetadata {
+        siteCms
+      }
     }
   }
-}`;
+`;

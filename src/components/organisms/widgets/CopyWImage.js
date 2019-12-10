@@ -34,7 +34,6 @@ const SCopyWImage = styled.div`
   margin: 125px auto;
 
   .block {
-
     ${above.ipadLand`
       display: flex;
       align-items: flex-start;
@@ -57,7 +56,6 @@ const SCopyWImage = styled.div`
     line-height: 1.75;
     color: ${colors.darkerGray};
   }
-
 
   .image {
     width: 300px;

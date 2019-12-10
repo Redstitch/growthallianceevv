@@ -7,17 +7,17 @@ import PageLink from '../atoms/PageLink';
 import fonts from '../../styles/utilities/fonts';
 import BackgroundImage, { SBackgroundImage } from '../atoms/BackgroundImage';
 
-
 const Column = ({ content }) => (
   <SColumn key={content.heading}>
     <BackgroundImage src={content.image} size="large_size" />
     <div className="content">
-      <h1 dangerouslySetInnerHTML={{
-        __html: content.heading,
-      }}
+      <h1
+        dangerouslySetInnerHTML={{
+          __html: content.heading,
+        }}
       />
       <p>{content.copy}</p>
-      {content.button.copy && <PageLink content={content.button} /> }
+      {content.button.copy && <PageLink content={content.button} />}
     </div>
   </SColumn>
 );
@@ -33,84 +33,84 @@ const SColumn = styled.div`
     transform: skew(4deg);
   `}
 
-    &:after {
-      content: '';
-      display: block;
-      width: 101%;
-      height: 101%;
-      background-color: ${colors.orange};
-      z-index: 0;
-      opacity: .6;
-      ${absoluteCenter};
+  &:after {
+    content: '';
+    display: block;
+    width: 101%;
+    height: 101%;
+    background-color: ${colors.orange};
+    z-index: 0;
+    opacity: 0.6;
+    ${absoluteCenter};
 
-      ${below.ipadLand`
+    ${below.ipadLand`
         opacity: .7;
       `}
-    }
+  }
 
-    &:first-child {
-      .content {
-        ${above.ipadLand`
+  &:first-child {
+    .content {
+      ${above.ipadLand`
           margin-left: 40px;
         `}
-      }
     }
+  }
 
-    &:last-child {
-      .content {
-        ${above.ipadLand`
+  &:last-child {
+    .content {
+      ${above.ipadLand`
           margin-left: -40px;
         `}
-      }
     }
+  }
 
-    &:nth-child(4n - 2) {
-      &:after {
-        background-color: ${colors.blue};
-      }
-      .content {
-        a {
-          &:hover {
-            &:before {
-              ${above.ipadLand`
+  &:nth-child(4n - 2) {
+    &:after {
+      background-color: ${colors.blue};
+    }
+    .content {
+      a {
+        &:hover {
+          &:before {
+            ${above.ipadLand`
                 background-color: ${colors.orange};
               `}
-            }
           }
+        }
 
-          &:before {
-            border-left: 10px solid ${colors.orange};
-          }
+        &:before {
+          border-left: 10px solid ${colors.orange};
         }
       }
     }
+  }
 
-    &:nth-child(4n - 1) {
-      &:after {
-        background-color: ${colors.green};
-      }
-      .content {
-        a {
-          &:hover {
-            &:before {
-              ${above.ipadLand`
+  &:nth-child(4n - 1) {
+    &:after {
+      background-color: ${colors.green};
+    }
+    .content {
+      a {
+        &:hover {
+          &:before {
+            ${above.ipadLand`
                 background-color: ${colors.navy};
               `}
-            }
           }
+        }
 
-          &:before {
-            border-left: 10px solid ${colors.navy};
-          }
+        &:before {
+          border-left: 10px solid ${colors.navy};
         }
       }
     }
+  }
 
-    &:nth-child(4n) {
-      &:after {
-        background-color: ${colors.navy};
-      }
+  &:nth-child(4n) {
+    &:after {
+      background-color: ${colors.navy};
     }
+  }
 
   ${SBackgroundImage} {
     height: 100%;
@@ -173,7 +173,6 @@ const SColumn = styled.div`
       /* // TODO: fix hover state */
       &:hover {
         &:before {
-
           ${above.ipadLand`
             border: none;
             width: 100%;

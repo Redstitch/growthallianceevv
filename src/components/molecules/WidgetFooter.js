@@ -6,11 +6,10 @@ import { pageColor } from '../../js/autoColor';
 import PageLink from '../atoms/PageLink';
 import fonts from '../../styles/utilities/fonts';
 
-
 const WidgetFooter = ({ content, color }) => (
   <SWidgetFooter color={color}>
     {content.footer.copy && <p>{content.footer.copy}</p>}
-    {content.footer.button.copy && <PageLink content={content.footer.button} /> }
+    {content.footer.button.copy && <PageLink content={content.footer.button} />}
   </SWidgetFooter>
 );
 
