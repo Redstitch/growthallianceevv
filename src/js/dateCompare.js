@@ -4,7 +4,7 @@ export function getToday() {
   const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
   const yyyy = today.getFullYear();
 
-  today = `${mm}${dd}${yyyy}`;
+  today = `${yyyy}${mm}${dd}`;
 
   return today;
 }
@@ -16,7 +16,7 @@ export function getItemDate(date) {
   const mm = String(thisDate.getMonth() + 1).padStart(2, '0'); // January is 0!
   const yyyy = thisDate.getFullYear();
 
-  thisDate = `${mm}${dd}${yyyy}`;
+  thisDate = `${yyyy}${mm}${dd}`;
 
   return thisDate;
 }

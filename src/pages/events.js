@@ -56,7 +56,9 @@ function compiledEvents(events) {
     }
   });
 
-  const sorted = compiledGroup.sort((a, b) => new Date(a.start) - new Date(b.start));
+  const sorted = compiledGroup.sort(
+    (a, b) => new Date(a.start) - new Date(b.start)
+  );
   return sorted;
 }
 
@@ -69,23 +71,33 @@ const events = () => (
           <Dochead
             title="Events"
             siteName={data.wordpressSiteMetadata.name}
-            pageImage={data.wordpressAcfOptions.options.events_banner_image && data.wordpressAcfOptions.options.events_banner_image.url}
+            pageImage={
+              data.wordpressAcfOptions.options.events_banner_image &&
+              data.wordpressAcfOptions.options.events_banner_image.url
+            }
             description={data.wordpressSiteMetadata.description}
           />
           <DefaultBanner
             page={{
-              title: data.wordpressAcfOptions.options.events_banner_copy.heading,
+              title:
+                data.wordpressAcfOptions.options.events_banner_copy.heading,
               mainImage: data.wordpressAcfOptions.options.events_banner_image,
               color: 'blue',
-              description: data.wordpressAcfOptions.options.events_banner_copy.copy,
+              description:
+                data.wordpressAcfOptions.options.events_banner_copy.copy,
             }}
             content={{
               overlay_color: 'blue',
             }}
           />
           <Wrapper medium>
-            {compiledEvents(data.allWordpressWpEvent.edges).map(evnt => parseInt(getToday(), 0) <= parseInt(getItemDate(evnt.start), 0)
-                  && <EventItem key={evnt.eId} content={evnt} />)}
+            {compiledEvents(data.allWordpressWpEvent.edges).map(
+              evnt =>
+                parseInt(getToday(), 0) <=
+                  parseInt(getItemDate(evnt.start), 0) && (
+                  <EventItem key={evnt.eId} content={evnt} />
+                )
+            )}
           </Wrapper>
         </>
       )}
@@ -95,52 +107,54 @@ const events = () => (
 
 export default events;
 
-const EVENTS_QUERY = graphql`{
-  wordpressSiteMetadata {
-    name
-    description
-  }
-  wordpressAcfOptions {
-    options {
-      events_banner_copy {
-        heading
-        copy
-      }
-      events_banner_image {
-        width
-        height
-        url
-        name
-        sizes {
-          large_size
-          lqph_size
-          middle_size
-          small_size
-          x_large_size
-          x_small_size
-          xx_large_size
-          xx_small_size
-        }
-      }
+const EVENTS_QUERY = graphql`
+  {
+    wordpressSiteMetadata {
+      name
+      description
     }
-  }
-  allWordpressWpEvent(sort: {fields: acf___start_date, order: ASC}) {
-    edges {
-      node {
-        title
-        excerpt
-        slug
-        id
-        acf {
-          reoccurring_dates {
-            date
+    wordpressAcfOptions {
+      options {
+        events_banner_copy {
+          heading
+          copy
+        }
+        events_banner_image {
+          width
+          height
+          url
+          name
+          sizes {
+            large_size
+            lqph_size
+            middle_size
+            small_size
+            x_large_size
+            x_small_size
+            xx_large_size
+            xx_small_size
           }
-          start_date
-          end_date
-          start_time
-          end_time
+        }
+      }
+    }
+    allWordpressWpEvent(sort: { fields: acf___start_date, order: ASC }) {
+      edges {
+        node {
+          title
+          excerpt
+          slug
+          id
+          acf {
+            reoccurring_dates {
+              date
+            }
+            start_date
+            end_date
+            start_time
+            end_time
+          }
         }
       }
     }
   }
-}`;
+`;
