@@ -27,10 +27,9 @@ class ContentColumns extends Component {
       >
         <GlobeBar
           withButton={widget.footer_button.copy}
-          columnAlignment={widget.column_alignment}
           columns
           color={color}
-          alignment={widget.footer_button.copy ? 'left' : 'right'}
+          alignment="right"
           backgroundColor={widget.no_color ? 'blank' : widget.background_color}
           isVisible={isVisible}
           padTop={widget.heading_copy && false}
@@ -61,9 +60,11 @@ class ContentColumns extends Component {
                 </div>
               ))}
             </div>
-            {widget.footer_button.copy && (
-              <PageLink content={widget.footer_button} />
-            )}
+            <div className="button">
+              {widget.footer_button.copy && (
+                <PageLink content={widget.footer_button} />
+              )}
+            </div>
           </Wrapper>
         </GlobeBar>
       </VisibilitySensor>

@@ -264,7 +264,6 @@ export const query = graphql`
             background_color
             no_color
             heading_copy
-            column_alignment
             footer_button {
               copy
               page

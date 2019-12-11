@@ -110,8 +110,8 @@ const GlobeBar = styled.div`
     font-weight: normal;
     position: relative;
     z-index: 2;
-    color: ${({ backgroundColor }) =>
-      backgroundColor !== 'blank' && colors.white};
+    color: ${({ color, backgroundColor }) =>
+      backgroundColor !== 'blank' ? colors.white : color ? pageColor(color) : colors.blue};
     text-align: center;
 
     ${above.ipadLand`
@@ -292,12 +292,16 @@ const GlobeBar = styled.div`
       ${({ columns }) => (columns ? '' : 'padding: 0')};
     `}
 
-    > a {
-      ${button};
-      position: relative;
-      z-index: 1;
-      margin: 20px auto 50px;
-      ${fonts.HelveticaNeueBold};
+    .button {
+      ${({ columns }) => (columns && 'text-align: center')};
+
+      > a {
+        ${button};
+        position: relative;
+        z-index: 1;
+        margin: 20px auto 50px;
+        ${fonts.HelveticaNeueBold};
+      }
     }
   }
 `;
