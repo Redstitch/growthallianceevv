@@ -111,7 +111,11 @@ const GlobeBar = styled.div`
     position: relative;
     z-index: 2;
     color: ${({ color, backgroundColor }) =>
-      backgroundColor !== 'blank' ? colors.white : color ? pageColor(color) : colors.blue};
+      backgroundColor !== 'blank'
+        ? colors.white
+        : color
+        ? pageColor(color)
+        : colors.blue};
     text-align: center;
 
     ${above.ipadLand`
@@ -293,7 +297,7 @@ const GlobeBar = styled.div`
     `}
 
     .button {
-      ${({ columns }) => (columns && 'text-align: center')};
+      ${({ columns }) => columns && 'text-align: center'};
 
       > a {
         ${button};

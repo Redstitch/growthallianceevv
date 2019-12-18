@@ -37,6 +37,7 @@ const Page = ({ data }) => (
           : null,
       }}
     />
+    {'<!-- test -->'}
     <PageWidgets
       content={data.wordpressPage.acf.widgets_page}
       color={data.wordpressPage.acf.page_color}
