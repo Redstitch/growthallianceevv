@@ -32,8 +32,7 @@ const CardLinks = ({ widget, color }) => (
                         }
                       />
                     )
-                )
-              )}
+                ))}
             {widget.cards &&
               widget.cards.map((card, index) => (
                 <Card
@@ -42,6 +41,8 @@ const CardLinks = ({ widget, color }) => (
                   content={card.copy}
                   color={color}
                   link={card.copy.url}
+                  newTab={card.copy.new_tab}
+                  pageLink={card.copy.page_link}
                 />
               ))}
           </div>

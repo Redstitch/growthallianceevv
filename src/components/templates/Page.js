@@ -354,6 +354,8 @@ export const query = graphql`
               copy {
                 title
                 url
+                new_tab
+                page_link
               }
             }
           }

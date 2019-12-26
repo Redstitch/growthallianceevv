@@ -16,11 +16,11 @@ const EventItem = ({ content }) => (
         <span className="date">
           {content.start}
           {content.end && content.end !== content.start && (
-          <>
-            {' - '}
-            <br />
-          </>
-        )}
+            <>
+              {' - '}
+              <br />
+            </>
+          )}
           {content.end && content.end !== content.start && content.end}
         </span>
         <span className="time">
