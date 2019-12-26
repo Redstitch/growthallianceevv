@@ -1,10 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-const { GATSBY_ENV } = process.env;
-const { GATSBY_ROLLBAR_ACCESS_TOKEN } = process.env;
-const { GATSBY_ROLLBAR_SNIPPET } = process.env;
-
 const Dochead = ({
   title,
   siteName,
@@ -55,21 +51,6 @@ const Dochead = ({
       { rel: 'shortcut icon', type: 'image/png', href: '/images/favicon.png' },
     ]}
   >
-    <script>
-      {`
-        var _rollbarConfig = {
-          accessToken: "${GATSBY_ROLLBAR_ACCESS_TOKEN}",
-          captureUncaught: true,
-          captureUnhandledRejections: true,
-          payload: {
-              environment: "${GATSBY_ENV}"
-          }
-        };
-        // Rollbar Snippet
-        ${GATSBY_ROLLBAR_SNIPPET}
-        // End Rollbar Snippeta
-    `}
-    </script>
     <html lang="en" />
   </Helmet>
 );

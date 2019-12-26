@@ -27,6 +27,7 @@
     "indent": "off",
     "arrow-parens": "off",
     "no-useless-escape": "off",
+    "prefer-destructuring": "off",
     "jsx-a11y/label-has-for": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/anchor-is-valid": ["warn",
