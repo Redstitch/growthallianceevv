@@ -45,6 +45,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html,body {
+    height:100%;
+}
+
   main {
     display: block;
     overflow-x: hidden;
