@@ -121,9 +121,8 @@ const SRelatedPosts = styled.div`
       color: ${colors.white};
       ${fonts.HelveticaNeueBold};
       margin-bottom: 0;
-      white-space: nowrap;
+      line-height: 1.15;
       overflow: hidden;
-      text-overflow: ellipsis;
       padding: 20px 45px;
 
       ${below.ipadPort`
@@ -134,6 +133,10 @@ const SRelatedPosts = styled.div`
         font-size: 18px;
         padding: 20px 50px;
       `}
+
+      span {
+        margin-top: 10px;
+      }
     }
 
     > a {

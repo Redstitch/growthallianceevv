@@ -6,7 +6,7 @@ import { colors } from '../../styles/utilities/settings';
 import { below, above } from '../../styles/utilities/mediaQueries';
 import BackgroundImage, { SBackgroundImage } from '../atoms/BackgroundImage';
 
-const  { GATSBY_CMS } = process.env;
+const { GATSBY_CMS } = process.env;
 
 const Card = ({ content, color, link, image, newTab, pageLink }) => (
   <>

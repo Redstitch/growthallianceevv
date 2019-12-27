@@ -9,9 +9,6 @@ import Wrapper from '../styles/utilities/Wrapper';
 import { above, below } from '../styles/utilities/mediaQueries';
 import DefaultBanner from '../components/organisms/banners/DefaultBanner';
 import fonts from '../styles/utilities/fonts';
-import BackgroundImage, {
-  SBackgroundImage,
-} from '../components/atoms/BackgroundImage';
 
 class BlogRollPage extends Component {
   state = {
@@ -69,10 +66,14 @@ class BlogRollPage extends Component {
                                   style={{
                                     backgroundImage: `url(${node.acf.main_image.sizes.middle_size})`,
                                   }}
-                                ></div>
+                                />
                                 <div className="content">
                                   <div className="blog-name">
-                                    <h5>{node.title}</h5>
+                                    <h5
+                                      dangerouslySetInnerHTML={{
+                                        __html: node.title,
+                                      }}
+                                    />
                                     <span>Read More</span>
                                   </div>
                                 </div>
@@ -245,12 +246,14 @@ const SBlog = styled.div`
 `;
 
 const SBlogPost = styled.div`
+  display: block;
   position: relative;
   overflow-x: hidden;
   text-align: left;
+  height: 100%;
 
   .blog-name {
-    padding: 20px 40px 22px;
+    padding: 27px 32px 25px;
     position: relative;
     margin-top: -75px;
     left: 0;
@@ -276,10 +279,8 @@ const SBlogPost = styled.div`
   h5 {
     color: ${colors.white};
     ${fonts.HelveticaNeueBold};
-    margin-bottom: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 275px;
+    margin-bottom: 5px;
+    line-height: 1.15;
+    max-width: 300px;
   }
 `;

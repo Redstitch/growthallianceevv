@@ -32,7 +32,8 @@ const CardLinks = ({ widget, color }) => (
                         }
                       />
                     )
-                ))}
+                )
+              )}
             {widget.cards &&
               widget.cards.map((card, index) => (
                 <Card
