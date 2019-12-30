@@ -6,7 +6,7 @@ import { colors } from '../../styles/utilities/settings';
 import { below, above } from '../../styles/utilities/mediaQueries';
 import BackgroundImage, { SBackgroundImage } from '../atoms/BackgroundImage';
 
-const  { GATSBY_CMS } = process.env;
+const { GATSBY_SITE_URL } = process.env;
 
 const Card = ({ content, color, link, image, newTab, pageLink }) => (
   <>
@@ -25,7 +25,7 @@ const Card = ({ content, color, link, image, newTab, pageLink }) => (
         </SCard>
       </a>
     ) : (
-      <Link to={pageLink ? pageLink.replace(GATSBY_CMS, '') : link}>
+      <Link to={pageLink ? pageLink.replace(GATSBY_SITE_URL, '') : link}>
         <SCard color={color}>
           <BackgroundImage
             src={image || content.acf.main_image}

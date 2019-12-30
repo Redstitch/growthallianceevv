@@ -6,7 +6,7 @@ const PageLink = ({ content }) => (
     query={PAGELINK_QUERY}
     render={({
       site: {
-        siteMetadata: { siteCms },
+        siteMetadata: { siteUrl },
       },
     }) => (
       <>
@@ -16,7 +16,7 @@ const PageLink = ({ content }) => (
           </a>
         ) : (
           <>
-            <Link to={content.page.split(siteCms)[1]}>{content.copy}</Link>
+            <Link to={content.page.split(siteUrl)[1]}>{content.copy}</Link>
           </>
         )}
       </>
@@ -30,7 +30,7 @@ const PAGELINK_QUERY = graphql`
   {
     site {
       siteMetadata {
-        siteCms
+        siteUrl
       }
     }
   }
