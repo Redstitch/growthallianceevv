@@ -141,9 +141,12 @@ export const SBlogFeed = styled.div`
 
   h5 {
     ${fonts.HelveticaNeueBold};
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.15;
+
+    span {
+      margin-top: 10px;
+    }
+
 
     ${below.smallPage`
       max-width: none;
