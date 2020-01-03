@@ -12,7 +12,7 @@ const Iframe = ({ width, height, src, title }) => (
   <iframe
     title={title}
     width={width || '100%'}
-    height={height || '350px'}
+    height={height || '520px'}
     src={src}
     id="dynamicIframe"
   />
