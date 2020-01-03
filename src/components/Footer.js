@@ -28,16 +28,14 @@ const Footer = () => (
                       __html: data.wordpressAcfOptions.options.subscribe.copy,
                     }}
                   />
-                  {NODE_ENV === 'development' ? (
-                    <div className="subscribe-form">
-                      <form>
-                        <input type="text" />
-                        <button type="button">Submit</button>
-                      </form>
-                    </div>
-                  ) : (
-                    <Iframe title="subscribe" src="/subscribe.html" />
-                  )}
+                  <Iframe
+                    title="subscribe"
+                    src={`${
+                      NODE_ENV === 'development'
+                        ? 'http://gage.static:8888'
+                        : ''
+                    }/subscribe.html`}
+                  />
                 </div>
                 <div>
                   <h4>Contact Us</h4>
