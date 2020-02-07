@@ -264,6 +264,7 @@ export const query = graphql`
             background_color
             no_color
             heading_copy
+            column_alignment
             footer_button {
               copy
               page
@@ -321,6 +322,7 @@ export const query = graphql`
             }
             cards_rel {
               wordpress_id
+              post_type
             }
           }
           ... on WordPressAcf_card_links_manual {

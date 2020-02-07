@@ -46,11 +46,16 @@ class ContentColumns extends Component {
             medium={widget.columns.length < 3 && true}
           >
             {widget.heading_copy && <h2>{widget.heading_copy}</h2>}
-            <div className="inner">
+            <div
+              className="inner"
+              style={{
+                textAlign: widget.column_alignment && widget.column_alignment,
+              }}
+            >
               {widget.columns.map((column, index) => (
                 <div className="column" key={column.heading + index}>
                   {column.heading && <h4>{column.heading}</h4>}
-                  <h5>{column.large_subhead}</h5>
+                  {column.large_subhead && <h5>{column.large_subhead}</h5>}
                   <div
                     dangerouslySetInnerHTML={{
                       __html: column.copy,
@@ -60,7 +65,12 @@ class ContentColumns extends Component {
                 </div>
               ))}
             </div>
-            <div className="button">
+            <div
+              className="button"
+              style={{
+                textAlign: widget.column_alignment && widget.column_alignment,
+              }}
+            >
               {widget.footer_button.copy && (
                 <PageLink content={widget.footer_button} />
               )}

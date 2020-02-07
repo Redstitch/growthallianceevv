@@ -47,7 +47,19 @@ export const SRichText = styled.div`
 
   ul,
   ol {
-    margin-left: 10px;
+    margin-left: 25px;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  em {
+    font-style: italic;
   }
 
   img {

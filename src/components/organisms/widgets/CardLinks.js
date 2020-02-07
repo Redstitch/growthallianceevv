@@ -17,23 +17,58 @@ const CardLinks = ({ widget, color }) => (
           <WidgetHeader content={widget} color={color} />
           <div className="posts">
             {widget.cards_rel &&
-              widget.cards_rel.map(card =>
-                data.allWordpressPage.edges.map(
-                  ({ node }) =>
-                    node.wordpress_id === card.wordpress_id && (
-                      <Card
-                        key={node.id}
-                        content={node}
-                        color={color}
-                        link={
-                          node.parent_element
-                            ? `/${node.parent_element.slug}/${node.slug}`
-                            : `/${node.slug}`
-                        }
-                      />
-                    )
-                )
-              )}
+              widget.cards_rel.map(card => (
+                <>
+                  {card.post_type === 'page' &&
+                    data.allWordpressPage.edges.map(
+                      ({ node }) =>
+                        node.wordpress_id === card.wordpress_id && (
+                          <Card
+                            key={node.id}
+                            content={node}
+                            color={color}
+                            link={
+                              node.parent_element
+                                ? `/${node.parent_element.slug}/${node.slug}`
+                                : `/${node.slug}`
+                            }
+                          />
+                        )
+                    )}
+                  {card.post_type === 'event' &&
+                    data.allWordpressWpEvent.edges.map(
+                      ({ node }) =>
+                        node.wordpress_id === card.wordpress_id && (
+                          <Card
+                            key={node.id}
+                            content={node}
+                            color={color}
+                            link={
+                              node.parent_element
+                                ? `/${node.parent_element.slug}/${node.slug}`
+                                : `/${node.slug}`
+                            }
+                          />
+                        )
+                    )}
+                  {card.post_type === 'post' &&
+                    data.allWordpressPost.edges.map(
+                      ({ node }) =>
+                        node.wordpress_id === card.wordpress_id && (
+                          <Card
+                            key={node.id}
+                            content={node}
+                            color={color}
+                            link={
+                              node.parent_element
+                                ? `/${node.parent_element.slug}/${node.slug}`
+                                : `/${node.slug}`
+                            }
+                          />
+                        )
+                    )}
+                </>
+              ))}
             {widget.cards &&
               widget.cards.map((card, index) => (
                 <Card
@@ -64,6 +99,7 @@ const CARDLINKS_QUERY = graphql`
           wordpress_id
           title
           slug
+          path
           parent_element {
             slug
           }
@@ -84,6 +120,79 @@ const CARDLINKS_QUERY = graphql`
                 xx_small_size
               }
             }
+          }
+        }
+      }
+    }
+
+    allWordpressWpEvent(sort: { fields: acf___start_date, order: ASC }) {
+      edges {
+        node {
+          title
+          wordpress_id
+          excerpt
+          slug
+          path
+          id
+          acf {
+            reoccurring_dates {
+              date
+            }
+            start_date
+            end_date
+            start_time
+            end_time
+            main_image {
+              width
+              height
+              url
+              name
+              sizes {
+                large_size
+                lqph_size
+                middle_size
+                small_size
+                x_large_size
+                x_small_size
+                xx_large_size
+                xx_small_size
+              }
+            }
+          }
+        }
+      }
+    }
+
+    allWordpressPost(sort: { fields: date, order: DESC }) {
+      edges {
+        node {
+          id
+          title
+          slug
+          path
+          categories {
+            slug
+          }
+          acf {
+            main_image {
+              width
+              height
+              url
+              name
+              sizes {
+                large_size
+                lqph_size
+                middle_size
+                small_size
+                x_large_size
+                x_small_size
+                xx_large_size
+                xx_small_size
+              }
+            }
+          }
+          categories {
+            slug
           }
         }
       }

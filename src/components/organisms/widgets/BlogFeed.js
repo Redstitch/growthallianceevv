@@ -56,8 +56,7 @@ class BlogFeed extends Component {
                             link={`/blog/${node.slug}`}
                           />
                         )
-                    )
-                  )}
+                    ))}
               </div>
             </Wrapper>
           </SBlogFeed>
@@ -77,6 +76,7 @@ const BLOGFEED_QUERY = graphql`
           id
           title
           slug
+          path
           content
           wordpress_id
           categories {

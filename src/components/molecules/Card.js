@@ -30,7 +30,7 @@ const Card = ({ content, color, link, image, newTab, pageLink }) => (
             </SCard>
           </a>
         ) : (
-          <Link to={pageLink ? pageLink.split(siteUrl)[1] : link}>
+          <Link to={content.path ? content.path : pageLink ? pageLink.split(siteUrl)[1] : link}>
             <SCard color={color}>
               <BackgroundImage
                 src={image || content.acf.main_image}
