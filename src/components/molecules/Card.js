@@ -1,45 +1,52 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import { pageColor } from '../../js/autoColor';
 import { colors } from '../../styles/utilities/settings';
 import { below, above } from '../../styles/utilities/mediaQueries';
 import BackgroundImage, { SBackgroundImage } from '../atoms/BackgroundImage';
 
-const { GATSBY_SITE_URL } = process.env;
-
 const Card = ({ content, color, link, image, newTab, pageLink }) => (
-  <>
-    {newTab ? (
-      <a target="_blank" rel="noopener noreferrer" href={link}>
-        <SCard color={color}>
-          <BackgroundImage
-            src={image || content.acf.main_image}
-            size="small_size"
-          />
-          <h5
-            dangerouslySetInnerHTML={{
-              __html: `${content.title}<span>Read More</span>`,
-            }}
-          />
-        </SCard>
-      </a>
-    ) : (
-      <Link to={pageLink ? pageLink.replace(GATSBY_SITE_URL, '') : link}>
-        <SCard color={color}>
-          <BackgroundImage
-            src={image || content.acf.main_image}
-            size="small_size"
-          />
-          <h5
-            dangerouslySetInnerHTML={{
-              __html: `${content.title}<span>Read More</span>`,
-            }}
-          />
-        </SCard>
-      </Link>
+  <StaticQuery
+    query={CARD_QUERY}
+    render={({
+      site: {
+        siteMetadata: { siteUrl },
+      },
+    }) => (
+      <>
+        {newTab ? (
+          <a target="_blank" rel="noopener noreferrer" href={link}>
+            <SCard color={color}>
+              <BackgroundImage
+                src={image || content.acf.main_image}
+                size="small_size"
+              />
+              <h5
+                dangerouslySetInnerHTML={{
+                  __html: `${content.title}<span>Read More</span>`,
+                }}
+              />
+            </SCard>
+          </a>
+        ) : (
+          <Link to={pageLink ? pageLink.split(siteUrl)[1] : link}>
+            <SCard color={color}>
+              <BackgroundImage
+                src={image || content.acf.main_image}
+                size="small_size"
+              />
+              <h5
+                dangerouslySetInnerHTML={{
+                  __html: `${content.title}<span>Read More</span>`,
+                }}
+              />
+            </SCard>
+          </Link>
+        )}
+      </>
     )}
-  </>
+  />
 );
 
 export default Card;
@@ -74,6 +81,16 @@ export const SCard = styled.div`
     span {
       display: block;
       font-size: 12px;
+    }
+  }
+`;
+
+const CARD_QUERY = graphql`
+  {
+    site {
+      siteMetadata {
+        siteUrl
+      }
     }
   }
 `;

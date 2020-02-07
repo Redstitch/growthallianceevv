@@ -59,9 +59,10 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop --open",
+    "develop": "yarn clean && gatsby develop --open",
     "start": "yarn format && yarn develop",
     "format": "prettier --write \"src/**/*.js\"",
+    "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "devDependencies": {
