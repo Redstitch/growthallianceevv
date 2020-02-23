@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { pageColor } from '../../../js/autoColor';
-import { colors } from '../../../styles/utilities/settings';
+import { colors, breakpoints } from '../../../styles/utilities/settings';
 
 const RichText = ({ widget, color }) => (
   <Wrapper narrow={!widget.wide}>
@@ -63,20 +63,28 @@ export const SRichText = styled.div`
 
   img {
     width: auto;
+    max-width: 100%;
 
-    &.aligncenter {
+    &.aligncenter,
+    &.alignnone,
+    &.alignleft,
+    &.alignright {
       display: block;
-      margin: 0 auto 20px;
+      margin: 0 auto 30px;
     }
 
     &.alignleft {
-      float: left;
-      margin: 0 20px 20px 0;
+      @media screen and (min-width: ${breakpoints.ipadPort}px) {
+        float: left;
+        margin: 0 30px 30px 0;
+      }
     }
 
     &.alignright {
-      float: right;
-      margin: 0 0 20px 20px;
+      @media screen and (min-width: ${breakpoints.ipadPort}px) {
+        float: right;
+        margin: 0 0 30px 30px;
+      }
     }
   }
 `;

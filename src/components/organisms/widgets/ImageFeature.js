@@ -113,6 +113,7 @@ const SFeature = styled.div`
     .image-container {
       width: 390px;
       margin: auto;
+      box-shadow: 0 0 20px -15px ${colors.black};
 
       ${SBackgroundImage} {
         height: 0;

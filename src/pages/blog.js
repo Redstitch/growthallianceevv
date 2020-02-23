@@ -39,19 +39,21 @@ class BlogRollPage extends Component {
                 }
                 description={data.wordpressSiteMetadata.description}
               />
-              <DefaultBanner
-                page={{
-                  title:
-                    data.wordpressAcfOptions.options.blog_banner_copy.heading,
-                  mainImage: data.wordpressAcfOptions.options.blog_banner_image,
-                  color: 'navy',
-                  description:
-                    data.wordpressAcfOptions.options.blog_banner_copy.copy,
-                }}
-                content={{
-                  overlay_color: 'navy',
-                }}
-              />
+              <section>
+                <DefaultBanner
+                  page={{
+                    title:
+                      data.wordpressAcfOptions.options.blog_banner_copy.heading,
+                    mainImage: data.wordpressAcfOptions.options.blog_banner_image,
+                    color: 'navy',
+                    description:
+                      data.wordpressAcfOptions.options.blog_banner_copy.copy,
+                  }}
+                  content={{
+                    overlay_color: 'navy',
+                  }}
+                />
+              </section>
               <SBlog>
                 <Wrapper>
                   <div className="posts">

@@ -14,6 +14,7 @@ import CopyWImage from './widgets/CopyWImage';
 import ImageDescription from './widgets/ImageDescription';
 import ImageWText from './widgets/ImageWText';
 import JavascriptLink from './widgets/JavascriptLink';
+import TeamList from './widgets/TeamList';
 
 const PageWidgets = ({ preview, content, color }) =>
   content &&
@@ -69,6 +70,9 @@ const PageWidgets = ({ preview, content, color }) =>
           {widget.acf_fc_layout === 'javascript_link' && (
             <JavascriptLink order={index} widget={widget} color={color} />
           )}
+          {widget.acf_fc_layout === 'team_list' && (
+            <TeamList order={index} widget={widget} color={color} />
+          )}
         </>
       ) : (
         <>
@@ -119,6 +123,9 @@ const PageWidgets = ({ preview, content, color }) =>
           )}
           {widget.__typename === 'WordPressAcf_javascript_link' && (
             <JavascriptLink order={index} widget={widget} color={color} />
+          )}
+          {widget.__typename === 'WordPressAcf_team_list' && (
+            <TeamList order={index} widget={widget} color={color} />
           )}
         </>
       )}

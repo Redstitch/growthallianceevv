@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../styles/utilities/Wrapper';
 import { pageColor } from '../../../js/autoColor';
-import { colors } from '../../../styles/utilities/settings';
+import { colors, breakpoints } from '../../../styles/utilities/settings';
 import { above } from '../../../styles/utilities/mediaQueries';
 import Image from '../../atoms/Image';
 
@@ -60,6 +60,10 @@ const SCopyWImage = styled.div`
   .image {
     width: 300px;
     margin-right: 20px;
+
+    @media screen and (max-width: ${breakpoints.ipadPort - 1}px) {
+      margin: 0 auto 30px;
+    }
   }
 
   .content {

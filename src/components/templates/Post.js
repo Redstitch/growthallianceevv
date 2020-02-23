@@ -5,6 +5,7 @@ import Dochead from '../Dochead';
 import BlogBanner from '../organisms/banners/BlogBanner';
 import PostWidgets from '../organisms/PostWidgets';
 import RelatedPosts from '../molecules/RelatedPosts';
+import Wrapper from '../../styles/utilities/Wrapper';
 
 export const PostContext = React.createContext();
 
@@ -25,11 +26,11 @@ const Post = ({ data }) => (
     />
     <BlogBanner
       page={{
-        title: data.wordpressPost.title,
-        mainImage: data.wordpressPost.acf.main_image,
-        color: 'navy',
-        description: null,
-      }}
+          title: data.wordpressPost.title,
+          mainImage: data.wordpressPost.acf.main_image,
+          color: 'navy',
+          description: null,
+        }}
     />
     <PostWidgets
       content={data.wordpressPost.acf.post_content_post}
