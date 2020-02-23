@@ -7,8 +7,8 @@ import { below, above } from '../../../styles/utilities/mediaQueries';
 import { pageColor } from '../../../js/autoColor';
 import fonts from '../../../styles/utilities/fonts';
 import PageLink from '../../atoms/PageLink';
-import Image from '../../atoms/Image';
 import { colors } from '../../../styles/utilities/settings';
+import BackgroundImage, { SBackgroundImage } from '../../atoms/BackgroundImage';
 
 const ImageFeature = ({ widget, color }) =>
   widget.features.map((feature, index) => (
@@ -20,11 +20,13 @@ const ImageFeature = ({ widget, color }) =>
       <Wrapper>
         <div className="image">
           {index % 2 === 0 ? <Shape5 /> : <Shape6 />}
-          <Image
-            src={feature.image}
-            size="middle_size"
-            alt={feature.content.heading}
-          />
+          <div className="image-container">
+            <BackgroundImage
+              src={feature.image}
+              size="middle_size"
+              alt={feature.content.heading}
+            />
+          </div>
         </div>
         <div className="content">
           <h4>{feature.content.heading}</h4>
@@ -60,13 +62,8 @@ const SFeature = styled.div`
 
     .image {
       svg {
-        margin-left: -22px;
         height: 130%;
         width: calc(100% + 10px);
-
-        ${below.ipadLand`
-          margin-left: -15px;
-        `}
       }
     }
   }
@@ -111,6 +108,16 @@ const SFeature = styled.div`
       margin-left: 0px;
       max-height: 340px;
       max-width: 500px;
+    }
+
+    .image-container {
+      width: 390px;
+      margin: auto;
+
+      ${SBackgroundImage} {
+        height: 0;
+        padding-bottom: 100%;
+      }
     }
 
     .gatsby-image-wrapper {

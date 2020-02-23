@@ -74,6 +74,10 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
+  section {
+    margin-bottom: 100px;
+  }
+
   .bgimage {
     background-size: cover;
     background-position: center;

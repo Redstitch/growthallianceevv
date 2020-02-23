@@ -170,7 +170,6 @@ const BLOG_QUERY = graphql`
 
 const SBlog = styled.div`
   text-align: center;
-  margin-bottom: 100px;
 
   .posts {
 

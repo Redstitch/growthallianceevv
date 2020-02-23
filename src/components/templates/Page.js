@@ -99,6 +99,8 @@ export const query = graphql`
                   x_small_size
                   xx_large_size
                   xx_small_size
+                  image_feature
+                  globe_banner
                 }
               }
             }
@@ -164,6 +166,8 @@ export const query = graphql`
                 x_small_size
                 xx_large_size
                 xx_small_size
+                image_feature
+                globe_banner
               }
             }
             content {
@@ -195,6 +199,8 @@ export const query = graphql`
                   x_small_size
                   xx_large_size
                   xx_small_size
+                  image_feature
+                  globe_banner
                 }
               }
               content {
@@ -257,6 +263,8 @@ export const query = graphql`
                 x_small_size
                 xx_large_size
                 xx_small_size
+                image_feature
+                globe_banner
               }
             }
           }
@@ -299,6 +307,8 @@ export const query = graphql`
                 x_small_size
                 xx_large_size
                 xx_small_size
+                image_feature
+                globe_banner
               }
             }
           }
@@ -351,6 +361,8 @@ export const query = graphql`
                   x_small_size
                   xx_large_size
                   xx_small_size
+                  image_feature
+                  globe_banner
                 }
               }
               copy {
@@ -386,6 +398,8 @@ export const query = graphql`
                   x_small_size
                   xx_large_size
                   xx_small_size
+                  image_feature
+                  globe_banner
                 }
               }
             }

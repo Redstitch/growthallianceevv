@@ -5,7 +5,7 @@ import { WideAngle } from '../../atoms/Shapes';
 import Globe from '../../atoms/Globe';
 import GlobeBar from '../../../styles/organisms/GlobeBar';
 import PageLink from '../../atoms/PageLink';
-import Image from '../../atoms/Image';
+import BackgroundImage from '../../atoms/BackgroundImage';
 
 class ImageFeatureLarge extends Component {
   state = {
@@ -52,11 +52,13 @@ class ImageFeatureLarge extends Component {
                 )}
               </div>
               <div className="image">
-                <Image
-                  src={widget.image}
-                  size="large_size"
-                  alt={widget.content.heading}
-                />
+                <div className="image-container">
+                  <BackgroundImage
+                    src={widget.image}
+                    size="large_size"
+                    alt={widget.content.heading}
+                  />
+                </div>
               </div>
             </div>
           </Wrapper>

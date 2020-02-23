@@ -41,6 +41,11 @@ const GlobeBar = styled.div`
         : 'padding-bottom: 50px;'}
   `}
 
+  a {
+    ${({ backgroundColor }) =>
+      backgroundColor !== 'blank' ? `color: ${colors.white};` : ''}
+  }
+
   ${SGlobe} {
     position: absolute;
     animation: rotating 89s linear infinite;
@@ -62,6 +67,23 @@ const GlobeBar = styled.div`
       width: 800px;
       right: 65%;
     `}
+  }
+
+  .image-container {
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 67%;
+    position: relative;
+    box-shadow: 0 0 20px -15px ${colors.black};
+
+    ${SBackgroundImage} {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
   }
 
   .bar {
@@ -169,9 +191,9 @@ const GlobeBar = styled.div`
     }
   }
 
-  ${SBackgroundImage} {
+  /* ${SBackgroundImage} {
     height: 600px
-  }
+  } */
 
   .image {
     width: 100%;

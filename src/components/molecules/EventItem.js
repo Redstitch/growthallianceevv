@@ -56,10 +56,6 @@ export const SEventItem = styled.div`
     margin-top: 100px;
   }
 
-  &:last-of-type {
-    margin-bottom: 100px;
-  }
-
   ${SRichText} {
     margin-bottom: 0;
   }

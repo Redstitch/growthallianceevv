@@ -176,7 +176,6 @@ export const button = css`
 
 export const bannerContent = css`
   ${imageBG};
-  margin-bottom: 100px;
 
   img {
     position: absolute;

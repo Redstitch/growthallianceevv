@@ -10,6 +10,4 @@ const FullWidthImage = ({ widget }) => (
 
 export default FullWidthImage;
 
-const SFullWidthImage = styled.div`
-  margin-bottom: 100px;
-`;
+const SFullWidthImage = styled.div``;

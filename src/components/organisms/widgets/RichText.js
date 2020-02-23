@@ -18,7 +18,6 @@ const RichText = ({ widget, color }) => (
 export default RichText;
 
 export const SRichText = styled.div`
-  margin-bottom: 100px;
   overflow-x: auto;
 
   h1,

@@ -92,10 +92,10 @@ ${SBackgroundImage} {
   .title {
     ${fonts.HelveticaNeueBold};
   }
-  h4,
-  p {
+  h4 {
     color: ${({ color }) => (color ? pageColor(color) : colors.orange)};
   }
+
   .button a {
     ${button};
     background-color: ${colors.green};
