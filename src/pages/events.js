@@ -24,8 +24,9 @@ function endDateFinder(start, difference) {
   return retDate;
 }
 
-function compiledEvents(events) {
+export const compiledEvents = (events) => {
   const compiledGroup = [];
+  const currentGroup = [];
 
   events.forEach(({ node }) => {
     const eventObj = {};
@@ -63,8 +64,16 @@ function compiledEvents(events) {
   const sorted = compiledGroup.sort(
     (a, b) => new Date(a.start) - new Date(b.start)
   );
-  return sorted;
-}
+
+  for (let index = 0; index < sorted.length; index += 1) {
+    const event = sorted[index];
+    if (parseInt(getToday(), 0) <= parseInt(getItemDate(event.start), 0)) {
+      currentGroup.push(event);
+    }
+  }
+
+  return currentGroup;
+};
 
 const events = () => (
   <Layout>
@@ -81,26 +90,26 @@ const events = () => (
             }
             description={data.wordpressSiteMetadata.description}
           />
-          <DefaultBanner
-            page={{
-              title:
-                data.wordpressAcfOptions.options.events_banner_copy.heading,
-              mainImage: data.wordpressAcfOptions.options.events_banner_image,
-              color: 'blue',
-              description:
-                data.wordpressAcfOptions.options.events_banner_copy.copy,
-            }}
-            content={{
-              overlay_color: 'blue',
-            }}
-          />
+          <section>
+            <DefaultBanner
+              page={{
+                title:
+                  data.wordpressAcfOptions.options.events_banner_copy.heading,
+                mainImage: data.wordpressAcfOptions.options.events_banner_image,
+                color: 'blue',
+                description:
+                  data.wordpressAcfOptions.options.events_banner_copy.copy,
+              }}
+              content={{
+                overlay_color: 'blue',
+              }}
+            />
+          </section>
           <Wrapper medium>
             {compiledEvents(data.allWordpressWpEvent.edges).map(
-              evnt =>
-                parseInt(getToday(), 0) <=
-                  parseInt(getItemDate(evnt.start), 0) && (
-                  <EventItem key={evnt.eId} content={evnt} />
-                )
+              evnt => (
+                <EventItem key={evnt.eId} content={evnt} />
+              )
             )}
           </Wrapper>
         </>

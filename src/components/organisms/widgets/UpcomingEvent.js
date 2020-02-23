@@ -8,6 +8,7 @@ import fonts from '../../../styles/utilities/fonts';
 import { button } from '../../../styles/utilities/elements';
 import { above, below } from '../../../styles/utilities/mediaQueries';
 import PageLink from '../../atoms/PageLink';
+import { compiledEvents } from '../../../pages/events';
 
 const UpcomingEvent = ({ widget, color }) => (
   <StaticQuery
@@ -25,26 +26,25 @@ const UpcomingEvent = ({ widget, color }) => (
             {widget.button.copy && <PageLink content={widget.button} />}
           </div>
           <div className="event">
-            {data.allWordpressWpEvent.edges.map(({ node }) => (
-              <React.Fragment key={node.id}>
-                <sup>Featured Upcoming Event</sup>
-                <h4>{node.title}</h4>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: `<strong>${node.acf.start_date}${node.acf
-                      .end_date && ` - ${node.acf.end_date}`}${node.acf
-                      .start_time && `<br/>${node.acf.start_time}`}${node.acf
-                      .end_time && ` - ${node.acf.end_time}`}</strong>`,
+            {compiledEvents(data.allWordpressWpEvent.edges).map(
+              (evnt, index) => index === 0 && (
+                <React.Fragment key={evnt.eId}>
+                  <sup>Featured Upcoming Event</sup>
+                  <h4>{evnt.title}</h4>
+                  <p
+                    dangerouslySetInnerHTML={{
+                    __html: `<strong>${evnt.start}${evnt.end && ` - ${evnt.end}`}${evnt.start && `<br/>${evnt.start_time}`}${evnt.end_time && ` - ${evnt.end_time}`}</strong>`,
                   }}
-                />
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: node.excerpt,
+                  />
+                  <div
+                    dangerouslySetInnerHTML={{
+                    __html: evnt.excerpt,
                   }}
-                />
-                <Link to={`/events/${node.slug}`}>Learn more</Link>
-              </React.Fragment>
-            ))}
+                  />
+                  <Link to={`/events/${evnt.slug}`}>Learn more</Link>
+                </React.Fragment>
+                )
+            )}
           </div>
         </SUpcomingEvent>
       </Wrapper>
@@ -56,10 +56,7 @@ export default UpcomingEvent;
 
 const UPCOMINGEVENT_QUERY = graphql`
   {
-    allWordpressWpEvent(
-      limit: 1
-      sort: { order: DESC, fields: acf___start_date }
-    ) {
+    allWordpressWpEvent(sort: { fields: acf___start_date, order: ASC }) {
       edges {
         node {
           id
@@ -67,6 +64,9 @@ const UPCOMINGEVENT_QUERY = graphql`
           slug
           excerpt
           acf {
+            reoccurring_dates {
+              date
+            }
             start_date
             end_date
             start_time

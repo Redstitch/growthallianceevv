@@ -23,20 +23,22 @@ const ContactUs = () => (
             }
             description={data.wordpressSiteMetadata.description}
           />
-          <DefaultBanner
-            page={{
-              title:
-                data.wordpressAcfOptions.options.contact_banner_copy.heading,
-              mainImage: data.wordpressAcfOptions.options.contact_banner_image,
-              color: 'blue',
-              description:
-                data.wordpressAcfOptions.options.contact_banner_copy.copy,
-              noMargin: true,
-            }}
-            content={{
-              overlay_color: 'blue',
-            }}
-          />
+          <section>
+            <DefaultBanner
+              page={{
+                title:
+                  data.wordpressAcfOptions.options.contact_banner_copy.heading,
+                mainImage: data.wordpressAcfOptions.options.contact_banner_image,
+                color: 'blue',
+                description:
+                  data.wordpressAcfOptions.options.contact_banner_copy.copy,
+                noMargin: true,
+              }}
+              content={{
+                overlay_color: 'blue',
+              }}
+            />
+          </section>
           <ContactBlock>
             <ContactForm />
             <GoogleMap location={data.wordpressAcfOptions.options.location} />
