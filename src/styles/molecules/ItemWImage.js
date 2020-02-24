@@ -38,6 +38,7 @@ ${SBackgroundImage} {
   position: relative;
   width: 350px;
   margin: 20px;
+  box-shadow: ${colors.shadow};
 
   ${below.ipadPort`
     max-width: 250px;

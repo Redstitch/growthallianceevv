@@ -70,20 +70,23 @@ export const SRichText = styled.div`
     &.alignleft,
     &.alignright {
       display: block;
-      margin: 0 auto 30px;
+      padding: 0 auto 30px;
+      margin: 0 auto;
     }
 
     &.alignleft {
       @media screen and (min-width: ${breakpoints.ipadPort}px) {
         float: left;
-        margin: 0 30px 30px 0;
+        padding: 0 30px 30px 0;
+        margin: 0;
       }
     }
 
     &.alignright {
       @media screen and (min-width: ${breakpoints.ipadPort}px) {
         float: right;
-        margin: 0 0 30px 30px;
+        padding: 0 0 30px 30px;
+        margin: 0;
       }
     }
   }

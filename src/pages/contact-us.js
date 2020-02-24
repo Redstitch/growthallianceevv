@@ -28,7 +28,8 @@ const ContactUs = () => (
               page={{
                 title:
                   data.wordpressAcfOptions.options.contact_banner_copy.heading,
-                mainImage: data.wordpressAcfOptions.options.contact_banner_image,
+                mainImage:
+                  data.wordpressAcfOptions.options.contact_banner_image,
                 color: 'blue',
                 description:
                   data.wordpressAcfOptions.options.contact_banner_copy.copy,

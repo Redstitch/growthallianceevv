@@ -19,6 +19,7 @@ export const colors = {
   blueGradientStart: 'rgba(26, 119, 185, .3)',
   blueGradientMiddle: 'rgba(15, 67, 104, .6)',
   blueGradientEnd: 'rgba(13, 60, 93, 1)',
+  shadow: '0 0 20px -18px #000',
 };
 
 export const breakpoints = {

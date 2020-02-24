@@ -27,22 +27,26 @@ const UpcomingEvent = ({ widget, color }) => (
           </div>
           <div className="event">
             {compiledEvents(data.allWordpressWpEvent.edges).map(
-              (evnt, index) => index === 0 && (
-                <React.Fragment key={evnt.eId}>
-                  <sup>Featured Upcoming Event</sup>
-                  <h4>{evnt.title}</h4>
-                  <p
-                    dangerouslySetInnerHTML={{
-                    __html: `<strong>${evnt.start}${evnt.end && ` - ${evnt.end}`}${evnt.start && `<br/>${evnt.start_time}`}${evnt.end_time && ` - ${evnt.end_time}`}</strong>`,
-                  }}
-                  />
-                  <div
-                    dangerouslySetInnerHTML={{
-                    __html: evnt.excerpt,
-                  }}
-                  />
-                  <Link to={`/events/${evnt.slug}`}>Learn more</Link>
-                </React.Fragment>
+              (evnt, index) =>
+                index === 0 && (
+                  <React.Fragment key={evnt.eId}>
+                    <sup>Featured Upcoming Event</sup>
+                    <h4>{evnt.title}</h4>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: `<strong>${evnt.start}${evnt.end &&
+                          ` - ${evnt.end}`}${evnt.start &&
+                          `<br/>${evnt.start_time}`}${evnt.end_time &&
+                          ` - ${evnt.end_time}`}</strong>`,
+                      }}
+                    />
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: evnt.excerpt,
+                      }}
+                    />
+                    <Link to={`/events/${evnt.slug}`}>Learn more</Link>
+                  </React.Fragment>
                 )
             )}
           </div>

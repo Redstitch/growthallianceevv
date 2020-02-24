@@ -74,7 +74,7 @@ const GlobeBar = styled.div`
     overflow: hidden;
     padding-bottom: 67%;
     position: relative;
-    box-shadow: 0 0 20px -15px ${colors.black};
+    box-shadow: ${colors.shadow};
 
     ${SBackgroundImage} {
       height: 100%;

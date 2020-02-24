@@ -44,7 +44,8 @@ class BlogRollPage extends Component {
                   page={{
                     title:
                       data.wordpressAcfOptions.options.blog_banner_copy.heading,
-                    mainImage: data.wordpressAcfOptions.options.blog_banner_image,
+                    mainImage:
+                      data.wordpressAcfOptions.options.blog_banner_image,
                     color: 'navy',
                     description:
                       data.wordpressAcfOptions.options.blog_banner_copy.copy,

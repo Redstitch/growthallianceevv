@@ -24,7 +24,7 @@ function endDateFinder(start, difference) {
   return retDate;
 }
 
-export const compiledEvents = (events) => {
+export const compiledEvents = events => {
   const compiledGroup = [];
   const currentGroup = [];
 
@@ -106,11 +106,9 @@ const events = () => (
             />
           </section>
           <Wrapper medium>
-            {compiledEvents(data.allWordpressWpEvent.edges).map(
-              evnt => (
-                <EventItem key={evnt.eId} content={evnt} />
-              )
-            )}
+            {compiledEvents(data.allWordpressWpEvent.edges).map(evnt => (
+              <EventItem key={evnt.eId} content={evnt} />
+            ))}
           </Wrapper>
         </>
       )}
