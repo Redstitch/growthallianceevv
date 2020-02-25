@@ -30,30 +30,34 @@ const Event = ({
           acf.description ? acf.description : wordpressSiteMetadata.description
         }
       />
-      <DefaultBanner
-        page={{
-          title,
-          mainImage: acf.main_image,
-          color: 'blue',
-          description: `${pageContext.date}<br />${
-            acf.start_time
-          }${acf.end_time && ' - ' + acf.end_time}`,
-        }}
-        content={{
-          overlay_color: 'blue',
-        }}
-      />
-      <Wrapper medium>
-        <SEventItem>
-          <SRichText>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: acf.content,
-              }}
-            />
-          </SRichText>
-        </SEventItem>
-      </Wrapper>
+      <section>
+        <DefaultBanner
+          page={{
+            title,
+            mainImage: acf.main_image,
+            color: 'blue',
+            description: `${pageContext.date}<br />${
+              acf.start_time
+            }${acf.end_time && ` - ${acf.end_time}`}`,
+          }}
+          content={{
+            overlay_color: 'blue',
+          }}
+        />
+      </section>
+      <section>
+        <Wrapper medium>
+          <SEventItem>
+            <SRichText>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: acf.content,
+                }}
+              />
+            </SRichText>
+          </SEventItem>
+        </Wrapper>
+      </section>
     </Layout>
   </EventContext.Provider>
 );
