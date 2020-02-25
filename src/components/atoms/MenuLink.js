@@ -8,7 +8,7 @@ const MenuLink = ({ content, linkChildren, itemIndex }) => (
     query={SITEURL_QUERY}
     render={({
       site: {
-        siteMetadata: { siteUrl },
+        siteMetadata: { siteCms },
       },
     }) => (
       <NavContext.Consumer>
@@ -29,7 +29,7 @@ const MenuLink = ({ content, linkChildren, itemIndex }) => (
                 to={
                   content.type === 'custom'
                     ? content.url
-                    : content.url.split(siteUrl)[1]
+                    : content.url.split(siteCms)[1]
                 }
                 className={content.classes ? content.classes : null}
                 dangerouslySetInnerHTML={{
@@ -71,7 +71,7 @@ const SITEURL_QUERY = graphql`
   {
     site {
       siteMetadata {
-        siteUrl
+        siteCms
       }
     }
   }

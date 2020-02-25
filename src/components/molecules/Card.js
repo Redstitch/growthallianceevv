@@ -11,7 +11,7 @@ const Card = ({ content, color, link, image, newTab, pageLink }) => (
     query={CARD_QUERY}
     render={({
       site: {
-        siteMetadata: { siteUrl },
+        siteMetadata: { siteCms },
       },
     }) => (
       <>
@@ -35,7 +35,7 @@ const Card = ({ content, color, link, image, newTab, pageLink }) => (
               content.path
                 ? content.path
                 : pageLink
-                ? pageLink.split(siteUrl)[1]
+                ? pageLink.split(siteCms)[1]
                 : link
             }
           >
@@ -97,7 +97,7 @@ const CARD_QUERY = graphql`
   {
     site {
       siteMetadata {
-        siteUrl
+        siteCms
       }
     }
   }

@@ -18,6 +18,7 @@ module.exports = {
     siteCms: GATSBY_CMS,
   },
   plugins: [
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
@@ -32,7 +33,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-wordpress',
       options: {
-        baseUrl: GATSBY_CMS,
+        baseUrl: `${GATSBY_CMS}/`,
         protocol: GATSBY_PREFIX,
         hostingWPCOM: false,
         useACF: true,
@@ -53,6 +54,6 @@ module.exports = {
         trackingId: GATSBY_ANALYTICS,
         head: true,
       },
-    }
+    },
   ],
 };
