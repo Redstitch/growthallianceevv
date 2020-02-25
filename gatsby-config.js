@@ -6,6 +6,7 @@ const { NODE_ENV } = process.env;
 const { GATSBY_CMS } = process.env;
 const { GATSBY_PREFIX } = process.env;
 const { GATSBY_SITE_URL } = process.env;
+const { GATSBY_ANALYTICS } = process.env;
 
 module.exports = {
   siteMetadata: {
@@ -49,7 +50,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: 'UA-11924917-51',
+        trackingId: GATSBY_ANALYTICS,
         head: true,
       },
     }
