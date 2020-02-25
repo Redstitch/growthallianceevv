@@ -112,6 +112,7 @@ const SFeature = styled.div`
 
     .image-container {
       width: 390px;
+      max-width: 100%;
       margin: auto;
       box-shadow: ${colors.shadow};
 

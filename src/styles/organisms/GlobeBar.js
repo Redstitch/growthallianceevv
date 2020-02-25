@@ -71,6 +71,7 @@ const GlobeBar = styled.div`
 
   .image-container {
     height: 0;
+    max-width: 100%;
     overflow: hidden;
     padding-bottom: 67%;
     position: relative;

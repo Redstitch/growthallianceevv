@@ -38,7 +38,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     ${fonts.HelveticaNeueRegular};
     ${typography};
-    &.fixed { overflow: hidden; }
   }
 
   html {

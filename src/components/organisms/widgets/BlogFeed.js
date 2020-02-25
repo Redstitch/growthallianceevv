@@ -56,7 +56,8 @@ class BlogFeed extends Component {
                             link={`/blog/${node.slug}`}
                           />
                         )
-                    ))}
+                    )
+                  )}
               </div>
             </Wrapper>
           </SBlogFeed>
