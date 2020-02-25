@@ -56,8 +56,7 @@ class BlogFeed extends Component {
                             link={`/blog/${node.slug}`}
                           />
                         )
-                    )
-                  )}
+                    ))}
               </div>
             </Wrapper>
           </SBlogFeed>
@@ -167,33 +166,33 @@ export const SBlogFeed = styled.div`
     `}
 
     &:nth-child(3n - 2) {
-        h5 {
-          background-color: ${({ color }) =>
-            color ? pageColor(color) : colors.orange};
-          ${above.ipadPort`
-            clip-path: polygon(0 0, 100% 4%, 100% 95%, 0% 100%);
-          `}
-        }
+      h5 {
+        background-color: ${({ color }) =>
+          color ? pageColor(color) : colors.orange};
+        ${above.ipadPort`
+          clip-path: polygon(0 0, 100% 4%, 100% 95%, 0% 100%);
+        `}
+      }
     }
 
     &:nth-child(3n - 1) {
-        h5 {
-          background-color: ${({ color }) =>
-            color ? pageColor(color) : colors.green};
-          ${above.ipadPort`
-            clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
-          `}
-        }
+      h5 {
+        background-color: ${({ color }) =>
+          color ? pageColor(color) : colors.green};
+        ${above.ipadPort`
+          clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
+        `}
+      }
     }
 
     &:nth-child(3n) {
-        h5 {
-          background-color: ${({ color }) =>
-            color ? pageColor(color) : colors.navy};
-          ${above.ipadPort`
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
-          `}
-        }
+      h5 {
+        background-color: ${({ color }) =>
+          color ? pageColor(color) : colors.navy};
+        ${above.ipadPort`
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
+        `}
+      }
     }
   }
 `;

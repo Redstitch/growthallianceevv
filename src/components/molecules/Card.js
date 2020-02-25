@@ -33,7 +33,7 @@ const Card = ({ content, color, link, image, newTab, pageLink }) => (
           <Link
             to={
               content.path
-                ? content.path
+                ? content.path.replace('/cms/', '')
                 : pageLink
                 ? pageLink.split(siteCms)[1]
                 : link
