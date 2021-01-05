@@ -6,7 +6,7 @@
   "author": "Scott Wambach <scott.wambach@redstitchdigital.com>",
   "dependencies": {
     "autoprefixer": "^9.6.5",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.0.3",
     "babel-plugin-styled-components": "^1.10.0",
     "browser-monads": "^1.0.0",
